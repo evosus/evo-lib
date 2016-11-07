@@ -1,2 +1,3 @@
-# evo-compiler
-Base environment for testing RiotJS compilation
+# evo-lib (WIP)
+Base environment for testing RiotJS compilation.
+
