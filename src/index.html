@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<title>Evosus Analytics</title>
+		<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/reset.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/layout.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/flexbox.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-bars.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-buttons.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-input.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/lib/mdi/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="appMount" class="app-mount"></div>
+		<!-- Riot !-->
+		<script src="/lib/riot/riot+compiler.min.js"></script>
+		<!-- D3 !-->
+		<script src="/lib/d3/build/d3.min.js" charset="utf-8"></script>
+		<!-- AG-Grid !-->
+		<script src="/lib/ag-grid/dist/ag-grid.min.js"></script>
+		<!-- App Templates !-->
+		<script type="riot/tag" src="/app/app.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-breakpoints.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-buttons.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-contents.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-charts.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-flexbox.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-fonts.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-forms.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-svg.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-tables.html"></script>
+		<script type="riot/tag" src="/ui/ui-bars.html"></script>
+		<script type="riot/tag" src="/ui/ui-buttons.html"></script>
+		<script type="riot/tag" src="/ui/ui-input.html"></script>
+		<!-- App Modules !-->
+		<script src="/js/routes.js"></script>
+		<!-- App Mount !-->
+		<script>
+			riot.compile(function() { var tags = riot.mount('#appMount','app');riot.route.start(true); });
+		</script>
+	</body>
+</html>

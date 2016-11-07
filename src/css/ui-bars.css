@@ -1,0 +1,35 @@
+/* BEGIN UI-BAR */
+.ui-bar {
+	height:3.5em;
+}
+.ui-bar-left {
+	height:3.5em;
+	padding:0em .5em;
+}
+.ui-bar-app-name {
+	padding:0em .5em;
+	height:3.5em;
+	font-family:'Roboto-Black';
+	font-size:110%;
+}
+.ui-bar-title {
+	padding:0em .5em;
+	height:3.5em;
+	font-family:'Roboto-Bold';
+	font-size:110%;
+}
+/* END UI-BAR */
+/* BEGIN UI-BAR-CONTROLS */
+.ui-bar-controls {
+	height:3.5em;
+}
+.ui-bar-controls .ui-bar-control-item {
+	padding:0em .25em;
+}
+.ui-bar-controls .ui-bar-control-item:first-child {
+	padding:0em .25em 0em 0em;
+}
+.ui-bar-controls .ui-bar-control-item:last-child {
+	padding:0em 0em 0em .25em;
+}
+/* END UI-BAR-CONTROLS */

@@ -1,0 +1,29 @@
+<!-- UI-BTN !-->
+<ui-btn onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }">
+	<button class="ui-btn rounded">
+		<span class="f-row ai-center">
+			<i if="{ opts.mdicon }" class="{ opts.mdicon }"></i>
+			<span>{ opts.label }</span>
+		</span>
+	</button>
+	<script>
+		click(e) { opts.io.trigger(opts.name + ':click',e); }	
+		hover(e) { opts.io.trigger(opts.name + ':hover',e); }	
+		blur(e) { opts.io.trigger(opts.name + ':blur',e); }	
+		focus(e) { opts.io.trigger(opts.name + ':focus',e); }	
+	</script>
+</ui-btn>
+<!-- UI-BTN-ICON !-->
+<ui-btn-icon onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }"	 >
+	<button class="ui-btn-icon">
+		<span class="f-col ai-center jc-center">
+			<i class="{ opts.mdicon }"></i>
+		</span>
+	</button>
+	<script>
+		click(e) { opts.io.trigger(opts.name + ':click',e); }	
+		hover(e) { opts.io.trigger(opts.name + ':hover',e); }	
+		blur(e) { opts.io.trigger(opts.name + ':blur',e); }	
+		focus(e) { opts.io.trigger(opts.name + ':focus',e); }	
+	</script>
+</ui-btn-icon>

@@ -1,0 +1,31 @@
+<app>
+	<ui-bar class="ui-primary">
+		<ui-bar-left>
+			<ui-btn-icon name="nav.menu" mdicon="mdi mdi-menu" io="{ ui }" />
+			<ui-bar-app-name>Evosus Compiler</ui-bar-app-name>
+		</ui-bar-left>
+	</ui-bar>
+	<div id="mainMount" class="main-mount"></div>
+  <script>
+		var self = this;
+		// --------------------------------------
+		// GLOBAL UI OBSERVABLE
+		// --------------------------------------
+		ui = riot.observable();
+		ui.on('nav.menu:click',function() { riot.route('/guide/contents'); });
+		ui.on('nav.back:click',function() { riot.route('/guide/contents'); });
+		// --------------------------------------
+		// REDIRECT FROM BASE URL
+		// --------------------------------------
+		if(window.location.hash) {
+			riot.compile(function() {
+				newHash = window.location.hash.replace('#','');
+				riot.route(newHash);
+			});
+		} else {
+			riot.compile(function() {
+				riot.route('/guide/contents');
+			});
+		}
+  </script>
+</app>

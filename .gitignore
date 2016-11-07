@@ -1,0 +1,9 @@
+node_modules
+*.swp
+.env
+./fonts/
+./fonts/*
+*./fonts/
+./mobile/
+./mobile/*
+*./mobile/

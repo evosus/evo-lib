@@ -1,0 +1,48 @@
+<guide-breakpoints>
+	<ui-bar class="ui-primary-accent">
+		<ui-bar-left>
+			<ui-btn-icon name="nav.back" mdicon="mdi mdi-arrow-left" io="{ ui }" />
+			<ui-bar-title>Device Breakpoints</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<div class="pad-1">
+			<div class="example rounded shadow-box">
+				<h3>Small Devices</h3>
+				<div class="pad-dot-25"></div>
+				Phones, and mini tablets, with at least 768 pixels emulated screen width.
+			</div>
+		</div>
+		<div class="test768"><div class="pad-dot-5">768 pixels</div></div>
+		<div class="pad-1">
+			<div class="example rounded shadow-box">
+				<h3>Medium Devices</h3>
+				<div class="pad-dot-25"></div>
+				Tablets, with at least  992 pixels emulated screen width.
+			</div>
+		</div>
+		<div class="test992"><div class="pad-dot-5">992 pixels</div></div>
+		<div class="pad-1">
+			<div class="example rounded shadow-box">
+				<h3>Large Devices</h3>
+				<div class="pad-dot-25"></div>
+				Desktop, with at least 1200 pixels emulated screen width.
+			</div>
+		</div>
+		<div class="test1200"><div class="pad-dot-5">1200 pixels</div></div>
+		<div class="pad-1">
+			<div class="example rounded shadow-box">
+				<h3>More Information</h3>
+				<div class="pad-dot-25"></div>
+				Breakpoint measurements are based on <a href="http://getbootstrap.com/css/#grid-media-queries">Twitter Bootstrap</a>.
+			</div>
+		</div>
+	</div>
+	<style scoped>
+		.test768,.test992,.test1200 { padding:.25em 0em;color:#ffffff; }
+		.test768 { width:768px;background:rgba(0,255,0,0.5); }
+		.test992 { width:992px;background:rgba(0,255,0,0.75); }
+		.test1200 { width:1200px;background:rgba(0,255,0,1); }
+		.test-flex { background:purple;color:#ffffff; }
+	</style>
+</guide-breakpoints>

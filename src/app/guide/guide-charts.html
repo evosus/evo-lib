@@ -1,0 +1,57 @@
+<guide-charts>
+	<ui-bar class="ui-primary-accent">
+		<ui-bar-left>
+			<ui-btn-icon name="nav.back" mdicon="mdi mdi-arrow-left" io="{ ui }" />
+			<ui-bar-title>D3 Chart Test</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<div class="pad-1">
+			<div class="example rounded shadow-box">
+				<h3>D3 Pie Chart</h3>
+				<div class="f-row ai-center jc-center">
+					<div id="chart"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		this.on('mount',function() {
+     (function(d3) {
+        'use strict';
+        var dataset = [
+          { label: 'Abulia', count: 10 },
+          { label: 'Betelgeuse', count: 20 },
+          { label: 'Cantaloupe', count: 30 },
+          { label: 'Dijkstra', count: 40 }
+        ];
+        var width = 250;
+        var height = 250;
+        var radius = Math.min(width, height) / 2;
+        var color = d3.scaleOrdinal(d3.schemeCategory20b);
+        var svg = d3.select('#chart')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) +
+            ',' + (height / 2) + ')');
+        var arc = d3.arc()
+          .innerRadius(0)
+          .outerRadius(radius);
+        var pie = d3.pie()
+          .value(function(d) { return d.count; })
+          .sort(null);
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d) {
+            return color(d.data.label);
+          });
+      })(window.d3);
+		});
+	</script>
+	<style scoped>h3 { margin-bottom:.75em; }</style>
+</guide-charts>

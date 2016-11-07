@@ -1,0 +1,76 @@
+<ui-input class="{ focus:isFocused,valid:isValid,invalid:isInvalid,invalid-focus:isFocused && isInvalid}">
+	<div if="{ opts.label }" class="input-label">{ opts.label }</div>
+	<div class="ui-input f-row ai-center { opts.css }">
+		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
+		<input name="field"
+			class="f-one"
+			type="{ opts.type || 'text' }"
+			placeholder="{ opts.placeholder }"
+			onblur="{ blur }"
+			onchange="{ change }"
+			onclick="{ click }"
+			onfocus="{ focus }"
+			onmouseover="{ hover }"
+		/>
+		<div class="ui-input-status-icon" if="{ isValid || isInvalid }">
+			<i if="{ isValid }" class="mdi mdi-check-circle-outline fg-green-lt"></i>
+			<i if="{ isInvalid }" class="mdi mdi-alert-circle-outline fg-red-lt"></i>
+		</div>
+	</div>
+	<div class="{ ui-input-msg:1,f-row:1,ai-center:1,fg-red:isInvalid,fg-green-lt:isValid }">{ msg }</div>
+	<script>
+		var self = this;
+		isFocused = null;isValid = null;isInvalid = null;
+		// --------------------------------------
+		// MAP EVENTS TO OBSERVABLE (io)
+		// --------------------------------------
+		blur(e) { opts.io.trigger(opts.name + ':blur',e); }
+		change(e) { opts.io.trigger(opts.name + ':change',e); }
+		click(e) { opts.io.trigger(opts.name + ':click',e); }
+		focus(e) { opts.io.trigger(opts.name + ':focus',e); }
+		hover(e) { opts.io.trigger(opts.name + ':hover',e); }
+		// --------------------------------------
+		// ON BLUR
+		// --------------------------------------
+		opts.io.on(opts.name + ':blur',function() {
+			self.isFocused = null;
+			self.update();
+		});
+		// --------------------------------------
+		// ON FOCUS
+		// --------------------------------------
+		opts.io.on(opts.name + ':focus',function() {
+			self.field.focus();
+			self.isFocused = true;
+			self.update();
+		});
+		// --------------------------------------
+		// ON INVALID
+		// --------------------------------------
+		opts.io.on(opts.name + ':invalid',function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
+			self.isValid = false;
+			self.isInvalid = true;
+			self.update();
+		});
+		// --------------------------------------
+		// ON VALID
+		// --------------------------------------
+		opts.io.on(opts.name + ':valid',function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
+			self.isValid = true;
+			self.isInvalid = false;
+			self.update();
+		});
+		// --------------------------------------
+		// ON RESET (DEV ONLY)
+		// --------------------------------------
+		opts.io.on(opts.name + ':reset',function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
+			self.isFocused = null;
+			self.isValid = null;
+			self.isInvalid = null;
+			self.update();
+		});
+	</script>
+</ui-input>

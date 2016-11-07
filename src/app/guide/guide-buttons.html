@@ -1,0 +1,53 @@
+<guide-buttons>
+	<ui-bar class="ui-primary-accent">
+		<ui-bar-left>
+			<ui-btn-icon name="nav.back" mdicon="mdi mdi-arrow-left" io="{ ui }" />
+			<ui-bar-title>UI Buttons</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2 ui-secondary">
+		<div class="pad-dot-5">
+			<div class="pad-dot-5">
+				<div class="example rounded shadow-box">
+					<h3>UI Button With Label</h3>
+					<ui-btn name="submit.login" label="Login" class="ui-btn-teal" />
+				</div>
+			</div>
+			<div class="pad-dot-5">
+				<div class="example rounded shadow-box">
+					<h3>UI Button With Label & Icon</h3>
+					<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" class="ui-btn-orange" />
+				</div>
+			</div>
+			<div class="pad-dot-5">
+				<div class="example rounded shadow-box">
+					<h3>UI Button With Icon</h3>
+					<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" class="ui-btn-teal" />
+				</div>
+			</div>
+			<div class="pad-dot-5">
+				<div class="example rounded shadow-box">
+					<h3>UI Button Bar</h3>
+					<ui-bar-controls>
+						<div class="ui-bar-control-item">
+							<ui-btn name="submit.login" label="Login" class="ui-btn-blue" />
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" class="ui-btn-green" />
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" class="ui-btn-red" />
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="namv.right" mdicon="mdi mdi-arrow-right" class="ui-btn-gray"/>
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="namv.right" mdicon="mdi mdi-close" class="ui-btn-gray ui-btn-disabled"/>
+						</div>
+					</ui-bar-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style scoped>h3 { margin-bottom:.75em; }</style>
+</guide-buttons>

@@ -1,0 +1,12 @@
+<ui-select>
+	<div class="ui-select f-row ai-center { opts.css }">
+			<select id="ipts" class="the-select bg-teal" value="{ selected }">
+				<option class="options dc" each="{ opts.options }" selected="{ index == selected }">{ label }</option>
+			</select>
+	</div>
+	<script>
+		opt.options = [
+			{"label":"Option A", "mdicon":"mdi mdi-check"},
+		]
+	</script>
+</ui-select>

@@ -1,0 +1,48 @@
+<guide-contents>
+	<ui-bar class="ui-primary-accent">
+		<ui-bar-left>
+			<ui-bar-title>Style Guide</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<ul class="link-list">
+			<li class="ui-link f-row ai-center jc-between" each="{ guides }" onclick="{ listClick }">
+				{ name }
+				<i class="mdi mdi-chevron-right"></i>
+			</li>
+		</ul>
+	</div>
+	<style scoped>
+		ul.link-list {
+			list-style-type:none;
+			padding:0;
+			margin:0;
+			border:none;
+		}
+		ul.link-list > li {
+			padding:1em;
+			cursor:pointer;
+			border-bottom:1px solid rgba(0,0,0,0.15);
+			transition:.25s ease-in-out all;
+		}
+		ul.link-list > li:hover {
+			border-bottom:1px solid rgba(0,0,0,0);
+			background:rgba(0,0,0,0.1);
+		}
+	</style>
+	<script>
+		listClick(e) {
+			riot.route(e.item.route);
+		}
+		guides = [
+			{ "name":"Device Breakpoints", "route":"/guide/breakpoints" },
+			{ "name":"Buttons", "route":"/guide/buttons" },
+			{ "name":"D3 Pie Chart Test", "route":"/guide/charts" },
+			{ "name":"Fonts & Icons", "route":"/guide/fonts" },
+			{ "name":"Flexbox Test", "route":"/guide/flexbox" },
+			{ "name":"Form Elements", "route":"/guide/forms" },
+			{ "name":"AG-Grid Test", "route":"/guide/tables" },
+			{ "name":"SVG Test", "route":"/guide/svg" }
+		];
+	</script>
+</guide-contents>

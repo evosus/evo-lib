@@ -1,0 +1,56 @@
+/* BEGIN UI-INPUT BORDERED */
+.ui-input.bordered {
+	height:2em;
+	border:4px solid rgba(158,213,207,1.0);
+	border-radius:.25em;
+	padding:.5em;
+	transition:.5s ease-in-out all;
+}
+.ui-input.bordered input {
+	color:#444444;
+	font-family:'Roboto-Light';
+	font-size:100%;
+	background:none;
+	width:100%;
+	height:100%;
+	border:none;
+	font-weight:300;
+	padding:0em .25em;
+}
+.ui-input.bordered .ui-input-icon,
+.ui-input.bordered .ui-input-status-icon {
+	width:1.5em;
+	font-size:175%;
+	cursor:default;
+	color:rgba(0,0,0,0.5);
+}
+.ui-input-msg {
+	height:2em;
+	padding-left:.5em;
+	padding-right:.5em;
+	font-weight:300;
+	font-style:italic;
+}
+.ui-input.bordered input::-webkit-input-placeholder {
+	font-family:'Roboto-LightItalic';
+	color: rgba(0,0,0,0.5);
+}
+.ui-input.bordered input::-moz-placeholder {
+	font-family:'Roboto-LightItalic';
+	color: rgba(0,0,0,0.5);
+}
+.ui-input.bordered input:-ms-input-placeholder {
+	font-family:'Roboto-LightItalic';
+	color: rgba(0,0,0,0.5);
+}
+.ui-input.bordered input:-moz-placeholder {
+	font-family:'Roboto-LightItalic';
+	color: rgba(0,0,0,0.5);
+}
+.focus .ui-input.bordered { border:4px solid rgba(64,171,161,1.0); }
+.valid .ui-input.bordered { border:4px solid #689f38; }
+.invalid .ui-input.bordered { border:4px solid rgba(239,121,126,1.0); }
+.invalid-focus .ui-input.bordered { border:4px solid rgba(227,61,67,1.0); }
+.invalid .ui-input.bordered input { color:rgba(239,121,126,1.0); }
+.invalid-focus .ui-input.bordered input { color:rgba(227,61,67,1.0); }
+/* END UI-INPUT BORDERED */

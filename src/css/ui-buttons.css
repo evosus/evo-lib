@@ -1,0 +1,30 @@
+/* BEGIN UI-BTN */
+.ui-btn {
+	height:2.5em;
+	margin:0;
+	padding:0em 1em;
+	border:none;
+	font-size:100%;
+	cursor:pointer;
+	font-family:'Roboto-Black';
+	transition:.25s ease-in-out all;
+}
+/* UI-BTN:HOVER */
+.ui-btn:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+/* UI-BTN ICON */
+.ui-btn i { font-size:1.25em; }
+/* UI-BTN TEXT */
+.ui-btn span > span { padding:0em .5em; }
+/* END UI-BTN */
+/* BEGIN UI-BTN-ICON */
+.ui-btn-icon {
+	width:2.5em;
+	height:2.5em;
+	border-radius:50%;
+	transition:.25s ease-in-out all;
+}
+/* UI-BTN-ICON:HOVER */
+.ui-btn-icon:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+/* UI-BTN-ICON ICON*/
+.ui-btn-icon i { font-size:1.5em;line-height:0; }
+/* END UI-BTN-ICON */

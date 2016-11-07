@@ -1,0 +1,40 @@
+<guide-tables>
+	<ui-bar class="ui-primary-accent">
+		<ui-bar-left>
+			<ui-btn-icon name="nav.back" mdicon="mdi mdi-arrow-left" io="{ ui }" />
+			<ui-bar-title>Table Test</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<div class="pad-1">
+			<div class="example rounded shadow-box">
+				<h3>AG-Grid</h3>
+				<div style="height:6.75em;overflow:auto;">
+					<div id="myGrid" class="ag-fresh ui-grid"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style scoped>
+		h3 { margin-bottom:.75em; }
+		.ui-grid { height:100%; }
+	</style>
+	<script>
+		var columnDefs = [
+			{ headerName: "Column A", field: "colA" },
+			{ headerName: "Column B", field: "colB" },
+			{ headerName: "Column C", field: "colC" }
+		]
+		var rowData = [
+			{ "colA": "Cell A - A", "colB": "Cell A - B", "colC": "Cell A - C" },
+			{ "colA": "Cell B - A", "colB": "Cell B - B", "colC": "Cell B - C" },
+			{ "colA": "Cell C - A", "colB": "Cell C - B", "colC": "Cell C - C" }
+		]
+		var gridOptions = { columnDefs: columnDefs, rowData: rowData };
+		this.on('mount',function() {
+			var eGridDiv = document.querySelector('#myGrid');
+			new agGrid.Grid(eGridDiv, gridOptions);
+			gridOptions.api.sizeColumnsToFit();
+		});
+	</script>
+</guide-tables>
