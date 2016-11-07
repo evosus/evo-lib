@@ -11,6 +11,7 @@
 			onclick="{ click }"
 			onfocus="{ focus }"
 			onmouseover="{ hover }"
+			onkeyup="{ keyup }"
 		/>
 		<div class="ui-input-status-icon" if="{ isValid || isInvalid }">
 			<i if="{ isValid }" class="mdi mdi-check-circle-outline fg-green-lt"></i>
@@ -29,6 +30,7 @@
 		click(e) { opts.io.trigger(opts.name + ':click',e); }
 		focus(e) { opts.io.trigger(opts.name + ':focus',e); }
 		hover(e) { opts.io.trigger(opts.name + ':hover',e); }
+		keyup(e) { opts.io.trigger(opts.name + ':keyup',e); }
 		// --------------------------------------
 		// ON BLUR
 		// --------------------------------------

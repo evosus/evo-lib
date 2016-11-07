@@ -36,5 +36,6 @@
 		ui.on('submit.reset:click',function(e) { ui.trigger('input.text:reset'); });
 		ui.on('submit.invalid:click',function(e) { ui.trigger('input.text:invalid','Invalid!'); });
 		ui.on('input.text:change',function(e) { console.info(e.target.value); });
+		ui.on('input.text:keyup',function(e) { console.info(e.keyCode); });
 	</script>
 </guide-forms>
