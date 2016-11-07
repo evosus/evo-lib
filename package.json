@@ -1,7 +1,7 @@
 {
-  "name": "evo-compiler",
+  "name": "evo-lib",
   "version": "1.0.0",
-  "description": "Base environment for testing RiotJS compilation.",
+  "description": "A collection of RiotJS web-app components created and maintained by Evosus Inc.",
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www"
