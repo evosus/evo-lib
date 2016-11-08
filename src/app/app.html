@@ -1,7 +1,7 @@
 <app>
 	<ui-bar class="ui-primary">
 		<ui-bar-left>
-			<ui-btn-icon name="nav.menu" mdicon="mdi mdi-menu" css="ui-primary" io="{ ui }" />
+			<ui-btn-icon name="nav_menu" mdicon="mdi mdi-menu" css="ui-primary" io="{ ui }" />
 			<ui-bar-app-name>Evosus Library</ui-bar-app-name>
 		</ui-bar-left>
 	</ui-bar>
@@ -12,30 +12,34 @@
 		// GLOBAL UI OBSERVABLE & EVENTS
 		// --------------------------------------
 		// Event naming convention:
-		// source.element-name.etc.etc.etc:event
+		// Use underscore (_) to separate fragments.
+		// Use a colon (:) before the event name.
+		// source_elementname_etc_etc_etc:event
 		// --------------------------------------
 		// 'source' must be global navigation: 'nav',
 		// or route specific: 'login'.
-		// Examples:
-		// 'login.input.email:keyup'
-		// 'employees.display-mode:toggle'
-		// 'nav.account:click'
+		// --------------------------------------
+		// 'elementname' is the name of the subject
+		// --------------------------------------
+		// 'etc' is any additional namespacing
+		// --------------------------------------
+		// EXAMPLES:
+		// --------------------------------------
+		// 1.  'login_email:keyup'
+		// 2.  'login_email_primary:change'
+		// 3.  'employees_displaymode:toggle'
+		// 4.  'nav_account:click'
 		// --------------------------------------
 		ui = riot.observable();
-		ui.on('nav.menu:click',function() { riot.route('/guide/contents'); });
-		ui.on('nav.back:click',function() { riot.route('/guide/contents'); });
+		ui.on('nav_menu:click',function() { riot.route('/guide/contents'); });
+		ui.on('nav_back:click',function() { riot.route('/guide/contents'); });
 		// --------------------------------------
 		// REDIRECT FROM BASE URL
 		// --------------------------------------
 		if(window.location.hash) {
-			riot.compile(function() {
-				newHash = window.location.hash.replace('#','');
-				riot.route(newHash);
-			});
+			riot.compile(function() { newHash = window.location.hash.replace('#','');riot.route(newHash); });
 		} else {
-			riot.compile(function() {
-				riot.route('/guide/contents');
-			});
+			riot.compile(function() { riot.route('/guide/contents'); });
 		}
   </script>
 </app>

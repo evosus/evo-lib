@@ -10,20 +10,22 @@
 			<div class="pad-dot-5">
 				<div class="example rounded shadow-box">
 					<h3>UI-Input Text</h3>
-					<ui-input name="input.text" placeholder="Enter email address" css="bordered" mdicon="mdi mdi-email-outline" io="{ ui }" />
+					Input Value: { uiInputValue }
+					<div class="pad-dot-5"></div>
+					<ui-input name="input_text" placeholder="Enter email address" css="bordered" mdicon="mdi mdi-email-outline" io="{ ui }" />
 					<div class="pad-dot-5"></div>
 					<ui-bar-controls>
 						<div class="ui-bar-control-item">
-							<ui-btn-icon name="submit.focus" label="Focus" mdicon="mdi mdi-pencil" css="ui-blue" io="{ ui }" />
+							<ui-btn-icon name="submit_focus" label="Focus" mdicon="mdi mdi-pencil" css="ui-blue" io="{ ui }" />
 						</div>
 						<div class="ui-bar-control-item">
-							<ui-btn-icon name="submit.valid" label="Valid" mdicon="mdi mdi-check" css="ui-green" io="{ ui }" />
+							<ui-btn-icon name="submit_valid" label="Valid" mdicon="mdi mdi-check" css="ui-green" io="{ ui }" />
 						</div>
 						<div class="ui-bar-control-item">
-							<ui-btn-icon name="submit.invalid" label="Invalid" mdicon="mdi mdi-alert-circle-outline" css="ui-red" io="{ ui }" />
+							<ui-btn-icon name="submit_invalid" label="Invalid" mdicon="mdi mdi-alert-circle-outline" css="ui-red" io="{ ui }" />
 						</div>
 						<div class="ui-bar-control-item">
-							<ui-btn-icon name="submit.reset" label="Reset" mdicon="mdi mdi-refresh" css="ui-gray" io="{ ui }" />
+							<ui-btn-icon name="submit_reset" label="Reset" mdicon="mdi mdi-refresh" css="ui-gray" io="{ ui }" />
 						</div>
 					</ui-bar-controls>
 				</div>
@@ -41,19 +43,23 @@
 	<style scoped>h3 { margin-bottom:.75em; }</style>
 	<script>
 		var self = this;
-		ui.on('submit.focus:click',function(e) { ui.trigger('input.text:focus'); });
-		ui.on('submit.valid:click',function(e) { ui.trigger('input.text:valid'); });
-		ui.on('submit.reset:click',function(e) { ui.trigger('input.text:reset'); });
-		ui.on('submit.invalid:click',function(e) { ui.trigger('input.text:invalid','Invalid!'); });
-		ui.on('input.text:change',function(e) { console.info(e.target.value); });
-		ui.on('input.text:keyup',function(e) { console.info(e.keyCode); });
+		ui.on('submit_focus:click',function(e) { ui.trigger('input_text:focus'); });
+		ui.on('submit_valid:click',function(e) { ui.trigger('input_text:valid'); });
+		ui.on('submit_reset:click',function(e) { ui.trigger('input_text:reset'); });
+		ui.on('submit_invalid:click',function(e) { ui.trigger('input_text:invalid','Invalid!'); });
+		ui.on('input_text:keyup',function(e) { console.info(e.keyCode); });
+		ui.on('input_text:change',function(e) {
+			uiInputValue = self.input_text.value;
+			console.info(e.target.value);
+			self.update();
+		});
 		uiSelectOptions = [
 			{"label":"Option A", "mdicon":"mdi mdi-checkbox-marked-circle"},
 			{"label":"Option B", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
 			{"label":"Option C", "mdicon":"mdi mdi-checkbox-blank-circle-outline"}
 		]
 		uiSelectValue = 'Option B';
-		ui.on('select.test:change',function(e) { 
+		ui.on('select_test:change',function(e) { 
 			uiSelectValue = e.target.value;
 			self.update();	
 		});
