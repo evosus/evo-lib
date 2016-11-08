@@ -1,0 +1,16 @@
+.ui-select {
+	height:2em;
+	border-radius:.25em;
+	padding:.5em;
+	transition:.5s ease-in-out all;
+}
+
+.ui-select select {
+	font-size:100%;
+	background:none;
+	width:100%;
+	height:100%;
+	border:none;
+	font-weight:300;
+	padding:0em .25em;
+}

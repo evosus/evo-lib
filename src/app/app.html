@@ -1,7 +1,7 @@
 <app>
 	<ui-bar class="ui-primary">
 		<ui-bar-left>
-			<ui-btn-icon name="nav.menu" mdicon="mdi mdi-menu" io="{ ui }" />
+			<ui-btn-icon name="nav.menu" mdicon="mdi mdi-menu" css="ui-primary" io="{ ui }" />
 			<ui-bar-app-name>Evosus Compiler</ui-bar-app-name>
 		</ui-bar-left>
 	</ui-bar>
@@ -9,7 +9,17 @@
   <script>
 		var self = this;
 		// --------------------------------------
-		// GLOBAL UI OBSERVABLE
+		// GLOBAL UI OBSERVABLE & EVENTS
+		// --------------------------------------
+		// Event naming convention:
+		// source.element-name.etc.etc.etc:event
+		// --------------------------------------
+		// 'source' must be global navigation: 'nav',
+		// or route specific: 'login'.
+		// Examples:
+		// 'login.input.email:keyup'
+		// 'employees.display-mode:toggle'
+		// 'nav.account:click'
 		// --------------------------------------
 		ui = riot.observable();
 		ui.on('nav.menu:click',function() { riot.route('/guide/contents'); });

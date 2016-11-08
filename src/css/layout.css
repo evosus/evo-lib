@@ -1,6 +1,6 @@
 /* APP DEFAULTS */
 body {
-	font-family:"Roboto-Regular",Arial,sans-serif;
+	font-family:Roboto,Helvetica, Arial,sans-serif;
 	color: #444444;
 	background: #f7f5f2;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -19,7 +19,8 @@ h3 { font-size: 1.17em; }
 h4 { font-size: 1.12em; }
 h5 { font-size: 0.83em; }
 h6 { font-size: 0.75em; }
-h1,h2,h3,h4,h5,h6 { font-family:"Raleway-Bold", Arial, serif; }
+h1,h2,h3,h4,h5,h6
+{ font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:900; }
 /* CONTANIER STYLES */
 .all { height:100vh; width:100vw; }
 .example { padding:1em;background:#ffffff;overflow:hidden; }

@@ -6,7 +6,7 @@
 	border:none;
 	font-size:100%;
 	cursor:pointer;
-	font-family:'Roboto-Black';
+	font-weight:900;
 	transition:.25s ease-in-out all;
 }
 /* UI-BTN:HOVER */

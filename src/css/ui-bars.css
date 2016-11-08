@@ -9,13 +9,13 @@
 .ui-bar-app-name {
 	padding:0em .5em;
 	height:3.5em;
-	font-family:'Roboto-Black';
+	font-weight:900;
 	font-size:110%;
 }
 .ui-bar-title {
 	padding:0em .5em;
 	height:3.5em;
-	font-family:'Roboto-Bold';
+	font-weight:700;
 	font-size:110%;
 }
 /* END UI-BAR */

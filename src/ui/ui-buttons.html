@@ -1,6 +1,6 @@
 <!-- UI-BTN !-->
 <ui-btn onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }">
-	<button class="ui-btn rounded">
+	<button class="ui-btn rounded { opts.css }">
 		<span class="f-row ai-center">
 			<i if="{ opts.mdicon }" class="{ opts.mdicon }"></i>
 			<span>{ opts.label }</span>
@@ -15,7 +15,7 @@
 </ui-btn>
 <!-- UI-BTN-ICON !-->
 <ui-btn-icon onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }"	 >
-	<button class="ui-btn-icon">
+	<button class="ui-btn-icon { opts.css }">
 		<span class="f-col ai-center jc-center">
 			<i class="{ opts.mdicon }"></i>
 		</span>

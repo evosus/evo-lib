@@ -1,12 +1,15 @@
 <ui-select>
 	<div class="ui-select f-row ai-center { opts.css }">
-			<select id="ipts" class="the-select bg-teal" value="{ selected }">
-				<option class="options dc" each="{ opts.options }" selected="{ index == selected }">{ label }</option>
-			</select>
+		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
+		<select id="htmlselect" value="{ selected }">
+			<option each="{ opts.options }" selected="{ index == selected }">{ label }</option>
+		</select>
 	</div>
 	<script>
-		opt.options = [
-			{"label":"Option A", "mdicon":"mdi mdi-check"},
-		]
+		this.on('mount',function() {
+			if(this.htmlselect.selectedIndex < 0) {
+				this.htmlselect.selectedIndex = 0;
+			}
+		});
 	</script>
 </ui-select>

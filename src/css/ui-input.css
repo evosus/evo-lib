@@ -8,7 +8,7 @@
 }
 .ui-input.bordered input {
 	color:#444444;
-	font-family:'Roboto-Light';
+	font-weight:300;
 	font-size:100%;
 	background:none;
 	width:100%;
@@ -31,22 +31,10 @@
 	font-weight:300;
 	font-style:italic;
 }
-.ui-input.bordered input::-webkit-input-placeholder {
-	font-family:'Roboto-LightItalic';
-	color: rgba(0,0,0,0.5);
-}
-.ui-input.bordered input::-moz-placeholder {
-	font-family:'Roboto-LightItalic';
-	color: rgba(0,0,0,0.5);
-}
-.ui-input.bordered input:-ms-input-placeholder {
-	font-family:'Roboto-LightItalic';
-	color: rgba(0,0,0,0.5);
-}
-.ui-input.bordered input:-moz-placeholder {
-	font-family:'Roboto-LightItalic';
-	color: rgba(0,0,0,0.5);
-}
+.ui-input.bordered input::-webkit-input-placeholder { color: rgba(0,0,0,0.5); }
+.ui-input.bordered input::-moz-placeholder { color: rgba(0,0,0,0.5); }
+.ui-input.bordered input:-ms-input-placeholder { color: rgba(0,0,0,0.5); }
+.ui-input.bordered input:-moz-placeholder { color: rgba(0,0,0,0.5); }
 .focus .ui-input.bordered { border:4px solid rgba(64,171,161,1.0); }
 .valid .ui-input.bordered { border:4px solid #689f38; }
 .invalid .ui-input.bordered { border:4px solid rgba(239,121,126,1.0); }
