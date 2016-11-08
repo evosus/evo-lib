@@ -1,36 +1,40 @@
 <guide-forms>
-	<ui-bar class="ui-primary-lt">
+	<ui-bar class="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="nav.back" mdicon="mdi mdi-arrow-left" css="ui-primary-lt" io="{ ui }" />
 			<ui-bar-title>Form Elements</ui-bar-title>
 		</ui-bar-left>
 	</ui-bar>
 	<div class="scroll-2">
-		<div class="pad-1">
-			<div class="example rounded shadow-box">
-				<h3>UI-Input Text</h3>
-				<ui-input name="input.text" placeholder="Enter email address" css="bordered" mdicon="mdi mdi-email-outline" io="{ ui }" />
-				<div class="pad-dot-5"></div>
-				<ui-bar-controls>
-					<div class="ui-bar-control-item">
-						<ui-btn-icon name="submit.focus" label="Focus" mdicon="mdi mdi-pencil" css="ui-blue" io="{ ui }" />
-					</div>
-					<div class="ui-bar-control-item">
-						<ui-btn-icon name="submit.valid" label="Valid" mdicon="mdi mdi-check" css="ui-green" io="{ ui }" />
-					</div>
-					<div class="ui-bar-control-item">
-						<ui-btn-icon name="submit.invalid" label="Invalid" mdicon="mdi mdi-alert-circle-outline" css="ui-red" io="{ ui }" />
-					</div>
-					<div class="ui-bar-control-item">
-						<ui-btn-icon name="submit.reset" label="Reset" mdicon="mdi mdi-refresh" css="ui-gray" io="{ ui }" />
-					</div>
-				</ui-bar-controls>
+		<div class="pad-dot-5">
+			<div class="pad-dot-5">
+				<div class="example rounded shadow-box">
+					<h3>UI-Input Text</h3>
+					<ui-input name="input.text" placeholder="Enter email address" css="bordered" mdicon="mdi mdi-email-outline" io="{ ui }" />
+					<div class="pad-dot-5"></div>
+					<ui-bar-controls>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="submit.focus" label="Focus" mdicon="mdi mdi-pencil" css="ui-blue" io="{ ui }" />
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="submit.valid" label="Valid" mdicon="mdi mdi-check" css="ui-green" io="{ ui }" />
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="submit.invalid" label="Invalid" mdicon="mdi mdi-alert-circle-outline" css="ui-red" io="{ ui }" />
+						</div>
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="submit.reset" label="Reset" mdicon="mdi mdi-refresh" css="ui-gray" io="{ ui }" />
+						</div>
+					</ui-bar-controls>
+				</div>
 			</div>
-		</div>
-		<div class="pad-1">
-			<div class="example rounded shadow-box">
-				<h3>UI-Select</h3>
-				<ui-select name="select.test" options="{ selectOptions }" css="ui-teal" io="{ ui }" />
+			<div class="pad-dot-5">
+				<div class="example rounded shadow-box">
+					<h3>UI-Select</h3>
+					Selected: { uiSelectValue }
+					<div class="pad-dot-5"></div>
+					<ui-select id="selectTest" name="select.test" selection="{ uiSelectValue }" options="{ uiSelectOptions }" css="ui-teal" io="{ ui }" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -43,11 +47,15 @@
 		ui.on('submit.invalid:click',function(e) { ui.trigger('input.text:invalid','Invalid!'); });
 		ui.on('input.text:change',function(e) { console.info(e.target.value); });
 		ui.on('input.text:keyup',function(e) { console.info(e.keyCode); });
-
-		selectOptions = [
+		uiSelectOptions = [
 			{"label":"Option A", "mdicon":"mdi mdi-checkbox-marked-circle"},
 			{"label":"Option B", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
 			{"label":"Option C", "mdicon":"mdi mdi-checkbox-blank-circle-outline"}
 		]
+		uiSelectValue = 'Option B';
+		ui.on('select.test:change',function(e) { 
+			uiSelectValue = e.target.value;
+			self.update();	
+		});
 	</script>
 </guide-forms>

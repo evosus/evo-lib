@@ -63,6 +63,14 @@ riot.route('/guide/tables', function() {
 	});
 });
 // --------------------------------------
+// GUIDE THEME
+// --------------------------------------
+riot.route('/guide/theme', function() {
+	riot.compile(function() {
+		riot.mount('#mainMount','guide-theme');
+	});
+});
+// --------------------------------------
 // GUIDE SVG
 // --------------------------------------
 riot.route('/guide/svg', function() {

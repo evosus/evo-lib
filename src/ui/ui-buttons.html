@@ -1,10 +1,10 @@
 <!-- UI-BTN !-->
 <ui-btn onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }">
 	<button class="ui-btn rounded { opts.css }">
-		<span class="f-row ai-center">
-			<i if="{ opts.mdicon }" class="{ opts.mdicon }"></i>
+		<div class="f-row ai-center jc-center">
+			<i if="{ opts.mdicon }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
 			<span>{ opts.label }</span>
-		</span>
+		</div>
 	</button>
 	<script>
 		click(e) { opts.io.trigger(opts.name + ':click',e); }	

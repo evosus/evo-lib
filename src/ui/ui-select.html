@@ -1,15 +1,30 @@
-<ui-select>
+<ui-select idx="{ this.htmlselect.selectedIndex }">
 	<div class="ui-select f-row ai-center { opts.css }">
 		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
-		<select id="htmlselect" value="{ selected }">
+		<select id="htmlselect" value="{ selected }" onchange="{ change }">
 			<option each="{ opts.options }" selected="{ index == selected }">{ label }</option>
 		</select>
 	</div>
 	<script>
 		this.on('mount',function() {
-			if(this.htmlselect.selectedIndex < 0) {
+			// --------------------------------------
+			// SET Selected Item
+			// --------------------------------------
+			if(!opts.selection) {
 				this.htmlselect.selectedIndex = 0;
+					if(opts.options[0].mdicon) { mdicon = opts.options[0].mdicon; }
+					if(opts.options[0].svgclass) { mdicon = opts.options[0].svgclass; }
+			} else {
+				var len = opts.options.length;
+				for(i = 0; i < len; i++) {
+					if(opts.options[i].label == opts.selection) {
+						this.htmlselect.selectedIndex = i;
+						if(opts.options[i].mdicon) { mdicon = opts.options[i].mdicon; }
+						if(opts.options[i].svgclass) { mdicon = opts.options[i].svgclass; }
+					}
+				}
 			}
 		});
+		change(e) { opts.io.trigger(opts.name + ':change',e); }
 	</script>
 </ui-select>
