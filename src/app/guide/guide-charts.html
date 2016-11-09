@@ -12,23 +12,40 @@
 				<div class="f-row ai-center jc-center">
 					<div id="chart"></div>
 				</div>
+				<div class="pad-dot-5"></div>
+				<div class="f-row jc-center">
+					<ui-btn name="reset_pie" mdicon="mdi mdi-refresh" label="reset" css="ui-green" io="{ ui }" />
+				</div>
 			</div>
 		</div>
 	</div>
+	<style scoped>h3 { margin-bottom:.75em; }</style>
 	<script>
 		this.on('mount',function() {
-     (function(d3) {
-        'use strict';
+			// --------------------------------------
+			// D3
+			// --------------------------------------
+			(function(d3) {
+				'use strict';
+				// --------------------------------------
+				// D3 DATA
+				// --------------------------------------
         var dataset = [
-          { label: 'Abulia', count: 10 },
-          { label: 'Betelgeuse', count: 20 },
-          { label: 'Cantaloupe', count: 30 },
-          { label: 'Dijkstra', count: 40 }
+          { label: 'AAA', count: 10 },
+          { label: 'BBB', count: 20 },
+          { label: 'CCC', count: 30 },
+          { label: 'DDD', count: 40 }
         ];
+				// --------------------------------------
+				// D3 DIMENSIONS
+				// --------------------------------------
         var width = 250;
         var height = 250;
         var radius = Math.min(width, height) / 2;
         var color = d3.scaleOrdinal(d3.schemeCategory20b);
+				// --------------------------------------
+				// D3 SVG
+				// --------------------------------------
         var svg = d3.select('#chart')
           .append('svg')
           .attr('width', width)
@@ -36,12 +53,27 @@
           .append('g')
           .attr('transform', 'translate(' + (width / 2) +
             ',' + (height / 2) + ')');
+				// --------------------------------------
+				// D3 ARC
+				// --------------------------------------
         var arc = d3.arc()
           .innerRadius(0)
           .outerRadius(radius);
+				// --------------------------------------
+				// D3 PIE
+				// --------------------------------------
         var pie = d3.pie()
           .value(function(d) { return d.count; })
           .sort(null);
+				// --------------------------------------
+				// D3 LABEL ARC
+				// --------------------------------------
+				var labelArc = d3.arc()
+					.outerRadius(radius - 40)
+					.innerRadius(radius - 40);
+				// --------------------------------------
+				// D3 PATH
+				// --------------------------------------
         var path = svg.selectAll('path')
           .data(pie(dataset))
           .enter()
@@ -49,9 +81,38 @@
           .attr('d', arc)
           .attr('fill', function(d) {
             return color(d.data.label);
-          });
+          })
+				// --------------------------------------
+				// D3 ADD DATA
+				// --------------------------------------
+				var g = svg.selectAll(".arc")
+					.data(pie(dataset))
+					.enter().append("g")
+					.attr("class", "arc");
+				// --------------------------------------
+				// D3 ADD TEXT
+				// --------------------------------------
+				g.append("text")
+					.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+					.attr("dy", ".35em")
+					.attr("fill","#ffffff")
+					.text(function(d) { return d.data.label; });
+				// --------------------------------------
+				// D3 CLICK
+				// --------------------------------------
+				path.on('click', function(e) {
+					var clicked = d3.selectAll("text").filter(function(d,i) { return i === e.index });
+					clicked.text("$$$");
+				});
+
       })(window.d3);
+			// --------------------------------------
+			// D3 LABEL RESET
+			// --------------------------------------
+			ui.on('reset_pie:click',function() {
+				var tst = d3.select("#chart").selectAll("text")
+					.text(function(d) { return d.data.label; });
+			});
 		});
 	</script>
-	<style scoped>h3 { margin-bottom:.75em; }</style>
 </guide-charts>
