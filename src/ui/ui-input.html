@@ -69,6 +69,7 @@
 		// --------------------------------------
 		opts.io.on(opts.name + ':reset',function(msg) {
 			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
+			self.field.value = '';
 			self.isFocused = null;
 			self.isValid = null;
 			self.isInvalid = null;

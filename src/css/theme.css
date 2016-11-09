@@ -1,5 +1,5 @@
 /* MAIN COLOR THEME */
-.ui-link { color:dodgerblue; }
+
 /* PRIMARY */
 .ui-primary,
 button.ui-primary.ui-btn,
@@ -10,6 +10,7 @@ button.ui-primary.ui-btn:hover,
 .ui-primary.ui-select,
 .ui-primary.ui-select select
 { background-color:#6a6b6c;color:white; }
+
 /* PRIMARY LIGHT */
 .ui-primary-lt,
 button.ui-primary-lt.ui-btn,
@@ -20,6 +21,7 @@ button.ui-primary-lt.ui-btn:hover,
 .ui-primary-lt.ui-select,
 .ui-primary-lt.ui-select select
 { background:#8a8b8c;color:white; }
+
 /* SECONDARY */
 .ui-secondary,
 button.ui-secondary.ui-btn,
@@ -30,6 +32,7 @@ button.ui-secondary.ui-btn:hover,
 .ui-secondary.ui-select,
 .ui-secondary.ui-select select
 { background:#dddddd;color:#444444; }
+
 /* SECONDARY LIGHT */
 .ui-secondary-lt,
 button.ui-secondary-lt.ui-btn,
@@ -40,6 +43,7 @@ button.ui-secondary-lt.ui-btn:hover,
 .ui-secondary-lt.ui-select,
 .ui-secondary-lt.ui-select select
 { background:#eeeeee;color:#444444; }
+
 /* DISABLED */
 .ui-disabled,
 button.ui-disabled.ui-btn,
@@ -50,6 +54,7 @@ button.ui-disabled.ui-btn:hover,
 .ui-disabled.ui-select,
 .ui-disabled.ui-select select
 { opacity:0.5;cursor:default;box-shadow:none; }
+
 /* BLUE */
 .ui-blue,
 button.ui-blue.ui-btn,
@@ -60,6 +65,7 @@ button.ui-blue.ui-btn:hover,
 .ui-blue.ui-select,
 .ui-blue.ui-select select
 { background:#0277bd;color:#ffffff; }
+
 /* GRAY */
 .ui-gray,
 button.ui-gray.ui-btn,
@@ -70,6 +76,7 @@ button.ui-gray.ui-btn:hover,
 .ui-gray.ui-select,
 .ui-gray.ui-select select
 { background:#aaaaaa;color:#ffffff; }
+
 /* GREEN */
 .ui-green,
 button.ui-green.ui-btn,
@@ -80,6 +87,18 @@ button.ui-green.ui-btn:hover,
 .ui-green.ui-select,
 .ui-green.ui-select select
 { background:#689f38;color:#ffffff; }
+
+/* YELLOW */
+.ui-yellow,
+button.ui-yellow.ui-btn,
+button.ui-yellow.ui-btn:hover,
+.ui-yellow.ui-btn-icon,
+.ui-yellow.ui-btn-icon:hover,
+.ui-yellow.ui-input,
+.ui-yellow.ui-select,
+.ui-yellow.ui-select select
+{ background:#fbc02d;color:#ffffff; }
+
 /* ORANGE */
 .ui-orange,
 button.ui-orange.ui-btn,
@@ -90,6 +109,7 @@ button.ui-orange.ui-btn:hover,
 .ui-orange.ui-select,
 .ui-orange.ui-select select
 { background:rgba(240,148,25,1);color:#ffffff; }
+
 /* RED */
 .ui-red,
 button.ui-red.ui-btn,
@@ -100,6 +120,7 @@ button.ui-red.ui-btn:hover,
 .ui-red.ui-select,
 .ui-red.ui-select select
 { background:#c62828;color:#ffffff; }
+
 /* TEAL */
 .ui-teal,
 .ui-teal.ui-btn,
@@ -111,3 +132,12 @@ button.ui-teal.ui-btn:hover,
 .ui-teal.ui-select,
 .ui-teal.ui-select select
 { background:#40aca1;color:#ffffff; }
+
+/* FOREGROUND COLORS */
+.fg-disabled { color:#cccccc; }
+.fg-failure { color:#c62828; }
+.fg-primary { color:dodgerBlue; }
+.fg-success { color:#689f38; }
+
+/* LINKS */
+.ui-link { color:dodgerblue; }
