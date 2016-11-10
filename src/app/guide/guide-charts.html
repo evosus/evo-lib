@@ -14,7 +14,7 @@
 				</div>
 				<div class="pad-dot-5"></div>
 				<div class="f-row jc-center">
-					<ui-btn name="reset_pie" mdicon="mdi mdi-refresh" label="reset" css="ui-green" io="{ ui }" />
+					<ui-btn name="reset_pie" mdicon="mdi mdi-refresh" label="Reset" css="ui-green" io="{ ui }" />
 				</div>
 			</div>
 		</div>
@@ -31,10 +31,10 @@
 				// D3 DATA
 				// --------------------------------------
         var dataset = [
-          { label: 'AAA', count: 10 },
-          { label: 'BBB', count: 20 },
-          { label: 'CCC', count: 30 },
-          { label: 'DDD', count: 40 }
+          { label: 'AAA', count: 40 },
+          { label: 'BBB', count: 30 },
+          { label: 'CCC', count: 20 },
+          { label: 'DDD', count: 10 }
         ];
 				// --------------------------------------
 				// D3 DIMENSIONS
@@ -96,15 +96,41 @@
 					.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
 					.attr("dy", ".35em")
 					.attr("fill","#ffffff")
-					.text(function(d) { return d.data.label; });
+					.text(function(d) { return d.data.label });
 				// --------------------------------------
 				// D3 CLICK
 				// --------------------------------------
+/*
 				path.on('click', function(e) {
 					var clicked = d3.selectAll("text").filter(function(d,i) { return i === e.index });
 					clicked.text("$$$");
 				});
-
+*/
+				// --------------------------------------
+				// D3 MOUSEUP
+				// --------------------------------------
+				path.on('mouseup', function(e) {
+					var clicked = d3.selectAll("text").filter(function(d,i) { return i === e.index });
+					clicked.text("***");
+				});
+				// --------------------------------------
+				// D3 MOUSEOVER
+				// --------------------------------------
+				path.on('mouseover', function(e) {
+					// BACKGROUND COLOR	
+					d3.select(this).attr("fill","#aaaaaa");
+					// TEXT COLOR	
+					d3.selectAll("text").filter(function(d,i) { return i === e.index }).style("fill",function(d) { return color(d.data.label); });
+				});
+				// --------------------------------------
+				// D3 MOUSEOUT
+				// --------------------------------------
+				path.on('mouseout', function(e) {
+					// BACKGROUND COLOR	
+					d3.select(this).attr('fill', function(d) { return color(d.data.label); });
+					// TEXT COLOR	
+					d3.selectAll("text").filter(function(d,i) { return i === e.index }).style("fill","white");
+				});
       })(window.d3);
 			// --------------------------------------
 			// D3 LABEL RESET
