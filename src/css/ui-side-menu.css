@@ -1,0 +1,56 @@
+.account-bar {
+	height: 7em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0.5em;
+}
+.account-bar .portrait-circle {
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	width: 3.5em;
+	height: 3.5em;
+	background-image: url("../img/arnold.jpg");
+	background-size: contain;
+	overflow: hidden;
+}
+.side-menu {
+	padding: 0.5em 0em 0em 0em;
+}
+.side-menu > .item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 0.5em;
+	cursor: pointer;
+	color: #ffffff;
+}
+.side-menu > .item > .icon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 2.5em;
+}
+.side-menu > .item > .icon > i {
+	font-size: 1.25em;
+	color: #ffffff;
+}
+.side-menu > .item > .label {
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0em 0em 0em 0.5em;
+}
+.side-menu > .item > .label > h1 {
+	color: #ffffff;
+}
+.side-menu > .item:hover > .label > h1 {
+	color: #ffffff;
+	font-weight: 700;
+}
+.side-menu > .item:hover > .icon > i {
+	color: #ffffff;
+}

@@ -66,6 +66,28 @@ button.ui-blue.ui-btn:hover,
 .ui-blue.ui-select select
 { background:#0277bd;color:#ffffff; }
 
+/* BLUE LIGHT */
+.ui-blue-lt,
+button.ui-blue-lt.ui-btn,
+button.ui-blue-lt.ui-btn:hover,
+.ui-blue-lt.ui-btn-icon,
+.ui-blue-lt.ui-btn-icon:hover,
+.ui-blue-lt.ui-input,
+.ui-blue-lt.ui-select,
+.ui-blue-lt.ui-select select
+{ background:#0288d1;color:#ffffff; }
+
+/* BLUE DARK */
+.ui-blue-dk,
+button.ui-blue-dk.ui-btn,
+button.ui-blue-dk.ui-btn:hover,
+.ui-blue-dk.ui-btn-icon,
+.ui-blue-dk.ui-btn-icon:hover,
+.ui-blue-dk.ui-input,
+.ui-blue-dk.ui-select,
+.ui-blue-dk.ui-select select
+{ background:#01579b;color:#ffffff; }
+
 /* GRAY */
 .ui-gray,
 button.ui-gray.ui-btn,
@@ -132,6 +154,18 @@ button.ui-teal.ui-btn:hover,
 .ui-teal.ui-select,
 .ui-teal.ui-select select
 { background:#40aca1;color:#ffffff; }
+
+/* WHITE */
+.ui-white,
+.ui-white.ui-btn,
+button.ui-white.ui-btn,
+button.ui-white.ui-btn:hover,
+.ui-white.ui-btn-icon,
+.ui-white.ui-btn-icon:hover,
+.ui-white.ui-input,
+.ui-white.ui-select,
+.ui-white.ui-select select
+{ background:#ffffff;color:#444444; }
 
 /* FOREGROUND COLORS */
 .fg-disabled { color:#cccccc; }

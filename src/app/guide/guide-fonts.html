@@ -1,91 +1,98 @@
 <guide-fonts>
 	<ui-bar class="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
-			<ui-btn-icon name="nav_back" mdicon="mdi mdi-arrow-left" css="ui-primary-lt" io="{ ui }" />
+			<ui-btn-icon name="home_icon" mdicon="mdi mdi-alphabetical" css="ui-primary-lt" io="{ ui }" />
 			<ui-bar-title>Fonts</ui-bar-title>
 		</ui-bar-left>
 	</ui-bar>
 	<div class="scroll-2">
-		<div class="pad-dot-5">
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>App Name</h3>
-					<div class="ui-secondary-lt rounded">
-						<ui-bar>
-							<ui-bar-left>
-								<ui-bar-app-name>My Awesome App</ui-bar-app-name>
-							</ui-bar-left>
-						</ui-bar>
-					</div>
-					<div class="caption fg-gray">
-						<span>Font&nbsp;</span><span>Roboto</span> / <span>Weight&nbsp;</span><span>900</span> / <span>Size&nbsp;</span><span>1.1em</span>
+		<div class="container-1200 shadow-box ui-white">
+			<div class="layout-left f-row f-wrap">
+				<div class="layout-left-sidebar ui-secondary-lt">
+					<div class="pad-1-2">
+						<ul class="hide block-mq-1">
+							<li each="{ fontOptions }">{ label }</li>
+						</ul>
+						<ui-select class="hide-mq-1" id="fontSelect" name="font_select" selection="{ fontSelectValue }" options="{ fontOptions }" css="ui-secondary" io="{ ui }" />
 					</div>
 				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>Section Title</h3>
-					<div class="ui-secondary-lt rounded">
-						<ui-bar>
-							<ui-bar-left>
-								<ui-bar-title>Section Title</ui-bar-title>
-							</ui-bar-left>
-						</ui-bar>
-					</div>
-					<div class="caption fg-gray">
-						<span>Font&nbsp;</span><span>Roboto</span> / <span>Weight&nbsp;</span><span>700</span> / <span>Size&nbsp;</span><span>1.1em</span>
-					</div>
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>Body Text</h3>
-					<div class="ui-secondary-lt rounded pad-1 no-overflow">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Ut congue erat eget felis dictum dapibus.
-						Quisque vestibulum dui in blandit venenatis.
-					</div>
-					<div class="caption fg-gray">
-						<span>Font&nbsp;</span><span>Roboto</span> / <span>Weight&nbsp;</span><span>400</span> / <span>Size&nbsp;</span><span>1em</span>
-					</div>
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>Contextual Text Colors</h3>
-					<div class="ui-secondary-lt rounded pad-1 no-overflow">
-						<div class="fg-disabled">fg-disabled</div>
-						<div class="fg-failure">fg-failure</div>
-						<div class="fg-primary">fg-primary</div>
-						<div class="fg-success">fg-success</div>
-					</div>
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>Text Links</h3>
-					<div class="ui-secondary-lt rounded pad-1 no-overflow">
-						This is an example of the <a class="ui-link" href="">ui-link</a> class.
-					</div>
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>Headings</h3>
-					<div class="ui-secondary-lt rounded pad-1 no-overflow">
-						<table width="100%">
-							<tbody>
-								<tr><td><h1>H1</h1></td><td><h1>Heading</h1></td><td><h1>2em</h1></td></tr>
-								<tr><td><h2>H2</h2></td><td><h2>Heading</h2></td><td><h2>1.5em</h2></td></tr>
-								<tr><td><h3>H3</h3></td><td><h3>Heading</h3></td><td><h3>1.17em</h3></td></tr>
-								<tr><td><h4>H4</h4></td><td><h4>Heading</h4></td><td><h4>1.12em</h4></td></tr>
-								<tr><td><h5>H5</h5></td><td><h5>Heading</h5></td><td><h5>0.83em</h5></td></tr>
-								<tr><td><h6>H6</h6></td><td><h6>Heading</h6></td><td><h6>0.75em</h6></td></tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="caption fg-gray">
-						<span>Font&nbsp;</span><span>Raleway</span> / <span>Weight&nbsp;</span><span>900</span>
+				<div class="layout-left-body">
+					<div class="pad-1-2">
+						<div class="pad-1">
+							<h3>App Name</h3>
+							<div class="ui-secondary-lt rounded">
+								<ui-bar>
+									<ui-bar-left>
+										<ui-bar-app-name>My Awesome App</ui-bar-app-name>
+									</ui-bar-left>
+								</ui-bar>
+							</div>
+							<div class="caption fg-gray">
+								<span>Font&nbsp;</span><span>Roboto</span> / <span>Weight&nbsp;</span><span>900</span> / <span>Size&nbsp;</span><span>1.1em</span>
+							</div>
+						</div>
+						<hr/>
+						<div class="pad-1">
+							<h3>Section Title</h3>
+							<div class="ui-secondary-lt rounded">
+								<ui-bar>
+									<ui-bar-left>
+										<ui-bar-title>Section Title</ui-bar-title>
+									</ui-bar-left>
+								</ui-bar>
+							</div>
+							<div class="caption fg-gray">
+								<span>Font&nbsp;</span><span>Roboto</span> / <span>Weight&nbsp;</span><span>700</span> / <span>Size&nbsp;</span><span>1.1em</span>
+							</div>
+						</div>
+						<hr/>
+						<div class="pad-1">
+							<h3>Body Text</h3>
+							<div class="ui-secondary-lt rounded pad-1 no-overflow">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								Ut congue erat eget felis dictum dapibus.
+								Quisque vestibulum dui in blandit venenatis.
+							</div>
+							<div class="caption fg-gray">
+								<span>Font&nbsp;</span><span>Roboto</span> / <span>Weight&nbsp;</span><span>400</span> / <span>Size&nbsp;</span><span>1em</span>
+							</div>
+						</div>
+						<div class="pad-1">
+						<hr/>
+							<h3>Contextual Text Colors</h3>
+							<div class="ui-secondary-lt rounded pad-1 no-overflow">
+								<div class="fg-disabled">fg-disabled</div>
+								<div class="fg-failure">fg-failure</div>
+								<div class="fg-primary">fg-primary</div>
+								<div class="fg-success">fg-success</div>
+							</div>
+						</div>
+						<hr/>
+						<div class="pad-1">
+							<h3>Text Links</h3>
+							<div class="ui-secondary-lt rounded pad-1 no-overflow">
+								This is an example of the <a class="ui-link" href="">ui-link</a> class.
+							</div>
+						</div>
+						<hr/>
+						<div class="pad-1">
+							<h3>Headings</h3>
+							<div class="ui-secondary-lt rounded pad-1 no-overflow">
+								<table width="100%">
+									<tbody>
+										<tr><td><h1>H1</h1></td><td><h1>Heading</h1></td><td><h1>2em</h1></td></tr>
+										<tr><td><h2>H2</h2></td><td><h2>Heading</h2></td><td><h2>1.5em</h2></td></tr>
+										<tr><td><h3>H3</h3></td><td><h3>Heading</h3></td><td><h3>1.17em</h3></td></tr>
+										<tr><td><h4>H4</h4></td><td><h4>Heading</h4></td><td><h4>1.12em</h4></td></tr>
+										<tr><td><h5>H5</h5></td><td><h5>Heading</h5></td><td><h5>0.83em</h5></td></tr>
+										<tr><td><h6>H6</h6></td><td><h6>Heading</h6></td><td><h6>0.75em</h6></td></tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="caption fg-gray">
+								<span>Font&nbsp;</span><span>Raleway</span> / <span>Weight&nbsp;</span><span>900</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -98,5 +105,16 @@
 		table { border-collapse:colapse; }
 		table h3 { margin-bottom:0; }
 		table td { padding:.25em;text-align:center; }
+		li { padding-top:.75em; }
 	</style>
+	<script>
+		fontOptions = [
+			{"label":"App Name", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Section Title", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Body Text", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Contextual Text Colors", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Links", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Headings", "mdicon":"mdi mdi-checkbox-blank-circle-outline"}
+		]
+	</script>
 </guide-fonts>

@@ -1,0 +1,148 @@
+.panes {
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	z-index: 100;
+}
+.pane-main {
+	overflow: hidden;
+	flex: 1;
+	position: relative;
+}
+.pane-left {
+	overflow: hidden;
+	width: 0;
+	height: 100vh;
+	transform: translateZ(0);
+	transition: 0.15s linear width;
+}
+.pane-right {
+	overflow: hidden;
+	width: 0;
+	right: 0;
+	height: 100vh;
+	transform: translateZ(0);
+	transition: 0.15s linear width;
+}
+/* SMALLEST */
+@media only screen {
+	.pane-left.open {
+		box-shadow: none;
+		position: absolute;
+		z-index: 300;
+		width: 100%;
+	}
+
+	.pane-left.closed {
+		box-shadow: none;
+		position: absolute;
+		z-index: 300;
+		width: 0;
+	}
+
+	.pane-right.open {
+		box-shadow: none;
+		position: absolute;
+		z-index: 200;
+		width: 100%;
+	}
+
+	.pane-right.closed {
+		position: absolute;
+		z-index: 200;
+		width: 0;
+	}
+}
+/* SMALLEST */
+@media only screen {
+	.pane-left.open {
+		box-shadow:5px 0px 5px rgba(0,0,0,0.5);
+	}
+}
+/* SMALL */
+@media only screen and (min-width: 640px) {
+
+	.pane-left.open {
+		box-shadow: 5px 0px 5px rgba(0,0,0,0.5);
+		position: absolute;
+		z-index: 300;
+		width: 25em;
+	}
+
+	.pane-left.closed {
+		position: absolute;
+		z-index: 300;
+		width: 0;
+	}
+
+	.pane-right.open {
+		box-shadow: -5px 0px 5px rgba(0,0,0,0.5);
+		position: absolute;
+		z-index: 200;
+		width: 25em;
+	}
+
+	.pane-right.closed {
+		position: absolute;
+		z-index: 200;
+		width: 0;
+	}
+}
+/* MEDIUM */
+@media only screen and (min-width: 1024px) {
+	.pane-left.open {
+		box-shadow:5px 0px 5px rgba(0,0,0,0.5);
+		position: absolute;
+		z-index: 300;
+		width: 25em;
+	}
+
+	.pane-left.closed {
+		position: absolute;
+		z-index: 300;
+		width: 0;
+	}
+
+	.pane-right.open {
+		box-shadow: none;
+		position: static;
+		z-index: auto;
+		width: 25em;
+	}
+
+	.pane-right.closed {
+		position: static;
+		z-index: auto;
+		width: 0;
+	}
+}
+/* LARGE */
+@media only screen and (min-width: 1440px) {
+	.pane-left.open {
+		box-shadow:5px 0px 5px rgba(0,0,0,0.5);
+		position: absolute;
+		z-index: 300;
+		width: 25em;
+	}
+
+	.pane-left.closed {
+		position: absolute;
+		z-index: 300;
+		width: 0;
+	}
+
+	.pane-right.open {
+		box-shadow: none;
+		position: static;
+		z-index: auto;
+		width: 25em
+	}
+
+	.pane-right.closed {
+		position: static;
+		z-index: auto;
+		width: 0;
+	}
+}

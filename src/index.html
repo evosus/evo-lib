@@ -13,6 +13,8 @@
 		<link href="/css/ui-buttons.css" media="all" rel="stylesheet" type="text/css" />
 		<link href="/css/ui-input.css" media="all" rel="stylesheet" type="text/css" />
 		<link href="/css/ui-select.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-side-menu.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/panes.css" media="all" rel="stylesheet" type="text/css" />
 		<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css" />
 		<link href="/lib/mdi/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />
 		<!-- Fonts !-->
@@ -27,7 +29,6 @@
 		<!-- AG-Grid !-->
 		<script src="/lib/ag-grid/dist/ag-grid.min.js"></script>
 		<!-- App Templates !-->
-		<script type="riot/tag" src="/app/app.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-breakpoints.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-buttons.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-contents.html"></script>
@@ -35,18 +36,26 @@
 		<script type="riot/tag" src="/app/guide/guide-flexbox.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-fonts.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-forms.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-layouts.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-layouts-left.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-layouts-right.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-svg.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-tables.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-theme.html"></script>
 		<script type="riot/tag" src="/ui/ui-bars.html"></script>
 		<script type="riot/tag" src="/ui/ui-buttons.html"></script>
 		<script type="riot/tag" src="/ui/ui-input.html"></script>
+		<script type="riot/tag" src="/ui/ui-panes.html"></script>
+		<script type="riot/tag" src="/ui/ui-pane-left.html"></script>
+		<script type="riot/tag" src="/ui/ui-pane-main.html"></script>
+		<script type="riot/tag" src="/ui/ui-pane-right.html"></script>
 		<script type="riot/tag" src="/ui/ui-select.html"></script>
 		<!-- App Modules !-->
+		<script src="/js/panes.js"></script>
 		<script src="/js/routes.js"></script>
 		<!-- App Mount !-->
 		<script>
-			riot.compile(function() { var tags = riot.mount('#appMount','app');riot.route.start(true); });
+			riot.compile(function() { var tags = riot.mount('#appMount','ui-panes');riot.route.start(true); });
 		</script>
 	</body>
 </html>

@@ -1,54 +1,74 @@
 <guide-buttons>
 	<ui-bar class="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
-			<ui-btn-icon name="nav_back" mdicon="mdi mdi-arrow-left" css="ui-primary-lt" io="{ ui }" />
+			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-blank" css="ui-primary-lt" io="{ ui }" />
 			<ui-bar-title>UI Buttons</ui-bar-title>
 		</ui-bar-left>
 	</ui-bar>
 	<div class="scroll-2 ui-secondary">
-		<div class="pad-dot-5">
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>UI Button With Label</h3>
-					<ui-btn name="submit.login" label="Login" css="ui-red" io="{ ui }" />
+		<div class="container-1200 shadow-box ui-white">
+			<div class="layout-left f-row f-wrap">
+				<div class="layout-left-sidebar ui-secondary-lt">
+					<div class="pad-1-2">
+						<ul class="hide block-mq-1">
+							<li each="{ buttonOptions }">{ label }</li>
+						</ul>
+						<ui-select class="hide-mq-1" id="buttonSelect" name="button_select" selection="{ buttonSelectValue }" options="{ buttonOptions }" css="ui-secondary" io="{ ui }" />
+					</div>
 				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>UI Button With Label & Icon</h3>
-					<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>UI Button With Icon</h3>
-					<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>UI Button Bar</h3>
-					<ui-bar-controls>
-						<div class="ui-bar-control-item">
-							<ui-btn name="submit.login" label="Login" css="ui-blue" io="{ ui }" />
+				<div class="layout-left-body">
+					<div class="pad-1-2">
+						<div class="pad-1">
+							<h3>UI Button With Label</h3>
+							<ui-btn name="submit.login" label="Login" css="ui-red" io="{ ui }" />
 						</div>
-						<div class="ui-bar-control-item">
-							<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
+						<hr/>
+						<div class="pad-1">
+							<h3>UI Button With Label & Icon</h3>
+							<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
 						</div>
-						<div class="ui-bar-control-item">
-							<ui-btn-icon name="nav.right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
+						<hr/>
+						<div class="pad-1">
+							<h3>UI Button With Icon</h3>
+							<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
 						</div>
-					</ui-bar-controls>
-				</div>
-			</div>
-			<div class="pad-dot-5">
-				<div class="example rounded shadow-box">
-					<h3>Disabled With Color</h3>
-					<ui-btn name="nav.right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
-					<ui-btn name="nav.left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
+						<hr/>
+						<div class="pad-1">
+							<h3>UI Button Bar</h3>
+							<ui-bar-controls>
+								<div class="ui-bar-control-item">
+									<ui-btn name="submit.login" label="Login" css="ui-blue" io="{ ui }" />
+								</div>
+								<div class="ui-bar-control-item">
+									<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
+								</div>
+								<div class="ui-bar-control-item">
+									<ui-btn-icon name="nav.right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
+								</div>
+							</ui-bar-controls>
+						</div>
+						<hr/>
+						<div class="pad-1">
+							<h3>Disabled With Color</h3>
+							<ui-btn name="nav.right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
+							<ui-btn name="nav.left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<style scoped>h3 { margin-bottom:.75em; }</style>
+	<style scoped>
+		h3 { margin-bottom:.75em; }
+		li { padding-top:.75em; }
+	</style>
+	<script>
+		buttonOptions = [
+			{"label":"Button With Label", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Button With Label & Icon", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Button With Icon", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Button Bar", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Disabled With Color", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+		]
+	</script>
 </guide-buttons>

@@ -1,0 +1,43 @@
+<guide-layouts>
+	<ui-bar class="ui-primary-lt ui-bar-shadow">
+		<ui-bar-left>
+			<ui-btn-icon name="nav_back" mdicon="mdi mdi-arrow-left" css="ui-primary-lt" io="{ ui }" />
+			<ui-bar-title>Layouts</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<ul class="link-list">
+			<li class="ui-link f-row ai-center jc-between" each="{ layouts }" onclick="{ listClick }">
+				{ name }
+				<i class="mdi mdi-chevron-right"></i>
+			</li>
+		</ul>
+	</div>
+	<style scoped>
+		ul.link-list {
+			list-style-type:none;
+			padding:0;
+			margin:0;
+			border:none;
+		}
+		ul.link-list > li {
+			padding:1em;
+			cursor:pointer;
+			border-bottom:1px solid rgba(0,0,0,0.15);
+			transition:.25s ease-in-out all;
+		}
+		ul.link-list > li:hover {
+			border-bottom:1px solid rgba(0,0,0,0);
+			background:rgba(0,0,0,0.1);
+		}
+	</style>
+	<script>
+		listClick(e) {
+			riot.route(e.item.route);
+		}
+		layouts = [
+			{ "name":"Layout Left", "route":"/guide/layouts/left" },
+			{ "name":"Layout Right", "route":"/guide/layouts/right" }
+		];
+	</script>
+</guide-layouts>

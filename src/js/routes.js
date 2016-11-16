@@ -71,6 +71,22 @@ riot.route('/guide/theme', function() {
 	});
 });
 // --------------------------------------
+// GUIDE LAYOUT LEFT
+// --------------------------------------
+riot.route('/guide/layout-left', function() {
+	riot.compile(function() {
+		riot.mount('#mainMount','guide-layouts-left');
+	});
+});
+// --------------------------------------
+// GUIDE LAYOUT RIGHT
+// --------------------------------------
+riot.route('/guide/layout-right', function() {
+	riot.compile(function() {
+		riot.mount('#mainMount','guide-layouts-right');
+	});
+});
+// --------------------------------------
 // GUIDE SVG
 // --------------------------------------
 riot.route('/guide/svg', function() {

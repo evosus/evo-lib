@@ -1,7 +1,7 @@
 <guide-forms>
 	<ui-bar class="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
-			<ui-btn-icon name="nav_back" mdicon="mdi mdi-arrow-left" css="ui-primary-lt" io="{ ui }" />
+			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-marked" css="ui-primary-lt" io="{ ui }" />
 			<ui-bar-title>Form Elements</ui-bar-title>
 		</ui-bar-left>
 	</ui-bar>
@@ -47,7 +47,11 @@
 		ui.on('submit_valid:click',function(e) { ui.trigger('input_text:valid'); });
 		ui.on('submit_reset:click',function(e) { ui.trigger('input_text:reset'); });
 		ui.on('submit_invalid:click',function(e) { ui.trigger('input_text:invalid','Invalid!'); });
-		ui.on('input_text:keyup',function(e) { console.info(e.keyCode); });
+		ui.on('input_text:keyup',function(e) { 
+			//console.info(e.keyCode);
+			uiInputValue = e.keyCode;
+			self.update();
+		});
 		ui.on('input_text:change',function(e) {
 			uiInputValue = self.input_text.value;
 			console.info(e.target.value);

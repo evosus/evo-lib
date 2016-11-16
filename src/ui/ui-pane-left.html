@@ -1,0 +1,94 @@
+<ui-pane-left id="pane-left" class="pane-left ui-blue">
+	<div>
+		<ui-bar class="ui-blue-dk jc-between">
+			<ui-bar-left>
+				<ui-btn-icon name="pane_left_close" mdicon="mdi mdi-close" css="ui-blue-dk" io="{ ui }" />
+			</ui-bar-left>
+			<ui-bar-right>
+				<ui-btn-icon if="{ isPinned }" class="hide block-mq-3" name="pane_left_pin" mdicon="mdi mdi-pin-off" css="ui-blue-dk" io="{ ui }" />
+				<ui-btn-icon if="{ !isPinned }" class="hide block-mq-3" name="pane_left_pin" mdicon="mdi mdi-pin" css="ui-blue-dk" io="{ ui }" />
+			</ui-bar-right>
+		</ui-bar>
+		<div class="scroll-2 ui-blue">
+			<ul class="link-list">
+				<li class="f-row ai-center jc-between" each="{ guides }" onclick="{ listClick }">
+					<span class="f-row ai-center">
+						<i if="{ mdicon }" class="{ mdicon }"></i>
+						{ name }
+					</span>
+					<i class="mdi mdi-chevron-right"></i>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<style>
+		ul.link-list {
+			min-width:300px;
+			list-style-type:none;
+			padding:.5em 0 0 0;
+			margin:0;
+			border:none;
+		}
+		ul.link-list > li {
+			margin:0;
+			padding:.5em 1em;
+			cursor:pointer;
+			transition:.25s ease-in-out all;
+		}
+		ul.link-list > li:hover {
+			background:rgba(0,0,0,0.1);
+		}
+		ul.link-list > li > span > i {
+			font-size:150%;
+			margin:0 .875em 0 .125em;
+		}
+		.pane-left { position:static; }
+		.pinned {
+			min-width:300px;
+			box-shadow:none!important;
+			position:static;
+			z-index:0;
+		}	
+	</style>
+	<script>
+		var self = this;
+		isPinned = false;
+		listClick(e) {
+			if(!isPinned) { panes.toggle('pane-left'); }
+			riot.route(e.item.route);
+			self.update();
+		}
+		ui.on('pane_left_close:click',function() {
+			isPinned = false;panes.toggle('pane-left');
+		});	
+		ui.on('pane_left_pin:click',function() { 
+			var pl = document.getElementById('pane-left');
+			if(isPinned) {
+				isPinned = false;
+				pl.style.position = 'absolute';	
+				pl.style.boxShadow = '5px 0px 5px rgba(0,0,0,0.5)';
+				//pl.classList.remove('pinned');
+			} else {
+				isPinned = true;
+				pl.style.position = 'relative';	
+				pl.style.boxShadow = 'none';
+				//pl.classList.add('pinned');
+			}
+			self.update();
+		});	
+		guides = [
+			{ "name":"Home", "route":"/guide/contents","mdicon":"mdi mdi-home" },
+			{ "name":"Breakpoints", "route":"/guide/breakpoints","mdicon":"mdi mdi-cellphone-link" },
+			{ "name":"Buttons", "route":"/guide/buttons","mdicon":"mdi mdi-checkbox-multiple-blank" },
+			{ "name":"Charts", "route":"/guide/charts","mdicon":"mdi mdi-chart-pie" },
+			{ "name":"Flexbox", "route":"/guide/flexbox","mdicon":"mdi mdi-image-filter-center-focus" },
+			{ "name":"Fonts", "route":"/guide/fonts","mdicon":"mdi mdi-alphabetical" },
+			{ "name":"Form Elements", "route":"/guide/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
+			{ "name":"Grids", "route":"/guide/tables","mdicon":"mdi mdi-table-large" },
+			{ "name":"Layout Left", "route":"/guide/layout-left","mdicon":"mdi mdi-format-horizontal-align-left" },
+			{ "name":"Layout Right", "route":"/guide/layout-right","mdicon":"mdi mdi-format-horizontal-align-right" },
+			{ "name":"SVG Image Test", "route":"/guide/svg","mdicon":"mdi mdi-image" },
+			{ "name":"Theme", "route":"/guide/theme","mdicon":"mdi mdi-palette" }
+		];
+	</script>
+</ui-pane-left>
