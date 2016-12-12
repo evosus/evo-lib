@@ -20,11 +20,12 @@ h4 { font-size: 1.12em; }
 h5 { font-size: 0.83em; }
 h6 { font-size: 0.75em; }
 h1,h2,h3,h4,h5,h6
-{ font-family:Raleway,Helvetica,Arial,sans-serif;font-weight:900; }
-hr { margin:1em 0;border:none;border-bottom:1px solid rgba(0,0,0,0.1); }
+{ font-family:Raleway,Helvetica,Arial,sans-serif;font-weight:700; }
+hr { margin:1em 0;border:none;border-top:1px solid rgba(0,0,0,0.1);border-bottom:1px solid rgba(0,0,0,0.1); }
 p { padding:1em 0 0 0; }
 /* CONTANIER STYLES */
-.all { height:100vh; width:100vw; }
+.read-only { pointer-events:none; }
+.all { height:100vh; width:100%; }
 .example { padding:1em;background:#ffffff;overflow:hidden; }
 .no-overflow { overflow:hidden; }
 .scroll-1 { height:calc(100vh - 3.5em);overflow:auto; }
@@ -47,6 +48,7 @@ p { padding:1em 0 0 0; }
 /* Dash between media query values */
 /* /.pad-1-2 = pad-1em@768px-2em@992px+ */
 /* /.pad-1-2-3 = pad-1em@768px-2em@992px-3em@1200px+ */
+.pad-0-1 { padding:0; }
 .pad-1-2 { padding:1em; }
 /* HIDING */
 .hide { display:none; }
@@ -54,7 +56,7 @@ p { padding:1em 0 0 0; }
 .ta-left { text-align:left; }
 .ta-right { text-align:right; }
 /* CONTAINERS */
-.container-1200 { max-width:1200px;margin:auto; }
+.container-1280 { min-height:100%;max-width:1280px;margin:0; }
 /* LAYOUT LEFT */
 .layout-left { }
 .layout-left-sidebar { flex:0 0 100%; }
@@ -75,16 +77,18 @@ p { padding:1em 0 0 0; }
 	.block-mq-1 { display:block; }
 	.flex-mq-1 { display:-webkit-box;display:flex; }
 	.hide-mq-1 { display:none!important; }
-	.layout-left-sidebar { flex:1 0 30%; }
-	.layout-left-body { flex:1 0 70%; }
-	.layout-right-body { flex:1 0 70%; }
-	.layout-right-sidebar { flex:1 0 30%; }
+	.container-1280 { margin:auto; }
 }
 @media only screen and (min-width:992px) {
 	.block-mq-2 { display:block; }
 	.flex-mq-2 { display:-webkit-box;display:flex; }
+	.pad-0-1 { padding:1em; }
 	.pad-1-2 { padding:2em; }
 	.hide-mq-2 { display:none!important; }
+	.layout-left-sidebar { flex:1 0 25%;height:calc(100vh - 7em);overflow:auto; }
+	.layout-left-body { flex:1 0 75%;height:calc(100vh - 7em);overflow:auto; }
+	.layout-right-body { flex:1 0 75%;height:calc(100vh - 7em);overflow:auto; }
+	.layout-right-sidebar { flex:1 0 25%;height:calc(100vh - 7em);overflow:auto; }
 }
 @media only screen and (min-width:1200px) {
 	.block-mq-3 { display:block; }

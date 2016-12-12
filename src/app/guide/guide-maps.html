@@ -1,0 +1,178 @@
+<guide-maps>
+	<ui-bar class="ui-primary-lt ui-bar-shadow">
+		<ui-bar-left>
+			<ui-btn-icon name="home_icon" mdicon="mdi mdi-map-marker" css="ui-primary-lt" io="{ ui }" />
+			<ui-bar-title>Google Maps Test</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<div class="container-1200 shadow-box ui-white">
+			<div class="pad-0-1">
+				<div id="map" class="guide-map"></div>
+			</div>
+		</div>
+	</div>
+	<style scoped>
+		.guide-map { height:calc(100vh - 7em); }
+		@media only screen and (min-width:992px) {
+			.guide-map { height:calc(100vh - 9em); }
+		}
+	</style>
+	<script>
+		var self = this;
+		// --------------------------------------
+		// CUSTOM MARKERS
+		// --------------------------------------
+
+		function CustomMarker(latlng, map, args) {
+			this.latlng = latlng;	
+			this.args = args;	
+			this.setMap(map);	
+		}
+
+		CustomMarker.prototype = new google.maps.OverlayView();
+
+		CustomMarker.prototype.draw = function() {
+			
+			var self = this;
+			var div = this.div;
+			if (!div) {
+				div = this.div = document.createElement('div');
+				div.className = 'marker';
+				div.style.cursor = 'pointer';
+				div.style.width = '20px';
+				div.style.height = '20px';
+				div.style.background = 'blue';
+				if (typeof(self.args.marker_id) !== 'undefined') {
+					div.dataset.marker_id = self.args.marker_id;
+				}
+				google.maps.event.addDomListener(div, "click", function(event) {			
+					google.maps.event.trigger(self, "click");
+				});
+				var panes = this.getPanes();
+				panes.overlayImage.appendChild(div);
+			}
+			
+			var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
+			
+			if (point) {
+				div.style.left = point.x + 'px';
+				div.style.top = point.y + 'px';
+			}
+		};
+
+		CustomMarker.prototype.remove = function() {
+			if (this.div) {
+				this.div.parentNode.removeChild(this.div);
+				this.div = null;
+			}	
+		};
+
+		CustomMarker.prototype.getPosition = function() {
+			return this.latlng;	
+		};
+		// --------------------------------------
+		// INIT MAP
+		// --------------------------------------
+		var map;
+		var markers = [];
+		initMap() {
+			// --------------------------------------
+			// DIRECTIONS API
+			// --------------------------------------
+			var directionsService = new google.maps.DirectionsService;
+			var directionsDisplay = new google.maps.DirectionsRenderer;
+			// --------------------------------------
+			// MAP
+			// --------------------------------------
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 45.6401831, lng: -122.6923345},
+				zoom: 12
+			});
+			var newLatLng = new google.maps.LatLng(45.676035,-122.6694812);
+			var overlay = new CustomMarker(newLatLng,map,{});
+			// --------------------------------------
+			// DRAWING API
+			// --------------------------------------
+			var drawingManager = new google.maps.drawing.DrawingManager({
+				drawingControl: true,
+				drawingControlOptions: {
+					position: google.maps.ControlPosition.TOP_CENTER,
+					drawingModes: ['polygon']
+				},
+				polygonOptions: {
+					fillColor: '#0000ff',
+					fillOpacity: 0.1,
+					strokeWeight: 1,
+					strokeColor: '#000ff',
+					strokeOpacity: 0.5,
+					clickable: false,
+					editable: true,
+					zIndex: 1
+				}
+			});
+			drawingManager.setMap(map);
+			// --------------------------------------
+			// CALL DROPMARKER
+			// --------------------------------------
+			for(i = 0; i < markers.length; i++) {
+				self.dropMarker(markers[i],i * 200);
+			}
+		}
+		// --------------------------------------
+		// MARKER INFO WINDOW
+		// --------------------------------------
+		var infowindow = new google.maps.InfoWindow({});
+		// --------------------------------------
+		// DROP MARKERS
+		// --------------------------------------
+		dropMarker(mark,timeout) {
+			//console.dir(mark);
+			//console.log(mark.title + " vs " + timeout);
+			window.setTimeout(function() {
+				var newMark = new google.maps.Marker({
+					position:mark.position,
+					map:map,
+					animation:google.maps.Animation.DROP
+				});
+				newMark.addListener('click',function() {
+					infowindow.open(map,newMark);
+					infowindow.setContent("<div style='padding:1em;'><h1><i class='" + mark.mdicon + "'></i>&nbsp;&nbsp;" + mark.title + "</h1><br>" + mark.desc + "</div>");
+				});
+				markers.push(newMark);
+			},timeout);
+		}
+		this.on('mount',function() {
+			self.initMap();
+		});
+		// --------------------------------------
+		// MAP MARKERS
+		// --------------------------------------
+		markers = [
+			{
+				map:map,
+				position:{ lat: 45.676035, lng:-122.6694812 },
+				title:"Evosus,Inc",
+				desc:"Where the party is at",
+				mdicon:"mdi mdi-home",
+				animation: google.maps.Animation.DROP
+			},
+			{
+				map:map,
+				position:{ lat:45.687993, lng:-122.6688107 },
+				title:"Ichi 16 Teryaki",
+				desc:"Not too sweet",
+				mdicon:"mdi mdi-food-fork-drink",
+				animation: google.maps.Animation.DROP
+			},
+			{
+				map:map,
+				position:{ lat:45.6855923, lng:-122.6609758 },
+				title:"Del Taco",
+				desc:"It's a burger, it's a taco, it's Desmond",
+				mdicon:"mdi mdi-flask",
+				animation: google.maps.Animation.DROP
+			}
+		]	
+	</script>
+</guide-maps>

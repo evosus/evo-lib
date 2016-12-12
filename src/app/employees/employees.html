@@ -1,0 +1,57 @@
+<employees>
+	<ui-bar class="ui-primary-lt ui-bar-shadow">
+		<ui-bar-left>
+			<ui-btn-icon name="home_icon" mdicon="mdi mdi-account" css="ui-primary-lt" io="{ ui }" />
+			<ui-bar-title>Employee { id }</ui-bar-title>
+		</ui-bar-left>
+	</ui-bar>
+	<div class="scroll-2">
+		<div class="container-1200 shadow-box ui-white">
+			<div class="layout-left f-row f-wrap">
+				<div class="layout-left-sidebar ui-secondary-lt">
+					<div class="pad-1-2">
+						<ul class="hide block-mq-1">
+							<li each="{ employeeSelectOptions }" onclick="{ anchorClick }">{ label }</li>
+						</ul>
+						<ui-select class="hide-mq-1" id="employeeSelect" name="employee_select" selection="{ employeeSelectValue }" options="{ employeeSelectOptions }" css="ui-secondary" io="{ ui }" />
+					</div>
+				</div>
+				<div class="layout-left-body">
+					<div each="{ employeeSelectOptions }" class="pad-1-2">
+						<h3 id="{ anchor }">{ label }</h3>	
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style scoped> li { padding-top:.75em;cursor:pointer; } </style>
+	<script>
+		var self = this;
+		id = opts.hashObj.eid;
+		employeeSelectOptions = [
+			{label:"Profile", anchor:"profile"},
+			{label:"Emergency", anchor:"emergency" },
+			{label:"Security", anchor:"security"},
+			{label:"Time Off", anchor:"timeoff"},
+			{label:"Work Hours", anchor:"workhours"},
+			{label:"Current Schedule", anchor:"currentschedule"},
+			{label:"Notes", anchor:"notes"},
+			{label:"Audit Log", anchor:"auditlog"}
+		]
+		anchorScroll(elementID) {
+			var el = document.getElementById(elementID);
+			el.scrollIntoView({block: "start", behavior: "smooth"});
+		}
+		anchorClick(e) {
+			if(e.item.anchor) {
+				self.anchorScroll(e.item.anchor);
+			}
+		}
+		ui.on('employee_select:change',function(e) {
+			if(e.target._tag.anchor) {
+				self.anchorScroll(e.target._tag.anchor);
+			}
+		});
+	</script>
+</employees>

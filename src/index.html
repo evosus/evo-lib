@@ -22,6 +22,8 @@
 	</head>
 	<body>
 		<div id="appMount" class="app-mount"></div>
+		<!-- Google Maps !-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1q_-8UqcEF3s8TSKOP-jGCxVUbYSh688&libraries=drawing"></script>
 		<!-- Riot !-->
 		<script src="/lib/riot/riot+compiler.min.js"></script>
 		<!-- D3 !-->
@@ -29,6 +31,7 @@
 		<!-- AG-Grid !-->
 		<script src="/lib/ag-grid/dist/ag-grid.min.js"></script>
 		<!-- App Templates !-->
+		<script type="riot/tag" src="/app/guide/guide-anchor-scroll.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-breakpoints.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-buttons.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-contents.html"></script>
@@ -39,18 +42,22 @@
 		<script type="riot/tag" src="/app/guide/guide-layouts.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-layouts-left.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-layouts-right.html"></script>
+		<script type="riot/tag" src="/app/guide/guide-maps.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-svg.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-tables.html"></script>
 		<script type="riot/tag" src="/app/guide/guide-theme.html"></script>
 		<script type="riot/tag" src="/ui/ui-bars.html"></script>
 		<script type="riot/tag" src="/ui/ui-buttons.html"></script>
 		<script type="riot/tag" src="/ui/ui-input.html"></script>
+		<script type="riot/tag" src="/ui/ui-input-search.html"></script>
 		<script type="riot/tag" src="/ui/ui-panes.html"></script>
 		<script type="riot/tag" src="/ui/ui-pane-left.html"></script>
 		<script type="riot/tag" src="/ui/ui-pane-main.html"></script>
 		<script type="riot/tag" src="/ui/ui-pane-right.html"></script>
 		<script type="riot/tag" src="/ui/ui-select.html"></script>
 		<!-- App Modules !-->
+		<script src="/js/employees-data.js"></script>
+		<script src="/js/map-data.js"></script>
 		<script src="/js/panes.js"></script>
 		<script src="/js/routes.js"></script>
 		<!-- App Mount !-->

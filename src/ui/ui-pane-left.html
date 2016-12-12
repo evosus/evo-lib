@@ -1,25 +1,68 @@
-<ui-pane-left id="pane-left" class="pane-left ui-blue">
-	<div>
-		<ui-bar class="ui-blue-dk jc-between">
-			<ui-bar-left>
-				<ui-btn-icon name="pane_left_close" mdicon="mdi mdi-close" css="ui-blue-dk" io="{ ui }" />
-			</ui-bar-left>
-			<ui-bar-right>
-				<ui-btn-icon if="{ isPinned }" class="hide block-mq-3" name="pane_left_pin" mdicon="mdi mdi-pin-off" css="ui-blue-dk" io="{ ui }" />
-				<ui-btn-icon if="{ !isPinned }" class="hide block-mq-3" name="pane_left_pin" mdicon="mdi mdi-pin" css="ui-blue-dk" io="{ ui }" />
-			</ui-bar-right>
-		</ui-bar>
-		<div class="scroll-2 ui-blue">
-			<ul class="link-list">
-				<li class="f-row ai-center jc-between" each="{ guides }" onclick="{ listClick }">
-					<span class="f-row ai-center">
-						<i if="{ mdicon }" class="{ mdicon }"></i>
-						{ name }
-					</span>
-					<i class="mdi mdi-chevron-right"></i>
-				</li>
-			</ul>
-		</div>
+<ui-pane-left id="pane-left" class="pane-left ui-orange">
+	<ui-bar class="ui-orange jc-between">
+		<ui-bar-left>
+			<ui-btn-icon name="pane_left_close" mdicon="mdi mdi-close" css="ui-orange" io="{ ui }" />
+			<div class="ui-bar-middle f-row ai-center jc-start" style="min-width:15em;height:3.5em;">
+				<div class="f-col jc-center ai-start" style="padding-left:.5em;">	
+					<div style="font-size:110%;font-weight:700;">Devosus, Inc</div>
+				</div>
+			</div>
+		</ui-bar-left>
+	</ui-bar>
+
+	<ui-bar if="{ !accountOpen}" class="ui-bar-shadow jc-between ui-orange">
+		<ui-bar-left>
+			<ui-btn-icon name="pane_left_account_button" mdicon="mdi mdi-account-circle" css="ui-orange" io="{ ui }" />
+			<div class="ui-bar-middle f-row ai-center jc-start" style="min-width:15em;height:3.5em;">
+				<div class="f-col jc-center ai-start" style="padding-left:.5em;">	
+					<div style="font-size:110%;">Mr. Employee</div>
+					<div style="font-size:80%;margin-top:.25em;opacity:0.65;">West Side</div>
+				</div>
+			</div>
+		</ui-bar-left>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_left_account_button" mdicon="mdi mdi-chevron-down" css="ui-orange" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+
+	<ui-bar if="{ accountOpen}" class="ui-bar-shadow jc-between ui-orange-lt">
+		<ui-bar-left>
+			<ui-btn-icon name="pane_left_account_button" mdicon="mdi mdi-account-circle" css="ui-orange-lt" io="{ ui }" />
+			<div class="ui-bar-middle f-row ai-center jc-start" style="min-width:15em;height:3.5em;">
+				<div class="f-col jc-center ai-start" style="padding-left:.5em;">	
+					<div style="font-size:110%;">Mr. Employee</div>
+					<div style="font-size:80%;margin-top:.25em;opacity:0.65;">West Side</div>
+				</div>
+			</div>
+		</ui-bar-left>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_left_account_button" mdicon="mdi mdi-chevron-up" css="ui-orange-lt" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+
+	<div id="paneLeftMount" class="scroll-2 ui-secondary">
+		<ul if="{ accountOpen }" class="link-list">
+			<li class="f-row ai-center jc-between" onclick="{ listClick }">
+				<span class="f-row ai-center">
+					<i class="mdi mdi-account"></i>
+					My Profile
+				</span>
+			</li>
+			<li class="f-row ai-center jc-between" onclick="{ listClick }">
+				<span class="f-row ai-center">
+					<i class="mdi mdi-logout"></i>
+					Logout
+				</span>
+			</li>
+		</ul>
+		<ul if="{ !accountOpen }" class="link-list">
+			<li class="f-row ai-center jc-between" each="{ navLinks }" onclick="{ listClick }">
+				<span class="f-row ai-center">
+					<i if="{ mdicon }" class="{ mdicon }"></i>
+					{ name }
+				</span>
+			</li>
+		</ul>
 	</div>
 	<style>
 		ul.link-list {
@@ -39,8 +82,8 @@
 			background:rgba(0,0,0,0.1);
 		}
 		ul.link-list > li > span > i {
-			font-size:150%;
-			margin:0 .875em 0 .125em;
+			font-size:125%;
+			margin:0 .65em 0 0;
 		}
 		.pane-left { position:static; }
 		.pinned {
@@ -52,31 +95,25 @@
 	</style>
 	<script>
 		var self = this;
-		isPinned = false;
+		accountOpen = false;
 		listClick(e) {
-			if(!isPinned) { panes.toggle('pane-left'); }
+			panes.toggle('pane-left');
 			riot.route(e.item.route);
 			self.update();
 		}
 		ui.on('pane_left_close:click',function() {
-			isPinned = false;panes.toggle('pane-left');
+			panes.toggle('pane-left');
 		});	
-		ui.on('pane_left_pin:click',function() { 
-			var pl = document.getElementById('pane-left');
-			if(isPinned) {
-				isPinned = false;
-				pl.style.position = 'absolute';	
-				pl.style.boxShadow = '5px 0px 5px rgba(0,0,0,0.5)';
-				//pl.classList.remove('pinned');
+		ui.on('pane_left_account_button:click',function() {
+			if(accountOpen) {
+				accountOpen = false;
 			} else {
-				isPinned = true;
-				pl.style.position = 'relative';	
-				pl.style.boxShadow = 'none';
-				//pl.classList.add('pinned');
+				accountOpen = true;
 			}
-			self.update();
-		});	
-		guides = [
+			riot.update();
+		});
+
+		navLinks = [
 			{ "name":"Home", "route":"/guide/contents","mdicon":"mdi mdi-home" },
 			{ "name":"Breakpoints", "route":"/guide/breakpoints","mdicon":"mdi mdi-cellphone-link" },
 			{ "name":"Buttons", "route":"/guide/buttons","mdicon":"mdi mdi-checkbox-multiple-blank" },
@@ -90,5 +127,6 @@
 			{ "name":"SVG Image Test", "route":"/guide/svg","mdicon":"mdi mdi-image" },
 			{ "name":"Theme", "route":"/guide/theme","mdicon":"mdi mdi-palette" }
 		];
+
 	</script>
 </ui-pane-left>

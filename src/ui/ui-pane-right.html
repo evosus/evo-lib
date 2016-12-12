@@ -1,5 +1,88 @@
-<ui-pane-right>
-	<div id="pane-right" class="pane-right">
-		Pane Right
+<ui-pane-right id="pane-right" class="pane-right ui-teal">
+	<ui-bar class="ui-teal">
+		<ui-bar-left>
+			<ui-btn-icon if="{ isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin-off" css="ui-teal" io="{ ui }" />
+			<ui-btn-icon if="{ !isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin" css="ui-teal" io="{ ui }" />
+		</ui-bar-left>
+		<div class="f-row f-one">
+			<div class="f-one f-row ai-center jc-center" style="box-sizing:border-box;padding:0em .5em;height:3.5em;opacity:0.75;">Activity</div>
+			<div class="f-one f-row ai-center jc-center" style="box-sizing:border-box;padding:0em .5em;height:3.5em;opacity:0.75;">History</div>
+			<div class="f-one f-row ai-center jc-center" style="box-sizing:border-box;padding:0em .5em;height:3.5em;border-bottom:2px solid #ffffff;font-weight:700;">Search</div>
+		</div>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_right_close" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+
+	<ui-bar if="{ !filtersOpen }" class="ui-teal ui-bar-shadow jc-between">
+		<ui-bar-left>&nbsp;</ui-bar-left>
+		<ui-bar-middle class="f-one jc-center">
+			<ui-input-search name="pane_right_search_input" mdicon="mdi mdi-magnify" placeholder="Type to search..." io="{ ui }" />
+		</ui-bar-middle>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_right_search_options" mdicon="mdi mdi-dots-vertical" css="ui-teal" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+
+	<ui-bar if="{ filtersOpen }" class="ui-teal-lt ui-bar-shadow jc-between">
+		<ui-bar-left>
+			<ui-btn-icon name="pane_right_search_options_reset" mdicon="mdi mdi-refresh" css="ui-teal-lt" io="{ ui }" />
+			<ui-bar-title>Filters</ui-bar-title>
+		</ui-bar-left>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_right_search_options_close" mdicon="mdi mdi-check" css="ui-teal-lt" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+	<div class="scroll-1 ui-secondary">
+		<div if="{ !filtersOpen }" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<div class="f-col ai-center" style="opacity:0.15;">
+				<i style="font-size:400%;" class="mdi mdi-magnify"></i>
+				<h1>search</h1>
+			</div>
+		</div>
+		<div if="{ filtersOpen }" class="ui-secondary f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<div class="f-col ai-center" style="opacity:0.15;">
+				<i style="font-size:400%;" class="mdi mdi-filter-outline"></i>
+				<h1>filter</h1>
+			</div>
+		</div>
 	</div>
+	<script>
+		var self = this;
+		isPinned = false;
+		filtersOpen = false;
+		ui.on('pane_right_search_options_close:click',function() {
+			filtersOpen = false;
+			self.update();
+		});
+		ui.on('pane_right_search_options:click',function() {
+			if(filtersOpen) {
+				filtersOpen = false;
+			} else {
+				filtersOpen = true;
+			}
+			self.update();
+		});
+		ui.on('pane_right_close:click',function() {
+			isPinned = false;
+			var pl = document.getElementById('pane-right');
+			pl.style.position = 'absolute';	
+			pl.style.boxShadow = '-5px 0px 5px rgba(0,0,0,0.25)';
+			panes.toggle('pane-right');
+			self.update();
+		});	
+		ui.on('pane_right_pin:click',function() { 
+			var pl = document.getElementById('pane-right');
+			if(isPinned) {
+				isPinned = false;
+				pl.style.position = 'absolute';	
+				pl.style.boxShadow = '-5px 0px 5px rgba(0,0,0,0.25)';
+			} else {
+				isPinned = true;
+				pl.style.position = 'relative';	
+				pl.style.boxShadow = 'none';
+			}
+			self.update();
+		});	
+	</script>
 </ui-pane-right>

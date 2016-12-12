@@ -16,6 +16,12 @@
 		<yield/>
 	</div>
 </ui-bar-left>
+<!-- UI-BAR-MIDDLE !-->
+<ui-bar-middle>
+	<div class="ui-bar-middle f-row ai-center { opts.class }">
+		<yield/>
+	</div>
+</ui-bar-middle>
 <!-- UI-BAR-RIGHT !-->
 <ui-bar-right>
 	<div class="ui-bar-right f-row ai-center { opts.class }">
@@ -34,3 +40,11 @@
 		<yield/>
 	</div>
 </ui-bar-title>
+<ui-bar-subtitle>
+	<div class="ui-bar-subtitle f-row ai-center jc-center">
+		<div class="f-col jc-center ai-start">	
+			<div class="ui-title">{ opts.title || 'NO TITLE!!!' }</div>
+			<div class="ui-subtitle">{ opts.subtitle || 'NO LABEL!!!' }</div>
+		</div>
+	</div>
+</ui-bar-subtitle>

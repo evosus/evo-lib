@@ -1,27 +1,42 @@
-<ui-input value="{ field.value }" class="{ focus:isFocused,valid:isValid,invalid:isInvalid,invalid-focus:isFocused && isInvalid}">
-	<div if="{ opts.label }" class="input-label">{ opts.label }</div>
-	<div class="ui-input f-row ai-center { opts.css }">
-		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
+<ui-input value="{ field.value }"
+	class="ui-input {
+		locked:opts.css == 'locked',
+		touched:field.value.length && !isFocused,
+		focus:isFocused,
+		valid:isValid,
+		invalid:isInvalid,
+		invalid-focus:isFocused && isInvalid
+	}">
+	<div class="ui-input-label">
+		<span>{ opts.label }</span>
+		<i if="{ isTouched }" class="{ mdi:1, mdi-check:isValid, mdi-block-helper:isInvalid }"></i>
+	</div>
+	<div class="ui-input-stack f-row">
 		<input name="field"
 			class="f-one"
 			type="{ opts.type || 'text' }"
 			placeholder="{ opts.placeholder }"
+			onfocus="{ focus }"
 			onblur="{ blur }"
 			onchange="{ change }"
-			onclick="{ click }"
-			onfocus="{ focus }"
-			onmouseover="{ hover }"
 			onkeyup="{ keyup }"
 		/>
-		<div class="ui-input-status-icon" if="{ isValid || isInvalid }">
-			<i if="{ isValid }" class="mdi mdi-check-circle-outline fg-green-lt"></i>
-			<i if="{ isInvalid }" class="mdi mdi-alert-circle-outline fg-red-lt"></i>
-		</div>
+		<div class="ui-input-fill"></div>
 	</div>
-	<div class="{ ui-input-msg:1,f-row:1,ai-center:1,fg-red:isInvalid,fg-green-lt:isValid }">{ msg }</div>
+	<div class="ui-input-message fg-failure">
+		<span if="{ errorText }" >{ errorText }</span>
+	</div>
 	<script>
 		var self = this;
-		isFocused = null;isValid = null;isInvalid = null;
+		isBlurred = null;isFocused = null;isValid = null;isInvalid = null;isLocked = null;
+		// --------------------------------------
+		// ON MOUNT
+		// --------------------------------------
+		this.on('mount',function() {
+			if(opts.value) { 
+				opts.io.trigger(opts.name + ':change',opts.value);
+			}
+		});
 		// --------------------------------------
 		// MAP EVENTS TO OBSERVABLE (io)
 		// --------------------------------------
@@ -41,10 +56,18 @@
 		// --------------------------------------
 		// ON FOCUS
 		// --------------------------------------
-		opts.io.on(opts.name + ':focus',function() {
-			self.field.focus();
+		opts.io.on(opts.name + ':focus',function(e) {
 			self.isFocused = true;
 			self.update();
+		});
+		// --------------------------------------
+		// ON CHANGE
+		// --------------------------------------
+		opts.io.on(opts.name + ':change',function(e) {
+			if(e.target.value) {
+				self.field.value = e.target.value;
+				self.update();
+			}
 		});
 		// --------------------------------------
 		// ON INVALID
@@ -65,14 +88,16 @@
 			self.update();
 		});
 		// --------------------------------------
-		// ON RESET (DEV ONLY)
+		// ON RESET
 		// --------------------------------------
 		opts.io.on(opts.name + ':reset',function(msg) {
 			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
 			self.field.value = '';
+			self.isBlurred = null;
 			self.isFocused = null;
 			self.isValid = null;
 			self.isInvalid = null;
+			self.isLocked = null;
 			self.update();
 		});
 	</script>

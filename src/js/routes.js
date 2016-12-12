@@ -7,6 +7,15 @@ riot.route('/guide/contents', function() {
 	});
 });
 // --------------------------------------
+// GUIDE ANCHOR SCROLL
+// --------------------------------------
+riot.route('/guide/anchor-scroll', function() {
+	console.info("ANCHOR SCROLL ROUTE!");
+	riot.compile(function() {
+		riot.mount('#mainMount','guide-anchor-scroll');
+	});
+});
+// --------------------------------------
 // GUIDE BREAKPOINTS
 // --------------------------------------
 riot.route('/guide/breakpoints', function() {
@@ -52,6 +61,14 @@ riot.route('/guide/fonts', function() {
 riot.route('/guide/forms', function() {
 	riot.compile(function() {
 		riot.mount('#mainMount','guide-forms');
+	});
+});
+// --------------------------------------
+// GUIDE MAPS
+// --------------------------------------
+riot.route('/guide/maps', function() {
+	riot.compile(function() {
+		riot.mount('#mainMount','guide-maps');
 	});
 });
 // --------------------------------------

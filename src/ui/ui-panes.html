@@ -29,7 +29,9 @@
 		// --------------------------------------
 		ui = riot.observable();
 		ui.on('pane_left_button:click',function() { panes.toggle('pane-left'); });
-		ui.on('nav_back:click',function() { riot.route('/guide/contents'); });
+		ui.on('pane_activity_button:click',function() { panes.toggle('pane-right'); });
+		ui.on('pane_history_button:click',function() { panes.toggle('pane-right'); });
+		ui.on('pane_search_button:click',function() { panes.toggle('pane-right'); });
 		// --------------------------------------
 		// REDIRECT FROM BASE URL
 		// --------------------------------------

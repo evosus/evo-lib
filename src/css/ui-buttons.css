@@ -1,26 +1,26 @@
 /* BEGIN UI-BTN */
 .ui-btn {
-	height:2.5em;
+	height:2em;
 	margin:0;
 	padding:0em 1em;
 	border:none;
 	cursor:pointer;
-	font-weight:900;
+	font-weight:700;
 	transition:.25s ease-in-out all;
 }
 /* UI-BTN:HOVER */
 .ui-btn:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
 /* UI-BTN BODY */
-.ui-btn > div { height:2.5em; }
+.ui-btn > div { height:2em; }
 /* UI-BTN ICON */
 .ui-btn i { font-size:150%; }
 /* UI-BTN TEXT */
-.ui-btn > div > span { padding:0em .5em;font-size:110%; }
+.ui-btn > div > span { padding:0em .5em;text-transform:uppercase;letter-spacing:1px; }
 /* END UI-BTN */
 /* BEGIN UI-BTN-ICON */
 .ui-btn-icon {
-	width:2.5em;
-	height:2.5em;
+	width:2em;
+	height:2em;
 	border-radius:50%;
 	transition:.25s ease-in-out all;
 }
