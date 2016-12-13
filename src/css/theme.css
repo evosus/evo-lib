@@ -115,6 +115,17 @@ button.ui-gray.ui-btn:hover,
 .ui-gray.ui-select select
 { background:#aaaaaa;color:#ffffff; }
 
+/* GRAY LIGHT */
+.ui-gray-lt,
+button.ui-gray-lt.ui-btn,
+button.ui-gray-lt.ui-btn:hover,
+.ui-gray-lt.ui-btn-icon,
+.ui-gray-lt.ui-btn-icon:hover,
+.ui-gray-lt.ui-input,
+.ui-gray-lt.ui-select,
+.ui-gray-lt.ui-select select
+{ background:rgba(0,0,0,0.05);color:#444444; }
+
 /* GRAY DARK */
 .ui-gray-dk,
 button.ui-gray-dk.ui-btn,
@@ -135,7 +146,7 @@ button.ui-green.ui-btn:hover,
 .ui-green.ui-input,
 .ui-green.ui-select,
 .ui-green.ui-select select
-{ background:#55ee55;color:#ffffff; }
+{ background:#12ba12;color:#ffffff; }
 
 /* YELLOW */
 .ui-yellow,

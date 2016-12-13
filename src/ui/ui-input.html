@@ -12,19 +12,22 @@
 		<i if="{ isTouched }" class="{ mdi:1, mdi-check:isValid, mdi-block-helper:isInvalid }"></i>
 	</div>
 	<div class="ui-input-stack f-row">
-		<input name="field"
-			class="f-one"
-			type="{ opts.type || 'text' }"
-			placeholder="{ opts.placeholder }"
-			onfocus="{ focus }"
-			onblur="{ blur }"
-			onchange="{ change }"
-			onkeyup="{ keyup }"
-		/>
+		<div class="ui-input-row f-row ai-center">
+			<input name="field"
+				class="f-one"
+				type="{ opts.type || 'text' }"
+				placeholder="{ opts.placeholder }"
+				onfocus="{ focus }"
+				onblur="{ blur }"
+				onchange="{ change }"
+				onkeyup="{ keyup }"
+			/>
+			<i class="mdi { mdi-check:isValid,mdi-alert-circle-outline:isInvalid,mdi-pencil:isFocused && !isInvalid && !isValid }"></i>
+		</div>
 		<div class="ui-input-fill"></div>
 	</div>
 	<div class="ui-input-message fg-failure">
-		<span if="{ errorText }" >{ errorText }</span>
+		<span if="{ msg }" >{ msg }</span>
 	</div>
 	<script>
 		var self = this;
@@ -57,6 +60,7 @@
 		// ON FOCUS
 		// --------------------------------------
 		opts.io.on(opts.name + ':focus',function(e) {
+			self.field.focus();
 			self.isFocused = true;
 			self.update();
 		});

@@ -6,7 +6,7 @@
 		</ui-bar-left>
 	</ui-bar>
 	<div class="scroll-2">
-		<div class="container-1200 shadow-box ui-white">
+		<div class="container-1280 shadow-box ui-white">
 			<div class="pad-0-1">
 				<div id="map" class="guide-map"></div>
 			</div>
@@ -21,9 +21,9 @@
 	<script>
 		var self = this;
 		// --------------------------------------
-		// CUSTOM MARKERS
+		// CUSTOM MARKERS (WIP)
 		// --------------------------------------
-
+		/*
 		function CustomMarker(latlng, map, args) {
 			this.latlng = latlng;	
 			this.args = args;	
@@ -71,6 +71,7 @@
 		CustomMarker.prototype.getPosition = function() {
 			return this.latlng;	
 		};
+		*/
 		// --------------------------------------
 		// INIT MAP
 		// --------------------------------------
@@ -89,8 +90,8 @@
 				center: {lat: 45.6401831, lng: -122.6923345},
 				zoom: 12
 			});
-			var newLatLng = new google.maps.LatLng(45.676035,-122.6694812);
-			var overlay = new CustomMarker(newLatLng,map,{});
+			//var newLatLng = new google.maps.LatLng(45.676035,-122.6694812);
+			//var overlay = new CustomMarker(newLatLng,map,{});
 			// --------------------------------------
 			// DRAWING API
 			// --------------------------------------
