@@ -2,7 +2,7 @@
 	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-anchor" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title value="Anchor Scroll">
+			<ui-bar-title value="Anchor Scroll" />
 		</ui-bar-left>
 	</ui-bar>
 	<ui-scroll-2>
@@ -11,15 +11,17 @@
 				<ui-layout-left-sidebar css="ui-secondary-lt">
 					<ul class="link-list"><li each="{ employeeSelectOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
 				</ui-layout-left-sidebar>
-				<ui-layout-left-body css="ui-white">
+				<ui-layout-left-body>
 					<ui-layout-title value="Anchor Scroll" />
-					<div each="{ employeeSelectOptions }">
-						<h3 id="{ anchor }">{ label }</h3>	
-						<hr>
-						<div if="{ fields }">
-							<ui-input name="{ name }" each="{ fields }" label="{ label }" type="{ type }" css="bordered" placeholder="{ ' ' + placeholder }" io="{ obs }"></ui-input>
-						</div>
-					</div>
+					<virtual each="{ employeeSelectOptions }">
+						<ui-layout-subtitle id="{ anchor }" value="{ label }" />
+						<ui-layout-box css="f-row f-wrap shadow-box pad-1-2 ui-white">
+							<div class="ui-cell" if="{ fields }" each="{ fields }">
+								<ui-form-input name="{ name }" label="{ label }" placeholder="{ ' ' + placeholder }" io="{ obs }" />
+							</div>
+							<span if="{ !fields }" class="example-text">No fields to display</span>
+						</ui-layout-box>
+					</virtual>
 				</ui-layout-left-body>
 			</ui-layout-left>
 		</ui-container>

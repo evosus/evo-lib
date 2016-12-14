@@ -47,7 +47,7 @@ button.ui-secondary.ui-btn:hover,
 .ui-secondary.ui-input,
 .ui-secondary.ui-select,
 .ui-secondary.ui-select select
-{ background:#f7f5f2;color:#444444; }
+{ background:#e5e5e2;color:#444444; }
 
 /* SECONDARY LIGHT */
 .ui-secondary-lt,
@@ -58,7 +58,18 @@ button.ui-secondary-lt.ui-btn:hover,
 .ui-secondary-lt.ui-input,
 .ui-secondary-lt.ui-select,
 .ui-secondary-lt.ui-select select
-{ background:#eeeeee;color:#444444; }
+{ background:#f5f5f2;color:#444444; }
+
+/* SECONDARY DARK */
+.ui-secondary-dk,
+button.ui-secondary-dk.ui-btn,
+button.ui-secondary-dk.ui-btn:hover,
+.ui-secondary-dk.ui-btn-icon,
+.ui-secondary-dk.ui-btn-icon:hover,
+.ui-secondary-dk.ui-input,
+.ui-secondary-dk.ui-select,
+.ui-secondary-dk.ui-select select
+{ background:#d5d5d2;color:#444444; }
 
 /* DISABLED */
 .ui-disabled,

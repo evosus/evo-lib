@@ -1,15 +1,13 @@
 <guide-flexbox>
-	<ui-bar class="ui-primary-lt ui-bar-shadow">
+	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-image-filter-center-focus" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title>Flexbox Test</ui-bar-title>
+			<ui-bar-title value="Flexbox Test" />
 		</ui-bar-left>
 	</ui-bar>
-	<div class="scroll-2 f-col ai-center jc-center">
-		<div class="pad-1">
-			<div class="example rounded shadow-box">
-				<h3>I should be centered</h3>
-			</div>
-		</div>
-	</div>
+	<ui-scroll-2 css="f-col ai-center jc-center">
+		<ui-layout-box css="f-row f-wrap shadow-box pad-1-2 ui-white">
+			<h3>I should be centered</h3>
+		</ui-layout-box>
+	</ui-scroll-2>
 </guide-flexbox>

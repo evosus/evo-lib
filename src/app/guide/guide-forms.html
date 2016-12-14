@@ -8,25 +8,37 @@
 	<ui-scroll-2>
 		<ui-container css="shadow-box ui-secondary-lt">
 			<ui-layout-left>
-				<ui-layout-left-sidebar css="ui-secondary-lt">
+				<ui-layout-left-sidebar>
 					<ul class="link-list"><li each="{ formSelectOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
 				</ui-layout-left-sidebar>
-				<ui-layout-left-body css="ui-white">
+				<ui-layout-left-body>
 					<ui-layout-title value="Form Elements" />
-					<ui-layout-subtitle id="nothing" value="TESTING" />
-					<ui-layout-box css="f-row shadow-box pad-1-2 ai-center">
+					<ui-layout-subtitle id="groupeda" value="Grouped A (ui-form-*)" />
+					<ui-layout-box css="f-row f-wrap shadow-box pad-1-2 ui-white">
+						<div class="ui-cell">
+							<ui-form-input name="input_text_a" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
+						</div>
+						<div class="ui-cell">
+							<ui-form-select id="selectTest" name="test_select_a" label="Select Label" selection="{ uiSelectValueA }" options="{ uiSelectOptions }" io="{ ui }" />
+						</div>
+						<div class="ui-cell">
+							<ui-form-checkbox name="grouped_checkbox" label="Checkbox Label" positive="Remember me? Yes" negative="Remember me? No" io="{ ui }" />
+						</div>
+					</ui-layout-box>
+					<ui-layout-subtitle id="groupedb" value="Grouped B (ui-*)" />
+					<ui-layout-box css="f-row f-wrap shadow-box pad-1-2 ai-center ui-white">
 						<div class="ui-cell">
 							<ui-input name="test_input" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
 						</div>
 						<div class="ui-cell">
-							<ui-select id="selectTest" name="test_select" selection="{ uiSelectValue }" options="{ uiSelectOptions }" io="{ ui }" />
+							<ui-select id="selectTest" name="test_select_b" selection="{ uiSelectValueB }" options="{ uiSelectOptions }" io="{ ui }" />
 						</div>
 						<div class="ui-cell">
 							<ui-checkbox name="test_checkbox" positive="Yes" negative="No" io="{ ui }" />
 						</div>
 					</ui-layout-box>
-					<ui-layout-subtitle id="uiinput" value="UI-Input" />
-					<ui-layout-box css="shadow-box pad-1-2">
+					<ui-layout-subtitle id="uiinput" value="UI-Form-Input" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
 						<ui-form-input name="input_text" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
 						<ui-bar-control>
 							<ui-bar-control-item each="{ uiBarControlItems }">
@@ -35,26 +47,14 @@
 						</ui-bar-control>
 						<span class="example-text">Input Value: { uiInputValue }</span>
 					</ui-layout-box>
-					<ui-layout-subtitle id="uiselect" value="UI-Select" />
-					<ui-layout-box css="shadow-box pad-1-2">
-						<ui-form-select id="selectTest" name="select_test" label="Select Label" selection="{ uiSelectValue }" options="{ uiSelectOptions }" io="{ ui }" />
-						<span class="example-text">Selected: { uiSelectValue }</span>
+					<ui-layout-subtitle id="uiselect" value="UI-Form-Select" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
+						<ui-form-select id="selectTest" name="select_test" label="Select Label" selection="{ uiSelectValueC }" options="{ uiSelectOptions }" io="{ ui }" />
+						<span class="example-text">Selected: { uiSelectValueC }</span>
 					</ui-layout-box>
-					<ui-layout-subtitle id="uicheckbox" value="UI-Checkbox" />
-					<ui-layout-box css="shadow-box pad-1-2">
+					<ui-layout-subtitle id="uicheckbox" value="UI-Form-Checkbox" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
 						<ui-form-checkbox name="form_checkbox" label="Checkbox Label" positive="Remember me? Yes" negative="Remember me? No" io="{ ui }" />
-					</ui-layout-box>
-					<ui-layout-subtitle id="grouped" value="Grouped" />
-					<ui-layout-box css="f-row shadow-box pad-1-2">
-						<div class="ui-cell">
-							<ui-form-input name="input_text" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
-						</div>
-						<div class="ui-cell">
-							<ui-form-select id="selectTest" name="select_test" label="Select Label" selection="{ uiSelectValue }" options="{ uiSelectOptions }" io="{ ui }" />
-						</div>
-						<div class="ui-cell">
-							<ui-form-checkbox name="grouped_checkbox" label="Checkbox Label" positive="Remember me? Yes" negative="Remember me? No" io="{ ui }" />
-						</div>
 					</ui-layout-box>
 				</ui-layout-left-body>
 			</ui-layout-left>
@@ -62,7 +62,9 @@
 	</ui-scroll-2>
 	<script>
 		var self = this;
-		uiSelectValue = 'Option B';
+		uiSelectValueA = 'Option A';
+		uiSelectValueB = 'Option B';
+		uiSelectValueC = 'Option C';
 
 		ui.on('submit_focus:click',function(e) { ui.trigger('input_text:focus'); });
 		ui.on('submit_valid:click',function(e) { ui.trigger('input_text:valid'); });
@@ -70,13 +72,14 @@
 		ui.on('submit_invalid:click',function(e) { ui.trigger('input_text:invalid','Invalid!'); });
 		ui.on('input_text:keyup',function(e) { uiInputValue = e.target.value;self.update(); });
 		ui.on('input_text:change',function(e) { uiInputValue = e.target.value;self.update(); });
-		ui.on('select_test:change',function(e) { uiSelectValue = e.target.value;self.update();});
+		ui.on('select_test:change',function(e) { uiSelectValueC = e.target.value;self.update();});
 
 		formSelectOptions = [
+			{label:'Grouped A', anchor:'groupeda'},
+			{label:'Grouped B', anchor:'grouped'},
 			{label:'UI-Input', anchor:'uiinput'},
 			{label:'UI-Select', anchor:'uiselect'},
-			{label:'UI-Checkbox', anchor:'uicheckbox'},
-			{label:'Grouped', anchor:'grouped'}
+			{label:'UI-Checkbox', anchor:'uicheckbox'}
 		]
 		uiSelectOptions = [
 			{"label":"Option A", "mdicon":"mdi mdi-checkbox-marked-circle"},

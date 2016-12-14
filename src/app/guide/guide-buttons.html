@@ -2,41 +2,49 @@
 	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-blank" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title value="UI Buttons">
+			<ui-bar-title value="UI Buttons" />
 		</ui-bar-left>
 	</ui-bar>
 	<ui-scroll-2>
-		<ui-container css="shadow-box ui-white">
+		<ui-container css="shadow-box ui-secondary-lt">
 			<ui-layout-left>
-				<ui-layout-left-sidebar css="ui-secondary-lt">
+				<ui-layout-left-sidebar>
 					<ul class="link-list"><li each="{ buttonOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
 				</ui-layout-left-sidebar>
-				<ui-layout-left-body css="ui-white">
-					<ui-layout-title value="Buttons" />
-					<ui-layout-subtitle value="UI Button With Label" />
-					<ui-btn name="submit.login" label="Login" css="ui-red" io="{ ui }" />
-					<div class="pad-1"></div>
-					<ui-layout-subtitle value="UI Button With Label & Icon" />
-					<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
-					<div class="pad-1"></div>
-					<ui-layout-subtitle value="UI Button With Icon" />
-					<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
-					<div class="pad-1"></div>
-					<ui-layout-subtitle value="UI Button Bar" />
-					<ui-bar-control>
-						<div class="ui-bar-control-item">
-							<ui-btn name="submit.login" label="Login" css="ui-blue" io="{ ui }" />
-						</div>
-						<div class="ui-bar-control-item">
-							<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
-						</div>
-						<div class="ui-bar-control-item">
-							<ui-btn-icon name="nav.right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
-						</div>
-					</ui-bar-control>
-					<ui-layout-subtitle value="Disabled With Color" />
-					<ui-btn name="nav.right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
-					<ui-btn name="nav.left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
+				<ui-layout-left-body>
+					<ui-layout-title id="top" value="Buttons" />
+					<ui-layout-subtitle id="buttona" value="UI Button With Label" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
+						<ui-btn name="submit_login" label="Login" css="ui-red" io="{ ui }" />
+					</ui-layout-box>
+					<ui-layout-subtitle id="buttonb" value="UI Button With Label & Icon" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
+						<ui-btn name="submit_login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
+					</ui-layout-box>
+					<ui-layout-subtitle id="buttonc" value="UI Button With Icon" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
+						<ui-btn-icon name="nav_left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
+					</ui-layout-box>
+					<ui-layout-subtitle id="buttond" value="UI Button Bar" />
+					<ui-layout-box css="shadow-box pad-1-2 ui-white">
+						<ui-bar-control>
+							<div class="ui-bar-control-item">
+								<ui-btn name="submit_login" label="Login" css="ui-blue" io="{ ui }" />
+							</div>
+							<div class="ui-bar-control-item">
+								<ui-btn-icon name="nav_left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
+							</div>
+							<div class="ui-bar-control-item">
+								<ui-btn-icon name="nav_right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
+							</div>
+						</ui-bar-control>
+					</ui-layout-box>
+					<ui-layout-subtitle id="buttone" value="Disabled With Color" />
+					<ui-layout-box css="f-row jc-start shadow-box pad-1-2 ui-white">
+						<ui-btn name="nav_right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
+						<div class="pad-dot-5"></div>
+						<ui-btn name="nav_left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
+					</ui-layout-box>
 				</ui-layout-left-body>
 			</ui-layout-left>
 		</ui-container>
@@ -46,12 +54,19 @@
 		li { padding-top:.75em; }
 	</style>
 	<script>
+		var self = this;
 		buttonOptions = [
-			{"label":"Button With Label", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
-			{"label":"Button With Label & Icon", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
-			{"label":"Button With Icon", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
-			{"label":"Button Bar", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
-			{"label":"Disabled With Color", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
+			{"label":"Top", "anchor":"top"},
+			{"label":"Button With Label", "anchor":"buttona"},
+			{"label":"Button With Label & Icon", "anchor":"buttonb"},
+			{"label":"Button With Icon", "anchor":"buttonc"},
+			{"label":"Button Bar", "anchor":"buttond"},
+			{"label":"Disabled With Color", "anchor":"buttone"},
 		]
+		anchorScroll(elementID) {
+			var el = document.getElementById(elementID);
+			el.scrollIntoView({block: "start", behavior: "smooth"});
+		}
+		anchorClick(e) { if(e.item.anchor) { self.anchorScroll(e.item.anchor); } }
 	</script>
 </guide-buttons>

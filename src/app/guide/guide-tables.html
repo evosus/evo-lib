@@ -1,20 +1,21 @@
 <guide-tables>
-	<ui-bar class="ui-primary-lt ui-bar-shadow">
+	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-table-large" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title>Tables</ui-bar-title>
+			<ui-bar-title value="Tables">
 		</ui-bar-left>
 	</ui-bar>
-	<div class="scroll-2">
-		<div class="container-1280 shadow-box ui-white">
-			<div class="pad-1">
-					<h3>AG-Grid</h3>
+	<ui-scroll-2>
+		<ui-container css="shadow-box ui-secondary-lt pad-1-2">
+			<ui-layout-title value="AG-Grid" />
+				<ui-layout-box css="shadow-box pad-1-2 ui-white">
 					<div style="height:6.75em;overflow:auto;">
 						<div id="myGrid" class="ag-fresh ui-grid"></div>
-				</div>
+					</div>
+				</ui-layout-box>
 			</div>
 		</div>
-	</div>
+	</ui-scroll-2>
 	<style scoped>
 		h3 { margin-bottom:.75em; }
 		.ui-grid { height:100%; }

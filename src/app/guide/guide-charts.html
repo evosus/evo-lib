@@ -1,25 +1,21 @@
 <guide-charts>
-	<ui-bar class="ui-primary-lt ui-bar-shadow">
+	<ui-bar css="ui-primary-lt jc-between ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-chart-pie" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title>Charts</ui-bar-title>
+			<ui-bar-title value="Charts" />
 		</ui-bar-left>
+		<ui-bar-right>
+			<ui-btn-icon name="reset_pie" mdicon="mdi mdi-refresh" css="ui-primary-lt" io="{ ui }" />
+		</ui-bar-right>
 	</ui-bar>
-	<div class="scroll-2">
-		<div class="container-1280 shadow-box ui-white">
-			<div class="pad-1">
-				<h3>D3 Pie Chart</h3>
-				<div class="f-row ai-center jc-center">
-					<div id="chart"></div>
-				</div>
-				<div class="pad-dot-5"></div>
-				<div class="f-row jc-center">
-					<ui-btn name="reset_pie" mdicon="mdi mdi-refresh" label="Reset" css="ui-green" io="{ ui }" />
-				</div>
+	<ui-scroll-2>
+		<ui-container css="shadow-box ui-white pad-1-2">
+			<ui-layout-title value="D3 Pie Chart" />
+			<div class="f-row ai-center jc-center">
+				<div id="chart"></div>
 			</div>
-		</div>
-	</div>
-	<style scoped>h3 { margin-bottom:.75em; }</style>
+		</ui-container>
+	</ui-scroll-2>
 	<script>
 		this.on('mount',function() {
 			// --------------------------------------

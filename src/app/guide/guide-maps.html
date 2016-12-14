@@ -1,22 +1,15 @@
 <guide-maps>
-	<ui-bar class="ui-primary-lt ui-bar-shadow">
+	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-map-marker" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title>Google Maps Test</ui-bar-title>
+			<ui-bar-title value="Google Maps Test" />
 		</ui-bar-left>
 	</ui-bar>
-	<div class="scroll-2">
-		<div class="container-1280 shadow-box ui-white">
-			<div class="pad-0-1">
-				<div id="map" class="guide-map"></div>
-			</div>
-		</div>
-	</div>
+	<ui-scroll-2>
+		<div id="map" class="guide-map"></div>
+	</ui-scroll-2>
 	<style scoped>
-		.guide-map { height:calc(100vh - 7em); }
-		@media only screen and (min-width:992px) {
-			.guide-map { height:calc(100vh - 9em); }
-		}
+		.guide-map { height:calc(100vh - 7em);; }
 	</style>
 	<script>
 		var self = this;
