@@ -61,6 +61,11 @@ p { padding:1em 0 0 0; }
 .container-1280 { display:block;min-height:100%;max-width:1280px;margin:0; }
 /* UI-BOX */
 .ui-layout-box { display:block;padding:1em;margin:0em 0em 2em 0em;overflow:hidden; }
+/* UI-CELL */
+.ui-cell {
+	flex:1 0 15em;
+	padding:0em .5em;
+}
 /* UI-LAYOUT-LEFT */
 .ui-layout-left { }
 .ui-layout-left-sidebar { flex:0 0 100%; }

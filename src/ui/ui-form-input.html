@@ -1,4 +1,4 @@
-<ui-input value="{ field.value }"
+<ui-form-input value="{ field.value }"
 	class="ui-input {
 		locked:opts.css == 'locked',
 		touched:field.value.length && !isFocused,
@@ -7,6 +7,10 @@
 		invalid:isInvalid,
 		invalid-focus:isFocused && isInvalid
 	}">
+	<div class="ui-input-label">
+		<span>{ opts.label }</span>
+		<i if="{ isTouched }" class="{ mdi:1, mdi-check:isValid, mdi-block-helper:isInvalid }"></i>
+	</div>
 	<div class="ui-input-stack f-row">
 		<div class="ui-input-row f-row ai-center">
 			<input name="field"
@@ -21,6 +25,9 @@
 			<i class="mdi { mdi-check:isValid,mdi-alert-circle-outline:isInvalid,mdi-pencil:isFocused && !isInvalid && !isValid }"></i>
 		</div>
 		<div class="ui-input-fill"></div>
+	</div>
+	<div class="ui-input-message fg-failure">
+		<span if="{ msg }" >{ msg }</span>
 	</div>
 	<script>
 		var self = this;
@@ -69,7 +76,8 @@
 		// --------------------------------------
 		// ON INVALID
 		// --------------------------------------
-		opts.io.on(opts.name + ':invalid',function() {
+		opts.io.on(opts.name + ':invalid',function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
 			self.isValid = false;
 			self.isInvalid = true;
 			self.update();
@@ -77,7 +85,8 @@
 		// --------------------------------------
 		// ON VALID
 		// --------------------------------------
-		opts.io.on(opts.name + ':valid',function() {
+		opts.io.on(opts.name + ':valid',function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
 			self.isValid = true;
 			self.isInvalid = false;
 			self.update();
@@ -85,7 +94,8 @@
 		// --------------------------------------
 		// ON RESET
 		// --------------------------------------
-		opts.io.on(opts.name + ':reset',function() {
+		opts.io.on(opts.name + ':reset',function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null }
 			self.field.value = '';
 			self.isBlurred = null;
 			self.isFocused = null;
@@ -95,4 +105,4 @@
 			self.update();
 		});
 	</script>
-</ui-input>
+</ui-form-input>

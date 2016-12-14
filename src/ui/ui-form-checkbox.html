@@ -1,0 +1,22 @@
+<ui-form-checkbox onclick="{ check }" checked="{ isChecked }" check="{ check }">
+	<div class="ui-checkbox-label">
+		<span>{ opts.label }</span>
+	</div>
+	<div class="ui-checkbox">
+		<div class="ui-checkbox-icon f-col ai-center jc-center">
+			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
+		</div>
+		<div class="ui-checkbox-msg">
+			<span if="{ isChecked }">{ opts.positive }</span>
+			<span if="{ !isChecked }">{ opts.negative }</span>
+		</div>
+	</div>
+	<div class="ui-checkbox-message"></div>
+	<script>
+		var self = this;
+		isChecked = false;
+		check() { isChecked ? opts.io.trigger(opts.name + ':uncheck') : opts.io.trigger(opts.name + ':check'); }
+		opts.io.on(opts.name + ':check',function() { isChecked = true; self.update(); });
+		opts.io.on(opts.name + ':uncheck',function() { isChecked = false; self.update(); });
+	</script>
+</ui-form-checkbox>
