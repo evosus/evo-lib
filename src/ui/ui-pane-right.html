@@ -1,5 +1,5 @@
 <ui-pane-right id="pane-right" class="pane-right ui-teal">
-	<ui-bar class="ui-teal">
+	<ui-bar css="ui-teal">
 		<ui-bar-left>
 			<ui-btn-icon if="{ isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin-off" css="ui-teal" io="{ ui }" />
 			<ui-btn-icon if="{ !isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin" css="ui-teal" io="{ ui }" />
@@ -14,9 +14,9 @@
 		</ui-bar-right>
 	</ui-bar>
 
-	<ui-bar if="{ !filtersOpen }" class="ui-teal ui-bar-shadow jc-between">
+	<ui-bar if="{ !filtersOpen }" css="ui-teal ui-bar-shadow jc-between">
 		<ui-bar-left>&nbsp;</ui-bar-left>
-		<ui-bar-middle class="f-one jc-center">
+		<ui-bar-middle css="f-one jc-center">
 			<ui-input-search name="pane_right_search_input" mdicon="mdi mdi-magnify" placeholder="Type to search..." io="{ ui }" />
 		</ui-bar-middle>
 		<ui-bar-right>
@@ -24,10 +24,11 @@
 		</ui-bar-right>
 	</ui-bar>
 
-	<ui-bar if="{ filtersOpen }" class="ui-teal-lt ui-bar-shadow jc-between">
+	<ui-bar if="{ filtersOpen }" css="ui-teal-lt ui-bar-shadow jc-between">
 		<ui-bar-left>
 			<ui-btn-icon name="pane_right_search_options_reset" mdicon="mdi mdi-refresh" css="ui-teal-lt" io="{ ui }" />
-			<ui-bar-title>Filters</ui-bar-title>
+			<!-- <ui-bar-title value="Filters" /> !-->
+			<ui-bar-title-stack title="Filters" subtitle="Subtitle" />
 		</ui-bar-left>
 		<ui-bar-right>
 			<ui-btn-icon name="pane_right_search_options_close" mdicon="mdi mdi-check" css="ui-teal-lt" io="{ ui }" />

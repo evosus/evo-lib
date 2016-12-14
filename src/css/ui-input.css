@@ -4,7 +4,7 @@ input::-moz-placeholder { color:rgba(0,0,0,0.3);font-style:italic; }
 input:-ms-input-placeholder { color:rgba(0,0,0,0.3);font-style:italic; }
 input:-moz-placeholder { color:rgba(0,0,0,0.3);font-style:italic; }
 
-.ui-input { height:4.5em;width:100%;background:#eeeeee; }
+.ui-input { height:4.5em;width:100%; }
 .ui-input-label {
 	height:1.5em;
 	font-size:.9em;
@@ -41,19 +41,19 @@ input:-moz-placeholder { color:rgba(0,0,0,0.3);font-style:italic; }
 }
 .ui-input-message {
 	height:1em;
-	margin:.25em 0 0 0;
+	padding:.25em 0 0 0;
 	font-weight:700;
 	font-size:.9em;
 	font-style:italic;
 }
 /* TOUCHED */
-.ui-input.touched > .ui-input-label { color:rgb(20,140,235);	}
-.ui-input.touched > .ui-input-stack > .ui-input-fill { height:1px;background:rgb(20,140,235); }
-.ui-input.touched > .ui-input-stack > .ui-input-row > i { color:rgb(20,140,235); }
+.ui-input.touched > .ui-input-label { color:rgba(20,140,235,1);	}
+.ui-input.touched > .ui-input-stack > .ui-input-fill { height:1px;background:rgba(20,140,235,1); }
+.ui-input.touched > .ui-input-stack > .ui-input-row > i { color:rgba(20,140,235,1); }
 /* FOCUS */
-.ui-input.focus > .ui-input-label { color:rgb(20,140,235);	}
-.ui-input.focus > .ui-input-stack > .ui-input-fill { height:1px;background:rgb(20,140,235); }
-.ui-input.focus > .ui-input-stack > .ui-input-row > i { color:rgb(20,140,235); }
+.ui-input.focus > .ui-input-label { color:rgba(20,140,235,1);	}
+.ui-input.focus > .ui-input-stack > .ui-input-fill { height:1px;background:rgba(20,140,235,1); }
+.ui-input.focus > .ui-input-stack > .ui-input-row > i { color:rgba(20,140,235,1); }
 /* INVALID */
 .ui-input.invalid > .ui-input-label { color:#c62828;	}	
 .ui-input.invalid > .ui-input-stack > .ui-input-fill { height:1px;background:#c62828; }

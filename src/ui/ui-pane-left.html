@@ -1,5 +1,5 @@
 <ui-pane-left id="pane-left" class="pane-left ui-orange">
-	<ui-bar class="ui-orange jc-between">
+	<ui-bar css="ui-orange jc-between">
 		<ui-bar-left>
 			<ui-btn-icon name="pane_left_close" mdicon="mdi mdi-close" css="ui-orange" io="{ ui }" />
 			<div class="ui-bar-middle f-row ai-center jc-start" style="min-width:15em;height:3.5em;">
@@ -10,7 +10,7 @@
 		</ui-bar-left>
 	</ui-bar>
 
-	<ui-bar if="{ !accountOpen}" class="ui-bar-shadow jc-between ui-orange">
+	<ui-bar if="{ !accountOpen }" css="ui-bar-shadow jc-between ui-orange">
 		<ui-bar-left>
 			<ui-btn-icon name="pane_left_account_button" mdicon="mdi mdi-account-circle" css="ui-orange" io="{ ui }" />
 			<div class="ui-bar-middle f-row ai-center jc-start" style="min-width:15em;height:3.5em;">
@@ -25,7 +25,7 @@
 		</ui-bar-right>
 	</ui-bar>
 
-	<ui-bar if="{ accountOpen}" class="ui-bar-shadow jc-between ui-orange-lt">
+	<ui-bar if="{ accountOpen }" css="ui-bar-shadow jc-between ui-orange-lt">
 		<ui-bar-left>
 			<ui-btn-icon name="pane_left_account_button" mdicon="mdi mdi-account-circle" css="ui-orange-lt" io="{ ui }" />
 			<div class="ui-bar-middle f-row ai-center jc-start" style="min-width:15em;height:3.5em;">
@@ -41,7 +41,7 @@
 	</ui-bar>
 
 	<div id="paneLeftMount" class="scroll-2 ui-secondary">
-		<ul if="{ accountOpen }" class="link-list">
+		<ul if="{ accountOpen }" class="link-list pane">
 			<li class="f-row ai-center jc-between" onclick="{ listClick }">
 				<span class="f-row ai-center">
 					<i class="mdi mdi-account"></i>
@@ -55,7 +55,7 @@
 				</span>
 			</li>
 		</ul>
-		<ul if="{ !accountOpen }" class="link-list">
+		<ul if="{ !accountOpen }" class="link-list pane">
 			<li class="f-row ai-center jc-between" onclick="{ toggleOpen }">
 				<span class="f-row ai-center">
 					<i class="mdi { mdi-menu-down:isOpen,mdi-menu-right:!isOpen }"></i>
@@ -91,37 +91,6 @@
 			</li>
 		</ul>
 	</div>
-	<style>
-		ul.link-list {
-			min-width:300px;
-			list-style-type:none;
-			margin:0;
-			border:none;
-			padding:.5em 0 0 0;
-		}
-		ul.link-list > li {
-			margin:0;
-			padding:.5em .75em;
-			cursor:pointer;
-			transition:.25s ease-in-out all;
-			/* border-bottom:1px solid rgba(0,0,0,0.1); */
-			/* border-bottom:1px solid rgba(255,255,255,0.1); */
-		}
-		ul.link-list > li:hover {
-			background:rgba(0,0,0,0.1);
-		}
-		ul.link-list > li > span > i {
-			font-size:150%;
-			margin:0 .65em 0 0;
-		}
-		.pane-left { position:static; }
-		.pinned {
-			min-width:300px;
-			box-shadow:none!important;
-			position:static;
-			z-index:0;
-		}	
-	</style>
 	<script>
 		var self = this;
 		isOpen = false;
@@ -137,6 +106,8 @@
 		}
 		ui.on('pane_left_close:click',function() {
 			panes.toggle('pane-left');
+			accountOpen = false;
+			self.update();
 		});	
 		ui.on('pane_left_account_button:click',function() {
 			if(accountOpen) {
@@ -144,11 +115,11 @@
 			} else {
 				accountOpen = true;
 			}
-			riot.update();
+			self.update();
 		});
-
 		navLinks = [
 			{ "name":"Home", "route":"/guide/contents","mdicon":"mdi mdi-home" },
+			{ "name":"Anchor Scroll", "route":"/guide/anchor-scroll","mdicon":"mdi mdi-anchor" },
 			{ "name":"Breakpoints", "route":"/guide/breakpoints","mdicon":"mdi mdi-cellphone-link" },
 			{ "name":"Buttons", "route":"/guide/buttons","mdicon":"mdi mdi-checkbox-multiple-blank" },
 			{ "name":"Charts", "route":"/guide/charts","mdicon":"mdi mdi-chart-pie" },
@@ -162,6 +133,5 @@
 			{ "name":"SVG Image Test", "route":"/guide/svg","mdicon":"mdi mdi-image" },
 			{ "name":"Theme", "route":"/guide/theme","mdicon":"mdi mdi-palette" }
 		];
-
 	</script>
 </ui-pane-left>

@@ -1,4 +1,7 @@
 <ui-select idx="{ this.htmlselect.selectedIndex }">
+	<div class="ui-select-label">
+		<span>{ opts.label }</span>
+	</div>
 	<div class="ui-select f-row ai-center { opts.css }">
 		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
 		<select id="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
@@ -7,6 +10,7 @@
 		<i class="mdi mdi-chevron-down"></i>
 		<div class="ui-select-fill"></div>
 	</div>
+	<div class="ui-select-message"></div>
 	<script>
 		var self = this;
 		isOpen = false;

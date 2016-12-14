@@ -26,16 +26,16 @@
 	font-weight:400;
 	font-size:110%;
 }
-.ui-bar-subtitle {
+.ui-bar-title-stack {
 	padding:0em .5em;
 	height:3.5em;
 }
-.ui-bar-subtitle .ui-title {
+.ui-bar-title-stack .ui-title {
 	font-weight:400;
 	font-size:110%;
 	padding-bottom:.1em;
 }
-.ui-bar-subtitle .ui-subtitle {
+.ui-bar-title-stack .ui-subtitle {
 	font-size:80%;
 	letter-spacing:1px;
 	text-transform:uppercase;

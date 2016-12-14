@@ -1,3 +1,11 @@
+/* PINNED */
+.pinned {
+	min-width:300px;
+	box-shadow:none!important;
+	position:static;
+	z-index:0;
+}	
+/* PANES */
 .panes {
 	display: flex;
 	flex-direction: row;
@@ -12,6 +20,7 @@
 	position: relative;
 }
 .pane-left {
+	position:static;
 	overflow: hidden;
 	width: 0;
 	height: 100vh;

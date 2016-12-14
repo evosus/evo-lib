@@ -1,63 +1,46 @@
 <guide-buttons>
-	<ui-bar class="ui-primary-lt ui-bar-shadow">
+	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-blank" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title>UI Buttons</ui-bar-title>
+			<ui-bar-title value="UI Buttons">
 		</ui-bar-left>
 	</ui-bar>
-	<div class="scroll-2 ui-secondary">
-		<div class="container-1280 shadow-box ui-white">
-			<div class="layout-left f-row f-wrap">
-				<div class="layout-left-sidebar ui-secondary-lt">
-					<div class="hide block-mq-1">
-						<ul class="hide block-mq-1">
-							<li each="{ buttonOptions }">{ label }</li>
-						</ul>
-						<ui-select class="hide-mq-1" id="buttonSelect" name="button_select" selection="{ buttonSelectValue }" options="{ buttonOptions }" io="{ ui }" />
-					</div>
-				</div>
-				<div class="layout-left-body">
-					<div class="pad-1-2">
-						<div class="pad-1">
-							<h3>UI Button With Label</h3>
-							<ui-btn name="submit.login" label="Login" css="ui-red" io="{ ui }" />
+	<ui-scroll-2>
+		<ui-container css="shadow-box ui-white">
+			<ui-layout-left>
+				<ui-layout-left-sidebar css="ui-secondary-lt">
+					<ul class="link-list"><li each="{ buttonOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
+				</ui-layout-left-sidebar>
+				<ui-layout-left-body css="ui-white">
+					<ui-layout-title value="Buttons" />
+					<ui-layout-subtitle value="UI Button With Label" />
+					<ui-btn name="submit.login" label="Login" css="ui-red" io="{ ui }" />
+					<div class="pad-1"></div>
+					<ui-layout-subtitle value="UI Button With Label & Icon" />
+					<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
+					<div class="pad-1"></div>
+					<ui-layout-subtitle value="UI Button With Icon" />
+					<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
+					<div class="pad-1"></div>
+					<ui-layout-subtitle value="UI Button Bar" />
+					<ui-bar-control>
+						<div class="ui-bar-control-item">
+							<ui-btn name="submit.login" label="Login" css="ui-blue" io="{ ui }" />
 						</div>
-						<hr/>
-						<div class="pad-1">
-							<h3>UI Button With Label & Icon</h3>
-							<ui-btn name="submit.login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
 						</div>
-						<hr/>
-						<div class="pad-1">
-							<h3>UI Button With Icon</h3>
-							<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
+						<div class="ui-bar-control-item">
+							<ui-btn-icon name="nav.right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
 						</div>
-						<hr/>
-						<div class="pad-1">
-							<h3>UI Button Bar</h3>
-							<ui-bar-controls>
-								<div class="ui-bar-control-item">
-									<ui-btn name="submit.login" label="Login" css="ui-blue" io="{ ui }" />
-								</div>
-								<div class="ui-bar-control-item">
-									<ui-btn-icon name="nav.left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
-								</div>
-								<div class="ui-bar-control-item">
-									<ui-btn-icon name="nav.right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
-								</div>
-							</ui-bar-controls>
-						</div>
-						<hr/>
-						<div class="pad-1">
-							<h3>Disabled With Color</h3>
-							<ui-btn name="nav.right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
-							<ui-btn name="nav.left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+					</ui-bar-control>
+					<ui-layout-subtitle value="Disabled With Color" />
+					<ui-btn name="nav.right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
+					<ui-btn name="nav.left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
+				</ui-layout-left-body>
+			</ui-layout-left>
+		</ui-container>
+	</ui-scroll-2>
 	<style scoped>
 		h3 { margin-bottom:.75em; }
 		li { padding-top:.75em; }

@@ -1,50 +1,34 @@
 <!-- UI-BAR !-->
-<ui-bar>
-	<div class="ui-bar f-row { opts.class }">
-		<yield/>
-	</div>
+<ui-bar class="ui-bar f-row { opts.css }">
+	<yield/>
 </ui-bar>
 <!-- UI-BAR-CONTROLS !-->
-<ui-bar-controls>
-	<div class="ui-bar-controls f-row { opts.class }">
-		<yield/>
-	</div>
-</ui-bar-controls>
+<ui-bar-control class="ui-bar-controls f-row { opts.css }">
+	<yield/>
+</ui-bar-control>
+<!-- UI-BAR-CONTROL-ITEM !-->
+<ui-bar-control-item class="ui-bar-control-item">
+	<yield/>
+</ui-bar-control-item>
 <!-- UI-BAR-LEFT !-->
-<ui-bar-left>
-	<div class="ui-bar-left f-row ai-center { opts.class }">
-		<yield/>
-	</div>
+<ui-bar-left class="ui-bar-left f-row ai-center { opts.css }">
+	<yield/>
 </ui-bar-left>
 <!-- UI-BAR-MIDDLE !-->
-<ui-bar-middle>
-	<div class="ui-bar-middle f-row ai-center { opts.class }">
-		<yield/>
-	</div>
+<ui-bar-middle class="ui-bar-middle f-row ai-center { opts.css }">
+	<yield/>
 </ui-bar-middle>
 <!-- UI-BAR-RIGHT !-->
-<ui-bar-right>
-	<div class="ui-bar-right f-row ai-center { opts.class }">
-		<yield/>
-	</div>
+<ui-bar-right class="ui-bar-right f-row ai-center { opts.css }">
+	<yield/>
 </ui-bar-right>
-<!-- UI-BAR-APP-NAME !-->
-<ui-bar-app-name>
-	<div class="ui-bar-app-name f-row ai-center { opts.class }">
-		<yield/>
-	</div>
-</ui-bar-app-name>
 <!-- UI-BAR-TITLE !-->
-<ui-bar-title>
-	<div class="ui-bar-title f-row ai-center { opts.class }">
-		<yield/>
-	</div>
+<ui-bar-title class="ui-bar-title f-row ai-center { opts.css }">
+	<span>{ opts.value }</span>
 </ui-bar-title>
-<ui-bar-subtitle>
-	<div class="ui-bar-subtitle f-row ai-center jc-center">
-		<div class="f-col jc-center ai-start">	
-			<div class="ui-title">{ opts.title || 'NO TITLE!!!' }</div>
-			<div class="ui-subtitle">{ opts.subtitle || 'NO LABEL!!!' }</div>
-		</div>
+<ui-bar-title-stack class="ui-bar-title-stack f-row ai-center jc-center">
+	<div class="f-col jc-center ai-start">	
+		<div class="ui-title">{ opts.title || 'NO TITLE!!!' }</div>
+		<div class="ui-subtitle">{ opts.subtitle || 'NO LABEL!!!' }</div>
 	</div>
-</ui-bar-subtitle>
+</ui-bar-title-stack>

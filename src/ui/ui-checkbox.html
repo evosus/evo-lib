@@ -1,33 +1,17 @@
 <ui-checkbox onclick="{ check }" checked="{ isChecked }" check="{ check }">
-	<div class="checkbox">
-		<div class="checkbox-icon f-col ai-center jc-center">
+	<div class="ui-checkbox-label">
+		<span>{ opts.label }</span>
+	</div>
+	<div class="ui-checkbox">
+		<div class="ui-checkbox-icon f-col ai-center jc-center">
 			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
 		</div>
-		<div class="checkbox-msg">
+		<div class="ui-checkbox-msg">
 			<span if="{ isChecked }">{ opts.positive }</span>
 			<span if="{ !isChecked }">{ opts.negative }</span>
 		</div>
 	</div>
-	<style scoped>
-		.checkbox {
-			flex:1;
-			position:relative;
-			left:-6px;
-			display:flex;
-			flex-direction:row;
-			align-items:center;
-		}
-		.checkbox-icon {
-			width:2em;
-			height:2em;	
-		}
-		.checkbox-icon > i {
-			font-size:150%;
-		}
-		.checkbox-msg {
-			padding-left:.5em;
-		}
-	</style>
+	<div class="ui-checkbox-message"></div>
 	<script>
 		var self = this;
 		isChecked = false;

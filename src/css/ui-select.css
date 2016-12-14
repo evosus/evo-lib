@@ -1,7 +1,20 @@
 .ui-select {
 	position:relative;
 }
+.ui-select-label {
+	height:1.5em;
+	font-size:.9em;
+	transition:.25s ease-in all;
+}
+.ui-select-message {
+	height:1em;
+	padding:.25em 0 0 0;
+	font-weight:700;
+	font-size:.9em;
+	font-style:italic;
+}
 .ui-select select {
+	cursor:pointer;
 	padding:0;
 	margin:0;
 	border:0;
