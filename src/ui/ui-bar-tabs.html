@@ -1,0 +1,10 @@
+<ui-bar-tabs class="ui-bar-tabs f-row f-one { opts.css }">
+	<div each="{ opts.tabs }" name="{ name }" class="ui-bar-tab f-one f-col { active:activeTab == name }" onclick="{ parent.click }">
+		<div class="ui-bar-tab-top f-one f-col ai-center jc-center">{ name }</div>
+		<div class="ui-bar-tab-underline f-row jc-center"><div class="ui-bar-tab-fill"></div></div>
+	</div>
+	<script>
+		activeTab = opts.active;
+		click(e) { opts.io.trigger(opts.name + ':click',e); }
+	</script>
+</ui-bar-tabs>

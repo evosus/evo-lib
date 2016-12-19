@@ -3,12 +3,9 @@
 		<ui-bar-left>
 			<ui-btn-icon if="{ isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin-off" css="ui-teal" io="{ ui }" />
 			<ui-btn-icon if="{ !isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin" css="ui-teal" io="{ ui }" />
+			<div class="hide-mq-3 pad-dot-25"></div>
 		</ui-bar-left>
-		<div class="f-row f-one">
-			<div class="f-one f-row ai-center jc-center" style="box-sizing:border-box;padding:0em .5em;height:3.5em;opacity:0.75;">Activity</div>
-			<div class="f-one f-row ai-center jc-center" style="box-sizing:border-box;padding:0em .5em;height:3.5em;opacity:0.75;">History</div>
-			<div class="f-one f-row ai-center jc-center" style="box-sizing:border-box;padding:0em .5em;height:3.5em;border-bottom:2px solid #ffffff;font-weight:700;">Search</div>
-		</div>
+		<ui-bar-tabs css="{ f-one }" name="pane_right_tabs" tabs="{ rightPaneTabs }" active="{ activeTab }" io="{ ui }" />
 		<ui-bar-right>
 			<ui-btn-icon name="pane_right_close" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
 		</ui-bar-right>
@@ -35,13 +32,22 @@
 		</ui-bar-right>
 	</ui-bar>
 	<div class="scroll-1 ui-secondary">
-		<div if="{ !filtersOpen }" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+
+		<div if="{ activeTab == 'activity'}" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<h1>So active!</h1>
+		</div>
+
+		<div if="{ activeTab == 'history'}" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<h1>So historic!</h1>
+		</div>
+
+		<div if="{ activeTab == 'search' && !filtersOpen }" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
 			<div class="f-col ai-center" style="opacity:0.15;">
 				<i style="font-size:400%;" class="mdi mdi-magnify"></i>
 				<h1>search</h1>
 			</div>
 		</div>
-		<div if="{ filtersOpen }" class="ui-secondary f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+		<div if="{ activeTab == 'search' && filtersOpen }" class="ui-secondary f-col ai-center jc-center" style="height:100%;overflow:hidden;">
 			<div class="f-col ai-center" style="opacity:0.15;">
 				<i style="font-size:400%;" class="mdi mdi-filter-outline"></i>
 				<h1>filter</h1>
@@ -50,8 +56,14 @@
 	</div>
 	<script>
 		var self = this;
+		activeTab = 'search';
 		isPinned = false;
 		filtersOpen = false;
+		tabClick(e) {
+			console.log("clicked");
+			console.dir(e);
+			self.update();
+		}
 		ui.on('pane_right_search_options_close:click',function() {
 			filtersOpen = false;
 			self.update();
@@ -85,5 +97,14 @@
 			}
 			self.update();
 		});	
+		rightPaneTabs = [
+			{ "name":"activity" },
+			{ "name":"history" },
+			{	"name":"search" }
+		]
+		ui.on('pane_right_tabs:click',function(e) {
+			activeTab = e.item.name;
+			self.update();
+		});
 	</script>
 </ui-pane-right>
