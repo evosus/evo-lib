@@ -2,30 +2,49 @@
   "name": "evo-lib",
   "version": "1.0.0",
   "description": "A collection of RiotJS web-app components created and maintained by Evosus Inc.",
-  "main": "index.js",
+  "engines": {
+    "node": "~4.2"
+  },
+  "main": "./bin/www",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "monitor": "nodemon ./bin/www",
+    "deploy": "gcloud app deploy --project lib-prod && slackcli -t xoxp-2756762780-9320609456-25976903319-f75ea8dc81 -h dev-builds -m 'Deployed updates to Evosus Components Library on App Engine DEV URL: https://lib.evosus.com/' && slackcli -t xoxp-2756762780-9320609456-25976903319-f75ea8dc81 -h dev-service-pro -m 'Deployed updates to Evosus Components Library on App Engine DEV URL: https://lib.evosus.com/'",
+    "appengine": "gcloud app deploy --project lib-prod",
+    "commit-wip": "git add . && git commit . -m 'WIP' && git push"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evosus/evo-compiler.git"
+    "url": "git+https://github.com/evosus/evo-lib.git"
+  },
+  "dependencies": {
+    "connect-livereload": "^0.5.4",
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "mdi": "^1.6.50",
+    "morgan": "^1.7.0",
+    "npm": "^3.9.5",
+    "riot": "^2.4.1",
+    "serve-favicon": "^2.3.0",
+    "tiny-lr": "^0.2.1"
+  },
+  "devDependencies": {
+    "express": "^4.13.4",
+    "mdi": "^1.6.50",
+    "npm": "^3.9.5",
+    "riot": "^2.4.1"
   },
   "keywords": [
     "evosus",
-    "riotjs"
+    "service",
+    "pro",
+    "mvp",
+    "app"
   ],
   "author": "Evosus, Inc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/evosus/evo-compiler/issues"
+    "url": "https://github.com/evosus/evo-lib/issues"
   },
-  "homepage": "https://github.com/evosus/evo-compiler#readme",
-  "dependencies": {
-    "ag-grid": "^6.2.1",
-    "d3": "^4.3.0",
-    "express": "^4.14.0",
-    "less": "^2.7.1",
-    "mdi": "^1.7.22",
-    "riot": "^2.6.5"
-  }
+  "homepage": "https://github.com/evosus/evo-lib#readme"
 }

@@ -1,0 +1,10 @@
+# Copyright 2016, Evosus, Inc.
+# Google App Engine Configuration
+# [START app_yaml]
+runtime: nodejs
+env: flex
+handlers:
+- url: /.*
+  script: IGNORED
+  secure: always
+# [END app_yaml]
