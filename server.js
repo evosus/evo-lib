@@ -4,7 +4,7 @@
 
 var express = require('express');
 var path = require('path');
-/* var logger = require('morgan'); */
+var logger = require('morgan');
 
 // CREATE EXPRESS APP
 var app = express();

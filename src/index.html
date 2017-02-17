@@ -6,72 +6,31 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 		<meta name="msapplication-tap-highlight" content="no">
 		<title>Evosus Library</title>
-		<link href="/css/ui-reset.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-layout.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-flexbox.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-bars.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-buttons.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-checkbox.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-input.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-select.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-side-menu.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-panes.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="/css/ui-theme.css" media="all" rel="stylesheet" type="text/css" />
+		<!-- Material Design Icons !-->
 		<link href="/lib/mdi/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />
-		<!-- Fonts !-->
-		<!-- <link href="https://fonts.googleapis.com/css?family=Raleway:700|Roboto:300,300i,400,400i,700,900" rel="stylesheet"> !-->
+		<!-- Roboto Font !-->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700" rel="stylesheet">
+		<!-- Styles !-->
+		<link href="/css/ui-reset.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-flexbox.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-layout.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="/css/ui-theme.css" media="all" rel="stylesheet" type="text/css" />
 	</head>
 	<body class="ui-secondary-dk">
+		<!-- App Mount !-->
 		<div id="appMount" class="app-mount"></div>
-		<!-- Google Maps !-->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1q_-8UqcEF3s8TSKOP-jGCxVUbYSh688&libraries=drawing"></script>
 		<!-- Riot !-->
 		<script src="/lib/riot/riot+compiler.min.js"></script>
-		<!-- D3 !-->
-		<script src="/lib/d3/build/d3.min.js" charset="utf-8"></script>
-		<!-- AG-Grid !-->
-		<script src="/lib/ag-grid/dist/ag-grid.min.js"></script>
-		<!-- App Templates !-->
-		<script type="riot/tag" src="/app/guide/guide-anchor-scroll.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-breakpoints.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-buttons.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-contents.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-charts.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-flexbox.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-fonts.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-forms.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-layouts.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-layouts-left.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-layouts-right.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-maps.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-svg.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-tables.html"></script>
-		<script type="riot/tag" src="/app/guide/guide-theme.html"></script>
-		<!-- UI Templates !-->
-		<script type="riot/tag" src="/ui/ui-bars.html"></script>
-		<script type="riot/tag" src="/ui/ui-bar-tabs.html"></script>
-		<script type="riot/tag" src="/ui/ui-buttons.html"></script>
-		<script type="riot/tag" src="/ui/ui-checkbox.html"></script>
-		<script type="riot/tag" src="/ui/ui-form-checkbox.html"></script>
-		<script type="riot/tag" src="/ui/ui-form-input.html"></script>
-		<script type="riot/tag" src="/ui/ui-form-select.html"></script>
-		<script type="riot/tag" src="/ui/ui-input.html"></script>
-		<script type="riot/tag" src="/ui/ui-input-search.html"></script>
-		<script type="riot/tag" src="/ui/ui-layouts.html"></script>
-		<script type="riot/tag" src="/ui/ui-panes.html"></script>
-		<script type="riot/tag" src="/ui/ui-pane-left.html"></script>
-		<script type="riot/tag" src="/ui/ui-pane-main.html"></script>
-		<script type="riot/tag" src="/ui/ui-pane-right.html"></script>
-		<script type="riot/tag" src="/ui/ui-select.html"></script>
-		<!-- Form Templates !-->
-		<!-- App Modules !-->
-		<script src="/js/employees-data.js"></script>
-		<script src="/js/map-data.js"></script>
-		<script src="/js/panes.js"></script>
-		<script src="/js/routes.js"></script>
-		<!-- App Mount !-->
+		<script src="/lib/riotcontrol/riotcontrol.js"></script>
+		<script src="/lib/riot-route/dist/route.min.js"></script>
+		<!-- App !-->
+		<script type="riot/tag" src="/app/app.html"></script>
+		<script src="js/io.js"></script>
 		<script>
-			riot.compile(function() { var tags = riot.mount('#appMount','ui-panes');riot.route.start(true); });
+			riot.compile(function() {
+				var tags = riot.mount('#appMount','app');
+				route.start(true);
+			});
 		</script>
 	</body>
 </html>

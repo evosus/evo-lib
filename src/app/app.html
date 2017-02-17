@@ -1,0 +1,138 @@
+<app>
+	<nav-menu css="ui-background" links="{ navLinks }" />
+	<nav-bar css="ui-primary"></nav-bar>
+	<title-bar css="ui-secondary" title="Frontend Library" ></title-bar>
+	<subtitle-bar css="ui-secondary" subtitle="Subtitle"></subtitle-bar>
+	<script>
+		riot.mixin('IO',IO);
+		navLinks =  [
+			{ "name":"Home", "route":"/guide/contents","mdicon":"mdi mdi-home" },
+			{ "name":"Anchor Scroll", "route":"/guide/anchor-scroll","mdicon":"mdi mdi-anchor" },
+			{ "name":"Breakpoints", "route":"/guide/breakpoints","mdicon":"mdi mdi-cellphone-link" },
+			{ "name":"Buttons", "route":"/guide/buttons","mdicon":"mdi mdi-checkbox-multiple-blank" },
+			{ "name":"Charts", "route":"/guide/charts","mdicon":"mdi mdi-chart-pie" },
+			{ "name":"Flexbox", "route":"/guide/flexbox","mdicon":"mdi mdi-image-filter-center-focus" },
+			{ "name":"Fonts", "route":"/guide/fonts","mdicon":"mdi mdi-alphabetical" },
+			{ "name":"Form Elements", "route":"/guide/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
+			{ "name":"Grids", "route":"/guide/tables","mdicon":"mdi mdi-table-large" },
+			{ "name":"Layout Left", "route":"/guide/layout-left","mdicon":"mdi mdi-format-horizontal-align-left" },
+			{ "name":"Layout Right", "route":"/guide/layout-right","mdicon":"mdi mdi-format-horizontal-align-right" },
+			{ "name":"Maps", "route":"/guide/maps","mdicon":"mdi mdi-map" },
+			{ "name":"SVG Image Test", "route":"/guide/svg","mdicon":"mdi mdi-image" },
+			{ "name":"Theme", "route":"/guide/theme","mdicon":"mdi mdi-palette" }
+		];
+	</script>
+</app>
+<nav-menu>
+	<div class="nav-menu { opts.css } { closed: !menu }">
+		<div class="nav-menu-bar f-row ai-center jc-between">
+			<nav-bar-icon mdicon="mdi mdi-close" onclick="{ menuClose }" />
+		</div>
+		<div class="links">
+			<div class="nav-link f-row ai-center jc-start" each="{ navLinks }">
+				<nav-bar-icon mdicon="{ mdicon }" onclick="{ menuClose }" />
+				<h4>{ name }</h4>
+			</div>
+		</div>
+	</div>
+	<style>
+		.nav-menu {
+			position:absolute;
+			z-index:10000;
+			width:20em;
+			height:100vh;
+			top:0;
+			left:0;
+			box-shadow: 1px 0px 3px 2px rgba(0,0,0,0.25);
+			transition:.2s ease-in-out all;
+		}
+		.nav-menu.closed { left:-20em;}
+		.nav-menu-bar { height:3.5em;padding:0em .5em; }
+		.nav-link { padding:0em .5em;cursor:pointer;transition:.2s ease-in-out all; }
+		.nav-link:hover { background:rgba(0,0,0,0.1); }
+		h4 { font-weight:400;margin:0;padding:0em .5em; }
+	</style>
+	<script>
+		this.mixin('IO');
+		var self = this;
+		menu = false;
+		menuClose = function(e) { IO.trigger('NAV_MENU_HIDE',e) };
+		IO.on('NAV_MENU_SHOW',function(e) { menu = true; self.update(); });
+		IO.on('NAV_MENU_HIDE',function(e) { menu = false; self.update(); });
+	</script>
+</nav-menu>
+<nav-bar>
+	<div class="nav-bar f-row ai-center jc-between { opts.css }">
+		<div class="left f-row ai-center">
+			<nav-bar-icon mdicon="mdi mdi-menu" onclick="{ menuOpen }"/>
+			<nav-bar-logo />
+		</div>
+		<div class="right f-row ai-center">
+			<nav-bar-icon mdicon="mdi mdi-magnify" />
+		</div>
+	</div>
+	<style>.nav-bar { height:3.5em;padding:0em .5em; }</style>
+	<script>
+		this.mixin('IO');
+		menuOpen = function(e) { IO.trigger('NAV_MENU_SHOW',e) };
+	</script>
+</nav-bar>
+<nav-bar-icon>
+	<div class="nav-bar-icon f-row ai-center jc-center { opts.css }">
+		<i class="{ opts.mdicon }"></i>
+	</div>
+	<style>
+		.nav-bar-icon {
+			width:2.5em;
+			height:2.5em;
+			border-radius:50%;
+			cursor:pointer;
+			transition:.2s ease-in-out all;
+		}
+		.nav-bar-icon > i { font-size:1.5em; }
+		.nav-bar-icon:hover {
+			box-shadow:0px 1px 3px 2px rgba(0,0,0,0.15);
+		}
+	</style>
+</nav-bar-icon>
+<nav-bar-logo>
+	<div class="svg-resize"><div class="svg-test"></div></div>
+	<style>
+		.svg-test {
+			background-image:url('/img/evosus_logo-mixed-white.svg');
+			background-size:contain;
+			background-repeat:no-repeat;
+			background-position:center center;
+			width:100%;
+			height:100%;
+		}
+		.svg-resize { width:7.5em; height:1.8em; }
+	</style>
+</nav-bar-logo>
+
+<title-bar>
+	<div class="title-bar f-row ai-center jc-between { opts.css }">
+		<div class="left f-row ai-center">
+			<nav-bar-icon mdicon="mdi mdi-arrow-left" />
+			<span class="title"><h1>{ opts.title }</h1></span>
+		</div>
+		<div class="right f-row ai-center">
+			<nav-bar-icon mdicon="mdi mdi-dots-vertical" />
+		</div>
+	</div>
+	<style>
+		.title-bar { height:3.5em;padding:0em .5em; }
+		.title { padding:0em .5em; }
+		h1 { font-size:1em;font-weight:400;margin:0; }
+	</style>
+</title-bar>
+
+<subtitle-bar>
+	<div class="subtitle-bar f-row ai-center { opts.css }">
+		<span class="subtitle"><h2>{ opts.subtitle }</h2></span>
+	</div>
+	<style>
+		.subtitle-bar { height:3em;padding:0em 3.5em; }
+		.subtitle > h2 { font-size:.875em;font-weight:400;margin:0; }
+	</style>
+</subtitle-bar>

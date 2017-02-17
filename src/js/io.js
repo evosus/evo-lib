@@ -1,0 +1,1 @@
+var IO = riot.observable();

@@ -1,261 +1,70 @@
-/* MAIN COLOR THEME */
+/* EVOSUS THEME */
+.ui-primary,.ui-secondary,.ui-accent,.ui-active,.ui-inactive,.ui-valid,.ui-invalid { color:white; }
+.ui-inactive { opacity:0.5; }
+.ui-primary { background:#02708C; }
+.ui-secondary { background:#007F9C; }
+.ui-accent { background:#F09419; }
+.ui-active { background:#2196F3; }
+.ui-inactive { background:transparent; }
+.ui-valid { background:#3F9D2F; }
+.ui-invalid { background:#AD423C; }
+.ui-background { background:#e7e5e2; }
+.fg-primary { color:#6a6b6c; }
+.fg-secondary { color:#8a8b8c; }
+.fg-accent { color:#F09419; }
+.fg-active { color:#2196F3; }
+.fg-inactive { color:lightgray; }
+.fg-valid { color:#3F9D2F; }
+.fg-invalid { color:#AD423C; }
+/* ADDITIONAL COLORS */
 
-/* PRIMARY */
-.ui-primary,
-button.ui-primary.ui-btn,
-button.ui-primary.ui-btn:hover,
-.ui-primary.ui-btn-icon,
-.ui-primary.ui-btn-icon:hover,
-.ui-primary.input,
-.ui-primary.ui-select,
-.ui-primary.ui-select select
-{ background-color:rgb(0,127,156);color:white; }
-/* { background-color:rgb(24,150,136);color:white; } */
-/* { background-color:#6a6b6c;color:white; } */
-
-/* PRIMARY LIGHT */
-.ui-primary-lt,
-button.ui-primary-lt.ui-btn,
-button.ui-primary-lt.ui-btn:hover,
-.ui-primary-lt.ui-btn-icon,
-.ui-primary-lt.ui-btn-icon:hover,
-.ui-primary-lt.ui-input,
-.ui-primary-lt.ui-select,
-.ui-primary-lt.ui-select select
-{ background-color:rgb(2,138,168);color:white; }
-/* { background-color:rgb(64,171,161);color:white; } */
-/* { background:#8a8b8c;color:white; } */
-
-/* PRIMARY DARK */
-.ui-primary-dk,
-button.ui-primary-dk.ui-btn,
-button.ui-primary-dk.ui-btn:hover,
-.ui-primary-dk.ui-btn-icon,
-.ui-primary-dk.ui-btn-icon:hover,
-.ui-primary-dk.ui-input,
-.ui-primary-dk.ui-select,
-.ui-primary-dk.ui-select select
-{ background-color:rgb(12,109,120);color:white; }
-/* { background-color:#5a5b5c;color:white; } */
-
-/* SECONDARY */
-.ui-secondary,
-button.ui-secondary.ui-btn,
-button.ui-secondary.ui-btn:hover,
-.ui-disabled.ui-btn-icon,
-.ui-disabled.ui-btn-icon:hover,
-.ui-secondary.ui-input,
-.ui-secondary.ui-select,
-.ui-secondary.ui-select select
-{ background:#e5e5e2;color:#444444; }
-
-/* SECONDARY LIGHT */
-.ui-secondary-lt,
-button.ui-secondary-lt.ui-btn,
-button.ui-secondary-lt.ui-btn:hover,
-.ui-secondary-lt.ui-btn-icon,
-.ui-secondary-lt.ui-btn-icon:hover,
-.ui-secondary-lt.ui-input,
-.ui-secondary-lt.ui-select,
-.ui-secondary-lt.ui-select select
-{ background:#f5f5f2;color:#444444; }
-
-/* SECONDARY DARK */
-.ui-secondary-dk,
-button.ui-secondary-dk.ui-btn,
-button.ui-secondary-dk.ui-btn:hover,
-.ui-secondary-dk.ui-btn-icon,
-.ui-secondary-dk.ui-btn-icon:hover,
-.ui-secondary-dk.ui-input,
-.ui-secondary-dk.ui-select,
-.ui-secondary-dk.ui-select select
-{ background:#d5d5d2;color:#444444; }
-
-/* DISABLED */
-.ui-disabled,
-button.ui-disabled.ui-btn,
-button.ui-disabled.ui-btn:hover,
-.ui-disabled.ui-btn-icon,
-.ui-disabled.ui-btn-icon:hover,
-.ui-disabled.ui-input,
-.ui-disabled.ui-select,
-.ui-disabled.ui-select select
-{ opacity:0.5;cursor:default;box-shadow:none; }
-
-/* BLUE */
-.ui-blue,
-button.ui-blue.ui-btn,
-button.ui-blue.ui-btn:hover,
-.ui-blue.ui-btn-icon,
-.ui-blue.ui-btn-icon:hover,
-.ui-blue.ui-input,
-.ui-blue.ui-select,
-.ui-blue.ui-select select
-{ background:#0277bd;color:#ffffff; }
-
-/* BLUE LIGHT */
-.ui-blue-lt,
-button.ui-blue-lt.ui-btn,
-button.ui-blue-lt.ui-btn:hover,
-.ui-blue-lt.ui-btn-icon,
-.ui-blue-lt.ui-btn-icon:hover,
-.ui-blue-lt.ui-input,
-.ui-blue-lt.ui-select,
-.ui-blue-lt.ui-select select
-{ background:#0288d1;color:#ffffff; }
-
-/* BLUE DARK */
-.ui-blue-dk,
-button.ui-blue-dk.ui-btn,
-button.ui-blue-dk.ui-btn:hover,
-.ui-blue-dk.ui-btn-icon,
-.ui-blue-dk.ui-btn-icon:hover,
-.ui-blue-dk.ui-input,
-.ui-blue-dk.ui-select,
-.ui-blue-dk.ui-select select
-{ background:#01579b;color:#ffffff; }
-
-/* GRAY */
-.ui-gray,
-button.ui-gray.ui-btn,
-button.ui-gray.ui-btn:hover,
-.ui-gray.ui-btn-icon,
-.ui-gray.ui-btn-icon:hover,
-.ui-gray.ui-input,
-.ui-gray.ui-select,
-.ui-gray.ui-select select
-{ background:#aaaaaa;color:#ffffff; }
-
-/* GRAY LIGHT */
-.ui-gray-lt,
-button.ui-gray-lt.ui-btn,
-button.ui-gray-lt.ui-btn:hover,
-.ui-gray-lt.ui-btn-icon,
-.ui-gray-lt.ui-btn-icon:hover,
-.ui-gray-lt.ui-input,
-.ui-gray-lt.ui-select,
-.ui-gray-lt.ui-select select
-{ background:rgba(0,0,0,0.05);color:#444444; }
-
-/* GRAY DARK */
-.ui-gray-dk,
-button.ui-gray-dk.ui-btn,
-button.ui-gray-dk.ui-btn:hover,
-.ui-gray-dk.ui-btn-icon,
-.ui-gray-dk.ui-btn-icon:hover,
-.ui-gray-dk.ui-input,
-.ui-gray-dk.ui-select,
-.ui-gray-dk.ui-select select
-{ background:#888888;color:#ffffff; }
-
-/* GREEN */
-.ui-green,
-button.ui-green.ui-btn,
-button.ui-green.ui-btn:hover,
-.ui-green.ui-btn-icon,
-.ui-green.ui-btn-icon:hover,
-.ui-green.ui-input,
-.ui-green.ui-select,
-.ui-green.ui-select select
-{ background:#12ba12;color:#ffffff; }
-
-/* YELLOW */
-.ui-yellow,
-button.ui-yellow.ui-btn,
-button.ui-yellow.ui-btn:hover,
-.ui-yellow.ui-btn-icon,
-.ui-yellow.ui-btn-icon:hover,
-.ui-yellow.ui-input,
-.ui-yellow.ui-select,
-.ui-yellow.ui-select select
-{ background:#fbc02d;color:#ffffff; }
-
-/* ORANGE */
-.ui-orange,
-button.ui-orange.ui-btn,
-button.ui-orange.ui-btn:hover,
-.ui-orange.ui-btn-icon,
-.ui-orange.ui-btn-icon:hover,
-.ui-orange.ui-input,
-.ui-orange.ui-select,
-.ui-orange.ui-select select
-{ background:rgba(240,148,25,1);color:#ffffff; }
-
-/* ORANGE LIGHT */
-.ui-orange-lt,
-button.ui-orange-lt.ui-btn,
-button.ui-orange-lt.ui-btn:hover,
-.ui-orange-lt.ui-btn-icon,
-.ui-orange-lt.ui-btn-icon:hover,
-.ui-orange-lt.ui-input,
-.ui-orange-lt.ui-select,
-.ui-orange-lt.ui-select select
-{ background:rgb(255,166,46);color:#ffffff; }
-
-/* RED */
-.ui-red,
-button.ui-red.ui-btn,
-button.ui-red.ui-btn:hover,
-.ui-red.ui-btn-icon,
-.ui-red.ui-btn-icon:hover,
-.ui-red.ui-input,
-.ui-red.ui-select,
-.ui-red.ui-select select
-{ background:#ee5555;color:#ffffff; }
-
-/* TEAL */
-.ui-teal,
-.ui-teal.ui-btn,
-button.ui-teal.ui-btn,
-button.ui-teal.ui-btn:hover,
-.ui-teal.ui-btn-icon,
-.ui-teal.ui-btn-icon:hover,
-.ui-teal.ui-input,
-.ui-teal.ui-select,
-.ui-teal.ui-select select
-{ background-color:rgb(17,151,166);color:white; }
-
-/* TEAL LIGHT */
-.ui-teal-lt,
-.ui-teal-lt.ui-btn,
-button.ui-teal-lt.ui-btn,
-button.ui-teal-lt.ui-btn:hover,
-.ui-teal-lt.ui-btn-icon,
-.ui-teal-lt.ui-btn-icon:hover,
-.ui-teal-lt.ui-input,
-.ui-teal-lt.ui-select,
-.ui-teal-lt.ui-select select
-{ background-color:rgb(19,174,191);color:white; }
-
-/* TEAL-dk */
-.ui-teal-dk,
-.ui-teal-dk.ui-btn,
-button.ui-teal-dk.ui-btn,
-button.ui-teal-dk.ui-btn:hover,
-.ui-teal-dk.ui-btn-icon,
-.ui-teal-dk.ui-btn-icon:hover,
-.ui-teal-dk.ui-input,
-.ui-teal-dk.ui-select,
-.ui-teal-dk.ui-select select
-{ background-color:rgb(14,131,144);color:white; }
-
-/* WHITE */
-.ui-white,
-.ui-white.ui-btn,
-button.ui-white.ui-btn,
-button.ui-white.ui-btn:hover,
-.ui-white.ui-btn-icon,
-.ui-white.ui-btn-icon:hover,
-.ui-white.ui-input,
-.ui-white.ui-select,
-.ui-white.ui-select select
-{ background:#ffffff;color:#444444; }
-
-/* FOREGROUND COLORS */
-.fg-disabled { color:#cccccc; }
-.fg-failure { color:#c62828; }
-.fg-primary { color:dodgerBlue; }
-.fg-success { color:#689f38; }
-
-/* LINKS */
-.ui-link { color:dodgerblue; }
+/* ADDITIONAL COLORS */
+.ui-red, .ui-red-dk, .ui-red-lt, .ui-orange,
+.ui-orange-dk, .ui-orange-lt, .ui-gold,
+.ui-gold-dk, .ui-gold-lt, .ui-green,
+.ui-green-dk, .ui-green-lt, .ui-teal,
+.ui-teal-dk, .ui-teal-lt, .ui-blue,
+.ui-blue-dk, .ui-blue-lt, .ui-purple,
+.ui-purple-dk, .ui-purple-lt { color:white; } 
+.ui-red { background:firebrick; }
+.ui-red-dk { background:darkred; }
+.ui-red-lt { background:tomato; }
+.ui-orange { background:orange; }
+.ui-orange-dk { background:darkorange; }
+.ui-orange-lt { background:sandybrown; }
+.ui-gold { background:goldenrod; }
+.ui-gold-dk { background:darkgoldenrod; }
+.ui-gold-lt { background:burlywood; }
+.ui-green { background:olivedrab; }
+.ui-green-dk { background:darkolivegreen; }
+.ui-green-lt { background:darkkhaki; }
+.ui-teal { background:lightseagreen; }
+.ui-teal-dk { background:darkcyan; }
+.ui-teal-lt { background:mediumaquamarine; }
+.ui-blue { background:royalblue; }
+.ui-blue-dk { background:darkslateblue; }
+.ui-blue-lt { background:dodgerblue; }
+.ui-purple { background:rebeccapurple; }
+.ui-purple-dk { background:indigo; }
+.ui-purple-lt { background:mediumpurple; }
+.fg-red { color:firebrick; }
+.fg-red-dk { color:darkred; }
+.fg-red-lt { color:tomato; }
+.fg-orange { color:orange; }
+.fg-orange-dk { color:darkorange; }
+.fg-orange-lt { color:sandybrown; }
+.fg-gold { color:goldenrod; }
+.fg-gold-dk { color:darkgoldenrod; }
+.fg-gold-lt { color:burlywood; }
+.fg-green { color:olivedrab; }
+.fg-green-dk { color:darkolivegreen; }
+.fg-green-lt { color:darkkhaki; }
+.fg-teal { color:lightseagreen; }
+.fg-teal-dk { color:darkcyan; }
+.fg-teal-lt { color:mediumaquamarine; }
+.fg-blue { color:royalblue; }
+.fg-blue-dk { color:darkslateblue; }
+.fg-blue-lt { color:dodgerblue; }
+.fg-purple { color:rebeccapurple; }
+.fg-purple-dk { color:indigo; }
+.fg-purple-lt { color:mediumpurple; }

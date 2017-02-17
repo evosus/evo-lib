@@ -36,21 +36,23 @@
     "npm": "^3.9.5",
     "postcss-cachify": "^1.3.1",
     "postcss-cli": "^2.6.0",
-    "riot": "^2.4.1",
+    "riot": "^3.2.1",
+    "riot-route": "^3.1.0",
+    "riotcontrol": "0.0.3",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "express": "^4.13.4",
     "mdi": "^1.6.50",
     "npm": "^3.9.5",
-    "riot": "^2.4.1"
+    "riot": "^3.2.1",
+    "riot-route": "^3.1.0",
+    "riotcontrol": "0.0.3"
   },
   "keywords": [
-    "evosus",
-    "service",
-    "pro",
-    "mvp",
-    "app"
+    "Evosus",
+    "UI",
+    "Library"
   ],
   "author": "Evosus, Inc",
   "license": "ISC",
