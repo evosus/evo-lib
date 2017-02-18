@@ -25,9 +25,12 @@
 		<script src="/lib/riot-route/dist/route.min.js"></script>
 		<!-- App !-->
 		<script type="riot/tag" src="/app/app.html"></script>
-		<script src="js/io.js"></script>
+		<!-- Static Data !-->
+		<script src="js/static_data.js"></script>
 		<script>
+			var IO = riot.observable();
 			riot.compile(function() {
+				riot.mixin('IO',IO);
 				var tags = riot.mount('#appMount','app');
 				route.start(true);
 			});

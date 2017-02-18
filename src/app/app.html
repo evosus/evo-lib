@@ -1,35 +1,62 @@
 <app>
-	<nav-menu css="ui-background" links="{ navLinks }" />
+	<nav-menu css="ui-background" items="{ navMenuItems }" />
 	<nav-bar css="ui-primary"></nav-bar>
 	<title-bar css="ui-secondary" title="Frontend Library" ></title-bar>
-	<subtitle-bar css="ui-secondary" subtitle="Subtitle"></subtitle-bar>
-	<script>
-		riot.mixin('IO',IO);
-		navLinks =  [
-			{ "name":"Home", "route":"/guide/contents","mdicon":"mdi mdi-home" },
-			{ "name":"Anchor Scroll", "route":"/guide/anchor-scroll","mdicon":"mdi mdi-anchor" },
-			{ "name":"Breakpoints", "route":"/guide/breakpoints","mdicon":"mdi mdi-cellphone-link" },
-			{ "name":"Buttons", "route":"/guide/buttons","mdicon":"mdi mdi-checkbox-multiple-blank" },
-			{ "name":"Charts", "route":"/guide/charts","mdicon":"mdi mdi-chart-pie" },
-			{ "name":"Flexbox", "route":"/guide/flexbox","mdicon":"mdi mdi-image-filter-center-focus" },
-			{ "name":"Fonts", "route":"/guide/fonts","mdicon":"mdi mdi-alphabetical" },
-			{ "name":"Form Elements", "route":"/guide/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
-			{ "name":"Grids", "route":"/guide/tables","mdicon":"mdi mdi-table-large" },
-			{ "name":"Layout Left", "route":"/guide/layout-left","mdicon":"mdi mdi-format-horizontal-align-left" },
-			{ "name":"Layout Right", "route":"/guide/layout-right","mdicon":"mdi mdi-format-horizontal-align-right" },
-			{ "name":"Maps", "route":"/guide/maps","mdicon":"mdi mdi-map" },
-			{ "name":"SVG Image Test", "route":"/guide/svg","mdicon":"mdi mdi-image" },
-			{ "name":"Theme", "route":"/guide/theme","mdicon":"mdi mdi-palette" }
-		];
-	</script>
+	<subtitle-bar css="ui-secondary" subtitle="Nav Subtitle"></subtitle-bar>
+	<tab-bar css="ui-secondary" items="{ tabBarItems }" />
+	<ui-list items="{ uiListItems }" />
 </app>
+<ui-list>
+	<div class="ui-list { opts.css }">
+		<ui-list-subtitle css="ui-disabled" subtitle="List Subtitle" />
+		<div class="ui-list-item f-row" each="{ opts.items }">
+			<div if="{ mdiavatar }" class="left f-col ai-center jc-center">
+				<i class="{ mdiavatar } fg-inactive"></i>
+			</div>
+			<div class="center f-one f-row ai-center">
+				<div class="left f-one f-col ai-start">
+					<div class="top">{ leftTop }</div>
+					<div class="bot">{ leftBot }</div>
+				</div>
+				<div if="{ rightTop || rightBot }" class="right f-one f-col ai-end">
+					<div class="top">{ rightTop }</div>
+					<div class="bot">{ rightBot }</div>
+				</div>
+			</div>
+			<div if="{ mdicon }" class="right f-col ai-center jc-center">
+				<i class="{ mdicon }"></i>
+			</div>
+		</div>
+		<ui-list-subtitle css="ui-disabled" subtitle="List Subtitle" />
+	</div>
+	<style>
+		.ui-list-item { cursor:pointer;height:4em;padding:0em .5em;border-bottom:1px solid #e7e5e2;transition:.2s ease-in-out all; }
+		.ui-list-item:hover { background:rgba(0,0,0,0.05); }
+		.left { padding:0em .5em; }
+		.left i { font-size:2.5em; }
+		.center { padding:0em .5em 0em 0em; }
+		.center > .left > .bot,
+		.center > .right > .bot { font-size:0.8175em;margin:.25em 0em 0em 0em;opacity:0.6; }
+		.ui-list-item > .right { padding:.5em; }
+		.ui-list-item > .right i { font-size:1.25em; }
+	</style>
+</ui-list>
+<ui-list-subtitle>
+	<div class="ui-list-subtitle f-row ai-center { opts.css }">
+		<span if="{ opts.subtitle }" class="subtitle"><h2>{ opts.subtitle }</h2></span>
+	</div>
+	<style>
+		.ui-list-subtitle { height:3em;padding:0em 1em; }
+		.subtitle > h2 { font-size:.8175em;font-weight:700;margin:0;opacity:0.5; }
+	</style>
+</ui-list-subtitle>
 <nav-menu>
 	<div class="nav-menu { opts.css } { closed: !menu }">
 		<div class="nav-menu-bar f-row ai-center jc-between">
 			<nav-bar-icon mdicon="mdi mdi-close" onclick="{ menuClose }" />
 		</div>
 		<div class="links">
-			<div class="nav-link f-row ai-center jc-start" each="{ navLinks }">
+			<div class="nav-link f-row ai-center jc-start" each="{ opts.items }">
 				<nav-bar-icon mdicon="{ mdicon }" onclick="{ menuClose }" />
 				<h4>{ name }</h4>
 			</div>
@@ -46,7 +73,7 @@
 			box-shadow: 1px 0px 3px 2px rgba(0,0,0,0.25);
 			transition:.2s ease-in-out all;
 		}
-		.nav-menu.closed { left:-20em;}
+		.nav-menu.closed { left:-20em;box-shadow:none; }
 		.nav-menu-bar { height:3.5em;padding:0em .5em; }
 		.nav-link { padding:0em .5em;cursor:pointer;transition:.2s ease-in-out all; }
 		.nav-link:hover { background:rgba(0,0,0,0.1); }
@@ -110,6 +137,23 @@
 	</style>
 </nav-bar-logo>
 
+<tab-bar>
+	<div class="tab-bar f-row ai-stretch { opts.css }">
+		<virtual each="{ tab in opts.items }">
+			<div class="tab { active:tab.active } f-one f-row ai-center jc-center"><h2>{ tab.name }</h2></div>
+		</virtual>
+	</div>
+	<style>
+		.tab-bar { height:3em;padding:0em 1em;box-shadow:0px 3px 3px 1px rgba(0,0,0,0.25); }
+		.tab { border-bottom:2px solid transparent;cursor:pointer;transition:.2s ease-in-out all; }
+		.tab:hover { background:rgba(0,0,0,0.1); }
+		.active { border-bottom:2px solid white;cursor:default; }
+		.tab.active:hover { background:none; }
+		.tab > h2 { font-size:.875em;font-weight:400;margin:0;opacity:0.8; }
+		.tab.active h2 { font-weight:700;opacity:1; }
+	</style>
+</tab-bar>
+
 <title-bar>
 	<div class="title-bar f-row ai-center jc-between { opts.css }">
 		<div class="left f-row ai-center">
@@ -132,7 +176,7 @@
 		<span class="subtitle"><h2>{ opts.subtitle }</h2></span>
 	</div>
 	<style>
-		.subtitle-bar { height:3em;padding:0em 3.5em; }
-		.subtitle > h2 { font-size:.875em;font-weight:400;margin:0; }
+		.subtitle-bar { height:3em;padding:0em 1em 0em 3.5em; }
+		.subtitle > h2 { font-size:.8175em;font-weight:700;margin:0;opacity:0.5; }
 	</style>
 </subtitle-bar>
