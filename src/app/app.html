@@ -8,7 +8,14 @@
 		<ui-list items="{ uiListItems }" />
 	</div>
 	<div if="{ activeTab == 'Tab Two' }" style="height:calc(100vh - 13em);overflow:auto;">	
-		Tab Two
+		<div class="pad-1">
+			<h1>Tab Two</h1>
+			<div class="pad-1"></div>
+			<form novalidate>
+				<form-checkbox name="FORM CHECKBOX A" label="Form Checkbox" positive="yes" negative="no" />
+				<form-checkbox name="FORM CHECKBOX B" label="Form Checkbox" positive="yes" negative="no" />
+			</form>
+		</div>
 	</div>
 	<div if="{ activeTab == 'Tab Three' }" style="height:calc(100vh - 13em);overflow:auto;">	
 		Tab Three

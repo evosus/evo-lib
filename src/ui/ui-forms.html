@@ -1,11 +1,11 @@
 <!--
 FORM CHECKBOX
 !-->
-<form-checkbox onclick="{ check }" checked="{ isChecked }" check="{ check }">
+<form-checkbox onclick="{ check }" checked="{ isChecked }">
 	<div class="checkbox-label">
 		<span>{ opts.label }</span>
 	</div>
-	<div class="checkbox">
+	<div class="checkbox f-one f-row ai-center">
 		<div class="checkbox-icon f-col ai-center jc-center">
 			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
 		</div>
@@ -15,12 +15,30 @@ FORM CHECKBOX
 		</div>
 	</div>
 	<div class="checkbox-message"></div>
+	<style>
+		.checkbox { position:relative;left:-6px; }
+		.checkbox-label { height:1.5em;font-size:.9em;transition:.25s ease-in all; }
+		.checkbox-message {
+			height:1em;
+			padding:.25em 0 0 0;
+			font-weight:700;
+			font-size:.9em;
+			font-style:italic;
+		}
+		.checkbox-icon { width:2em;height:2em;}
+		.checkbox-icon > i { font-size:150%; }
+		.checkbox-msg { padding-left:.5em; }
+	</style>
 	<script>
 		var self = this;
 		isChecked = false;
-		check() { isChecked ? opts.io.trigger(opts.name + ':uncheck') : opts.io.trigger(opts.name + ':check'); }
-		opts.io.on(opts.name + ':check',function() { isChecked = true; self.update(); });
-		opts.io.on(opts.name + ':uncheck',function() { isChecked = false; self.update(); });
+		check(e) { IO.trigger('FORM_CHECKBOX_CLICKED',{ name:opts.name||'unnamed',event:e }); }
+		IO.on('FORM_CHECKBOX_CLICKED',function(obj) {
+			if(opts.name == obj.name) {
+				isChecked ? isChecked = false : isChecked = true;
+				self.update();
+			}
+		});
 	</script>
 </form-checkbox>
 <!--
