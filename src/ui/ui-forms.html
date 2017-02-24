@@ -1,5 +1,33 @@
-<ui-form-input value="{ field.value }"
-	class="ui-input {
+<!--
+FORM CHECKBOX
+!-->
+<form-checkbox onclick="{ check }" checked="{ isChecked }" check="{ check }">
+	<div class="checkbox-label">
+		<span>{ opts.label }</span>
+	</div>
+	<div class="checkbox">
+		<div class="checkbox-icon f-col ai-center jc-center">
+			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
+		</div>
+		<div class="checkbox-msg">
+			<span if="{ isChecked }">{ opts.positive }</span>
+			<span if="{ !isChecked }">{ opts.negative }</span>
+		</div>
+	</div>
+	<div class="checkbox-message"></div>
+	<script>
+		var self = this;
+		isChecked = false;
+		check() { isChecked ? opts.io.trigger(opts.name + ':uncheck') : opts.io.trigger(opts.name + ':check'); }
+		opts.io.on(opts.name + ':check',function() { isChecked = true; self.update(); });
+		opts.io.on(opts.name + ':uncheck',function() { isChecked = false; self.update(); });
+	</script>
+</form-checkbox>
+<!--
+FORM INPUT
+!-->
+<form-input value="{ field.value }"
+	class="input {
 		locked:opts.css == 'locked',
 		touched:field.value.length && !isFocused,
 		focus:isFocused,
@@ -7,12 +35,12 @@
 		invalid:isInvalid,
 		invalid-focus:isFocused && isInvalid
 	}">
-	<div class="ui-input-label">
+	<div class="input-label">
 		<span>{ opts.label }</span>
 		<i if="{ isTouched }" class="{ mdi:1, mdi-check:isValid, mdi-block-helper:isInvalid }"></i>
 	</div>
-	<div class="ui-input-stack f-row">
-		<div class="ui-input-row f-row ai-center">
+	<div class="input-stack f-row">
+		<div class="input-row f-row ai-center">
 			<input name="field"
 				class="f-one"
 				type="{ opts.type || 'text' }"
@@ -24,9 +52,9 @@
 			/>
 			<i class="mdi { mdi-check:isValid,mdi-alert-circle-outline:isInvalid,mdi-pencil:isFocused && !isInvalid && !isValid }"></i>
 		</div>
-		<div class="ui-input-fill"></div>
+		<div class="input-fill"></div>
 	</div>
-	<div class="ui-input-message fg-failure">
+	<div class="input-message fg-failure">
 		<span if="{ msg }" >{ msg }</span>
 	</div>
 	<script>
@@ -105,4 +133,52 @@
 			self.update();
 		});
 	</script>
-</ui-form-input>
+</form-input>
+<!--
+FORM SELECT
+!-->
+<form-select idx="{ this.htmlselect.selectedIndex }">
+	<div class="select-label">
+		<span>{ opts.label }</span>
+	</div>
+	<div class="select f-row ai-center { opts.css }">
+		<div if="{ opts.mdicon }" class="input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
+		<select id="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
+			<option each="{ opts.options }" selected="{ index == selected }">{ label }</option>
+		</select>
+		<i class="mdi mdi-chevron-down"></i>
+		<div class="select-fill"></div>
+	</div>
+	<div class="select-message"></div>
+	<script>
+		var self = this;
+		isOpen = false;
+		this.on('mount',function() {
+			// --------------------------------------
+			// SET Selected Item
+			// --------------------------------------
+			if(!opts.selection) {
+				this.htmlselect.selectedIndex = 0;
+					if(opts.options[0].mdicon) { mdicon = opts.options[0].mdicon; }
+					if(opts.options[0].svgclass) { mdicon = opts.options[0].svgclass; }
+			} else {
+				var len = opts.options.length;
+				for(i = 0; i < len; i++) {
+					if(opts.options[i].label == opts.selection) {
+						this.htmlselect.selectedIndex = i;
+						if(opts.options[i].mdicon) { mdicon = opts.options[i].mdicon; }
+						if(opts.options[i].svgclass) { mdicon = opts.options[i].svgclass; }
+					}
+				}
+			}
+		});
+		blur() { isFocused = false;self.update(); }
+		focus() { isOpen = true;self.update(); }
+		change(e) {
+			isOpen = false;
+			opts.io.trigger(opts.name + ':change',e);
+			htmlselect.blur();
+			self.update();
+		}
+	</script>
+</form-select>

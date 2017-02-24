@@ -21,9 +21,9 @@ var navMenuItems =  [
 ];
 /** Tab Bar Items */
 var tabBarItems = [
-	{ "name":"Tab One","active":true },
-	{ "name":"Tab Two","active":false },
-	{ "name":"Tab Three","active":false }
+	{ "name":"Tab One" },
+	{ "name":"Tab Two" },
+	{ "name":"Tab Three" }
 ]
 /** UI List Items */
 var uiListItems = [
@@ -33,7 +33,8 @@ var uiListItems = [
 		"leftBot":"Subtitle",
 		"rightTop":"Value One",
 		"rightBot":"Subvalue",
-		"mdicon":"mdi mdi-check"
+		"mdicon":"mdi mdi-check",
+		"content":"Lucas ipsum dolor sit amet darth qui-gon solo skywalker mara moff palpatine mandalorians sebulba solo. Watto wedge anakin dooku amidala jabba grievous kessel droid. Hutt jar solo mustafar dantooine moff mustafar. C-3po ponda sidious palpatine palpatine. Antilles padmé skywalker skywalker jawa amidala skywalker. Anakin moff mace solo chewbacca palpatine hutt obi-wan mara. Antilles kenobi darth moff amidala owen tatooine. Darth leia mon darth hutt mothma. Moff aayla organa coruscant. Darth dooku antilles solo kamino lars kenobi hutt."
 	},
 	{
 		"mdiavatar":"mdi mdi-account-circle",
