@@ -3,14 +3,14 @@
 	<nav-bar css="ui-primary"></nav-bar>
 	<title-bar css="ui-secondary" title="Frontend Library" ></title-bar>
 	<subtitle-bar css="ui-secondary" subtitle="Nav Subtitle"></subtitle-bar>
-	<tab-bar css="ui-secondary" items="{ tabBarItems }" active="{ activeTab }" />
-	<div if="{ activeTab == 'Tab One' }" style="height:calc(100vh - 13em);overflow:auto;">	
+	<tab-bar name="TAB-BAR-PARENT" css="ui-secondary" items="{ tabBarItems }" active="{ activeTab }" />
+	<div if="{ activeTab == 'Tab One' }" style="height:calc(100vh - 13em);overflow:auto;">
 		<ui-list items="{ uiListItems }" />
 	</div>
-	<div if="{ activeTab == 'Tab Two' }">	
+	<div if="{ activeTab == 'Tab Two' }" style="height:calc(100vh - 13em);overflow:auto;">	
 		Tab Two
 	</div>
-	<div if="{ activeTab == 'Tab Three' }">	
+	<div if="{ activeTab == 'Tab Three' }" style="height:calc(100vh - 13em);overflow:auto;">	
 		Tab Three
 	</div>
 	<script>
@@ -20,8 +20,8 @@
 			activeTab = "Tab One";
 			self.update();
 		});
-		IO.on('TAB_CLICKED',function(e) {
-			activeTab = e.item.tab.name;
+		IO.on('TAB_BAR_CLICKED',function(obj) {
+			activeTab = obj.event.item.tab.name;
 			self.update();
 		});
 	</script>

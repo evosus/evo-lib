@@ -27,10 +27,9 @@ NAV MENU
 		h4 { font-weight:400;margin:0;padding:0em .5em; }
 	</style>
 	<script>
-		this.mixin('IO');
 		var self = this;
 		menu = false;
-		menuClose = function(e) { IO.trigger('NAV_MENU_HIDE',e) };
+		menuClose = function(e) { IO.trigger('NAV_MENU_HIDE',{name:opts.name||'unnamed',event:e}) };
 		IO.on('NAV_MENU_SHOW',function() { menu = true; self.update(); });
 		IO.on('NAV_MENU_HIDE',function() { menu = false; self.update(); });
 	</script>
@@ -50,8 +49,7 @@ NAV BAR
 	</div>
 	<style>.nav-bar { height:3.5em;padding:0em .5em; }</style>
 	<script>
-		this.mixin('IO');
-		menuOpen = function(e) { IO.trigger('NAV_MENU_SHOW',e) };
+		menuOpen = function(e) { IO.trigger('NAV_MENU_SHOW',{ name:opts.name||'unnamed',event:e }) };
 	</script>
 </nav-bar>
 <!--
@@ -115,7 +113,7 @@ TAB BAR
 	</style>
 	<script>
 		tabClick = function(e) {
-			IO.trigger('TAB_CLICKED',e);
+			IO.trigger('TAB_BAR_CLICKED',{name:opts.name||'unnamed',event:e});
 		}
 	</script>
 </tab-bar>

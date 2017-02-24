@@ -1,0 +1,50 @@
+<!--
+UI LIST
+!-->
+<ui-list>
+	<div class="ui-list { opts.css }">
+		<ui-list-subtitle css="ui-disabled" subtitle="List Subtitle" />
+		<div class="ui-list-item f-row" each="{ opts.items }">
+			<div if="{ mdiavatar }" class="left f-col ai-center jc-center">
+				<i class="{ mdiavatar } fg-inactive"></i>
+			</div>
+			<div class="center f-one f-row ai-center">
+				<div class="left f-one f-col ai-start">
+					<div class="top">{ leftTop }</div>
+					<div class="bot">{ leftBot }</div>
+				</div>
+				<div if="{ rightTop || rightBot }" class="right f-one f-col ai-end">
+					<div class="top">{ rightTop }</div>
+					<div class="bot">{ rightBot }</div>
+				</div>
+			</div>
+			<div if="{ mdicon }" class="right f-col ai-center jc-center">
+				<i class="{ mdicon }"></i>
+			</div>
+		</div>
+		<ui-list-subtitle css="ui-disabled" subtitle="List Subtitle" />
+	</div>
+	<style>
+		.ui-list-item { cursor:pointer;height:4em;padding:0em .5em;border-bottom:1px solid #e7e5e2;transition:.2s ease-in-out all; }
+		.ui-list-item:hover { background:rgba(0,0,0,0.05); }
+		.left { padding:0em .5em; }
+		.left i { font-size:2.5em; }
+		.center { padding:0em .5em 0em 0em; }
+		.center > .left > .bot,
+		.center > .right > .bot { font-size:0.8175em;margin:.25em 0em 0em 0em;opacity:0.6; }
+		.ui-list-item > .right { padding:.5em; }
+		.ui-list-item > .right i { font-size:1.25em; }
+	</style>
+<!--
+UI LIST SUBTITLE
+!-->
+</ui-list>
+<ui-list-subtitle>
+	<div class="ui-list-subtitle f-row ai-center { opts.css }">
+		<span if="{ opts.subtitle }" class="subtitle"><h2>{ opts.subtitle }</h2></span>
+	</div>
+	<style>
+		.ui-list-subtitle { height:3em;padding:0em 1em; }
+		.subtitle > h2 { font-size:.8175em;font-weight:700;margin:0;opacity:0.5; }
+	</style>
+</ui-list-subtitle>
