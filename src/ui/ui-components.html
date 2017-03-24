@@ -3,7 +3,7 @@ UI LIST
 !-->
 <ui-list>
 	<div class="ui-list { opts.css }">
-		<ui-list-subtitle css="ui-disabled" subtitle="List Subtitle" />
+		<ui-list-subtitle css="ui-disabled" subtitle="{ opts.subtitle }" />
 		<div class="ui-list-item f-row" each="{ opts.items }">
 			<div if="{ mdiavatar }" class="left f-col ai-center jc-center">
 				<i class="{ mdiavatar } fg-inactive"></i>
@@ -22,7 +22,6 @@ UI LIST
 				<i class="{ mdicon }"></i>
 			</div>
 		</div>
-		<ui-list-subtitle css="ui-disabled" subtitle="List Subtitle" />
 	</div>
 	<style>
 		.ui-list-item { cursor:pointer;height:4em;padding:0em .5em;border-bottom:1px solid #e7e5e2;transition:.2s ease-in-out all; }
@@ -48,3 +47,67 @@ UI LIST SUBTITLE
 		.subtitle > h2 { font-size:.8175em;font-weight:700;margin:0;opacity:0.5; }
 	</style>
 </ui-list-subtitle>
+<!--
+UI INPUT
+!-->
+<ui-input>
+	<div class="label { fg-valid:isValid,fg-invalid:isInvalid }"><span>{ opts.label }</span></div>
+	<div class="stack f-row">
+		<div class="field f-row ai-center">
+			<input ref="field"
+				name="{ opts.name }"
+				value="{ opts.value }"
+				class="f-one { fg-valid:isValid, fg-invalid:isInvalid }"
+				type="{ opts.type || 'text' }"
+				placeholder="{ opts.placeholder }"
+				onfocus="{ setFocus }"
+				onblur="{ setBlur }"
+			/></input>
+			<i if="{ isValid }" class="mdi mdi-check fg-valid"></i>
+			<i if="{ isInvalid }" class="mdi mdi-block-helper fg-invalid"></i>
+		</div>
+		<div class="{ fill:1,underline:isFocused || refs.field.value.length, ui-active:!isValid && !isInvalid, ui-valid:isValid, ui-invalid:isInvalid }"></div>
+	</div>
+	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
+	<style>
+		i { margin:0em .5em; }
+		.label { font-size:0.875em;padding:.25em 0em; }
+		.message { height:1em; }
+		.message > span { padding:.25em 0em;font-style:italic;font-size:0.875em; }
+		.stack { position:relative;height:2em; }
+		.field { position:absolute;z-index:200;height:2em;width:100%; }
+		.fill { opacity:0.2;position:absolute;z-index:100;height:2em;width:100%;transition:.2s ease-in-out all;bottom:0; }
+		.fill.underline { opacity:1;height:2px;; }
+		input { height:100%;font-size:100%;border:none;background:transparent;padding:0 .5em; }
+	</style>
+	<script>
+		var self = this;
+		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
+		// --------------------------------------
+		// EVENT HANDLERS
+		// --------------------------------------
+		self.setBlur = function(e) { IO.trigger(opts.name + ':blur',e); }
+		self.setFocus = function(e) { IO.trigger(opts.name + ':focus',e); }
+		self.setMessage = function(msg) { if(msg || self.msg) { self.msg = msg; } else { self.msg == null; } self.update(); }
+		// --------------------------------------
+		// EVENT LISTENERS
+		// --------------------------------------
+		IO.on(opts.name + ":blur",function() { self.isFocused = null;self.update(); });
+		IO.on(opts.name + ":focus",function() { self.isFocused = true;self.update(); });
+		IO.on(opts.name + ":valid",function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); });
+		IO.on(opts.name + ":invalid",function(msg) { self.isValid = false;self.isInvalid = true;self.setMessage(msg); });
+		IO.on(opts.name + ":change",function(newValue) { self.refs.field.value = newValue;self.setMessage(); });
+		// --------------------------------------
+		// ON CLEAR
+		// --------------------------------------
+		IO.on(opts.ref + ":clear",function() {
+			self.refs.field.value = '';
+			self.isFocused = null;
+			self.isValid = null;
+			self.isInvalid = null;
+			self.isTouched = null;
+			self.refs.field.blur();
+			self.setMessage();
+		});
+	</script>
+</ui-input>

@@ -62,3 +62,75 @@ var uiListItems = [
 		"leftTop":"Text Only"
 	}
 ]
+var uiDemoList = [
+	{
+		"leftTop":"Lists",
+		"leftBot":"ui-list",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Tab Bar",
+		"leftBot":"ui-tab-bar",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Navigation Menu",
+		"leftBot":"nav-menu",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Navigation Bar",
+		"leftBot":"nav-bar",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Navigation Bar Icon",
+		"leftBot":"nav-bar-icon",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Navigation Bar Logo",
+		"leftBot":"nav-bar-logo",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Title Bar",
+		"leftBot":"title-bar",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Subtitle Bar",
+		"leftBot":"subtitle-bar",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Button",
+		"leftBot":"ui-btn",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Icon Button",
+		"leftBot":"ui-btn-icon",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Checkbox",
+		"leftBot":"ui-checkbox",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Form Checkbox",
+		"leftBot":"form-checkbox",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Form Input",
+		"leftBot":"form-input",
+		"mdicon":"mdi mdi-chevron-right",
+	},
+	{
+		"leftTop":"Form Select Menu",
+		"leftBot":"form-select",
+		"mdicon":"mdi mdi-chevron-right",
+	}
+]
