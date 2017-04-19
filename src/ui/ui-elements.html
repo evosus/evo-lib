@@ -194,29 +194,50 @@ UI BTN ICON
 	</style>
 </ui-btn-icon>
 <!--
-UI CHECKBOX
+UI SELECT
 !-->
-<ui-checkbox onclick="{ check }" checked="{ check }" check="{ check }" class="ui-checkbox">
-	<div class="ui-checkbox-icon f-col ai-center jc-center">
-		<i class="{ mdi:true, mdi-checkbox-marked: check, mdi-checkbox-blank-outline: !check }"></i>
-	</div>
-	<div class="ui-checkbox-msg">
-		<span if="{ check }">{ opts.positive }</span>
-		<span if="{ !check }">{ opts.negative }</span>
-	</div>
-</ui-checkbox>
-<!--
-UI CHECKBOX
-!-->
-<ui-select idx="{ this.htmlselect.selectedIndex }">
+<ui-select>
 	<div class="ui-select f-row ai-center { opts.css }">
-		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center"><i class="{ opts.mdicon } fg-gray-dk"></i></div>
-		<select id="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
+		<div if="{ opts.mdicon }" class="ui-input-icon f-col ai-center jc-center">
+			<i class="{ opts.mdicon } fg-gray-dk"></i>
+		</div>
+		<select ref="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
 			<option each="{ opts.options }" selected="{ index == selected }">{ label }</option>
 		</select>
 		<i class="mdi mdi-chevron-down"></i>
-		<div class="ui-select-fill"></div>
+		<div class="fill"></div>
 	</div>
+	<style>
+		.ui-select { position:relative;background:none; }
+		.ui-select select {
+			cursor:pointer;
+			padding:0;
+			margin:0;
+			border:0;
+			width:100%;
+			height:2em;
+			background:none;
+			font-size:100%;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			text-indent: 1px;
+			text-overflow: '';
+		}
+		.fill {
+			position:absolute;
+			bottom:0;
+			z-index:100;
+			width:100%;
+			height:2px;
+			background:#888888;
+		}
+		.ui-select > i {
+			position:absolute;
+			z-index:100;
+			right:.5em;
+			pointer-events:none;
+		}
+	</style>
 	<script>
 		var self = this;
 		isOpen = false;
@@ -225,14 +246,14 @@ UI CHECKBOX
 			// SET Selected Item
 			// --------------------------------------
 			if(!opts.selection) {
-				this.htmlselect.selectedIndex = 0;
+				self.refs.htmlselect.selectedIndex = 0;
 					if(opts.options[0].mdicon) { mdicon = opts.options[0].mdicon; }
 					if(opts.options[0].svgclass) { mdicon = opts.options[0].svgclass; }
 			} else {
 				var len = opts.options.length;
 				for(i = 0; i < len; i++) {
 					if(opts.options[i].label == opts.selection) {
-						this.htmlselect.selectedIndex = i;
+						self.refs.htmlselect.selectedIndex = i;
 						if(opts.options[i].mdicon) { mdicon = opts.options[i].mdicon; }
 						if(opts.options[i].svgclass) { mdicon = opts.options[i].svgclass; }
 					}
@@ -243,8 +264,8 @@ UI CHECKBOX
 		focus() { isOpen = true;self.update(); }
 		change(e) {
 			isOpen = false;
-			opts.io.trigger(opts.name + ':change',e);
-			htmlselect.blur();
+			IO.trigger(opts.name + ':change',e);
+			self.refs.htmlselect.blur();
 			self.update();
 		}
 	</script>

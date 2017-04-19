@@ -1,4 +1,40 @@
 <!--
+UI CHECKBOX
+!-->
+<ui-checkbox onclick="{ setCheck }" class="ui-checkbox { opts.css }" checked="{ isChecked }">
+	<div class="f-row ai-center">
+		<div if="{ !opts.flip }" class="icon f-col ai-center jc-center">
+			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
+		</div>
+		<div class="label { flipped:opts.flip }">
+			<span if="{ isChecked }">{ opts.positive }</span>
+			<span if="{ !isChecked }">{ opts.negative }</span>
+		</div>
+		<div if="{ opts.flip }" class="ui-checkbox-icon f-col ai-center jc-center">
+			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
+		</div>
+	</div>
+	<style>
+		.icon { width:2em;height:2em;	}
+		.icon > i { font-size:150%; }
+		.label { padding-left:.5em; }
+		.label.flipped { padding-left:0;padding-right:.5em; }
+	</style>
+	<script>
+		var self = this;
+		isChecked = false;
+		self.setCheck = function(e) {
+			self.isChecked ? self.isChecked = false : self.isChecked = true;
+			IO.trigger(opts.name + ':checked',e);
+			self.update();
+		}
+		this.on('mount',function() {
+			self.isChecked = opts.checked || false;
+			self.update();
+		});
+	</script>
+</ui-checkbox>
+<!--
 UI LIST
 !-->
 <ui-list>
@@ -80,13 +116,12 @@ UI LIST SUBTITLE
 <!--
 UI INPUT
 !-->
-<ui-input>
+<ui-input class="ui-input { opts.css }">
 	<div class="label { fg-valid:isValid,fg-invalid:isInvalid }"><span>{ opts.label }</span></div>
 	<div class="stack f-row">
 		<div class="field f-row ai-center">
 			<input ref="field"
 				name="{ opts.name }"
-				value="{ opts.value }"
 				class="f-one { fg-valid:isValid, fg-invalid:isInvalid }"
 				type="{ opts.type || 'text' }"
 				placeholder="{ opts.placeholder }"
@@ -96,7 +131,8 @@ UI INPUT
 			<i if="{ isValid }" class="mdi mdi-check fg-valid"></i>
 			<i if="{ isInvalid }" class="mdi mdi-block-helper fg-invalid"></i>
 		</div>
-		<div class="{ fill:1,underline:isFocused || refs.field.value.length, ui-active:!isValid && !isInvalid, ui-valid:isValid, ui-invalid:isInvalid }"></div>
+		<div if="{ !isValid && !isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length }"></div>
+		<div if="{ isValid && isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
 	</div>
 	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
 	<style>
@@ -123,7 +159,7 @@ UI INPUT
 		// EVENT LISTENERS
 		// --------------------------------------
 		IO.on(opts.name + ":blur",function() { self.isFocused = null;self.update(); });
-		IO.on(opts.name + ":focus",function() { self.isFocused = true;self.update(); });
+		IO.on(opts.name + ":focus",function() { self.refs.field.focus();self.isFocused = true;self.update(); });
 		IO.on(opts.name + ":valid",function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); });
 		IO.on(opts.name + ":invalid",function(msg) { self.isValid = false;self.isInvalid = true;self.setMessage(msg); });
 		IO.on(opts.name + ":change",function(newValue) { self.refs.field.value = newValue;self.setMessage(); });

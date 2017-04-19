@@ -32,14 +32,11 @@
 		<!-- Static Data !-->
 		<script src="js/static_data.js"></script>
 		<!-- App !-->
-		<script type="riot/tag" src="/app/app.html"></script>
-		<script>
-			var IO = riot.observable();
-			riot.compile(function() {
-				riot.mixin('IO',IO);
-				var tags = riot.mount('#appMount','app');
-				route.start(true);
-			});
-		</script>
+		<script type="riot/tag" src="/app/app-template.html"></script>
+		<script type="riot/tag" src="/layout/list-template.html"></script>
+		<!-- SCRIPTS !-->
+		<script src="js/routes.js"></script>
+		<script src="js/mix-global-functions.js"></script>
+		<script src="index.js"></script>
 	</body>
 </html>
