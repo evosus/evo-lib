@@ -1,8 +1,33 @@
 <app-template>
 	<nav-menu css="ui-background" items="{ navMenuItems }" />
-	<nav-bar css="ui-primary"></nav-bar>
-	<div id="rootMount" class="root-mount"></div>
+	<div id="rootBar" class="root-bar { open:isOpen,closed:!isOpen }">
+		<nav-bar css="ui-primary shadow-bar fixedBottom"></nav-bar>
+	</div>
+	<div id="rootMount" class="root-mount scroll-1 { open:isOpen,closed:!isOpen }"></div>
 	<style>
-		.root-mount { height:calc(100vh - 3.5em); }
+		.root-bar { overflow:hidden;transition:.2s ease-in-out all; }
+		.root-bar.open { height:3.5em; }
+		.root-bar.closed { height:0; }
+		.root-mount { transition:.2s ease-in-out all; }
+		.root-mount.open { height:calc(100vh - 3.5em); }
+		.root-mount.closed { height:100vh; }
+		.fixedBottom { position:relative;bottom:0; }
+		
 	</style>
+	<script>
+		var self = this;
+		isOpen = true;
+		this.on('mount',function() {
+			isOpen = true;
+			var ROOT = document.getElementById('rootMount');
+			ROOT.onscroll = function() {
+				if(ROOT.scrollTop < 56) {
+					isOpen = true;					
+				} else {
+					isOpen = false;
+				}
+				self.update();
+			}
+		});
+	</script>
 </app-template>

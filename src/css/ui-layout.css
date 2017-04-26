@@ -36,6 +36,7 @@ p { padding:1em 0 0 0; }
 .rounded { border-radius:.25em; }
 .bordered { border:1px solid rgba(0,0,0,0.15); }
 .shadow { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+.shadow-bar { box-shadow:0 5px 10px rgba(0,0,0,0.25);position:relative;z-index:1000; }
 .shadow-box { box-shadow:0 1px 3px rgba(0,0,0,0.15); }
 /* PADDING */
 .pad-dot-25 { padding:.25em; }
@@ -56,7 +57,7 @@ p { padding:1em 0 0 0; }
 .ta-left { text-align:left; }
 .ta-right { text-align:right; }
 /* CONTAINERS */
-.container-1280 { display:block;min-height:100%;max-width:1280px;margin:0; }
+.container-1280 { display:block;max-width:1280px;margin:0; }
 /* UI-BOX */
 .ui-layout-box { display:block;padding:1em;margin:0em 0em 2em 0em;overflow:hidden; }
 /* UI-CELL */

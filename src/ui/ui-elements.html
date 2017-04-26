@@ -7,8 +7,8 @@ NAV MENU
 			<nav-bar-icon mdicon="mdi mdi-close" onclick="{ menuClose }" />
 		</div>
 		<div class="links">
-			<div class="nav-link f-row ai-center jc-start" each="{ opts.items }">
-				<nav-bar-icon mdicon="{ mdicon }" onclick="{ menuClose }" />
+			<div class="nav-link f-row ai-center jc-start" each="{ opts.items }" route="{ opts.route }" onclick="{ menuClick }">
+				<nav-bar-icon mdicon="{ mdicon }" />
 				<h4>{ name }</h4>
 			</div>
 		</div>
@@ -29,6 +29,7 @@ NAV MENU
 	<script>
 		var self = this;
 		menu = false;
+		menuClick = function(e) { route(e.item.route);console.info("MENU CLICKED!");console.dir(e); }
 		menuClose = function(e) { IO.trigger('NAV_MENU_HIDE',{name:opts.name||'unnamed',event:e}) };
 		IO.on('NAV_MENU_SHOW',function() { menu = true; self.update(); });
 		IO.on('NAV_MENU_HIDE',function() { menu = false; self.update(); });
