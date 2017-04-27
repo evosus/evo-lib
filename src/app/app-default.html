@@ -1,20 +1,67 @@
 <app-default>
-	<div style="position:fixed;width:100%;">
-		<title-bar css="ui-primary shadow-bar" title="Corey Bar"></title-bar>
+	<div class="title-bar-fixed">
+		<title-bar css="ui-secondary shadow-bar" title="Home" mdicon="mdi mdi-home"></title-bar>
 	</div>
-	<div>
-		<div class="container-1280 pad-1-2 ui-white shadow">
-			<div class="pad-2"></div>
-			<h1>EVO-LIB</h1>
-			<h3>Evosus User Interface Library</h4>
+	<div class="title-bar-spacer"></div>
+	<div class="icon-bar-tab f-row ai-center jc-end { expanded:!isExpanded,contracted:isExpanded }" onclick="{ iconBarClick }">
+		<i class="mdi mdi-menu-right"></i>
+	</div>
+	<div class="f-row">
+		<div class="left-bar { expanded:isExpanded,contracted:!isExpanded }">
+			<div class="icon-bar fg-grey-lt pad-dot-5">
+				<nav-bar-icon mdicon="mdi mdi-menu-left" onclick="{ iconBarClick }" />
+				<virtual each="{ iconBarItems }">
+				<nav-bar-icon mdicon="{ mdicon }"/>
+				</virtual>
+			</div>
+		</div>
+		<div class="f-one container-1280 pad-1-2 ui-white shadow">
+			<h1>EVO LIBRE</h1>
+			<span>Evosus User Interface Library</span>
+			<div class="pad-1"></div>
 			<div each="{ uiItems }">
-				<hr class="hr"></hr>
 				<h4>{ name }</h4>
 				<span>{ desc }</span>
+				<hr class="hr"></hr>
 			</div>
 		</div>
 	</div>
+	<style>
+		h1 { font-family:impact; }
+		.title-bar-fixed { position:fixed;width:100%; }
+		.title-bar-spacer { height:3.5em; }
+		.left-bar.expanded { flex:0 0 3.5em; }
+		.left-bar.contracted { height:0;width:0;overflow:hidden; }
+		.left-bar.expanded .icon-bar {
+			position:fixed;
+			height:calc(100vh - 7em);
+			overflow:auto;
+		}
+		.left-bar.contracted .icon-bar { width:0;height:0; }
+		.icon-bar-tab {
+			color:#888888;
+			cursor:pointer;
+			position:fixed;
+			margin-left:-.25em;
+			height:0;
+			width:0;
+			border-right:1.5em solid transparent;
+			border-top:1.5em solid rgba(0,0,0,0.25);
+			border-bottom:1.5em solid transparent;
+		}
+		/*
+		.icon-bar-tab i { font-size:1.5em; }
+		*/
+		.icon-bar-tab.expanded { display:flex; }
+		.icon-bar-tab.contracted { display:none;; }
+	</style>
 	<script>
+		var self = this;
+		isExpanded = true;
+		iconBarClick = function() {
+			isExpanded ? isExpanded = false : isExpanded = true;
+		}
+		iconBarItems = navMenuItems;
 		uiItems = [
 			{ name:"Bars",desc:"Horizontal bars for navigation and content manipulation" },
 			{ name:"Button",desc:"Push it" },
