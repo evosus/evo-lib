@@ -3,10 +3,20 @@ NAV MENU
 !-->
 <nav-menu>
 	<div class="nav-menu { opts.css } { closed: !menu }">
-		<div class="nav-menu-bar f-row ai-center jc-between">
+		<div class="nav-menu-bar f-row ai-center jc-between ui-accent">
 			<nav-bar-icon mdicon="mdi mdi-close" onclick="{ menuClose }" />
 		</div>
+		<div class="nav-menu-bar f-row ai-center ui-accent shadow-bar">
+			<nav-bar-icon mdicon="mdi mdi-account-circle" />
+			<div class="pad-dot-25"></div>
+			<div class="f-col f-one">
+				<span>Joe User</span>
+				<span>Company, Inc.</span>
+			</div>
+			<nav-bar-icon mdicon="mdi mdi-chevron-down" />
+		</div>
 		<div class="links">
+			<div class="pad-dot-5"></div>
 			<div class="nav-link f-row ai-center jc-start" each="{ opts.items }" route="{ opts.route }" onclick="{ menuClick }">
 				<nav-bar-icon mdicon="{ mdicon }" />
 				<h4>{ name }</h4>
@@ -15,10 +25,14 @@ NAV MENU
 	</div>
 	<style>
 		.nav-menu {
-			position:absolute;z-index:10000;
+			position:fixed;z-index:10000;
 			width:19em;height:100vh;top:0;left:0;
 			box-shadow: 1px 0px 3px 2px rgba(0,0,0,0.25);
 			transition:.2s ease-in-out all;
+		}
+		.links {
+			height:calc(100vh - 7em);
+			overflow-y:auto;	
 		}
 		.nav-menu.closed { left:-20em;box-shadow:none; }
 		.nav-menu-bar { height:3.5em;padding:0em .5em; }
@@ -46,6 +60,10 @@ NAV BAR
 		</div>
 		<div class="right f-row ai-center">
 			<nav-bar-icon mdicon="mdi mdi-magnify" />
+<!--
+			<nav-bar-icon mdicon="mdi mdi-history" />
+			<nav-bar-icon mdicon="mdi mdi-comment-text-outline" />
+!-->
 		</div>
 	</div>
 	<style>.nav-bar { height:3.5em;padding:0em .5em; }</style>
@@ -124,18 +142,26 @@ TITLE BAR
 <title-bar>
 	<div class="title-bar f-row ai-center jc-between { opts.css }">
 		<div class="left f-row ai-center">
-			<nav-bar-icon mdicon="{ opts.mdicon }" />
+			<nav-bar-icon show="{ isOpen }" mdicon="{ opts.mdicon }" css="ui-primary" onclick="{ iconClick }" />
+			<nav-bar-icon show="{ !isOpen }" mdicon="{ opts.mdicon }" onclick="{ iconClick }" />
 			<span class="title"><h1>{ opts.title }</h1></span>
 		</div>
 		<div class="right f-row ai-center">
-			<nav-bar-icon mdicon="mdi mdi-dots-vertical" />
 		</div>
 	</div>
 	<style>
+		h1 { font-size:1em;font-weight:400;margin:0; }
 		.title-bar { height:3.5em;padding:0em .5em; }
 		.title { padding:0em .5em; }
-		h1 { font-size:1em;font-weight:400;margin:0; }
+		.nav-bar-icon:hover { box-shadow:none; }
 	</style>
+	<script>
+		isOpen = false;
+		iconClick = function(e) {
+			IO.trigger('ICON_BAR_TOGGLE',e);
+			isOpen ? isOpen = false : isOpen = true;
+		};
+	</script>
 </title-bar>
 <!--
 SUBTITLE BAR

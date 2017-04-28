@@ -2,16 +2,25 @@
 /* EVOSUS THEME */
 .ui-primary,.ui-secondary,.ui-accent,.ui-active,.ui-inactive,.ui-valid,.ui-invalid { color:white; }
 .ui-inactive { opacity:0.5; }
+/*
 .ui-primary { background:#02708C; }
-/* .ui-primary { background:#333333; } */
 .ui-secondary { background:#007F9C; }
+*/
+.ui-primary { background:#333333; }
+.ui-secondary { background:#444444; }
 .ui-accent { background:#F09419; }
 .ui-active { background:#2196F3; }
 .ui-inactive { background:transparent; }
 .ui-valid { background:#3F9D2F; }
 .ui-invalid { background:#AD423C; }
-.ui-background { background:#e7e5e2; } /* .fg-primary { color:#6a6b6c; } */ .fg-primary { color:#02708C; } .fg-secondary { color:#8a8b8c; }
+.ui-background { background:#e7e5e2; } /* .fg-primary { color:#6a6b6c; } */
 .ui-white { background:white; }
+/*
+.fg-primary { color:#02708C; }
+.fg-secondary { color:#8a8b8c; }
+*/
+.fg-primary { color:#333333; }
+.fg-secondary { color:#444444; }
 .fg-white { color:white; }
 .fg-accent { color:#F09419; }
 .fg-active { color:#2196F3; }
