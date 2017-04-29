@@ -1,17 +1,254 @@
 <app-default>
-	<div class="title-bar-fixed">
-		<title-bar css="ui-secondary shadow-bar" title="Home" mdicon="mdi mdi-home"></title-bar>
-	</div>
+	<title-bar css="ui-secondary shadow-bar title-bar-fixed" title="Home" mdicon="mdi mdi-home"></title-bar>
 	<div class="title-bar-spacer"></div>
-	<div class="f-row">
+	<div class="f-row" style="height:calc(100vh - 8em);">
+
 		<div class="side-bar { expanded:isExpanded,contracted:!isExpanded }">
 			<div class="icon-bar fg-grey-lt pad-dot-5">
-				<virtual each="{ iconBarItems }">
-				<nav-bar-icon mdicon="{ mdicon }"/>
-				</virtual>
+				<nav-bar-icon mdicon="{ mdicon }" each="{ iconBarItems }" /></nav-bar-icon>
 			</div>
 		</div>
-		<div class="f-one container-1280 pad-1-2 ui-white shadow">
+
+		<div class="f-one flex-1280 pad-dot-5 ui-white shadow">
+			<h1 class="pad-dot-5">UI Layouts</h1>
+			<div class="f-row f-wrap">
+
+				<div class="layout-item pad-dot-5">
+					<div class="pad-dot-5">
+						<h3>Full Screen</h3>
+						<span>Lorem ipsum dolar sit amet.</span>
+					</div>
+					<div class="f-row">
+						<div class="pad-dot-5">
+							<table>
+								<tr><td></td><td></td><td>
+								<tr><td></td><td></td><td>
+								<tr><td></td><td></td><td>
+								<tr><td></td><td></td><td>
+								<tr><td></td><td></td><td>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="layout-item pad-dot-5">
+					<div class="pad-dot-5">
+						<h3>Global Navigation</h3>
+						<span>Lorem ipsum dolar sit amet.</span>
+					</div>
+					<div class="f-row">
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="layout-item pad-dot-5">
+					<div class="pad-dot-5">
+						<h3>Main Menu</h3>
+						<span>Lorem ipsum dolar sit amet.</span>
+					</div>
+					<div class="f-row">
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-close"></i></td><td></td><td></td></tr>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-account-circle"></i></td><td></td><td><i class="mdi mdi-chevron-down"></i></td></tr>
+								<tr class="ui-background"><td></td><td></td><td></td></tr>
+								<tr class="ui-background"><td></td><td></td><td></td></tr>
+								<tr class="ui-background"><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-close"></i></td><td></td><td></td><td class="ui-grey"></td><td class="ui-grey"><i class="mdi mdi-magnify fg-grey-lt"></i></td></tr>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-account-circle"></i></td><td></td><td><i class="mdi mdi-chevron-down"></i></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-close"></i></td><td></td><td></td><td class="ui-grey"></td><td class="ui-grey"></td><td class="ui-grey"></td><td class="ui-grey"></td><td class="ui-grey"></td><td class="ui-grey"></td><td class="ui-grey"><i class="mdi mdi-magnify fg-grey-lt"></i></td></tr>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-account-circle"></i></td><td></td><td><i class="mdi mdi-chevron-down"></i></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-background"></td><td class="ui-background"></td><td class="ui-background"></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="layout-item pad-dot-5">
+					<div class="pad-dot-5">
+						<h3>Module Navigation</h3>
+						<span>Lorem ipsum dolar sit amet.</span>
+					</div>
+					<div class="f-row">
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu-down"></i></td><td></td><td><i class="mdi mdi-dots-vertical"></i></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu-down"></i></td><td></td><td></td><td></td><td><i class="mdi mdi-dots-vertical"></i></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu-down"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="mdi mdi-dots-vertical"></i></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="ui-grey-lt"><i class="mdi mdi-menu-right"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="layout-item pad-dot-5">
+					<div class="pad-dot-5">
+						<h3>Subscreen Navigation</h3>
+						<span>Lorem ipsum dolar sit amet.</span>
+					</div>
+					<div class="f-row">
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-arrow-left"></i></td><td></td><td><i class="mdi mdi-dots-vertical"></i></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-arrow-left"></i></td><td></td><td></td><td></td><td><i class="mdi mdi-dots-vertical"></i></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr class="ui-grey-lt"><td><i class="mdi mdi-arrow-left"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="mdi mdi-dots-vertical"></i></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="layout-item pad-dot-5">
+					<div class="pad-dot-5">
+						<h3>Subscreen Tabs</h3>
+						<span>Lorem ipsum dolar sit amet.</span>
+					</div>
+					<div class="f-row">
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr><td></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr><td></td><td></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+						<div class="pad-dot-5">
+							<table>
+								<tr class="ui-grey"><td><i class="mdi mdi-menu"></i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="mdi mdi-magnify"></i></td></tr>
+								<tr><td></td><td></td><td></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td><td class="ui-grey-lt"></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!--
 			<h1>EVO LIBRE</h1>
 			<span>Evosus User Interface Library</span>
 			<div class="pad-1"></div>
@@ -21,8 +258,12 @@
 				<hr class="hr"></hr>
 			</div>
 		</div>
+!-->
 	</div>
 	<style>
+		table { border-collapse:collapse;background:rgba(0,100,255,0.1); }
+		table td { width:1em;height:1em; }
+		.flex-1280 { flex:1;max-width:1280px;margin-left:auto;margin-right:auto;height:100%; }
 		.title-bar-fixed { position:fixed;width:100%; }
 		.title-bar-spacer { height:3.5em; }
 		.side-bar.expanded { flex:0 0 3.5em;height:100vh;overflow:auto; }
@@ -33,6 +274,7 @@
 			overflow:auto;
 		}
 		.side-bar.contracted .icon-bar { width:0;height:0; }
+		.layout-item { flex:0 0 23em; }
 	</style>
 	<script>
 		this.mixin('IO');
