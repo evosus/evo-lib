@@ -1,137 +1,22 @@
 // --------------------------------------
-// GUIDE CONTENTS
-// --------------------------------------
-route('/guide/contents', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-contents');
-	});
-});
-// --------------------------------------
-// GUIDE ANCHOR SCROLL
-// --------------------------------------
-route('/guide/anchor-scroll', function() {
-	console.info("ANCHOR SCROLL ROUTE!");
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-anchor-scroll');
-	});
-});
-// --------------------------------------
-// GUIDE BREAKPOINTS
-// --------------------------------------
-route('/guide/breakpoints', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-breakpoints');
-	});
-});
-// --------------------------------------
-// GUIDE BUTTONS
-// --------------------------------------
-route('/guide/buttons', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-buttons');
-	});
-});
-// --------------------------------------
-// GUIDE CHARTS
-// --------------------------------------
-route('/guide/charts', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-charts');
-	});
-});
-// --------------------------------------
-// GUIDE FLEXBOX
-// --------------------------------------
-route('/guide/flexbox', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-flexbox');
-	});
-});
-// --------------------------------------
-// GUIDE FONTS
-// --------------------------------------
-route('/guide/fonts', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-fonts');
-	});
-});
-// --------------------------------------
-// GUIDE FORMS
-// --------------------------------------
-route('/guide/forms', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-forms');
-	});
-});
-// --------------------------------------
-// GUIDE MAPS
-// --------------------------------------
-route('/guide/maps', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-maps');
-	});
-});
-// --------------------------------------
-// GUIDE TABLES
-// --------------------------------------
-route('/guide/tables', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-tables');
-	});
-});
-// --------------------------------------
 // GUIDE THEME
 // --------------------------------------
-route('/guide/theme', function() {
+route('/theme', function() {
 	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-theme');
+		var name = "Theme";
+		riot.mount('#appMount','app-global-nav',{ title:name });
+		riot.mount('#globalNavMount','app-module-nav',{ title:name,mdicon:"mdi mdi-palette",iconBar:true });
+		riot.mount('#moduleNavMount','guide-theme');
 	});
 });
 // --------------------------------------
-// GUIDE LAYOUT LEFT
+// GUIDE NAVIGATION
 // --------------------------------------
-route('/guide/layout-left', function() {
+route('/navigation', function() {
 	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-layouts-left');
-	});
-});
-// --------------------------------------
-// GUIDE LAYOUT RIGHT
-// --------------------------------------
-route('/guide/layout-right', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-layouts-right');
-	});
-});
-// --------------------------------------
-// GUIDE SVG
-// --------------------------------------
-route('/guide/svg', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-svg');
-	});
-});
-// --------------------------------------
-// GUIDE
-// --------------------------------------
-route('/guide', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','guide-contents');
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav',{ title:"Navigation",mdicon:"mdi mdi-map-marker",iconBar:true });
+		riot.mount('#moduleNavMount','guide-navigation');
 	});
 });
 // --------------------------------------
@@ -141,7 +26,8 @@ route('/guide', function() {
 // --------------------------------------
 route('/', function() {
 	riot.compile(function() {
-		riot.mount('#appMount','app-template');
-		riot.mount('#rootMount','app-default');
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav',{ title:"Home",mdicon:"mdi mdi-home",iconBar:true });
+		riot.mount('#moduleNavMount','app-home');
 	});
 });

@@ -1,50 +1,115 @@
 <guide-theme>
-	<ui-bar css="ui-primary-lt ui-bar-shadow">
-		<ui-bar-left>
-			<ui-btn-icon name="home_icon" mdicon="mdi mdi-palette" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title value="Theme" />
-		</ui-bar-left>
-	</ui-bar>
-	<ui-scroll-2>
-		<ui-container css="shadow-box ui-secondary-lt">
-			<ui-layout-left>
-				<ui-layout-left-sidebar>
-					<ul class="link-list"><li each="{ themeOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
-				</ui-layout-left-sidebar>
-				<ui-layout-left-body>
-					<ui-layout-title id="top" value="Theme" />
-					<ui-layout-subtitle id="uicolors" value="UI Colors" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<div class="pad-dot-5"></div>
-						<ui-bar css="ui-primary"><ui-bar-left><ui-bar-title value="ui-primary" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-primary-lt"><ui-bar-left><ui-bar-title value="ui-primary-lt" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-secondary"><ui-bar-left><ui-bar-title value="ui-secondary" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-secondary-lt"><ui-bar-left><ui-bar-title value="ui-secondary-lt" /></ui-bar-left></ui-bar>
-					</ui-layout-box>
-					<ui-layout-subtitle id="uicolors" value="Palette Colors" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<div class="pad-dot-5"></div>
-						<ui-bar css="ui-gray"><ui-bar-left><ui-bar-title value="ui-gray" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-blue"><ui-bar-left><ui-bar-title value="ui-blue" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-teal"><ui-bar-left><ui-bar-title value="ui-teal" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-green"><ui-bar-left><ui-bar-title value="ui-green" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-yellow"><ui-bar-left><ui-bar-title value="ui-yellow" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-orange"><ui-bar-left><ui-bar-title value="ui-orange" /></ui-bar-left></ui-bar>
-						<ui-bar css="ui-red"><ui-bar-left><ui-bar-title value="ui-red" /></ui-bar-left></ui-bar>
-					</ui-layout-box>
-				</ui-layout-left-body>
-			</ui-layout-left>
-		</ui-container>
-	</ui-scroll-2>
+	<div class="pad-1-2">
+		<h3>Color Theme</h3>
+		<div class="pad-dot-5"></div>
+		<div class="f-row f-wrap">
+			<div each="{ themeColors }" class="swatch pad-dot-5 fg-white { name }">
+				<span>{ name }</span>
+			</div>
+		</div>
+		<div class="pad-dot-5"></div>
+
+		<h3>Background  Colors </h3>
+		<div class="pad-dot-5"></div>
+		<div class="f-row f-wrap">
+			<div each="{ uiColors }" class="swatch pad-dot-5 fg-white { name }">
+				<span>{ name }</span>
+			</div>
+		</div>
+		<div class="pad-dot-5"></div>
+
+		<h3>Palette Colors</h3>
+		<div class="pad-dot-5"></div>
+		<div class="f-row f-wrap">
+			<div class="swatch pad-dot-5 fg-white" each="{ palette }" style="background-color:{ name }">
+				<span>{ name }</span>
+			</div>
+		</div>
+		<div class="pad-dot-5"></div>
+
+		<h3>Foreground Colors </h3>
+		<div class="pad-dot-5"></div>
+		<div class="f-row f-wrap">
+			<div each="{ fgColors }" class="swatch bordered pad-dot-5 { name }">
+				<span>{ name }</span>
+			</div>
+		</div>
+		<div class="pad-dot-5"></div>
+	</div>
+	<style>
+		.swatch { flex:1 0 5em;height:5em; }
+		.swatch.bordered { border:1px solid white;background:rgba(0,0,0,0.1); }
+	</style>
 	<script>
-		themeOptions = [
-			{"label":"UI Colors", "mdicon":"mdi mdi-checkbox-blank-circle-outline"},
-			{"label":"Palette Colors", "mdicon":"mdi mdi-checkbox-blank-circle-outline"}
+		themeColors = [
+			{ name:"ui-primary" },
+			{ name:"ui-secondary" },
+			{ name:"ui-accent" },
+			{ name:"ui-active" },
+			{ name:"ui-valid" },
+			{ name:"ui-invalid" },
+			{ name:"ui-background" },
+			{ name:"ui-white" }
 		]
-		anchorScroll(elementID) {
-			var el = document.getElementById(elementID);
-			el.scrollIntoView({block: "start", behavior: "smooth"});
-		}
-		anchorClick(e) { if(e.item.anchor) { self.anchorScroll(e.item.anchor); } }
+		uiColors = [
+			{ name:"ui-red-dk" },
+			{ name:"ui-red" },
+			{ name:"ui-red-lt" },
+			{ name:"ui-orange-dk" },
+			{ name:"ui-orange" },
+			{ name:"ui-orange-lt" },
+			{ name:"ui-gold-dk" },
+			{ name:"ui-gold" },
+			{ name:"ui-gold-lt" },
+			{ name:"ui-green-dk" },
+			{ name:"ui-green" },
+			{ name:"ui-green-lt" },
+			{ name:"ui-teal-dk" },
+			{ name:"ui-teal" },
+			{ name:"ui-teal-lt" },
+			{ name:"ui-blue-dk" },
+			{ name:"ui-blue" },
+			{ name:"ui-blue-lt" },
+			{ name:"ui-purple-dk" },
+			{ name:"ui-purple" },
+			{ name:"ui-purple-lt" },
+			{ name:"ui-grey-dk" },
+			{ name:"ui-grey" },
+			{ name:"ui-grey-lt" }
+		]
+		fgColors = [
+			{ name:"fg-primary" },
+			{ name:"fg-secondary" },
+			{ name:"fg-accent" },
+			{ name:"fg-active" },
+			{ name:"fg-valid" },
+			{ name:"fg-invalid" },
+			{ name:"fg-background" },
+			{ name:"fg-white" },
+			{ name:"fg-red-dk" },
+			{ name:"fg-red" },
+			{ name:"fg-red-lt" },
+			{ name:"fg-orange-dk" },
+			{ name:"fg-orange" },
+			{ name:"fg-orange-lt" },
+			{ name:"fg-gold-dk" },
+			{ name:"fg-gold" },
+			{ name:"fg-gold-lt" },
+			{ name:"fg-green-dk" },
+			{ name:"fg-green" },
+			{ name:"fg-green-lt" },
+			{ name:"fg-teal-dk" },
+			{ name:"fg-teal" },
+			{ name:"fg-teal-lt" },
+			{ name:"fg-blue-dk" },
+			{ name:"fg-blue" },
+			{ name:"fg-blue-lt" },
+			{ name:"fg-purple-dk" },
+			{ name:"fg-purple" },
+			{ name:"fg-purple-lt" },
+			{ name:"fg-grey-dk" },
+			{ name:"fg-grey" },
+			{ name:"fg-grey-lt" }
+		]
 	</script>
 </guide-theme>

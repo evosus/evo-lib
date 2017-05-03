@@ -34,6 +34,8 @@ p { padding:1em 0 0 0; }
 .scroll-horizontal { overflow-x:auto;overflow-y:hidden; }
 .scroll-vertical { overflow-x:hidden;overflow-y:auto; }
 .rounded { border-radius:.25em; }
+.noshadow { box-shadow:none!important; }
+.noshadow:hover { box-shadow:none!important; }
 .bordered { border:1px solid rgba(0,0,0,0.15); }
 .shadow { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
 .shadow-bar { box-shadow:0 5px 10px rgba(0,0,0,0.25);position:relative;z-index:1000; }

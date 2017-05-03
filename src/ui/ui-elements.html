@@ -88,7 +88,7 @@ NAV BAR ICON
 		}
 		.nav-bar-icon > i { font-size:1.5em; }
 		.nav-bar-icon:hover {
-			box-shadow:0px 1px 3px 2px rgba(0,0,0,0.15);
+			box-shadow:0px 2px 3px 2px rgba(0,0,0,0.15);
 		}
 	</style>
 </nav-bar-icon>
@@ -158,8 +158,8 @@ TITLE BAR
 	<script>
 		isOpen = false;
 		iconClick = function(e) {
-			IO.trigger('ICON_BAR_TOGGLE',e);
 			isOpen ? isOpen = false : isOpen = true;
+			RiotControl.trigger('UI_SET_ICON_BAR',isOpen);
 		};
 	</script>
 </title-bar>
@@ -297,3 +297,6 @@ UI SELECT
 		}
 	</script>
 </ui-select>
+<ui-spinner>
+	<h1>LOADING</h1>
+</ui-spinner>
