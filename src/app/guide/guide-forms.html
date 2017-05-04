@@ -1,4 +1,36 @@
 <guide-forms>
+	<div class="pad-1-2">
+		<h1>Forms</h1>
+		<form novalidate>
+			<div class="f-row">
+				<div class="pad-dot-5">
+					<ui-checkbox name="FORM CHECKBOX A" label="Form Checkbox" positive="yes" negative="no" checked="true" css="ui-red" />
+				</div>
+				<div class="pad-dot-5">
+					<ui-checkbox name="FORM CHECKBOX B" label="Form Checkbox" positive="yes" negative="no" css="ui-green" />
+				</div>
+				<div class="pad-dot-5">
+					<ui-checkbox name="FORM CHECKBOX C" label="Form Checkbox" positive="yes" negative="no" css="ui-blue" />
+				</div>
+				<div class="pad-dot-5">
+					<ui-checkbox name="FORM CHECKBOX D" label="Form Checkbox" positive="yes" negative="no" css="ui-purple" />
+				</div>
+			</div>
+			<div class="pad-dot-5">
+				<ui-input name="FORM INPUT A" label="UI Input" css="ui-red" />
+				<ui-input name="FORM INPUT B" label="UI Input" css="ui-green" />
+				<ui-input name="FORM INPUT C" label="UI Input" css="ui-blue" />
+				<ui-input name="FORM INPUT D" label="UI Input" css="ui-purple" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-select name="test_select_a" selection="{ uiSelectValueA }" options="{ uiSelectOptions }" css="ui-red" />
+				<ui-select name="test_select_b" selection="{ uiSelectValueB }" options="{ uiSelectOptions }" css="ui-green" />
+				<ui-select name="test_select_c" selection="{ uiSelectValueC }" options="{ uiSelectOptions }" css="ui-blue" />
+				<ui-select name="test_select_d" selection="{ uiSelectValueD }" options="{ uiSelectOptions }" css="ui-purple" />
+			</div>
+		</form>
+	</div>
+<!--
 	<ui-bar css="ui-primary-lt ui-bar-shadow">
 		<ui-bar-left>
 			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-marked" css="ui-primary-lt" io="{ ui }" />
@@ -60,8 +92,20 @@
 			</ui-layout-left>
 		</ui-container>
 	</ui-scroll-2>
+!-->
 	<script>
 		var self = this;
+		ui = riot.observable();
+		// --------------------------------------
+		// ON MOUNT
+		// --------------------------------------
+		this.on('mount',function() {
+			var newState = {
+				mdicon:"mdi mdi-checkbox-multiple-marked",
+				title:"Forms",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
 		uiSelectValueA = 'Option A';
 		uiSelectValueB = 'Option B';
 		uiSelectValueC = 'Option C';

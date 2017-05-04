@@ -1,12 +1,37 @@
 // --------------------------------------
-// GUIDE THEME
+// IMPORTANT: The '/' route MUST be LAST
 // --------------------------------------
-route('/theme', function() {
+// It is assigned to GUIDE HOME
+// --------------------------------------
+// ROUTES
+// --------------------------------------
+// GUIDE BREAKPOINTS
+// --------------------------------------
+route('/breakpoints', function() {
 	riot.compile(function() {
-		var name = "Theme";
-		riot.mount('#appMount','app-global-nav',{ title:name });
-		riot.mount('#globalNavMount','app-module-nav',{ title:name,mdicon:"mdi mdi-palette",iconBar:true });
-		riot.mount('#moduleNavMount','guide-theme');
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#moduleNavMount','guide-breakpoints');
+	});
+});
+// --------------------------------------
+// GUIDE FORMS
+// --------------------------------------
+route('/forms', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#moduleNavMount','guide-forms');
+	});
+});
+// --------------------------------------
+// GUIDE LISTS
+// --------------------------------------
+route('/list', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#moduleNavMount','guide-list');
 	});
 });
 // --------------------------------------
@@ -15,19 +40,27 @@ route('/theme', function() {
 route('/navigation', function() {
 	riot.compile(function() {
 		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav',{ title:"Navigation",mdicon:"mdi mdi-map-marker",iconBar:true });
+		riot.mount('#globalNavMount','app-module-nav');
 		riot.mount('#moduleNavMount','guide-navigation');
 	});
 });
 // --------------------------------------
-// DEFAULT ROUTE
+// GUIDE THEME
 // --------------------------------------
-// IMPORTANT: The '/' route MUST be LAST
+route('/theme', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#moduleNavMount','guide-theme');
+	});
+});
+// --------------------------------------
+// GUIDE HOME !!! DEFAULT ROUTE !!!
 // --------------------------------------
 route('/', function() {
 	riot.compile(function() {
 		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav',{ title:"Home",mdicon:"mdi mdi-home",iconBar:true });
-		riot.mount('#moduleNavMount','app-home');
+		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#moduleNavMount','guide-home');
 	});
 });

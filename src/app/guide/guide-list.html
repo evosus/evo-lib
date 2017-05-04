@@ -1,8 +1,4 @@
-<list-template>
-	<title-bar css="ui-secondary" title="Frontend Library" ></title-bar>
-<!--
-	<subtitle-bar css="ui-secondary" subtitle="Nav Subtitle"></subtitle-bar>
-!-->
+<guide-list>
 	<tab-bar name="TAB-BAR-PARENT" css="ui-secondary" items="{ tabBarItems }" active="{ activeTab }" />
 	<div show="{ activeTab == 'Tab One' }" style="height:calc(100vh - 13em);overflow:auto;">	
 		<div class="pad-1">
@@ -46,8 +42,15 @@
 	</div>
 	<script>
 		var self = this;
+		activeTab = "Tab One";
+		// --------------------------------------
+		// MOUNT
+		// --------------------------------------
 		this.on('mount',function() {
-			activeTab = "Tab One";
+			RiotControl.trigger('UI_SET_STATE',{ tab:activeTab });
+		});
+		RiotControl.on('UI_STATE_CHANGED',function(state) {
+			activeTab = state.tab;
 			self.update();
 		});
 		IO.on('TAB_BAR_CLICKED',function(obj) {
@@ -65,4 +68,4 @@
 			{"label":"Option D", "mdicon":"mdi mdi-checkbox-blank-circle-outline"}
 		]
 	</script>
-</list-template>
+</guide-list>

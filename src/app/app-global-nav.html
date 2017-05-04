@@ -1,9 +1,9 @@
 <app-global-nav>
 	<nav-menu css="ui-background" items="{ navMenuItems }" />
-	<div id="rootBar" class="root-bar { expand:isExpanded,contract:!isExpanded }">
+	<div id="rootBar" class="root-bar { expand:isVisible,contract:!isVisible }">
 		<nav-bar css="ui-primary"></nav-bar>
 	</div>
-	<div id="globalNavMount" class="root-mount scroll-1 { expand:isExpanded,contract:!isExpanded }"></div>
+	<div id="globalNavMount" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }"></div>
 	<style>
 		.root-bar,
 		.root-mount,
@@ -19,7 +19,7 @@
 	<script>
 		// VARIABLES
 		var self = this;
-		isExpanded = true;
+		isVisible = true;
 		// --------------------------------------
 		// ON MOUNT
 		// --------------------------------------
@@ -31,8 +31,7 @@
 			// HANDLE scroll event
 			SCROLLER.onscroll = function() {
 				// IF element has scrolled less than nav-bar height (3.5em = 56px)
-				SCROLLER.scrollTop < 56 ? isExpanded = true : isExpanded = false;
-				self.update();
+				SCROLLER.scrollTop < 56 ? isVisible = true : isVisible = false;
 			}
 		});
 	</script>

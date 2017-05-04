@@ -1,34 +1,45 @@
 <guide-breakpoints>
-	<ui-bar css="ui-primary-lt ui-bar-shadow">
-		<ui-bar-left>
-			<ui-btn-icon name="home_icon" mdicon="mdi mdi-cellphone-link" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title value="Breakpoints" />
-		</ui-bar-left>
-	</ui-bar>
-	<ui-scroll-2>
-		<ui-container css="ui-secondary-lt pad-1-2">
-			<ui-layout-title value="Breakpoints" />
-			<ui-layout-subtitle value="Small Devices" />
-			<div class="test768"><div class="pad-dot-5">768 pixels</div></div>
-			Phones, and mini tablets, with at least 768 pixels emulated screen width.
-			<div class="pad-1"></div>
-			<ui-layout-subtitle value="Medium Devices" />
-			<div class="test992"><div class="pad-dot-5">992 pixels</div></div>
-			Tablets, with at least  992 pixels emulated screen width.
-			<div class="pad-1"></div>
-			<ui-layout-subtitle value="Large Devices" />
-			<div class="test1200"><div class="pad-dot-5">1200 pixels</div></div>
-			Desktop, with at least 1200 pixels emulated screen width.
-			<div class="pad-1"></div>
-			<ui-layout-subtitle value="More Information" />
+	<div class="scroll-horizontal">
+		<div class="pad-1-2">
+			<h1>Breakpoints</h1>
+		</div>
+		<div class="pad-1-2">
+			<h3>Small Devices</h3>
+			<span>Phones, and mini tablets, with at least 768 pixels emulated screen width.</span>
+		</div>
+		<div class="test768"><div class="pad-dot-5">768 pixels</div></div>
+		<div class="pad-1-2">
+			<h3>Medium Devices</h3>
+			<span>Tablets, with at least  992 pixels emulated screen width.</span>
+		</div>
+		<div class="test992"><div class="pad-dot-5">992 pixels</div></div>
+		<div class="pad-1-2">
+			<h3>Large Devices</h3>
+			<span>Desktop, with at least 1200 pixels emulated screen width.</span>
+		</div>
+		<div class="test1200"><div class="pad-dot-5">1200 pixels</div></div>
+		<div class="pad-1-2">
+			<h3>More Information</h3>
 			Breakpoint measurements are based on <a class="ui-link" href="http://getbootstrap.com/css/#grid-media-queries">Twitter Bootstrap</a>.
-		</ui-container>
-	</ui-scroll-2>
-	<style scoped>
+		</div>
+	</div>
+	<style>
 		.test768,.test992,.test1200 { padding:.25em 0em;color:#ffffff;margin-bottom:1em; }
 		.test768 { width:768px;background:rgba(0,255,0,0.5); }
 		.test992 { width:992px;background:rgba(0,255,0,0.75); }
 		.test1200 { width:1200px;background:rgba(0,255,0,1); }
-		.test-flex { background:purple;color:#ffffff; }
+		.scroll-horizontal { overflow-y:auto; }
 	</style>
+	<script>
+		// --------------------------------------
+		// ON MOUNT
+		// --------------------------------------
+		this.on('mount',function() {
+			var newState = {
+				mdicon:"mdi mdi-cellphone-link",
+				title:"Breakpoints",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
+	</script>
 </guide-breakpoints>

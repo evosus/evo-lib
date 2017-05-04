@@ -1,6 +1,6 @@
 <app-module-nav>
 	<title-bar
-		css="ui-secondary shadow-bar title-bar-fixed"
+		css="ui-primary shadow-bar title-bar-fixed"
 		title="{ title }"
 		iconbar="{ isExpanded }"
 		mdicon="{ mdicon }">
@@ -12,8 +12,8 @@
 				<virtual each="{ iconBarItems }">
 					<nav-bar-icon
 						css="{ 
-							fg-primary:name == parent.opts.title,
-							noshadow:name == parent.opts.title
+							fg-primary:name == title,
+							noshadow:name == title
 						}"
 						mdicon="{ mdicon }"
 						onclick="{ iconBarClick }">
@@ -32,7 +32,7 @@
 		.title-bar-fixed { position:fixed;width:100%; }
 		.title-bar-spacer { height:3.5em; }
 		.side-bar { flex:0; }
-		.expanded { flex:0 0 3.5em;height:100vh;overflow:auto; }
+		.expanded { flex:0 0 3.5em;height:calc(100vh - 7em);overflow:auto; }
 		.contracted { height:0;width:0;overflow:hidden; }
 		.expanded .icon-bar {
 			position:fixed;
@@ -45,6 +45,7 @@
 			margin-left:0;
 			margin-right:0;
 			min-height:100%;
+			overflow-y:auto;
 		}
 		@media only screen and (min-width:992px) {
 			.container-flex-1280 {
@@ -60,7 +61,7 @@
 		iconBarItems = navMenuItems;
 		iconBarClick = function(e) { route(e.item.route); }
 		// ----------------------------------------
-		// UPDATE TEMPLATE METHOD
+		// UPDATE TEMPLATE STATE
 		// ----------------------------------------
 		updateTemplateState = function(newState) {
 			var updates = {

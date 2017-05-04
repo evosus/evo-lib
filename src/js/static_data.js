@@ -6,7 +6,10 @@
 var navMenuItems =  [
 	{ "name":"Home", "route":"/","mdicon":"mdi mdi-home" },
 	{ "name":"Navigation", "route":"/navigation","mdicon":"mdi mdi-map-marker" },
-	{ "name":"Theme", "route":"/theme","mdicon":"mdi mdi-palette" }
+	{ "name":"Theme", "route":"/theme","mdicon":"mdi mdi-palette" },
+	{ "name":"Breakpoints", "route":"/breakpoints","mdicon":"mdi mdi-cellphone-link" },
+	{ "name":"Forms", "route":"/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
+	{ "name":"List", "route":"/list","mdicon":"mdi mdi-format-list-bulleted" }
 ];
 /* OLD
 var navMenuItems =  [
