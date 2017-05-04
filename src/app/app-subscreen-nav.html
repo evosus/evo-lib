@@ -40,37 +40,6 @@
 		// ----------------------------------------
 		this.on('mount',function() {
 			RiotControl.trigger('UI_SET_STATE',{ title:"Initializing..." });
-			/*
-			// TODO: DEBUG THIS !!!!!!
-			// --------------------------------------
-			// WINDOW RESIZE
-			// --------------------------------------
-			// Handles soft keyboard openning
-			// --------------------------------------
-			var lastHeight = window.innerHeight;
-
-			window.onresize = function() {
-				var currentHeight = window.innerHeight;
-
-				if(currentHeight < lastHeight) {
-					//var DIFF = lastHeight - currentHeight;
-					if(isFixed == false) {
-						isFixed = true;
-						lastHeight = currentHeight;
-						self.update();
-					}
-				} else if(currentHeight > lastHeight) {
-					//var DIFF = currentHeight - lastHeight;
-					if(isFixed == true) {
-						isFixed = false;
-						lastHeight = currentHeight;
-						self.update();
-					}
-				}
-				console.log("LAST HEIGHT: " + lastHeight + " VS CURRENT HEIGHT: " + currentHeight);
-				console.log("IS VISIBLE: " + isFixed);
-			}
-		*/
 		});
 	</script>
 </app-subscreen-nav>
