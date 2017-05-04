@@ -64,11 +64,11 @@
 		// ----------------------------------------
 		// UPDATE TEMPLATE STATE
 		// ----------------------------------------
-		updateTemplateState = function(newState) {
+		updateTemplateState = function(state) {
 			var updates = {
-				mdicon:newState.mdicon,
-				sideBarIsExpanded:newState.iconBar,
-				title:newState.title,
+				mdicon:state.mdicon,
+				sideBarIsExpanded:state.iconBar,
+				title:state.title,
 			}
 			self.update(updates);
 		};

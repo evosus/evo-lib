@@ -37,11 +37,7 @@
 		// ON MOUNT
 		// --------------------------------------
 		this.on('mount',function() {
-			var newState = {
-				mdicon:"mdi mdi-checkbox-multiple-marked",
-				title:"Forms",
-			};
-			RiotControl.trigger('UI_SET_STATE',newState);
+			RiotControl.trigger('UI_SET_STATE',{ title:"Forms" });
 		});
 		uiSelectValueA = 'Option A';
 		uiSelectValueB = 'Option B';
@@ -73,10 +69,5 @@
 			{"name":"submit_invalid","label":"Invalid","mdicon":"mdi mdi-alert-circle-outline","css":"ui-red","io":ui },
 			{"name":"submit_reset","label":"Reset","mdicon":"mdi mdi-refresh","css":"ui-gray","io":ui }
 		]
-		anchorScroll(elementID) {
-			var el = document.getElementById(elementID);
-			el.scrollIntoView({block: "start", behavior: "smooth"});
-		}
-		anchorClick(e) { if(e.item.anchor) { self.anchorScroll(e.item.anchor); } }
 	</script>
 </guide-forms>

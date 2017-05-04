@@ -178,6 +178,27 @@ TITLE BAR
 	</script>
 </title-bar>
 <!--
+SUBSCREEN BAR
+!-->
+<subscreen-bar>
+	<div class="subscreen-bar f-row ai-center jc-between { opts.css }">
+		<div class="left f-row ai-center">
+			<nav-bar-icon mdicon="{ opts.mdicon }" onclick="{ backClick }" />
+			<span class="title"><h1>{ opts.title }</h1></span>
+		</div>
+		<div class="right f-row ai-center">
+		</div>
+	</div>
+	<style>
+		h1 { font-size:1em;font-weight:400;margin:0; }
+		.subscreen-bar { height:3.5em;padding:0em .5em; }
+		.title { padding:0em .5em; }
+	</style>
+	<script>
+		backClick = function() { window.history.back(); }
+	</script>
+</subscreen-bar>
+<!--
 SUBTITLE BAR
 !-->
 <subtitle-bar>
@@ -311,6 +332,182 @@ UI SELECT
 		}
 	</script>
 </ui-select>
-<ui-spinner>
-	<h1>LOADING</h1>
-</ui-spinner>
+<!--
+UI CHECKBOX
+!-->
+<ui-checkbox onclick="{ setCheck }" class="ui-checkbox { opts.css }" checked="{ isChecked }">
+	<div class="f-row ai-center">
+		<div if="{ !opts.flip }" class="icon f-col ai-center jc-center">
+			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
+		</div>
+		<div class="label { flipped:opts.flip }">
+			<span if="{ isChecked }">{ opts.positive }</span>
+			<span if="{ !isChecked }">{ opts.negative }</span>
+		</div>
+		<div if="{ opts.flip }" class="ui-checkbox-icon f-col ai-center jc-center">
+			<i class="{ mdi:true, mdi-checkbox-marked: isChecked, mdi-checkbox-blank-outline: !isChecked }"></i>
+		</div>
+	</div>
+	<style>
+		.icon { width:2em;height:2em;	}
+		.icon > i { font-size:150%; }
+		.label { padding-left:.5em; }
+		.label.flipped { padding-left:0;padding-right:.5em; }
+	</style>
+	<script>
+		var self = this;
+		isChecked = false;
+		self.setCheck = function(e) {
+			self.isChecked ? self.isChecked = false : self.isChecked = true;
+			IO.trigger(opts.name + ':checked',e);
+			self.update();
+		}
+		this.on('mount',function() {
+			self.isChecked = opts.checked || false;
+			self.update();
+		});
+	</script>
+</ui-checkbox>
+<!--
+UI LIST
+!-->
+<ui-list>
+	<div class="ui-list { opts.css } hide-mq-3">
+		<ui-list-subtitle if="{ opts.subtitle }" css="ui-disabled" subtitle="{ opts.subtitle }" />
+		<!-- COMPACT LIST !-->
+		<div class="ui-list-item f-row" each="{ item in opts.items }" name="{ item.leftTop }" onclick="{ rowClick }">
+			<div if="{ item.mdiavatar }" class="left f-col ai-center jc-center">
+				<i class="{ item.mdiavatar } fg-inactive"></i>
+			</div>
+			<div class="center f-one f-row ai-center">
+				<div class="left f-one f-col ai-start">
+					<div class="top">{ item.leftTop }</div>
+					<div class="bot">{ item.leftBot }</div>
+				</div>
+				<div if="{ item.rightTop || item.rightBot }" class="right f-one f-col ai-end">
+					<div class="top">{ item.rightTop }</div>
+					<div class="bot">{ item.rightBot }</div>
+				</div>
+			</div>
+			<div if="{ item.mdicon }" class="right f-col ai-center jc-center">
+				<i class="{ item.mdicon }"></i>
+			</div>
+		</div>
+	</div>
+	<!-- FULL SIZE LIST !-->
+	<div class="ui-list { opts.css } hide block-mq-3">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr class="ui-list-item" each="{ item in opts.items }" name="{ item.leftTop }" onclick="{ rowClick }">
+				<td>
+					<div if="{ item.mdiavatar }" class="left f-col ai-center jc-center">
+						<i class="{ item.mdiavatar } fg-inactive"></i>
+					</div>
+				</td>
+				<td class="top f-one">{ item.leftTop }</td>
+				<td class="top f-one">{ item.leftBot }</td>
+				<td class="top f-one">{ item.rightTop }</td>
+				<td class="top f-one">{ item.rightBot }</td>
+				<td>
+					<div if="{ item.mdicon }" class="right f-col ai-center jc-center">
+						<i class="{ item.mdicon }"></i>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<style>
+		.ui-list-item { cursor:pointer;height:4em;padding:0em .5em;border-bottom:1px solid #e7e5e2;transition:.2s ease-in-out all; }
+		.ui-list-item:hover { background:rgba(0,0,0,0.05); }
+		.left { padding:0em .5em; }
+		.left i { font-size:2.5em; }
+		.center { padding:0em .5em 0em 0em; }
+		.center > .left > .bot,
+		.center > .right > .bot { font-size:0.8175em;margin:.25em 0em 0em 0em;opacity:0.6; }
+		.ui-list-item > .right { padding:.5em; }
+		.ui-list-item > .right i { font-size:1.25em; }
+		td { vertical-align:middle; }
+		td:first-child { width:72px; }
+	</style>
+	<script>
+		var self = this;	
+		self.rowClick = function(e) {
+			console.dir(e);
+		}
+	</script>
+</ui-list>
+<!--
+UI LIST SUBTITLE
+!-->
+<ui-list-subtitle>
+	<div class="ui-list-subtitle f-row ai-center { opts.css }">
+		<span if="{ opts.subtitle }" class="subtitle"><h2>{ opts.subtitle }</h2></span>
+	</div>
+	<style>
+		.ui-list-subtitle { height:3em;padding:0em 1em; }
+		.subtitle > h2 { font-size:.8175em;font-weight:700;margin:0;opacity:0.5; }
+	</style>
+</ui-list-subtitle>
+<!--
+UI INPUT
+!-->
+<ui-input class="ui-input { opts.css }">
+	<div class="label { fg-valid:isValid,fg-invalid:isInvalid }"><span>{ opts.label }</span></div>
+	<div class="stack f-row">
+		<div class="field f-row ai-center">
+			<input ref="field"
+				name="{ opts.name }"
+				class="f-one { fg-valid:isValid, fg-invalid:isInvalid }"
+				type="{ opts.type || 'text' }"
+				placeholder="{ opts.placeholder }"
+				onfocus="{ setFocus }"
+				onblur="{ setBlur }"
+			/></input>
+			<i if="{ isValid }" class="mdi mdi-check fg-valid"></i>
+			<i if="{ isInvalid }" class="mdi mdi-block-helper fg-invalid"></i>
+		</div>
+		<div if="{ !isValid && !isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length }"></div>
+		<div if="{ isValid && isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
+	</div>
+	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
+	<style>
+		i { margin:0em .5em; }
+		.label { font-size:0.875em;padding:.25em 0em; }
+		.message { height:1em; }
+		.message > span { padding:.25em 0em;font-style:italic;font-size:0.875em; }
+		.stack { position:relative;height:2em; }
+		.field { position:absolute;z-index:200;height:2em;width:100%; }
+		.fill { opacity:0.2;position:absolute;z-index:100;height:2em;width:100%;transition:.2s ease-in-out all;bottom:0; }
+		.fill.underline { opacity:1;height:2px;; }
+		input { height:100%;font-size:100%;border:none;background:transparent;padding:0 .5em; }
+	</style>
+	<script>
+		var self = this;
+		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
+		// --------------------------------------
+		// EVENT HANDLERS
+		// --------------------------------------
+		self.setBlur = function(e) { IO.trigger(opts.name + ':blur',e); }
+		self.setFocus = function(e) { IO.trigger(opts.name + ':focus',e); }
+		self.setMessage = function(msg) { if(msg || self.msg) { self.msg = msg; } else { self.msg == null; } self.update(); }
+		// --------------------------------------
+		// EVENT LISTENERS
+		// --------------------------------------
+		IO.on(opts.name + ":blur",function() { self.isFocused = null;self.update(); });
+		IO.on(opts.name + ":focus",function() { self.refs.field.focus();self.isFocused = true;self.update(); });
+		IO.on(opts.name + ":valid",function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); });
+		IO.on(opts.name + ":invalid",function(msg) { self.isValid = false;self.isInvalid = true;self.setMessage(msg); });
+		IO.on(opts.name + ":change",function(newValue) { self.refs.field.value = newValue;self.setMessage(); });
+		// --------------------------------------
+		// ON CLEAR
+		// --------------------------------------
+		IO.on(opts.ref + ":clear",function() {
+			self.refs.field.value = '';
+			self.isFocused = null;
+			self.isValid = null;
+			self.isInvalid = null;
+			self.isTouched = null;
+			self.refs.field.blur();
+			self.setMessage();
+		});
+	</script>
+</ui-input>
