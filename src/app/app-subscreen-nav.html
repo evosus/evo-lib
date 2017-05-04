@@ -1,13 +1,14 @@
 <app-subscreen-nav>
 	<subscreen-bar
-		css="ui-secondary shadow-bar title-bar-fixed"
+		css="ui-secondary shadow-bar title-bar-fixed:isFixed"
 		title="{ title }"
-		mdicon="{ mdicon }">
+		mdicon="mdi mdi-arrow-left">
 	</subscreen-bar>
 	<div class="title-bar-spacer"></div>
 	<div id="subscreenNavMount" class="container-flex-1280 ui-white shadow"></div>
 	<style>
 		.title-bar-fixed { position:fixed;width:100%; }
+		.title-bar-adjusted { position:fixed;width:100%;top:0; }
 		.title-bar-spacer { height:3.5em; }
 		.container-flex-1280 {
 			flex:1;
@@ -27,11 +28,11 @@
 	</style>
 	<script>
 		var self = this;
+		isFixed = true;
 		// ----------------------------------------
 		// ON UI STATE CHANGE
 		// ----------------------------------------
 		RiotControl.on('UI_STATE_CHANGED',function(state) {
-			mdicon = "mdi mdi-arrow-left";
 			title = state.title;
 			self.update();
 		});
@@ -39,12 +40,38 @@
 		// ON MOUNT
 		// ----------------------------------------
 		this.on('mount',function() {
-			var newState = {
-				mdicon:"mdi mdi-refresh",
-				title:"Initializing...",
-			};
-			RiotControl.trigger('UI_SET_STATE',newState);
+			RiotControl.trigger('UI_SET_STATE',{ title:"Initializing..." });
+			/*
+			// TODO: DEBUG THIS !!!!!!
+			// --------------------------------------
+			// WINDOW RESIZE
+			// --------------------------------------
+			// Handles soft keyboard openning
+			// --------------------------------------
+			var lastHeight = window.innerHeight;
+
+			window.onresize = function() {
+				var currentHeight = window.innerHeight;
+
+				if(currentHeight < lastHeight) {
+					//var DIFF = lastHeight - currentHeight;
+					if(isFixed == false) {
+						isFixed = true;
+						lastHeight = currentHeight;
+						self.update();
+					}
+				} else if(currentHeight > lastHeight) {
+					//var DIFF = currentHeight - lastHeight;
+					if(isFixed == true) {
+						isFixed = false;
+						lastHeight = currentHeight;
+						self.update();
+					}
+				}
+				console.log("LAST HEIGHT: " + lastHeight + " VS CURRENT HEIGHT: " + currentHeight);
+				console.log("IS VISIBLE: " + isFixed);
+			}
+		*/
 		});
-	</script>
 	</script>
 </app-subscreen-nav>
