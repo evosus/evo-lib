@@ -2,12 +2,12 @@
 	<title-bar
 		css="ui-primary shadow-bar title-bar-fixed"
 		title="{ title }"
-		iconbar="{ isExpanded }"
+		iconbar="{ sideBarIsExpanded }"
 		mdicon="{ mdicon }">
 	</title-bar>
 	<div class="title-bar-spacer"></div>
 	<div class="f-row" style="min-height:calc(100vh - 7em);">
-		<div class="side-bar { expanded:isExpanded, contracted:!isExpanded }">
+		<div class="side-bar { expanded:sideBarIsExpanded, contracted:!sideBarIsExpanded }">
 			<div class="icon-bar fg-grey-lt pad-dot-5">
 				<virtual each="{ iconBarItems }">
 					<nav-bar-icon
@@ -60,13 +60,14 @@
 		var self = this;
 		iconBarItems = navMenuItems;
 		iconBarClick = function(e) { route(e.item.route); }
+		siedBarIsExpanded = false;
 		// ----------------------------------------
 		// UPDATE TEMPLATE STATE
 		// ----------------------------------------
 		updateTemplateState = function(newState) {
 			var updates = {
 				mdicon:newState.mdicon,
-				isExpanded:newState.iconBar,
+				sideBarIsExpanded:newState.iconBar,
 				title:newState.title,
 			}
 			self.update(updates);

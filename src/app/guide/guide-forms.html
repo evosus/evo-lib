@@ -30,69 +30,6 @@
 			</div>
 		</form>
 	</div>
-<!--
-	<ui-bar css="ui-primary-lt ui-bar-shadow">
-		<ui-bar-left>
-			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-marked" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title value="Form Elements" />
-		</ui-bar-left>
-	</ui-bar>
-	<ui-scroll-2>
-		<ui-container css="shadow-box ui-secondary-lt">
-			<ui-layout-left>
-				<ui-layout-left-sidebar>
-					<ul class="link-list"><li each="{ formSelectOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
-				</ui-layout-left-sidebar>
-				<ui-layout-left-body>
-					<ui-layout-title value="Form Elements" />
-					<ui-layout-subtitle id="groupeda" value="Grouped A (ui-form-*)" />
-					<ui-layout-box css="f-row f-wrap shadow-box pad-1-2 ui-white">
-						<div class="ui-cell">
-							<ui-form-input name="input_text_a" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
-						</div>
-						<div class="ui-cell">
-							<ui-form-select id="selectTest" name="test_select_a" label="Select Label" selection="{ uiSelectValueA }" options="{ uiSelectOptions }" io="{ ui }" />
-						</div>
-						<div class="ui-cell">
-							<ui-form-checkbox name="grouped_checkbox" label="Checkbox Label" positive="Remember me? Yes" negative="Remember me? No" io="{ ui }" />
-						</div>
-					</ui-layout-box>
-					<ui-layout-subtitle id="groupedb" value="Grouped B (ui-*)" />
-					<ui-layout-box css="f-row f-wrap shadow-box pad-1-2 ai-center ui-white">
-						<div class="ui-cell">
-							<ui-input name="test_input" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
-						</div>
-						<div class="ui-cell">
-							<ui-select id="selectTest" name="test_select_b" selection="{ uiSelectValueB }" options="{ uiSelectOptions }" io="{ ui }" />
-						</div>
-						<div class="ui-cell">
-							<ui-checkbox name="test_checkbox" positive="Yes" negative="No" io="{ ui }" />
-						</div>
-					</ui-layout-box>
-					<ui-layout-subtitle id="uiinput" value="UI-Form-Input" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-form-input name="input_text" label="Input Label" placeholder=" Placeholder" io="{ ui }" />
-						<ui-bar-control>
-							<ui-bar-control-item each="{ uiBarControlItems }">
-								<ui-btn-icon name="{ name }" label="{ label }" mdicon="{ mdicon }" css="{ css }" io="{ io }" />
-							</ui-bar-control-item>
-						</ui-bar-control>
-						<span class="example-text">Input Value: { uiInputValue }</span>
-					</ui-layout-box>
-					<ui-layout-subtitle id="uiselect" value="UI-Form-Select" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-form-select id="selectTest" name="select_test" label="Select Label" selection="{ uiSelectValueC }" options="{ uiSelectOptions }" io="{ ui }" />
-						<span class="example-text">Selected: { uiSelectValueC }</span>
-					</ui-layout-box>
-					<ui-layout-subtitle id="uicheckbox" value="UI-Form-Checkbox" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-form-checkbox name="form_checkbox" label="Checkbox Label" positive="Remember me? Yes" negative="Remember me? No" io="{ ui }" />
-					</ui-layout-box>
-				</ui-layout-left-body>
-			</ui-layout-left>
-		</ui-container>
-	</ui-scroll-2>
-!-->
 	<script>
 		var self = this;
 		ui = riot.observable();

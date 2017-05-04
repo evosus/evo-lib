@@ -27,11 +27,34 @@
 			// --------------------------------------
 			// NAV-BAR SCROLL-AWAY
 			// --------------------------------------
-			var SCROLLER = document.getElementById('globalNavMount');
-			// HANDLE scroll event
+			var SCROLLER = document.getElementById('globalNavMount'),
+					isScrolling = -1,
+					lastPosition = 0;
 			SCROLLER.onscroll = function() {
-				// IF element has scrolled less than nav-bar height (3.5em = 56px)
-				SCROLLER.scrollTop < 56 ? isVisible = true : isVisible = false;
+				if(isScrolling != -1) {
+					clearTimeout(isScrolling);
+				}
+				isScrolling = window.setTimeout("scrollStop()",200);
+			}
+			scrollStop = function() {
+				var currentPosition = SCROLLER.scrollTop;
+				if(currentPosition < lastPosition) {
+					var DIFF = lastPosition - currentPosition;
+					if(DIFF > 56 && isVisible == false) {
+						isVisible = true;
+						lastPosition = currentPosition;
+						self.update();
+					}
+				} else if(currentPosition > lastPosition) {
+					var DIFF = currentPosition - lastPosition;
+					if(DIFF > 56 && isVisible == true) {
+						isVisible = false;
+						lastPosition = currentPosition;
+						self.update();
+					}
+				} else if(currentPosition == lastPosition) {
+					lastPosition = currentPosition;
+				}
 			}
 		});
 	</script>

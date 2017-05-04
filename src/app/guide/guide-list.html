@@ -1,61 +1,47 @@
 <guide-list>
-	<tab-bar name="TAB-BAR-PARENT" css="ui-secondary" items="{ tabBarItems }" active="{ activeTab }" />
-	<div show="{ activeTab == 'Tab One' }" style="height:calc(100vh - 13em);overflow:auto;">	
-		<div class="pad-1">
-			<h1>Tab One</h1>
-			<div class="pad-dot-5"></div>
-			<form novalidate>
-				<div class="f-row">
-					<div class="pad-dot-5">
-						<ui-checkbox name="FORM CHECKBOX A" label="Form Checkbox" positive="yes" negative="no" checked="true" css="ui-red" />
-					</div>
-					<div class="pad-dot-5">
-						<ui-checkbox name="FORM CHECKBOX B" label="Form Checkbox" positive="yes" negative="no" css="ui-green" />
-					</div>
-					<div class="pad-dot-5">
-						<ui-checkbox name="FORM CHECKBOX C" label="Form Checkbox" positive="yes" negative="no" css="ui-blue" />
-					</div>
-					<div class="pad-dot-5">
-						<ui-checkbox name="FORM CHECKBOX D" label="Form Checkbox" positive="yes" negative="no" css="ui-purple" />
-					</div>
+	<div class="pad-1-2">
+		<h1>Tab One</h1>
+		<div class="pad-dot-5"></div>
+		<form novalidate>
+			<div class="f-row">
+				<div class="pad-dot-5">
+					<ui-checkbox name="FORM CHECKBOX A" label="Form Checkbox" positive="yes" negative="no" checked="true" css="ui-red" />
 				</div>
 				<div class="pad-dot-5">
-					<ui-input name="FORM INPUT A" label="UI Input" css="ui-red" />
-					<ui-input name="FORM INPUT B" label="UI Input" css="ui-green" />
-					<ui-input name="FORM INPUT C" label="UI Input" css="ui-blue" />
-					<ui-input name="FORM INPUT D" label="UI Input" css="ui-purple" />
+					<ui-checkbox name="FORM CHECKBOX B" label="Form Checkbox" positive="yes" negative="no" css="ui-green" />
 				</div>
 				<div class="pad-dot-5">
-					<ui-select name="test_select_a" selection="{ uiSelectValueA }" options="{ uiSelectOptions }" css="ui-red" />
-					<ui-select name="test_select_b" selection="{ uiSelectValueB }" options="{ uiSelectOptions }" css="ui-green" />
-					<ui-select name="test_select_c" selection="{ uiSelectValueC }" options="{ uiSelectOptions }" css="ui-blue" />
-					<ui-select name="test_select_d" selection="{ uiSelectValueD }" options="{ uiSelectOptions }" css="ui-purple" />
+					<ui-checkbox name="FORM CHECKBOX C" label="Form Checkbox" positive="yes" negative="no" css="ui-blue" />
 				</div>
-			</form>
-		</div>
-	</div>
-	<div show="{ activeTab == 'Tab Two' }" style="height:calc(100vh - 13em);overflow:auto;">
-		<ui-list items="{ uiListItems }" />
-	</div>
-	<div show="{ activeTab == 'Tab Three' }" style="height:calc(100vh - 13em);overflow:auto;">	
-		Tab Three
+				<div class="pad-dot-5">
+					<ui-checkbox name="FORM CHECKBOX D" label="Form Checkbox" positive="yes" negative="no" css="ui-purple" />
+				</div>
+			</div>
+			<div class="pad-dot-5">
+				<ui-input name="FORM INPUT A" label="UI Input" css="ui-red" />
+				<ui-input name="FORM INPUT B" label="UI Input" css="ui-green" />
+				<ui-input name="FORM INPUT C" label="UI Input" css="ui-blue" />
+				<ui-input name="FORM INPUT D" label="UI Input" css="ui-purple" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-select name="test_select_a" selection="{ uiSelectValueA }" options="{ uiSelectOptions }" css="ui-red" />
+				<ui-select name="test_select_b" selection="{ uiSelectValueB }" options="{ uiSelectOptions }" css="ui-green" />
+				<ui-select name="test_select_c" selection="{ uiSelectValueC }" options="{ uiSelectOptions }" css="ui-blue" />
+				<ui-select name="test_select_d" selection="{ uiSelectValueD }" options="{ uiSelectOptions }" css="ui-purple" />
+			</div>
+		</form>
 	</div>
 	<script>
 		var self = this;
-		activeTab = "Tab One";
 		// --------------------------------------
 		// MOUNT
 		// --------------------------------------
 		this.on('mount',function() {
-			RiotControl.trigger('UI_SET_STATE',{ tab:activeTab });
-		});
-		RiotControl.on('UI_STATE_CHANGED',function(state) {
-			activeTab = state.tab;
-			self.update();
-		});
-		IO.on('TAB_BAR_CLICKED',function(obj) {
-			activeTab = obj.event.item.tab.name;
-			self.update();
+			var newState = {
+				mdicon:"mdi mdi-format-list-bulleted",
+				title:"List",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
 		});
 		uiSelectValueA = 'Option A';
 		uiSelectValueB = 'Option B';

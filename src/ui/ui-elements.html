@@ -2,7 +2,7 @@
 NAV MENU
 !-->
 <nav-menu>
-	<div class="nav-menu { opts.css } { closed: !isOpen }">
+	<div class="nav-menu { opts.css } { closed: !menuIsOpen }">
 		<div class="nav-menu-bar f-row ai-center jc-between ui-accent">
 			<nav-bar-icon mdicon="mdi mdi-close" onclick="{ menuClose }" />
 		</div>
@@ -42,16 +42,16 @@ NAV MENU
 	</style>
 	<script>
 		var self = this;
-		isOpen = false;
+		menuIsOpen = false;
 		menuClick = function(e) {
-			RiotControl.trigger('UI_SET_STATE',{ navMenu:false }); 	
+			RiotControl.trigger('UI_SET_STATE',{ navMenu:false });
 			route(e.item.route);
 		}
 		menuClose = function(e) { 
-			RiotControl.trigger('UI_SET_STATE',{ navMenu:false }); 	
+			RiotControl.trigger('UI_SET_STATE',{ navMenu:false });
 		};
-		RiotControl.on('UI_STATE_CHANGED',function(state) {
-			isOpen = state.navMenu;
+		RiotControl.on('UI_STATE_CHANGED',function(newState) {
+			menuIsOpen = newState.navMenu;
 			self.update();
 		});
 	</script>
@@ -151,8 +151,8 @@ TITLE BAR
 <title-bar>
 	<div class="title-bar f-row ai-center jc-between { opts.css }">
 		<div class="left f-row ai-center">
-			<nav-bar-icon show="{ isOpen }" mdicon="{ opts.mdicon }" css="ui-primary" onclick="{ iconClick }" />
-			<nav-bar-icon show="{ !isOpen }" mdicon="{ opts.mdicon }" onclick="{ iconClick }" />
+			<nav-bar-icon show="{ titleIsOpen }" mdicon="{ opts.mdicon }" css="ui-primary" onclick="{ iconClick }" />
+			<nav-bar-icon show="{ !titleIsOpen }" mdicon="{ opts.mdicon }" onclick="{ iconClick }" />
 			<span class="title"><h1>{ opts.title }</h1></span>
 		</div>
 		<div class="right f-row ai-center">
@@ -166,13 +166,13 @@ TITLE BAR
 	</style>
 	<script>
 		var self = this;
-		isOpen = false;
+		titleIsOpen = false;
 		iconClick = function(e) {
-			isOpen ? isOpen = false : isOpen = true;
-			RiotControl.trigger('UI_SET_STATE',{ iconBar:isOpen });
+			titleIsOpen ? titleIsOpen = false : titleIsOpen = true;
+			RiotControl.trigger('UI_SET_STATE',{ iconBar:titleIsOpen });
 		};
 		RiotControl.on('UI_STATE_CHANGED',function(state) {
-			isOpen = state.iconBar;
+			titleIsOpen = state.iconBar;
 			self.update();
 		});
 	</script>
@@ -281,7 +281,7 @@ UI SELECT
 	</style>
 	<script>
 		var self = this;
-		isOpen = false;
+		selectIsOpen = false;
 		this.on('mount',function() {
 			// --------------------------------------
 			// SET Selected Item
@@ -302,9 +302,9 @@ UI SELECT
 			}
 		});
 		blur() { isFocused = false;self.update(); }
-		focus() { isOpen = true;self.update(); }
+		focus() { selectIsOpen = true;self.update(); }
 		change(e) {
-			isOpen = false;
+			selectIsOpen = false;
 			IO.trigger(opts.name + ':change',e);
 			self.refs.htmlselect.blur();
 			self.update();
