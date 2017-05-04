@@ -156,11 +156,16 @@ TITLE BAR
 		.nav-bar-icon:hover { box-shadow:none; }
 	</style>
 	<script>
+		var self = this;
 		isOpen = false;
 		iconClick = function(e) {
 			isOpen ? isOpen = false : isOpen = true;
 			RiotControl.trigger('UI_SET_ICON_BAR',isOpen);
 		};
+		RiotControl.on('UI_STATE_CHANGED',function(state) {
+			isOpen = state.iconBar;
+			self.update();
+		});
 	</script>
 </title-bar>
 <!--

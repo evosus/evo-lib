@@ -41,6 +41,14 @@
 		.swatch.bordered { border:1px solid white;background:rgba(0,0,0,0.1); }
 	</style>
 	<script>
+		this.on('mount',function() {
+			var newState = {
+				iconBar:true,
+				mdicon:"mdi mdi-palette",
+				title:"UI Theme",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
 		themeColors = [
 			{ name:"ui-primary" },
 			{ name:"ui-secondary" },

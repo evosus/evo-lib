@@ -3,6 +3,7 @@
 // ----------------------------------------
 // Initialize Firebase below...
 // ----------------------------------------
+// =D
 // ----------------------------------------
 // IO OBSERVABLE
 // ----------------------------------------
@@ -10,16 +11,20 @@
 // ----------------------------------------
 var IO = riot.observable();
 // ----------------------------------------
-// RIOT INIT
+// RIOT STARTUP
 // ----------------------------------------
 riot.compile(function() {
+	// ----------------------------------------
+	// REGISTER DATA STORES
+	// ----------------------------------------
 	var UI = new UserInterface();
 	RiotControl.addStore(UI); // UI State Manager
-	RiotControl.on('UI_STATE_CHANGED',function(state) {
-		console.info("UI_STATE_CHANGED");
-		console.dir(state);
-	});
-	riot.mixin('IO',IO); // UI Events
+	// ----------------------------------------
+	// REGISTER MIXINS
+	// ----------------------------------------
 	riot.mixin('GF',GF,true); // Global Functions
+	// ----------------------------------------
+	// START ROUTER
+	// ----------------------------------------
 	route.start(true); // Start Router
 });

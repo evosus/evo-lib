@@ -7,6 +7,7 @@ var UserInterface = function() {
 	var state = {
 		banner:"",
 		iconBar:"",
+		mdicon:"",
 		modal:"",
 		navMenu:"",
 		route:"",
@@ -15,10 +16,15 @@ var UserInterface = function() {
 		toast:""
 	}
 	// --------------------------------------
+	// GETTERS
+	// --------------------------------------
+	getState = function() { return self.state };
+	// --------------------------------------
 	// STATE CHANGED
 	// --------------------------------------
 	stateChanged = function() {
 		self.trigger('UI_STATE_CHANGED',state);
+		console.dir(state);
 	}
 	// --------------------------------------
 	// TOGGLES
@@ -55,7 +61,11 @@ var UserInterface = function() {
 		stateChanged();
 	});
 	self.on('UI_SET_STATE',function(newState) {
-		state = newState;
+		for(var key in newState) {
+			if(state.hasOwnProperty(key)) {
+				state[key] = newState[key];
+			}
+		}
 		stateChanged();
 	});
 };

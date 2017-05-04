@@ -282,7 +282,11 @@
 	</style>
 	<script>
 		this.on('mount',function() {
-			console.info("MOUNTED: guide-navigation.html");
+			var newState = {
+				mdicon:"mdi mdi-map-marker",
+				title:"Navigation",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
 		});
 	</script>
 </guide-navigation>

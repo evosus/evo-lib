@@ -1,5 +1,10 @@
 <app-module-nav>
-	<title-bar css="ui-secondary shadow-bar title-bar-fixed" title="{ opts.title }" mdicon="{ opts.mdicon }"></title-bar>
+	<title-bar
+		css="ui-secondary shadow-bar title-bar-fixed"
+		title="{ title }"
+		iconbar="{ isExpanded }"
+		mdicon="{ mdicon }">
+	</title-bar>
 	<div class="title-bar-spacer"></div>
 	<div class="f-row" style="min-height:calc(100vh - 7em);">
 		<div class="side-bar { expanded:isExpanded, contracted:!isExpanded }">
@@ -52,24 +57,35 @@
 	</style>
 	<script>
 		var self = this;
-		isExpanded = false;
-		RiotControl.on('UI_STATE_CHANGED',function(state) {
-			console.info("STATE_CHANGED");
-			console.dir(state);
-			isExpanded = state.iconBar;
-			//isExpanded ? isExpanded = false : isExpanded = true;
-			self.update();
-		});
-		/*
-		IO.on('ICON_BAR_TOGGLE',function() {
-			isExpanded ? isExpanded = false : isExpanded = true;
-			self.update();
-		});
-		*/
 		iconBarItems = navMenuItems;
-		iconBarClick = function(e) {
-			route(e.item.route);
-			console.log(e.item.route);
-		}
+		iconBarClick = function(e) { route(e.item.route); }
+		// ----------------------------------------
+		// UPDATE TEMPLATE METHOD
+		// ----------------------------------------
+		updateTemplateState = function(newState) {
+			var updates = {
+				mdicon:newState.mdicon,
+				isExpanded:newState.iconBar,
+				title:newState.title,
+			}
+			self.update(updates);
+		};
+		// ----------------------------------------
+		// ON UI STATE CHANGE
+		// ----------------------------------------
+		RiotControl.on('UI_STATE_CHANGED',function(state) {
+			updateTemplateState(state);
+		});
+		// ----------------------------------------
+		// ON MOUNT
+		// ----------------------------------------
+		this.on('mount',function() {
+			var newState = {
+				mdicon:"mdi mdi-refresh",
+				title:"Initializing...",
+			};
+			updateTemplateState(newState);
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
 	</script>
 </app-module-nav>

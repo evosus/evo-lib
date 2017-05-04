@@ -10,6 +10,13 @@
 		</div>
 	</div>
 	<script>
+		this.on('mount',function() {
+			var newState = {
+				mdicon:"mdi mdi-home",
+				title:"Home",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
 		uiItems = [
 			{ name:"Bars",desc:"Horizontal bars for navigation and content manipulation" },
 			{ name:"Button",desc:"Push it" },
