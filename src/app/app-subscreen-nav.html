@@ -1,0 +1,50 @@
+<app-subscreen-nav>
+	<subscreen-bar
+		css="ui-secondary shadow-bar title-bar-fixed"
+		title="{ title }"
+		mdicon="{ mdicon }">
+	</subscreen-bar>
+	<div class="title-bar-spacer"></div>
+	<div id="subscreenNavMount" class="container-flex-1280 ui-white shadow"></div>
+	<style>
+		.title-bar-fixed { position:fixed;width:100%; }
+		.title-bar-spacer { height:3.5em; }
+		.container-flex-1280 {
+			flex:1;
+			margin-left:0;
+			margin-right:0;
+			min-height:auto;
+			overflow-y:auto;
+		}
+		@media only screen and (min-width:992px) {
+			.container-flex-1280 {
+				flex:1;
+				max-width:1280px;
+				margin-left:auto;
+				margin-right:auto;
+			}
+		}
+	</style>
+	<script>
+		var self = this;
+		// ----------------------------------------
+		// ON UI STATE CHANGE
+		// ----------------------------------------
+		RiotControl.on('UI_STATE_CHANGED',function(state) {
+			mdicon = "mdi mdi-arrow-left";
+			title = state.title;
+			self.update();
+		});
+		// ----------------------------------------
+		// ON MOUNT
+		// ----------------------------------------
+		this.on('mount',function() {
+			var newState = {
+				mdicon:"mdi mdi-refresh",
+				title:"Initializing...",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
+	</script>
+	</script>
+</app-subscreen-nav>
