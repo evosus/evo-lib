@@ -20,7 +20,7 @@ route('/breakpoints', function() {
 route('/forms', function() {
 	riot.compile(function() {
 		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#globalNavMount','app-subscreen-nav');
 		riot.mount('#subscreenNavMount','guide-forms');
 	});
 });
