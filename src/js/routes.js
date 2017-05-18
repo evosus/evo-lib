@@ -15,6 +15,16 @@ route('/breakpoints', function() {
 	});
 });
 // --------------------------------------
+// GUIDE BUTTONS
+// --------------------------------------
+route('/buttons', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','app-module-nav');
+		riot.mount('#moduleNavMount','guide-buttons');
+	});
+});
+// --------------------------------------
 // GUIDE FORMS
 // --------------------------------------
 route('/forms', function() {

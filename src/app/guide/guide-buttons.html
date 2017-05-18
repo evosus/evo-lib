@@ -1,72 +1,60 @@
 <guide-buttons>
-	<ui-bar css="ui-primary-lt ui-bar-shadow">
-		<ui-bar-left>
-			<ui-btn-icon name="home_icon" mdicon="mdi mdi-checkbox-multiple-blank" css="ui-primary-lt" io="{ ui }" />
-			<ui-bar-title value="UI Buttons" />
-		</ui-bar-left>
-	</ui-bar>
-	<ui-scroll-2>
-		<ui-container css="shadow-box ui-secondary-lt">
-			<ui-layout-left>
-				<ui-layout-left-sidebar>
-					<ul class="link-list"><li each="{ buttonOptions }" onclick="{ parent.parent.parent.parent.parent.anchorClick }">{ label }</li></ul>
-				</ui-layout-left-sidebar>
-				<ui-layout-left-body>
-					<ui-layout-title id="top" value="Buttons" />
-					<ui-layout-subtitle id="buttona" value="UI Button With Label" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-btn name="submit_login" label="Login" css="ui-red" io="{ ui }" />
-					</ui-layout-box>
-					<ui-layout-subtitle id="buttonb" value="UI Button With Label & Icon" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-btn name="submit_login" label="Login" mdicon="mdi mdi-login" css="ui-orange" io="{ ui }" />
-					</ui-layout-box>
-					<ui-layout-subtitle id="buttonc" value="UI Button With Icon" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-btn-icon name="nav_left" mdicon="mdi mdi-arrow-left" css="ui-primary" io="{ ui }" />
-					</ui-layout-box>
-					<ui-layout-subtitle id="buttond" value="UI Button Bar" />
-					<ui-layout-box css="shadow-box pad-1-2 ui-white">
-						<ui-bar-control>
-							<div class="ui-bar-control-item">
-								<ui-btn name="submit_login" label="Login" css="ui-blue" io="{ ui }" />
-							</div>
-							<div class="ui-bar-control-item">
-								<ui-btn-icon name="nav_left" mdicon="mdi mdi-arrow-left" css="ui-red" io="{ ui }" />
-							</div>
-							<div class="ui-bar-control-item">
-								<ui-btn-icon name="nav_right" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
-							</div>
-						</ui-bar-control>
-					</ui-layout-box>
-					<ui-layout-subtitle id="buttone" value="Disabled With Color" />
-					<ui-layout-box css="f-row jc-start shadow-box pad-1-2 ui-white">
-						<ui-btn name="nav_right" mdicon="mdi mdi-arrow-left" label="Previous" css="ui-teal ui-disabled" io="{ ui }" />
-						<div class="pad-dot-5"></div>
-						<ui-btn name="nav_left" mdicon="mdi mdi-arrow-right" label="Next" css="ui-blue ui-disabled" io="{ ui }" />
-					</ui-layout-box>
-				</ui-layout-left-body>
-			</ui-layout-left>
-		</ui-container>
-	</ui-scroll-2>
-	<style scoped>
-		h3 { margin-bottom:.75em; }
-		li { padding-top:.75em; }
+	<div class="pad-1-2">
+		<h1>Buttons</h1>
+		<div class="pad-dot-5"></div>
+		<div class="f-row f-wrap">
+			<div class="layout-item">
+				<div class="pad-dot-5">
+					<div class="example">
+						<h3>ui-btn</h3>
+						<div class="f-row ai-center">
+							<ui-btn label="A button" mdicon="mdi mdi-pizza" css="ui-active" />
+							<ui-btn label="B button" mdicon="mdi mdi-pizza" css="ui-valid" />
+							<ui-btn label="C button" mdicon="mdi mdi-pizza" css="ui-invalid" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layout-item">
+				<div class="pad-dot-5">
+					<div class="example">
+						<h3>ui-btn-icon</h3>
+						<div class="f-row ai-center">
+							<ui-btn-icon character="A" css="ui-active" />
+							<ui-btn-icon character="B" css="ui-valid" />
+							<ui-btn-icon character="C" css="ui-invalid" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style>
+		.layout-item {
+			flex:1 0 100%;
+			overflow:hidden; 
+		}
+		.layout-item .example {
+			background:rgba(0,0,0,0.05);
+			border-radius:.15em;
+		}
+		@media only screen and (min-width:768px) {
+			.layout-item { flex:1 0 44%; }
+		}
+		@media only screen and (min-width:992px) {
+			.layout-item { flex:1 0 19em; }
+		}
 	</style>
 	<script>
-		var self = this;
-		buttonOptions = [
-			{"label":"Top", "anchor":"top"},
-			{"label":"Button With Label", "anchor":"buttona"},
-			{"label":"Button With Label & Icon", "anchor":"buttonb"},
-			{"label":"Button With Icon", "anchor":"buttonc"},
-			{"label":"Button Bar", "anchor":"buttond"},
-			{"label":"Disabled With Color", "anchor":"buttone"},
-		]
-		anchorScroll(elementID) {
-			var el = document.getElementById(elementID);
-			el.scrollIntoView({block: "start", behavior: "smooth"});
-		}
-		anchorClick(e) { if(e.item.anchor) { self.anchorScroll(e.item.anchor); } }
+		// --------------------------------------
+		// ON MOUNT
+		// --------------------------------------
+		this.on('mount',function() {
+			var newState = {
+				mdicon:"mdi mdi-cursor-pointer",
+				title:"Buttons",
+			};
+			RiotControl.trigger('UI_SET_STATE',newState);
+		});
 	</script>
 </guide-buttons>

@@ -22,13 +22,6 @@ var UserInterface = function() {
 		self.trigger('UI_STATE_CHANGED',state);
 	}
 	// --------------------------------------
-	// TOGGLES
-	// --------------------------------------
-	self.on('UI_TOGGLE_NAV_MENU',function() {
-		state.navMenu ? state.navMenu = false : state.navMenu = true ;
-		stateChanged();
-	});
-	// --------------------------------------
 	// SETTERS
 	// --------------------------------------
 	self.on('UI_SET_BANNER',function(banner) {
