@@ -330,7 +330,7 @@ UI SELECT
 		focus() { selectIsOpen = true;self.update(); }
 		change(e) {
 			selectIsOpen = false;
-			IO.trigger(opts.name + ':change',e);
+			IO.trigger(opts.name + ':change',e.target.selectedOptions[0]._tag.item);
 			self.refs.htmlselect.blur();
 			self.update();
 		}
