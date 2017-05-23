@@ -50,6 +50,7 @@
 		ui.on('input_text:keyup',function(e) { uiInputValue = e.target.value;self.update(); });
 		ui.on('input_text:change',function(e) { uiInputValue = e.target.value;self.update(); });
 		ui.on('select_test:change',function(e) { uiSelectValueC = e.target.value;self.update();});
+		IO.on('test_select_a:change',function(e) { console.dir(e.target.selectedOptions[0]); });
 
 		formSelectOptions = [
 			{label:'Grouped A', anchor:'groupeda'},
