@@ -268,7 +268,7 @@ UI SELECT
 			<i class="{ opts.mdicon } fg-gray-dk"></i>
 		</div>
 		<select ref="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
-			<option each="{ opts.options }" selected="{ index == selected }">{ label }</option>
+			<option each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
 		</select>
 		<i class="mdi mdi-chevron-down"></i>
 		<div class="fill"></div>
