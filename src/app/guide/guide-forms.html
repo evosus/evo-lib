@@ -1,7 +1,46 @@
 <guide-forms>
 	<div class="pad-1-2">
-		<h1>Forms</h1>
-		<form novalidate>
+		<h1>Your Company Info</h1>
+		<form novalidate class="f-row jc-start">
+			<div class="col-a" style="width:17em;padding-right:3em;">
+				<div class="pad-dot-5">
+					<ui-input name="Company Name" label="Company Name" css="ui-blue-lt" />
+				</div>
+				<div class="pad-dot-5">
+					<ui-input name="Website URL" label="Company Name" css="ui-blue-lt" />
+				</div>
+				<div class="pad-dot-5">
+					<ui-input name="App Name" label="App Name" css="ui-blue-lt" />
+				</div>
+			</div>
+			<div class="col-b f-one">
+				<div class="f-row f-wrap">
+					<div style="flex:1 0 23em;padding:.5em;">
+						<ui-input name="Company Name" label="Company Name" css="ui-blue-lt" />
+					</div>
+					<div style="flex:1 0 23em;padding:.5em;">
+						<ui-input name="Contact Name" label="Contact Name" css="ui-blue-lt" />
+					</div>
+					<div style="flex:1 0 23em;padding:.5em;">
+						<ui-input name="Phone" label="Phone" css="ui-blue-lt" />
+					</div>
+					<div style="flex:1 0 23em;padding:.5em;">
+						<ui-input name="Address" label="Address" css="ui-blue-lt" />
+					</div>
+					<div style="flex:1 0 23em;padding:.5em;">
+						<ui-input name="City" label="City" css="ui-blue-lt" />
+					</div>
+					<div class="f-row" style="flex:1 0 23em;padding:.5em;">
+						<div class="f-one"><ui-input name="State" label="State" css="ui-blue-lt"></div>
+						<div class="pad-dot-5"></div>
+						<div class="f-one"><ui-input name="Postal Code" label="Postal Code" css="ui-blue-lt"></div>
+						<div class="pad-dot-5"></div>
+						<div class="f-one"><ui-input name="Country" label="Country" css="ui-blue-lt" /></div>
+					</div>
+				</div>
+				HELP | CONFIRM	
+			</div>
+<!--
 			<div class="f-row">
 				<div class="pad-dot-5">
 					<ui-checkbox name="FORM CHECKBOX A" label="Form Checkbox" positive="yes" negative="no" checked="true" css="ui-red" />
@@ -28,8 +67,11 @@
 				<ui-select name="test_select_c" selection="{ uiSelectValueC }" options="{ uiSelectOptions }" css="ui-blue" />
 				<ui-select name="test_select_d" selection="{ uiSelectValueD }" options="{ uiSelectOptions }" css="ui-purple" />
 			</div>
+!-->
 		</form>
 	</div>
+	<style>
+	</style>
 	<script>
 		var self = this;
 		ui = riot.observable();

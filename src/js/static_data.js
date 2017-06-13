@@ -10,6 +10,7 @@ var navMenuItems =  [
 	{ "name":"Breakpoints", "route":"/breakpoints","mdicon":"mdi mdi-cellphone-link" },
 	{ "name":"Buttons", "route":"/buttons","mdicon":"mdi mdi-cursor-pointer" },
 	{ "name":"Forms", "route":"/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
+	{ "name":"Steps", "route":"/steps","mdicon":"mdi mdi-format-list-numbers" },
 	{ "name":"List", "route":"/list","mdicon":"mdi mdi-format-list-bulleted" }
 ];
 /* OLD

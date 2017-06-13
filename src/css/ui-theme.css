@@ -94,6 +94,16 @@
 .ui-input.ui-accent .label { color:#F09419; }
 .ui-input.ui-accent .fill { background:#F09419; }
 
+.ui-input.ui-active .label { color:#2196F3; }
+.ui-input.ui-active .fill { background:#2196F3; }
+.ui-input.ui-inactive .label { color:rgba(0,0,0,0.3); }
+.ui-input.ui-inactive .fill { background:rgba(0,0,0,0.3); }
+
+.ui-input.ui-valid .label { color:#3F9D2F; }
+.ui-input.ui-valid .fill { background:#3F9D2F; }
+.ui-input.ui-invalid .label { color:#AD423C; }
+.ui-input.ui-invalid .fill { background:#AD423C; }
+
 .ui-input.ui-red .label { color:firebrick; }
 .ui-input.ui-red .fill { background:firebrick; }
 .ui-input.ui-red-lt .label { color:tomato; }

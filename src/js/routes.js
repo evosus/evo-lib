@@ -34,6 +34,15 @@ route('/forms', function() {
 	});
 });
 // --------------------------------------
+// GUIDE STEPPER
+// --------------------------------------
+route('/steps', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','app-global-nav');
+		riot.mount('#globalNavMount','guide-steps');
+	});
+});
+// --------------------------------------
 // GUIDE LISTS
 // --------------------------------------
 route('/list', function() {
