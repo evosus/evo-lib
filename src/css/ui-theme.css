@@ -11,8 +11,8 @@
 .ui-accent { background:#F09419; }
 .ui-active { background:#2196F3; }
 .ui-inactive { background:transparent; }
-.ui-valid { background:#3F9D2F; }
-.ui-invalid { background:#AD423C; }
+.ui-valid { background:#3F9D2F!important; }
+.ui-invalid { background:#AD423C!important; }
 .ui-background { background:#e7e5e2; } /* .fg-primary { color:#6a6b6c; } */
 .ui-white { background:white; }
 /*
@@ -25,8 +25,8 @@
 .fg-accent { color:#F09419; }
 .fg-active { color:#2196F3; }
 .fg-inactive { color:lightgray; }
-.fg-valid { color:#3F9D2F; }
-.fg-invalid { color:#AD423C; }
+.fg-valid { color:#3F9D2F!important; }
+.fg-invalid { color:#AD423C!important; }
 
 /* ADDITIONAL COLORS */
 .ui-red, .ui-red-dk, .ui-red-lt, .ui-orange,

@@ -7,7 +7,7 @@
 					<ui-input name="Company Name" label="Company Name" css="ui-blue-lt" />
 				</div>
 				<div class="pad-dot-5">
-					<ui-input name="Website URL" label="Company Name" css="ui-blue-lt" />
+					<ui-input name="Website URL" label="Website URL" css="ui-blue-lt" />
 				</div>
 				<div class="pad-dot-5">
 					<ui-input name="App Name" label="App Name" css="ui-blue-lt" />
@@ -15,9 +15,6 @@
 			</div>
 			<div class="col-b f-one">
 				<div class="f-row f-wrap">
-					<div style="flex:1 0 23em;padding:.5em;">
-						<ui-input name="Company Name" label="Company Name" css="ui-blue-lt" />
-					</div>
 					<div style="flex:1 0 23em;padding:.5em;">
 						<ui-input name="Contact Name" label="Contact Name" css="ui-blue-lt" />
 					</div>
@@ -80,6 +77,8 @@
 		// --------------------------------------
 		this.on('mount',function() {
 			RiotControl.trigger('UI_SET_STATE',{ title:"Forms" });
+			IO.trigger('Company Name:invalid','* Required Field');
+			IO.trigger('Website URL:valid','* Unrequired Field');
 		});
 		uiSelectValueA = 'Option A';
 		uiSelectValueB = 'Option B';

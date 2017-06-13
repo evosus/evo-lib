@@ -470,7 +470,7 @@ UI INPUT
 			<i if="{ isInvalid }" class="mdi mdi-block-helper fg-invalid"></i>
 		</div>
 		<div if="{ !isValid && !isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length }"></div>
-		<div if="{ isValid && isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
+		<div if="{ isValid || isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
 	</div>
 	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
 	<style>
