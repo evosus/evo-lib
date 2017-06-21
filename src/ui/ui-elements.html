@@ -487,7 +487,7 @@ UI INPUT
 	<script>
 		var self = this;
 		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
-		this.one('mount',function() {
+		this.on('mount',function() {
 			if(opts.value) {
 				self.refs.field.value = opts.value;
 				self.update();
