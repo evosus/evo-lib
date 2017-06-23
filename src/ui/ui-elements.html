@@ -460,6 +460,7 @@ UI INPUT
 		<div class="field f-row ai-center">
 			<input ref="field"
 				name="{ opts.name }"
+				value="{ opts.default }"
 				class="f-one { fg-valid:isValid, fg-invalid:isInvalid }"
 				type="{ opts.type || 'text' }"
 				placeholder="{ opts.placeholder }"
@@ -487,12 +488,6 @@ UI INPUT
 	<script>
 		var self = this;
 		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
-		this.on('mount',function() {
-			if(opts.value) {
-				self.refs.field.value = opts.value;
-				self.update();
-			}
-		});
 		// --------------------------------------
 		// EVENT HANDLERS
 		// --------------------------------------
