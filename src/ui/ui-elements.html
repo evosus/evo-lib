@@ -108,7 +108,7 @@ NAV BAR LOGO
 	<div class="svg-resize"><div class="svg-test"></div></div>
 	<style>
 		.svg-test {
-			background-image:url('/img/evosus_logo-mixed-white.svg');
+			background-image:url('/img/evosus_logo-white.svg');
 			background-size:contain;
 			background-repeat:no-repeat;
 			background-position:center center;
@@ -658,3 +658,28 @@ LOADING SPINNER
 		.support-error,.status { max-width: 30em; }
 	</style>
 </loading-spinner>
+<!--  UI-MODAL WIP !-->
+<ui-modal>
+	<div class="ui-modal f-col ai-center jc-center">
+		<div class="ui-white rounded modal-shadow pad-1">
+			<div class="modal-contents">
+				<h1>So Modal!</h1>
+				<span>
+					Here is a bunch of text about stuff
+				</span>
+			</div>	
+		</div>
+	</div>
+	<style>
+		.ui-modal {
+			position:absolute;
+			z-index:10000;	
+			width:100vw;
+			height:100vh;
+			background:rgba(0,0,0,0.75);
+		}
+		.modal-shadow {
+			box-shadow:0px 2px 10px 4px rgba(0,0,0,0.5);
+		}
+	</style>
+</ui-modal>
