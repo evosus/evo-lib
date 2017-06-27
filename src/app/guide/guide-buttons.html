@@ -9,7 +9,7 @@
 						<h3>ui-btn</h3>
 						<div class="f-row ai-center">
 							<div class="pad-dot-5">
-								<ui-btn label="A button" mdicon="mdi mdi-pizza" css="ui-active" />
+								<ui-btn label="A button" mdicon="mdi mdi-pizza" css="ui-active" onclick="{ showModal }" />
 							</div>
 							<div class="pad-dot-5">
 								<ui-btn label="B button" mdicon="mdi mdi-pizza" css="ui-valid" />
@@ -104,5 +104,8 @@
 			};
 			RiotControl.trigger('UI_SET_STATE',newState);
 		});
+		showModal = function() {
+			RC.trigger('UI_SET_STATE',{ modal:'guide-forms' });
+		}
 	</script>
 </guide-buttons>

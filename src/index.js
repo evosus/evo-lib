@@ -13,12 +13,13 @@ var IO = riot.observable();
 // ----------------------------------------
 // RIOT STARTUP
 // ----------------------------------------
+var RC = RiotControl;
 riot.compile(function() {
 	// ----------------------------------------
 	// REGISTER DATA STORES
 	// ----------------------------------------
 	var UI = new UserInterface();
-	RiotControl.addStore(UI); // UI State Manager
+	RC.addStore(UI); // UI State Manager
 	// ----------------------------------------
 	// REGISTER MIXINS
 	// ----------------------------------------
