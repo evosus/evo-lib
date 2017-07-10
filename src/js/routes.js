@@ -53,6 +53,14 @@ route('/list', function() {
 	});
 });
 // --------------------------------------
+// GUIDE HEADLESS
+// --------------------------------------
+route('/headless', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','guide-headless');
+	});
+});
+// --------------------------------------
 // GUIDE NAVIGATION
 // --------------------------------------
 route('/navigation', function() {

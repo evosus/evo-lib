@@ -213,7 +213,7 @@ SUBTITLE BAR
 <!--
 UI BTN
 !-->
-<ui-btn onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }">
+<ui-btn>
 	<button class="ui-btn rounded { opts.css }">
 		<div class="f-row ai-center jc-center">
 			<i if="{ opts.mdicon && !opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
@@ -238,9 +238,32 @@ UI BTN
 	</style>
 </ui-btn>
 <!--
+UI BTN TXT
+!-->
+<ui-btn-txt>
+	<button class="ui-btn-txt rounded { opts.css }">
+		<div class="f-row ai-center jc-center">
+			<span>{ opts.label }</span>
+		</div>
+	</button>
+	<style>
+		.ui-btn-txt {
+			height:2.5em;
+			margin:0;
+			padding:0;
+			border:none;
+			cursor:pointer;
+			font-weight:700;
+			transition:.25s ease-in-out all;
+		}
+		.ui-btn-txt > div { height:2.5em; }
+		.ui-btn-txt > div > span { padding:0em .25em;text-transform:uppercase;letter-spacing:1px; }
+	</style>
+</ui-btn-txt>
+<!--
 UI BTN ICON
 !-->
-<ui-btn-icon onclick="{ click }" onmouseover="{ hover }" onblur="{ blur }" onfocus="{ focus }"	 >
+<ui-btn-icon>
 	<button class="ui-btn-icon { opts.css }">
 		<span class="f-col ai-center jc-center">
 			<i if="{ opts.mdicon }" class="{ opts.mdicon }"></i>

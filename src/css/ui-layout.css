@@ -40,7 +40,7 @@ p { padding:1em 0 0 0; }
 .scroll-4 { display:block;height:calc(100vh - 14em);overflow:auto; }
 .scroll-horizontal { overflow-x:auto;overflow-y:hidden; }
 .scroll-vertical { overflow-x:hidden;overflow-y:auto; }
-.rounded { border-radius:.25em; }
+.rounded { border-radius:.15em; }
 .noshadow { box-shadow:none!important; }
 .noshadow:hover { box-shadow:none!important; }
 .bordered { border:1px solid rgba(0,0,0,0.15); }
