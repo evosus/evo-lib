@@ -81,12 +81,20 @@ route('/theme', function() {
 	});
 });
 // --------------------------------------
-// GUIDE HOME !!! DEFAULT ROUTE !!!
+// GUIDE HOME
 // --------------------------------------
-route('/', function() {
+route('/home', function() {
 	riot.compile(function() {
 		riot.mount('#appMount','app-global-nav');
 		riot.mount('#globalNavMount','app-module-nav');
 		riot.mount('#moduleNavMount','guide-home');
+	});
+});
+// --------------------------------------
+// GUIDE LOGIN !!! DEFAULT ROUTE !!!
+// --------------------------------------
+route('/', function() {
+	riot.compile(function() {
+		riot.mount('#appMount','guide-headless');
 	});
 });

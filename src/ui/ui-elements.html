@@ -235,6 +235,8 @@ UI BTN
 		.ui-btn > div { height:2.5em; }
 		.ui-btn > div > i { padding:0em .25em; }
 		.ui-btn > div > span { padding:0em .25em;text-transform:uppercase;letter-spacing:1px; }
+		.ui-btn.md { height:1.5em;font-weight:500; }
+		.ui-btn-md > div { height:1.5em; }
 	</style>
 </ui-btn>
 <!--
@@ -485,7 +487,7 @@ UI INPUT
 				name="{ opts.name }"
 				value="{ opts.default }"
 				class="f-one { fg-valid:isValid, fg-invalid:isInvalid }"
-				type="{ opts.type || 'text' }"
+				type="{ opts.type }"
 				placeholder="{ opts.placeholder }"
 				onfocus="{ setFocus }"
 				onblur="{ setBlur }"
