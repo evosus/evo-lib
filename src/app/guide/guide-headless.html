@@ -1,0 +1,79 @@
+<guide-headless>
+	<div class="fullscreen f-row ai-center jc-center ui-teal-lt">
+		<div class="container-centered ui-white">
+			<div class="container-head ui-teal-dk">
+				<div class="container-nav f-row ai-center jc-end">
+<!--
+					<div class="container-nav-icon f-col ai-center jc-center">
+						<i class="mdi mdi-close"></i>
+					</div>
+!-->
+				</div>
+				<div class="pad-1"></div>
+				<div class="container-title f-row ai-center jc-center">
+					<div class="svg-logo-resize">
+						<div class="svg-logo"></div>
+					</div>
+				</div>
+				<div class="pad-2"></div>
+			</div>
+			<div class="container-body ui-white">
+				<div class="pad-2">
+					<h3 class="fg-teal">Please log in</h3>
+					<div style="height:1.25em;"></div>
+					<ui-input name="email" label="Enter your email" css="ui-teal" />
+					<div class="pad-dot-25"></div>
+					<ui-input name="password" label="Enter your password" css="ui-teal" />
+					<div class="pad-dot-5"></div>
+					<div class="f-row ai-center jc-between">
+						<ui-btn-txt label="Help" css="fg-teal" />
+						<ui-btn label="Login" css="ui-teal" onclick="{ login }" />
+					</div>
+				</div>
+			</div>
+			<div class="container-foot ui-white f-row ai-center jc-center">
+			</div>
+		</div>
+	</div>
+	<style>
+		.fullscreen { height:100vh; }
+		.container-centered {
+			min-width:27em;
+			border-radius:.15em;
+			box-shadow:0px 2px 8px 2px rgba(0,0,0,0.15);
+		}
+		.container-head {
+			border-top-left-radius:.15em;
+			border-top-right-radius:.15em;
+		}
+		.container-nav { height:2.5em; }
+		.container-nav-icon { width:2.5em;height:2.5em; }
+		.container-nav-icon > i { font-size:1.25em; }
+		.container-title { height:3.5em; }
+		.container-title > div { padding:0em 2em; }
+		.container-title > div > span { font-size:1.5em; }
+		.container-foot {
+			min-height:5em;
+			border-bottom-left-radius:.15em;
+			border-bottom-right-radius:.15em;
+		}
+		.svg-logo {
+			background-image:url('/img/evosus_logo-mixed-white.svg');
+			/* background-image:url('http://evosuspro.com/lib/evo-pro-assets/src/img/evosus_logo-transparent.png'); */
+			background-size:contain;
+			background-repeat:no-repeat;
+			background-position:center center;
+			width:100%;
+			height:100%;
+		}
+		.svg-logo-resize { width:15em; height:10em; }
+	</style>
+	<script>
+		login = function() {
+			route('/home');
+		}
+		this.on('mount',function() {
+			IO.trigger('email:focus');
+		});
+	</script>
+</guide-headless>

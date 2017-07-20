@@ -294,9 +294,9 @@ UI SELECT
 			<i class="{ opts.mdicon } fg-gray-dk"></i>
 		</div>
 		<select ref="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
-			<option each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
+			<option class="{ opts.menucss }" each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
 		</select>
-		<i class="mdi mdi-chevron-down"></i>
+		<i class="mdi mdi-menu-down"></i>
 		<div class="fill"></div>
 	</div>
 	<style>
@@ -324,9 +324,10 @@ UI SELECT
 			background:#888888;
 		}
 		.ui-select > i {
+			font-size:1.5em;
 			position:absolute;
 			z-index:100;
-			right:.5em;
+			right:0;
 			pointer-events:none;
 		}
 	</style>
