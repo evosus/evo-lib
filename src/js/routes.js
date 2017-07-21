@@ -8,93 +8,100 @@
 // GUIDE BREAKPOINTS
 // --------------------------------------
 route('/breakpoints', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
-		riot.mount('#moduleNavMount','guide-breakpoints');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-breakpoints', url:'/guide/guide-breakpoints.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE BUTTONS
 // --------------------------------------
 route('/buttons', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
-		riot.mount('#moduleNavMount','guide-buttons');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-buttons', url:'/guide/guide-buttons.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE FORMS
 // --------------------------------------
 route('/forms', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-subscreen-nav');
-		riot.mount('#subscreenNavMount','guide-forms');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-subscreen-nav', url:'/app/app-subscreen-nav.html'	},
+		{ id:'#subscreenNavMount', template:'guide-forms', url:'/guide/guide-forms.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE STEPPER
 // --------------------------------------
 route('/steps', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','guide-steps');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-steps', url:'/guide/guide-steps.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE LISTS
 // --------------------------------------
 route('/list', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
-		riot.mount('#moduleNavMount','guide-list');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-list', url:'/guide/guide-list.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE HEADLESS
 // --------------------------------------
 route('/headless', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','guide-headless');
-	});
+	var mounts  = [{ id:'#appMount', template:'guide-headless', url:'/guide/guide-headless.html'	}];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE NAVIGATION
 // --------------------------------------
 route('/navigation', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
-		riot.mount('#moduleNavMount','guide-navigation');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-navigation', url:'/guide/guide-navigation.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE THEME
 // --------------------------------------
 route('/theme', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
-		riot.mount('#moduleNavMount','guide-theme');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-theme', url:'/guide/guide-theme.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE HOME
 // --------------------------------------
 route('/home', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','app-global-nav');
-		riot.mount('#globalNavMount','app-module-nav');
-		riot.mount('#moduleNavMount','guide-home');
-	});
+	var mounts  = [
+		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
+		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
+		{ id:'#moduleNavMount', template:'guide-home', url:'/guide/guide-home.html'	}
+	];
+	GF.mountArray(mounts);
 });
 // --------------------------------------
 // GUIDE LOGIN !!! DEFAULT ROUTE !!!
 // --------------------------------------
 route('/', function() {
-	riot.compile(function() {
-		riot.mount('#appMount','guide-headless');
-	});
+	var mounts  = [{ id:'#appMount', template:'guide-headless', url:'/guide/guide-headless.html'}];
+	GF.mountArray(mounts);
 });

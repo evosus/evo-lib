@@ -62,6 +62,21 @@ var GF = (function() {
 		return string.length > limit ? string.substring(0,limit) + "..." : string;
 	}
 	// --------------------------------------
+	// MOUNT ARRAY
+	// --------------------------------------
+	// Attempts to load and mount an array of  templates
+	// --------------------------------------
+	var mountArray = function(mounts) {
+		mounts.forEach(function(key) {
+			var ID = key.id,
+					TMPL = key.template,
+					URL = key.url;
+			riot.compile(URL,function() {
+				riot.mount(ID,TMPL);
+			});
+		});
+	}
+	// --------------------------------------
 	// ICON BY TITLE
 	// --------------------------------------
 	// Returns a Material Design Icon based on box title
@@ -95,6 +110,8 @@ var GF = (function() {
 		getElapsed: function(datetime) { return getElapsed(datetime); },
 		isNeg: function(string) { return isNeg(string); },
 		truncate: function(string, limit) { return truncate(string, limit) },
-		iconByTitle: function(title) { return iconByTitle(title) }
+		iconByTitle: function(title) { return iconByTitle(title) },
+		mountArray: function(mounts) { return mountArray(mounts) }
+
 	}
 })();
