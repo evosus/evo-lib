@@ -62,9 +62,20 @@ var GF = (function() {
 		return string.length > limit ? string.substring(0,limit) + "..." : string;
 	}
 	// --------------------------------------
+	// COMPILE ARRAY
+	// --------------------------------------j
+	// Attempts to compile an array of templates
+	// --------------------------------------
+	var compileArray = function(tags) {
+		tags.forEach(function(key) {
+			var TMPL = key.template, URL = key.url;
+			riot.compile(URL,function() {});
+		});
+	}
+	// --------------------------------------
 	// MOUNT ARRAY
 	// --------------------------------------
-	// Attempts to load and mount an array of  templates
+	// Attempts to load and mount an array of templates
 	// --------------------------------------
 	var mountArray = function(mounts) {
 		mounts.forEach(function(key) {
@@ -72,7 +83,11 @@ var GF = (function() {
 					TMPL = key.template,
 					URL = key.url;
 			riot.compile(URL,function() {
-				riot.mount(ID,TMPL);
+				if(ID) {
+					riot.mount(ID,TMPL);
+				} else {
+					riot.mount(TMPL);
+				}
 			});
 		});
 	}
@@ -111,7 +126,7 @@ var GF = (function() {
 		isNeg: function(string) { return isNeg(string); },
 		truncate: function(string, limit) { return truncate(string, limit) },
 		iconByTitle: function(title) { return iconByTitle(title) },
+		compileArray: function(tags) { return compileArray(tags) },
 		mountArray: function(mounts) { return mountArray(mounts) }
-
 	}
 })();

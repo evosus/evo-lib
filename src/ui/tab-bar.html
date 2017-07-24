@@ -1,0 +1,27 @@
+<!--
+TAB BAR
+!-->
+<tab-bar>
+	<div class="tab-bar f-row ai-stretch { opts.css }">
+		<virtual each="{ tab in opts.items }">
+			<div class="tab { active:parent.opts.active==tab.name } f-one f-row ai-center jc-center"
+				onclick="{ tabClick }">
+				<span>{ tab.name }</span>
+			</div>
+		</virtual>
+	</div>
+	<style>
+		.tab-bar { height:3em;padding:0em 1em;box-shadow:0px 3px 3px 1px rgba(0,0,0,0.25); }
+		.tab { border-bottom:2px solid transparent;cursor:pointer;transition:.2s ease-in-out all; }
+		.tab:hover { background:rgba(0,0,0,0.1); }
+		.active { border-bottom:2px solid white;cursor:default; }
+		.tab.active:hover { background:none; }
+		.tab > span { font-size:.875em;font-weight:400;margin:0;opacity:0.8; }
+		.tab.active span { font-weight:700;opacity:1; }
+	</style>
+	<script>
+		tabClick = function(e) {
+			IO.trigger('TAB_BAR_CLICKED',{name:opts.name||'unnamed',event:e});
+		}
+	</script>
+</tab-bar>

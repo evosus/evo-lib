@@ -1,0 +1,75 @@
+<!--
+UI-MODAL WIP
+!-->
+<ui-modal>
+	<div onclick="{ closeOutsideModal }" class="ui-modal f-col ai-center jc-center { fill:isMounted }">
+		<div if="{ isModal }" class="ui-white rounded modal-shadow pad-1">
+			<div class="modal-contents">
+				<div class="modal-close f-row ai-center jc-end" onclick="{ closeModal }">
+					<i class="mdi mdi-close"></i>
+				</div>
+				<div id="modalMount">
+					<div class="pad-1 fg-grey-lt">
+						Loading...
+					</div>
+				</div>	
+			</div>	
+		</div>
+	</div>
+	<style>
+		.modal-close {
+			cursor:pointer;
+		}
+		.modal-close i {
+			color:grey;
+			transition:.2s ease-in-out all;
+		}
+		.modal-close:hover i {
+			color:red;
+		}
+		.ui-modal {
+			position:absolute;
+			z-index:10000;	
+			width:100vw;
+			height:100vh;
+			background:transparent;
+			transition:.2s ease-in-out all;
+		}
+		.ui-modal.fill {
+			background:rgba(0,0,0,0.75);
+		}
+		.modal-shadow {
+			box-shadow:0px 2px 10px 4px rgba(0,0,0,0.5);
+		}
+	</style>
+	<script>
+		var self = this;
+		isMounted = false;
+		isModal = false;
+		closeOutsideModal = function(e) {
+			if(e.target.classList.contains('ui-modal')) {
+				RC.trigger('UI_SET_STATE',{ modal:false });
+			};
+		};
+		closeModal = function() {
+			RC.trigger('UI_SET_STATE',{ modal:false });
+		}
+		this.on('mount',function() {
+			setTimeout(function() {
+				isMounted = true;
+				setTimeout(function() {
+					isModal = true;
+					self.update();
+					setTimeout(function() {
+						if(opts.template) {
+							riot.compile(function() {
+								riot.mount('#modalMount',opts.template);
+							});
+						}
+					},25);
+				},50);
+				self.update();
+			},100);
+		});
+	</script>
+</ui-modal>

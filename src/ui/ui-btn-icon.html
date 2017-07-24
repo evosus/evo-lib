@@ -1,0 +1,22 @@
+<!--
+UI BTN ICON
+!-->
+<ui-btn-icon>
+	<button class="ui-btn-icon { opts.css }">
+		<span class="f-col ai-center jc-center">
+			<i if="{ opts.mdicon }" class="{ opts.mdicon }"></i>
+			<h1 if="{ opts.character }">{ opts.character.substring(0,2) }</h1>
+		</span>
+	</button>
+	<style>
+		.ui-btn-icon {
+			width:2.5em;
+			height:2.5em;
+			border-radius:50%;
+			transition:.25s ease-in-out all;
+		}
+		.ui-btn-icon:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+		.ui-btn-icon i { font-size:1.5em;line-height:0; }
+		.ui-btn-icon h1 { font-size:1.25em;font-weight:500;line-height:0; }
+	</style>
+</ui-btn-icon>

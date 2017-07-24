@@ -1,29 +1,18 @@
 <guide-headless>
-	<div class="fullscreen f-row ai-center jc-center ui-teal-lt">
+	<nav-menu css="ui-background" />
+	<nav-bar css="ui-teal-dk" />
+	<div class="content f-row ai-center jc-center ui-teal-dk">
 		<div class="container-centered ui-white">
-			<div class="container-head ui-teal-dk">
-				<div class="container-nav f-row ai-center jc-end">
-<!--
-					<div class="container-nav-icon f-col ai-center jc-center">
-						<i class="mdi mdi-close"></i>
-					</div>
-!-->
-				</div>
-				<div class="pad-1"></div>
-				<div class="container-title f-row ai-center jc-center">
-					<div class="svg-logo-resize">
-						<div class="svg-logo"></div>
-					</div>
-				</div>
-				<div class="pad-2"></div>
+			<div class="container-head ui-teal fg-white pad-2">
+				<div style="font-weight:500;font-size:1.8em;">Evosus UI Library</div>
+				<div class="pad-dot-25"></div>
+				<div style="font-weight:500;font-size:1.2em;">Please log in</div>
 			</div>
 			<div class="container-body ui-white">
 				<div class="pad-2">
-					<h3 class="fg-teal">Please log in</h3>
-					<div style="height:1.25em;"></div>
-					<ui-input name="email" label="Enter your email" css="ui-teal" />
+					<ui-input ref="email" name="email" label="Enter your email" css="ui-teal" auto="true" />
 					<div class="pad-dot-25"></div>
-					<ui-input name="password" label="Enter your password" css="ui-teal" />
+					<ui-input ref="password" name="password" label="Enter your password" type="password" css="ui-teal" />
 					<div class="pad-dot-5"></div>
 					<div class="f-row ai-center jc-between">
 						<ui-btn-txt label="Help" css="fg-teal" />
@@ -36,9 +25,9 @@
 		</div>
 	</div>
 	<style>
-		.fullscreen { height:100vh; }
+		.content { height:calc(100vh - 3.5em);overflow:auto; }
 		.container-centered {
-			min-width:27em;
+			min-width:25em;
 			border-radius:.15em;
 			box-shadow:0px 2px 8px 2px rgba(0,0,0,0.15);
 		}
@@ -59,7 +48,6 @@
 		}
 		.svg-logo {
 			background-image:url('/img/evosus_logo-mixed-white.svg');
-			/* background-image:url('http://evosuspro.com/lib/evo-pro-assets/src/img/evosus_logo-transparent.png'); */
 			background-size:contain;
 			background-repeat:no-repeat;
 			background-position:center center;
@@ -69,11 +57,14 @@
 		.svg-logo-resize { width:15em; height:10em; }
 	</style>
 	<script>
+		var self = this;
 		login = function() {
 			route('/home');
 		}
 		this.on('mount',function() {
-			IO.trigger('email:focus');
+			self.refs.email.setFocus();
+			self.refs.email.setValue('evosusadmin');
+			self.refs.password.setValue('evosus7414');
 		});
 	</script>
 </guide-headless>

@@ -1,0 +1,79 @@
+<!--
+UI LIST
+!-->
+<ui-list>
+	<div class="ui-list { opts.css } hide-mq-3">
+		<ui-list-subtitle if="{ opts.subtitle }" css="ui-disabled" subtitle="{ opts.subtitle }" />
+		<!-- COMPACT LIST !-->
+		<div class="ui-list-item f-row" each="{ item in opts.items }" name="{ item.leftTop }" onclick="{ rowClick }">
+			<div if="{ item.mdiavatar }" class="left f-col ai-center jc-center">
+				<i class="{ item.mdiavatar } fg-inactive"></i>
+			</div>
+			<div class="center f-one f-row ai-center">
+				<div class="left f-one f-col ai-start">
+					<div class="top">{ item.leftTop }</div>
+					<div class="bot">{ item.leftBot }</div>
+				</div>
+				<div if="{ item.rightTop || item.rightBot }" class="right f-one f-col ai-end">
+					<div class="top">{ item.rightTop }</div>
+					<div class="bot">{ item.rightBot }</div>
+				</div>
+			</div>
+			<div if="{ item.mdicon }" class="right f-col ai-center jc-center">
+				<i class="{ item.mdicon }"></i>
+			</div>
+		</div>
+	</div>
+	<!-- FULL SIZE LIST !-->
+	<div class="ui-list { opts.css } hide block-mq-3">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr class="ui-list-item" each="{ item in opts.items }" name="{ item.leftTop }" onclick="{ rowClick }">
+				<td>
+					<div if="{ item.mdiavatar }" class="left f-col ai-center jc-center">
+						<i class="{ item.mdiavatar } fg-inactive"></i>
+					</div>
+				</td>
+				<td class="top f-one">{ item.leftTop }</td>
+				<td class="top f-one">{ item.leftBot }</td>
+				<td class="top f-one">{ item.rightTop }</td>
+				<td class="top f-one">{ item.rightBot }</td>
+				<td>
+					<div if="{ item.mdicon }" class="right f-col ai-center jc-center">
+						<i class="{ item.mdicon }"></i>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<style>
+		.ui-list-item { cursor:pointer;height:4em;padding:0em .5em;border-bottom:1px solid #e7e5e2;transition:.2s ease-in-out all; }
+		.ui-list-item:hover { background:rgba(0,0,0,0.05); }
+		.left { padding:0em .5em; }
+		.left i { font-size:2.5em; }
+		.center { padding:0em .5em 0em 0em; }
+		.center > .left > .bot,
+		.center > .right > .bot { font-size:0.8175em;margin:.25em 0em 0em 0em;opacity:0.6; }
+		.ui-list-item > .right { padding:.5em; }
+		.ui-list-item > .right i { font-size:1.25em; }
+		td { vertical-align:middle; }
+		td:first-child { width:72px; }
+	</style>
+	<script>
+		var self = this;	
+		self.rowClick = function(e) {
+			console.dir(e);
+		}
+	</script>
+</ui-list>
+<!--
+UI LIST SUBTITLE
+!-->
+<ui-list-subtitle>
+	<div class="ui-list-subtitle f-row ai-center { opts.css }">
+		<span if="{ opts.subtitle }" class="subtitle"><h2>{ opts.subtitle }</h2></span>
+	</div>
+	<style>
+		.ui-list-subtitle { height:3em;padding:0em 1em; }
+		.subtitle > h2 { font-size:.8175em;font-weight:700;margin:0;opacity:0.5; }
+	</style>
+</ui-list-subtitle>

@@ -37,9 +37,9 @@
 .ui-blue-dk, .ui-blue-lt, .ui-purple,
 .ui-purple-dk, .ui-purple-lt, .ui-grey,
 .ui-grey-dk, .ui-grey-lt { color:white; } 
-.ui-grey { background:#555555; }
-.ui-grey-dk { background:#333333; }
-.ui-grey-lt { background:#888888; }
+.ui-grey { background:#cccccc; }
+.ui-grey-dk { background:#aaaaaa; }
+.ui-grey-lt { background:#eeeeee; }
 .ui-red { background:firebrick; }
 .ui-red-dk { background:darkred; }
 .ui-red-lt { background:tomato; }

@@ -91,7 +91,7 @@ route('/theme', function() {
 // GUIDE HOME
 // --------------------------------------
 route('/home', function() {
-	var mounts  = [
+	var mounts = [
 		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
 		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
 		{ id:'#moduleNavMount', template:'guide-home', url:'/guide/guide-home.html'	}
@@ -102,6 +102,6 @@ route('/home', function() {
 // GUIDE LOGIN !!! DEFAULT ROUTE !!!
 // --------------------------------------
 route('/', function() {
-	var mounts  = [{ id:'#appMount', template:'guide-headless', url:'/guide/guide-headless.html'}];
+	var mounts = [{ id:'#appMount', template:'guide-headless', url:'/guide/guide-headless.html'}]
 	GF.mountArray(mounts);
 });

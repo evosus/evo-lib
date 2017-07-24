@@ -1,0 +1,30 @@
+<!--
+UI BTN
+!-->
+<ui-btn>
+	<button class="ui-btn rounded { opts.css }">
+		<div class="f-row ai-center jc-center">
+			<i if="{ opts.mdicon && !opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+			<span>{ opts.label }</span>
+			<i if="{ opts.mdicon && opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+		</div>
+	</button>
+	<style>
+		.ui-btn {
+			height:2.5em;
+			margin:0;
+			padding:0em .5em;
+			border:none;
+			cursor:pointer;
+			font-weight:700;
+			transition:.25s ease-in-out all;
+		}
+		.ui-btn:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+		.ui-btn > div { height:2.5em; }
+		.ui-btn > div > i { padding:0em .25em; }
+		.ui-btn > div > span { padding:0em .25em;text-transform:uppercase;letter-spacing:1px; }
+		.ui-btn.md { height:1.5em;font-weight:500; }
+		.ui-btn.md > div { height:1.5em; }
+		.ui-btn.md > div > span { padding:0em .25em;text-transform:uppercase;font-size:.875em; }
+	</style>
+</ui-btn>

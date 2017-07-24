@@ -1,0 +1,71 @@
+<!--
+UI SELECT
+!-->
+<ui-select>
+	<div class="ui-select { opts.css }">
+		<div class="f-row ai-center">
+			<select ref="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
+				<option class="{ opts.menucss }" each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
+			</select>
+			<i class="mdi mdi-menu-down"></i>
+		</div>
+		<div class="fill"></div>
+	</div>
+	<style>
+		.ui-select { position:relative;background:none; }
+		.ui-select select {
+			cursor:pointer;
+			padding:0;
+			margin:0;
+			border:0;
+			width:100%;
+			height:2em;
+			background:none;
+			font-size:100%;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			text-indent: -2px;
+			text-overflow: '';
+		}
+		option {
+			padding:.5em;
+		}
+		.fill {
+			position:absolute;
+			bottom:0;
+			z-index:100;
+			width:100%;
+			height:2px;
+			background:#888888;
+		}
+		.ui-select i {
+			font-size:1.5em;
+			position:absolute;
+			z-index:100;
+			right:0;
+			pointer-events:none;
+		}
+	</style>
+	<script>
+		var self = this;
+		selectIsOpen = false;
+		this.on('mount',function() {
+			// --------------------------------------
+			// SET Selected Item
+			// --------------------------------------
+			if(!opts.selection) {
+				self.refs.htmlselect.selectedIndex = 0;
+			} else {
+				var len = opts.options.length;
+				for(i = 0; i < len; i++) {
+					if(opts.options[i].label == opts.selection) {
+						self.refs.htmlselect.selectedIndex = i;
+					}
+				}
+			}
+		});
+		blur() { isFocused = false;self.update(); }
+		focus() { selectIsOpen = true;self.update(); }
+		change(e) { selectIsOpen = false;self.refs.htmlselect.blur();self.update(); }
+	</script>
+</ui-select>

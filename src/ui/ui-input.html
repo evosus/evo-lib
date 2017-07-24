@@ -1,0 +1,59 @@
+<!--
+UI INPUT
+!-->
+<ui-input class="ui-input { opts.css }">
+	<div class="label { fg-valid:isValid,fg-invalid:isInvalid,focused:isFocused }"><span>{ opts.label }</span></div>
+	<div class="stack f-row">
+		<div class="field f-row ai-center">
+			<input ref="field"
+				name="{ opts.name }"
+				value="{ opts.default }"
+				class="f-one"
+				type="{ opts.type }"
+				placeholder="{ opts.placeholder }"
+				onfocus="{ setFocus }"
+				onblur="{ setBlur }"
+			/></input>
+			<i if="{ isValid }" class="mdi mdi-check fg-valid"></i>
+			<i if="{ isInvalid }" class="mdi mdi-block-helper fg-invalid"></i>
+		</div>
+		<div if="{ !isValid && !isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length }"></div>
+		<div if="{ isValid || isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
+	</div>
+	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
+	<style>
+		.ui-input { height:4.5em;width:100%; }
+		i { margin:0em .5em; }
+		.label { padding:.25em 0em; }
+		.label > span { font-size:0.9em;letter-spacing:0;transition:.2s linear all; }
+		.label.focused > span { font-size:0.9em;letter-spacing:1px; }
+		.message { height:1em; }
+		.message > span { padding:.25em 0em;font-style:italic;font-size:0.875em; }
+		.stack { position:relative;height:2em; }
+		.field { position:absolute;z-index:200;height:2em;width:100%; }
+		.fill { opacity:0.2;position:absolute;z-index:100;height:2em;width:100%;transition:.2s ease-in-out all;bottom:0; }
+		.fill.underline { opacity:1;height:2px;; }
+		input { height:100%;font-size:100%;font-weight:500;border:none;background:transparent;padding:0; }
+	</style>
+	<script>
+		var self = this;
+		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
+		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }
+		self.setFocus = function(msg) { self.refs.field.focus();self.isFocused = true;self.setMessage(msg); }
+		self.setValid = function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); }
+		self.setInvalid = function(msg) { self.isInvalid = true;self.isValid = null;self.setMessage(msg); }
+		self.setValue = function(val) { self.refs.field.value = val;self.setMessage(); }
+		self.setMessage = function(msg) {
+			if(msg || self.msg) { self.msg = msg; } else { self.msg == null; } self.update();
+		}
+		self.clear = function() {
+			self.refs.field.value = '';
+			self.isFocused = null;
+			self.isValid = null;
+			self.isInvalid = null;
+			self.isTouched = null;
+			self.refs.field.blur();
+			self.setMessage();
+		}
+	</script>
+</ui-input>
