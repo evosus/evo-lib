@@ -36,7 +36,7 @@
 .ui-teal-dk, .ui-teal-lt, .ui-blue,
 .ui-blue-dk, .ui-blue-lt, .ui-purple,
 .ui-purple-dk, .ui-purple-lt, .ui-grey,
-.ui-grey-dk, .ui-grey-lt { color:white; } 
+.ui-grey-dk, { color:white; } 
 .ui-grey { background:#cccccc; }
 .ui-grey-dk { background:#aaaaaa; }
 .ui-grey-lt { background:#eeeeee; }
@@ -63,9 +63,9 @@
 .ui-purple { background:rebeccapurple; }
 .ui-purple-dk { background:indigo; }
 .ui-purple-lt { background:mediumpurple; }
-.fg-grey { color:#555555; }
-.fg-grey-dk { color:#333333; }
-.fg-grey-lt { color:#888888; }
+.fg-grey { color:#cccccc; }
+.fg-grey-dk { color:#aaaaaa; }
+.fg-grey-lt { color:#eeeeee; }
 .fg-red { color:firebrick; }
 .fg-red-dk { color:darkred; }
 .fg-red-lt { color:tomato; }
