@@ -256,7 +256,7 @@
 .ui-select.ui-white select,
 .ui-select.ui-white i { color:#ffffff; }
 .ui-select.ui-white .fill { background:#ffffff; }
-.ui-select option { color:#333333; }
+.ui-select.ui-white option { color:#333333; }
 
 .ui-select.ui-red select,
 .ui-select.ui-red i { color:firebrick; }
