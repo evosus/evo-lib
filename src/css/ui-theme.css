@@ -91,10 +91,6 @@
 .fg-green { color:olivedrab; }
 .fg-green-dk { color:darkolivegreen; }
 .fg-green-lt { color:darkkhaki; }
-/*
-.fg-teal { color:lightseagreen; }
-.fg-teal-dk { color:darkcyan; }
-*/
 .fg-teal { color:darkcyan; }
 .fg-teal-dk { color:#005959; }
 .fg-teal-lt { color:mediumaquamarine; }
@@ -144,12 +140,12 @@
 .ui-input.ui-gold-dk .label { color:darkgoldenrod; }
 .ui-input.ui-gold-dk .fill { background:darkgoldenrod; }
 
-.ui-input.ui-grey .label { color:#555555; }
-.ui-input.ui-grey .fill { background:#555555; }
-.ui-input.ui-grey-lt .label { color:#888888; }
-.ui-input.ui-grey-lt .fill { background:#888888; }
-.ui-input.ui-grey-dk .label { color:#333333; }
-.ui-input.ui-grey-dk .fill { background:#333333; }
+.ui-input.ui-grey .label { color:#cccccc; }
+.ui-input.ui-grey .fill { background:#cccccc; }
+.ui-input.ui-grey-lt .label { color:#eeeeee; }
+.ui-input.ui-grey-lt .fill { background:#eeeeee; }
+.ui-input.ui-grey-dk .label { color:#aaaaaa; }
+.ui-input.ui-grey-dk .fill { background:#aaaaaa; }
 
 .ui-input.ui-green .label { color:olivedrab; }
 .ui-input.ui-green .fill { background:olivedrab; }
@@ -157,14 +153,6 @@
 .ui-input.ui-green-lt .fill { background:darkkhaki; }
 .ui-input.ui-green-dk .label { color:darkolivegreen; }
 .ui-input.ui-green-dk .fill { background:darkolivegreen; }
-/*
-.ui-input.ui-teal .label { color:lightseagreen; }
-.ui-input.ui-teal .fill { background:lightseagreen; }
-.ui-input.ui-teal-dk .label { color:darkcyan; }
-.ui-input.ui-teal-dk .fill { background:darkcyan; }
-*/
-.fg-teal { color:darkcyan; }
-.fg-teal-dk { color:#005959; }
 
 .ui-input.ui-teal .label { color:darkcyan; }
 .ui-input.ui-teal .fill { background:darkcyan; }
@@ -217,11 +205,11 @@
 .ui-checkbox.ui-gold-dk .icon { color:darkgoldenrod; }
 
 .ui-checkbox.ui-grey .label,
-.ui-checkbox.ui-grey .icon { color:#555555; }
+.ui-checkbox.ui-grey .icon { color:#cccccc; }
 .ui-checkbox.ui-grey-lt .label,
-.ui-checkbox.ui-grey-lt .icon { color:#888888; }
+.ui-checkbox.ui-grey-lt .icon { color:#eeeeee; }
 .ui-checkbox.ui-grey-dk .label,
-.ui-checkbox.ui-grey-dk .icon { color:#333333; }
+.ui-checkbox.ui-grey-dk .icon { color:#aaaaaa; }
 
 .ui-checkbox.ui-green .label,
 .ui-checkbox.ui-green .icon { color:olivedrab; }
@@ -261,6 +249,9 @@
 .ui-select.ui-accent select,
 .ui-select.ui-accent i { color:#F09419; }
 .ui-select.ui-accent .fill { background:#F09419; }
+.ui-select.ui-primary option,
+.ui-select.ui-secondary option,
+.ui-select.ui-accent option { color:white; }
 
 .ui-select.ui-white select,
 .ui-select.ui-white i { color:#ffffff; }
@@ -276,6 +267,9 @@
 .ui-select.ui-red-dk select,
 .ui-select.ui-red-dk i { color:darkred; }
 .ui-select.ui-red-dk .fill { background:darkred; }
+.ui-select.ui-red option,
+.ui-select.ui-red-lt option,
+.ui-select.ui-red-dk option { color:white; }
 
 .ui-select.ui-orange select,
 .ui-select.ui-orange i { color:orange; }
@@ -286,6 +280,9 @@
 .ui-select.ui-orange-dk select,
 .ui-select.ui-orange-dk i { color:darkorange; }
 .ui-select.ui-orange-dk .fill { background:darkorange; }
+.ui-select.ui-orange option,
+.ui-select.ui-orange-lt option,
+.ui-select.ui-orange-dk option { color:white; }
 
 .ui-select.ui-gold select,
 .ui-select.ui-gold i { color:goldenrod; }
@@ -296,16 +293,22 @@
 .ui-select.ui-gold-dk select,
 .ui-select.ui-gold-dk i { color:darkgoldenrod; }
 .ui-select.ui-gold-dk .fill { background:darkgoldenrod; }
+.ui-select.ui-gold option,
+.ui-select.ui-gold-lt option,
+.ui-select.ui-gold-dk option { color:white; }
 
 .ui-select.ui-grey select,
-.ui-select.ui-grey i { color:#555555; }
-.ui-select.ui-grey .fill { background:#555555; }
+.ui-select.ui-grey i { color:#cccccc; }
+.ui-select.ui-grey .fill { background:#cccccc; }
 .ui-select.ui-grey-lt select,
-.ui-select.ui-grey-lt i { color:#888888; }
-.ui-select.ui-grey-lt .fill { background:#888888; }
+.ui-select.ui-grey-lt i { color:#eeeeee; }
+.ui-select.ui-grey-lt .fill { background:#eeeeee; }
 .ui-select.ui-grey-dk select,
-.ui-select.ui-grey-dk i { color:#333333; }
-.ui-select.ui-grey-dk .fill { background:#333333; }
+.ui-select.ui-grey-dk i { color:#aaaaaa; }
+.ui-select.ui-grey-dk .fill { background:#aaaaaa; }
+.ui-select.ui-grey option,
+.ui-select.ui-grey-lt option,
+.ui-select.ui-grey-dk option { color:white; }
 
 .ui-select.ui-green select,
 .ui-select.ui-green i { color:olivedrab; }
@@ -316,6 +319,9 @@
 .ui-select.ui-green-dk select,
 .ui-select.ui-green-dk i { color:darkolivegreen; }
 .ui-select.ui-green-dk .fill { background:darkolivegreen; }
+.ui-select.ui-green option,
+.ui-select.ui-green-lt option,
+.ui-select.ui-green-dk option { color:white; }
 
 .ui-select.ui-teal select,
 .ui-select.ui-teal i { color:lightseagreen; }
@@ -326,6 +332,9 @@
 .ui-select.ui-teal-dk select,
 .ui-select.ui-teal-dk i { color:darkcyan; }
 .ui-select.ui-teal-dk .fill { background:darkcyan; }
+.ui-select.ui-teal option,
+.ui-select.ui-teal-lt option,
+.ui-select.ui-teal-dk option { color:white; }
 
 .ui-select.ui-blue select,
 .ui-select.ui-blue i { color:royalblue; }
@@ -336,6 +345,9 @@
 .ui-select.ui-blue-dk select,
 .ui-select.ui-blue-dk i { color:darkslateblue; }
 .ui-select.ui-blue-dk .fill { background:darkslateblue; }
+.ui-select.ui-blue option,
+.ui-select.ui-blue-lt option,
+.ui-select.ui-blue-dk option { color:white; }
 
 .ui-select.ui-purple select,
 .ui-select.ui-purple i { color:rebeccapurple; }
@@ -346,5 +358,6 @@
 .ui-select.ui-purple-dk select,
 .ui-select.ui-purple-dk i { color:indigo; }
 .ui-select.ui-purple-dk .fill { color:indigo; }
-
-
+.ui-select.ui-purple option,
+.ui-select.ui-purple-lt option,
+.ui-select.ui-purple-dk option { color:white; }
