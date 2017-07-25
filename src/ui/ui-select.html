@@ -5,7 +5,7 @@ UI SELECT
 	<div class="ui-select { opts.css }">
 		<div class="f-row ai-center">
 			<select ref="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
-				<option class="{ opts.menucss }" each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
+				<option class="{ opts.menucss }{ opts.css }" each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
 			</select>
 			<i class="mdi mdi-menu-down"></i>
 		</div>
