@@ -2,10 +2,7 @@
 /* EVOSUS THEME */
 .ui-primary,.ui-secondary,.ui-accent,.ui-active,.ui-inactive,.ui-valid,.ui-invalid { color:white; }
 .ui-inactive { opacity:0.5; }
-/*
-.ui-primary { background:#02708C; }
-.ui-secondary { background:#007F9C; }
-*/
+
 .ui-primary { background:#333333; }
 .ui-secondary { background:#444444; }
 .ui-accent { background:#F09419; }
@@ -13,12 +10,18 @@
 .ui-inactive { background:transparent; }
 .ui-valid { background:#3F9D2F!important; }
 .ui-invalid { background:#AD423C!important; }
-.ui-background { background:#e7e5e2; } /* .fg-primary { color:#6a6b6c; } */
+.ui-background { background:#e7e5e2; }
 .ui-white { background:white; }
-/*
-.fg-primary { color:#02708C; }
-.fg-secondary { color:#8a8b8c; }
-*/
+.ui-white-dot-1 { background:rgba(255,255,255,0.1); }
+.ui-white-dot-25 { background:rgba(255,255,255,0.25); }
+.ui-white-dot-5 { background:rgba(255,255,255,0.5); }
+.ui-white-dot-75 { background:rgba(255,255,255,0.75); }
+.ui-black { background:black; }
+.ui-black-dot-1 { background:rgba(0,0,0,0.1); }
+.ui-black-dot-25 { background:rgba(0,0,0,0.25); }
+.ui-black-dot-5 { background:rgba(0,0,0,0.5); }
+.ui-black-dot-75 { background:rgba(0,0,0,0.75); }
+
 .fg-primary { color:#333333; }
 .fg-secondary { color:#444444; }
 .fg-white { color:white; }
@@ -27,6 +30,15 @@
 .fg-inactive { color:lightgray; }
 .fg-valid { color:#3F9D2F!important; }
 .fg-invalid { color:#AD423C!important; }
+.fg-white-dot-1 { color:rgba(255,255,255,0.1); }
+.fg-white-dot-25 { color:rgba(255,255,255,0.25); }
+.fg-white-dot-5 { color:rgba(255,255,255,0.5); }
+.fg-white-dot-75 { color:rgba(255,255,255,0.75); }
+.fg-black { color:black; }
+.fg-black-dot-1 { color:rgba(0,0,0,0.1); }
+.fg-black-dot-25 { color:rgba(0,0,0,0.25); }
+.fg-black-dot-5 { color:rgba(0,0,0,0.5); }
+.fg-black-dot-75 { color:rgba(0,0,0,0.75); }
 
 /* ADDITIONAL COLORS */
 .ui-red, .ui-red-dk, .ui-red-lt, .ui-orange,
@@ -36,7 +48,10 @@
 .ui-teal-dk, .ui-teal-lt, .ui-blue,
 .ui-blue-dk, .ui-blue-lt, .ui-purple,
 .ui-purple-dk, .ui-purple-lt, .ui-grey,
-.ui-grey-dk, { color:white; } 
+.ui-grey-dk, .ui-black, .ui-black-dot-1,
+.ui-black-dot-25, .ui-black-dot-5, .ui-black-dot-75
+{ color:white; } 
+
 .ui-grey { background:#cccccc; }
 .ui-grey-dk { background:#aaaaaa; }
 .ui-grey-lt { background:#eeeeee; }
@@ -52,8 +67,6 @@
 .ui-green { background:olivedrab; }
 .ui-green-dk { background:darkolivegreen; }
 .ui-green-lt { background:darkkhaki; }
-/* .ui-teal { background:lightseagreen; } */
-/* .ui-teal-dk { background:darkcyan; } */
 .ui-teal { background:darkcyan; }
 .ui-teal-dk { background:#005959; }
 .ui-teal-lt { background:mediumaquamarine; }
@@ -333,3 +346,5 @@
 .ui-select.ui-purple-dk select,
 .ui-select.ui-purple-dk i { color:indigo; }
 .ui-select.ui-purple-dk .fill { color:indigo; }
+
+
