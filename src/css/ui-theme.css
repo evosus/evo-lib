@@ -249,9 +249,6 @@
 .ui-select.ui-accent select,
 .ui-select.ui-accent i { color:#F09419; }
 .ui-select.ui-accent .fill { background:#F09419; }
-.ui-select.ui-primary option,
-.ui-select.ui-secondary option,
-.ui-select.ui-accent option { color:white; }
 
 .ui-select.ui-white select,
 .ui-select.ui-white i { color:#ffffff; }
@@ -267,9 +264,6 @@
 .ui-select.ui-red-dk select,
 .ui-select.ui-red-dk i { color:darkred; }
 .ui-select.ui-red-dk .fill { background:darkred; }
-.ui-select.ui-red option,
-.ui-select.ui-red-lt option,
-.ui-select.ui-red-dk option { color:white; }
 
 .ui-select.ui-orange select,
 .ui-select.ui-orange i { color:orange; }
@@ -280,9 +274,6 @@
 .ui-select.ui-orange-dk select,
 .ui-select.ui-orange-dk i { color:darkorange; }
 .ui-select.ui-orange-dk .fill { background:darkorange; }
-.ui-select.ui-orange option,
-.ui-select.ui-orange-lt option,
-.ui-select.ui-orange-dk option { color:white; }
 
 .ui-select.ui-gold select,
 .ui-select.ui-gold i { color:goldenrod; }
@@ -293,9 +284,6 @@
 .ui-select.ui-gold-dk select,
 .ui-select.ui-gold-dk i { color:darkgoldenrod; }
 .ui-select.ui-gold-dk .fill { background:darkgoldenrod; }
-.ui-select.ui-gold option,
-.ui-select.ui-gold-lt option,
-.ui-select.ui-gold-dk option { color:white; }
 
 .ui-select.ui-grey select,
 .ui-select.ui-grey i { color:#cccccc; }
@@ -306,9 +294,6 @@
 .ui-select.ui-grey-dk select,
 .ui-select.ui-grey-dk i { color:#aaaaaa; }
 .ui-select.ui-grey-dk .fill { background:#aaaaaa; }
-.ui-select.ui-grey option,
-.ui-select.ui-grey-lt option,
-.ui-select.ui-grey-dk option { color:white; }
 
 .ui-select.ui-green select,
 .ui-select.ui-green i { color:olivedrab; }
@@ -319,9 +304,6 @@
 .ui-select.ui-green-dk select,
 .ui-select.ui-green-dk i { color:darkolivegreen; }
 .ui-select.ui-green-dk .fill { background:darkolivegreen; }
-.ui-select.ui-green option,
-.ui-select.ui-green-lt option,
-.ui-select.ui-green-dk option { color:white; }
 
 .ui-select.ui-teal select,
 .ui-select.ui-teal i { color:lightseagreen; }
@@ -332,9 +314,6 @@
 .ui-select.ui-teal-dk select,
 .ui-select.ui-teal-dk i { color:darkcyan; }
 .ui-select.ui-teal-dk .fill { background:darkcyan; }
-.ui-select.ui-teal option,
-.ui-select.ui-teal-lt option,
-.ui-select.ui-teal-dk option { color:white; }
 
 .ui-select.ui-blue select,
 .ui-select.ui-blue i { color:royalblue; }
@@ -345,9 +324,6 @@
 .ui-select.ui-blue-dk select,
 .ui-select.ui-blue-dk i { color:darkslateblue; }
 .ui-select.ui-blue-dk .fill { background:darkslateblue; }
-.ui-select.ui-blue option,
-.ui-select.ui-blue-lt option,
-.ui-select.ui-blue-dk option { color:white; }
 
 .ui-select.ui-purple select,
 .ui-select.ui-purple i { color:rebeccapurple; }
@@ -358,6 +334,3 @@
 .ui-select.ui-purple-dk select,
 .ui-select.ui-purple-dk i { color:indigo; }
 .ui-select.ui-purple-dk .fill { color:indigo; }
-.ui-select.ui-purple option,
-.ui-select.ui-purple-lt option,
-.ui-select.ui-purple-dk option { color:white; }
