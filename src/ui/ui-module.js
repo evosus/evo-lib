@@ -23,10 +23,14 @@ var UserInterface = function() {
 		return key && state[key] ? state[key] : state;
 	});
 	self.on('UI_INIT',function(obj) {
-		state = obj.state || localStorage.getItem('state');
-		stateChanged();
-		data = obj.data || localStorage.getItem('data');
-		dataChanged();
+		if(obj.state) {
+			state = obj.state || localStorage.getItem('state');
+			stateChanged();
+		};
+		if(obj.data && obj.name) {
+			data[obj.name] = obj.data || localStorage.getItem('data')[obj.name];
+			dataChanged();
+		}
 	});
 	self.on('UI_SET_DATA',function(obj) {
 		data[obj.name] = obj.data;

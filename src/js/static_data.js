@@ -13,24 +13,6 @@ var navMenuItems =  [
 	{ "name":"Steps", "route":"/steps","mdicon":"mdi mdi-format-list-numbers" },
 	{ "name":"List", "route":"/list","mdicon":"mdi mdi-format-list-bulleted" }
 ];
-/* OLD
-var navMenuItems =  [
-	{ "name":"Home", "route":"/guide/contents","mdicon":"mdi mdi-home" },
-	{ "name":"Anchor Scroll", "route":"/guide/anchor-scroll","mdicon":"mdi mdi-anchor" },
-	{ "name":"Breakpoints", "route":"/guide/breakpoints","mdicon":"mdi mdi-cellphone-link" },
-	{ "name":"Buttons", "route":"/guide/buttons","mdicon":"mdi mdi-checkbox-multiple-blank" },
-	{ "name":"Charts", "route":"/guide/charts","mdicon":"mdi mdi-chart-pie" },
-	{ "name":"Flexbox", "route":"/guide/flexbox","mdicon":"mdi mdi-image-filter-center-focus" },
-	{ "name":"Fonts", "route":"/guide/fonts","mdicon":"mdi mdi-alphabetical" },
-	{ "name":"Form Elements", "route":"/guide/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
-	{ "name":"Grids", "route":"/guide/tables","mdicon":"mdi mdi-table-large" },
-	{ "name":"Layout Left", "route":"/guide/layout-left","mdicon":"mdi mdi-format-horizontal-align-left" },
-	{ "name":"Layout Right", "route":"/guide/layout-right","mdicon":"mdi mdi-format-horizontal-align-right" },
-	{ "name":"Maps", "route":"/guide/maps","mdicon":"mdi mdi-map" },
-	{ "name":"SVG Image Test", "route":"/guide/svg","mdicon":"mdi mdi-image" },
-	{ "name":"Theme", "route":"/guide/theme","mdicon":"mdi mdi-palette" }
-];
-*/
 /** Color Palette */
 var palette_descending = [
   { "name":"darkred" },

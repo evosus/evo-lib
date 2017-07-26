@@ -68,6 +68,22 @@ p { padding:1em 0 0 0; }
 /* TEXT ALIGNMENT */
 .ta-left { text-align:left; }
 .ta-right { text-align:right; }
+/* FONT SIZES */
+.fs-0-8175 { font-size:0.8175em; }
+.fs-0-875 { font-size:0.875em; }
+.fs-0-9 { font-size:0.9em; }
+.fs-1 { font-size:1em; }
+.fs-1-1 { font-size:1.1em; }
+.fs-1-15 { font-size:1.15em; }
+.fs-1-25 { font-size:1.25em; }
+.fs-1-5 { font-size:1.5em; }
+.fs-1-75 { font-size:1.75em; }
+.fs-2 { font-size:2em; }
+/* FONT WEIGHTS */
+.fw-100 { font-weight:100; }
+.fw-300 { font-weight:300; }
+.fw-400 { font-weight:400; }
+.fw-700 { font-weight:700; }
 /* CONTAINERS */
 .container-1280 { display:block;max-width:1280px;margin:0; }
 /* UI-BOX */

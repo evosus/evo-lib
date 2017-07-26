@@ -3,42 +3,62 @@
 		<h1>EVO LIBRE</h1>
 		<span>Evosus User Interface Library</span>
 		<div class="pad-1"></div>
-		<div each="{ uiItems }">
+		<div each="{ DATA.uiItems }">
 			<h4>{ name }</h4>
 			<span>{ desc }</span>
 			<hr class="hr"></hr>
 		</div>
 	</div>
 	<script>
+		var self = this;
+		STATE = { name: 'Home' };
+		DATA = { uiItems: [] }
 		// --------------------------------------
 		// MOUNT
 		// --------------------------------------
-		this.on('mount',function() {
-			var newState = {
-				mdicon:"mdi mdi-home",
-				title:"Home",
-			};
-			RiotControl.trigger('UI_SET_STATE',newState);
+		this.on('mount',function() { uiInit(); });
+		// --------------------------------------
+		// UI STATE CHANGED
+		// --------------------------------------
+		this.on('UI_STATE_CHANGED',function(newState) {
+			if(STATE != newState) { STATE = newState;self.update(); }
 		});
-		uiItems = [
-			{ name:"Bars",desc:"Horizontal bars for navigation and content manipulation" },
-			{ name:"Button",desc:"Push it" },
-			{ name:"Checkbox",desc:"Check yourself" },
-			{ name:"Context Menu",desc:"Menu that opens relative to the element clicked" },
-			{ name:"Copyright",desc:"Because it's too much for Desmond to type" },
-			{ name:"Date Picker",desc:"Not to be confused with Nose Picker" },
-			{ name:"FAB",desc:"Floating Action Button" },
-			{ name:"Grid",desc:"Spreadsheet style data display" },
-			{ name:"Icon",desc:"Material Design Icons" },
-			{ name:"Input",desc:"Input field for text, numbers, emails, and passwords" },
-			{ name:"List",desc:"Simple list style data display" },
-			{ name:"Modal",desc:"Popup screen" },
-			{ name:"Nav Menu",desc:"Main Menu on the left" },
-			{ name:"Select",desc:"Dropdown selection menu" },
-			{ name:"Stick Banner",desc:"Persistant banner accross the screen; optionally closed" },
-			{ name:"Switch",desc:"Like a checkbox, but more confusing" },
-			{ name:"Tabs",desc:"Multiple pink cans of unfashionable soda" },
-			{ name:"Toast",desc:"Breakfast of champions" }
-		]
+		// --------------------------------------
+		// UI DATA CHANGED
+		// --------------------------------------
+		this.on('UI_DATA_CHANGED',function(newData) {
+			console.log("NEW DATA");
+			console.dir(newData);
+			if(DATA != newData) { DATA = newData;self.update(); }
+		});
+		// --------------------------------------
+		// UI INIT
+		// --------------------------------------
+		uiInit = function() {
+			var obj = { name:'', state:{}, data:[] };
+			obj.name = 'Home';
+			obj.state = { mdicon:"mdi mdi-home", title:"Home" };
+			obj.data = [
+				{ name:"Bars",desc:"Horizontal bars for navigation and content manipulation" },
+				{ name:"Button",desc:"Push it" },
+				{ name:"Checkbox",desc:"Check yourself" },
+				{ name:"Context Menu",desc:"Menu that opens relative to the element clicked" },
+				{ name:"Copyright",desc:"Because it's too much for Desmond to type" },
+				{ name:"Date Picker",desc:"Not to be confused with Nose Picker" },
+				{ name:"FAB",desc:"Floating Action Button" },
+				{ name:"Grid",desc:"Spreadsheet style data display" },
+				{ name:"Icon",desc:"Material Design Icons" },
+				{ name:"Input",desc:"Input field for text, numbers, emails, and passwords" },
+				{ name:"List",desc:"Simple list style data display" },
+				{ name:"Modal",desc:"Popup screen" },
+				{ name:"Nav Menu",desc:"Main Menu on the left" },
+				{ name:"Select",desc:"Dropdown selection menu" },
+				{ name:"Stick Banner",desc:"Persistant banner accross the screen; optionally closed" },
+				{ name:"Switch",desc:"Like a checkbox, but more confusing" },
+				{ name:"Tabs",desc:"Multiple pink cans of unfashionable soda" },
+				{ name:"Toast",desc:"Breakfast of champions" }
+			];
+			RC.trigger('UI_INIT',obj);
+		}
 	</script>
 </guide-home>
