@@ -4,54 +4,63 @@
 var UserInterface = function() {
 
 	riot.observable(this);
+
 	var self = this, data = {}, state = {};
 
 	dataChanged = function() {
-		localStorage.setItem('data',data);
+		localStorage.setItem('data',JSON.stringify(data));
 		self.trigger('UI_DATA_CHANGED',data);
 	}
 
 	stateChanged = function() {
-		localStorage.setItem('state',state);
+		localStorage.setItem('state',JSON.stringify(state));
 		self.trigger('UI_STATE_CHANGED',state);
 	}
 
 	self.on('UI_GET_DATA',function(key) {
 		return key && data[key] ? data[key] : data;
 	});
+
 	self.on('UI_GET_STATE',function(key) {
 		return key && state[key] ? state[key] : state;
 	});
+
 	self.on('UI_INIT',function(obj) {
 		if(obj.state) {
-			state = obj.state || localStorage.getItem('state');
+			state = obj.state || JSON.parse(localStorage.getItem('state'));
 			stateChanged();
 		};
 		if(obj.data && obj.name) {
-			data[obj.name] = obj.data || localStorage.getItem('data')[obj.name];
+			data[obj.name] = obj.data || JSON.parse(localStorage.getItem('data')[obj.name]);
 			dataChanged();
 		}
 	});
+
 	self.on('UI_SET_DATA',function(obj) {
 		data[obj.name] = obj.data;
 		dataChanged();
 	});
+
 	self.on('UI_SET_STATE',function(newState) {
 		for(var key in newState) {
 			state[key] = newState[key];
 		}
 		stateChanged();
 	});
+
 	self.on('UI_PURGE_DATA',function(key) {
 		key && data[key] ? localStorage.removeItem(data[key]) : localStorage.removeItem('data');
 	});
+
 	self.on('UI_PURGE_STATE',function(key) {
 		key && state[key] ? localStorage.removeItem(state[key]) : localStorage.removeItem('state');
 	});
+
 	self.on('UI_PURGE_ALL',function() {
 		localStorage.removeItem('state');
 		stateChanged();
 		localStorage.removeItem('data');
 		dataChanged();
 	});
+
 };

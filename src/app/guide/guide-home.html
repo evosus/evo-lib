@@ -3,7 +3,7 @@
 		<h1>EVO LIBRE</h1>
 		<span>Evosus User Interface Library</span>
 		<div class="pad-1"></div>
-		<div each="{ DATA.uiItems }">
+		<div each="{ DATA.Home }">
 			<h4>{ name }</h4>
 			<span>{ desc }</span>
 			<hr class="hr"></hr>
@@ -20,13 +20,15 @@
 		// --------------------------------------
 		// UI STATE CHANGED
 		// --------------------------------------
-		this.on('UI_STATE_CHANGED',function(newState) {
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			console.log("NEW STATE");
+			console.dir(newState);
 			if(STATE != newState) { STATE = newState;self.update(); }
 		});
 		// --------------------------------------
 		// UI DATA CHANGED
 		// --------------------------------------
-		this.on('UI_DATA_CHANGED',function(newData) {
+		RC.on('UI_DATA_CHANGED',function(newData) {
 			console.log("NEW DATA");
 			console.dir(newData);
 			if(DATA != newData) { DATA = newData;self.update(); }
