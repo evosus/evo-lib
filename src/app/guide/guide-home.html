@@ -12,7 +12,7 @@
 	<script>
 		var self = this;
 		STATE = { name: 'Home' };
-		DATA = { uiItems: [] }
+		DATA = { Home: [] }
 		// --------------------------------------
 		// MOUNT
 		// --------------------------------------
@@ -21,16 +21,12 @@
 		// UI STATE CHANGED
 		// --------------------------------------
 		RC.on('UI_STATE_CHANGED',function(newState) {
-			console.log("NEW STATE");
-			console.dir(newState);
 			if(STATE != newState) { STATE = newState;self.update(); }
 		});
 		// --------------------------------------
 		// UI DATA CHANGED
 		// --------------------------------------
 		RC.on('UI_DATA_CHANGED',function(newData) {
-			console.log("NEW DATA");
-			console.dir(newData);
 			if(DATA != newData) { DATA = newData;self.update(); }
 		});
 		// --------------------------------------

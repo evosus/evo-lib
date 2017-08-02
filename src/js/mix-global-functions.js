@@ -80,13 +80,14 @@ var GF = (function() {
 	var mountArray = function(mounts) {
 		mounts.forEach(function(key) {
 			var ID = key.id,
+					OPTS = key.opts,
 					TMPL = key.template,
 					URL = key.url;
 			riot.compile(URL,function() {
 				if(ID) {
-					riot.mount(ID,TMPL);
+					riot.mount(ID,TMPL,OPTS);
 				} else {
-					riot.mount(TMPL);
+					riot.mount(TMPL,OPTS);
 				}
 			});
 		});

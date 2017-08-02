@@ -62,9 +62,14 @@
 			route('/home');
 		}
 		this.on('mount',function() {
+			RC.trigger('UI_GET_STATE','/login');
 			self.refs.email.setFocus();
 			self.refs.email.setValue('evosusadmin');
 			self.refs.password.setValue('evosus7414');
+		});
+		RC.on('UI_RETURN_STATE:/login',function(newState) {
+			console.info("UI RETURN STATE:/login");
+			console.dir(newState);
 		});
 	</script>
 </guide-headless>

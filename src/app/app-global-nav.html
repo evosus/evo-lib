@@ -1,5 +1,5 @@
 <app-global-nav>
-	<ui-modal if="{ isModal }" template="{ modalTemplate }" />
+	<ui-modal if="{ isModal }" template="{ isModal }" />
 	<nav-menu css="ui-background" items="{ navMenuItems }" />
 	<div id="rootBar" class="root-bar { expand:isVisible,contract:!isVisible }">
 		<nav-bar css="ui-primary"></nav-bar>
@@ -22,7 +22,6 @@
 		var self = this;
 		isVisible = true;
 		isModal = false;
-		modalTemplate = '';
 		// --------------------------------------
 		// ON MOUNT
 		// --------------------------------------
@@ -60,14 +59,9 @@
 				}
 			}
 		});
-		RC.on('UI_STATE_CHANGED',function(UI) {
-			if(UI.modal) {
-				isModal = true;
-				modalTemplate = UI.modal;
-				self.update();
-			} else {
-				isModal = false;
-				modalTemplate = '';
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			if(newState['ui-modal']) {
+				isModal = newState['ui-modal'];
 				self.update();
 			}
 		});

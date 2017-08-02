@@ -2,65 +2,71 @@
 // UI MODULE
 // --------------------------------------
 var UserInterface = function() {
-
+	// OBSERVABLE
 	riot.observable(this);
-
-	var self = this, data = {}, state = {};
-
-	dataChanged = function() {
-		localStorage.setItem('data',JSON.stringify(data));
-		self.trigger('UI_DATA_CHANGED',data);
+	// VARS
+	var self = this,
+			STATE = {};
+	// ERROR
+	self.error = function(req_event_name,opt_payload) {
+		console.error(req_event_name,opt_payload);
 	}
-
-	stateChanged = function() {
-		localStorage.setItem('state',JSON.stringify(state));
-		self.trigger('UI_STATE_CHANGED',state);
+	// STATE CHANGED
+	self.stateChanged = function(req_key) {
+		//console.log(req_key);
+		//console.dir(STATE);
+		localStorage.setItem('STATE',JSON.stringify(STATE));
+		self.trigger('UI_STATE_CHANGED',{ [req_key]:STATE[req_key] });
 	}
-
-	self.on('UI_GET_DATA',function(key) {
-		return key && data[key] ? data[key] : data;
-	});
-
-	self.on('UI_GET_STATE',function(key) {
-		return key && state[key] ? state[key] : state;
-	});
-
-	self.on('UI_INIT',function(obj) {
-		if(obj.state) {
-			state = obj.state || JSON.parse(localStorage.getItem('state'));
-			stateChanged();
+	// SET STATE
+	self.setState = function(req_key,req_state) {
+		if(!STATE[req_key]) {
+			STATE[req_key] = req_state;
+		} else {
+			Object.keys(req_state).forEach(function(key) {
+				STATE[req_key][key] = req_state[key];
+			});
+		}
+		self.stateChanged(req_key);
+	};
+	// INIT STATE
+	self.initState = function(opt_state) {
+		var newState = opt_state ? opt_state : JSON.parse(localStorage.getItem('STATE')) || {};
+		self.trigger('UI_SET_STATE',newState);
+	};
+	// GET STATE
+	self.getState = function(req_key) {
+		if(STATE[req_key]) {
+			self.trigger('UI_RETURN_STATE:' + req_key,STATE[req_key]);
+		}
+	}
+	// DELETE STATE
+	self.deleteState = function(req_key) {
+		if(STATE[req_key]) {
+			STATE[req_key] = null;
+			self.stateChanged(req_key);
 		};
-		if(obj.data && obj.name) {
-			data[obj.name] = obj.data || JSON.parse(localStorage.getItem('data')[obj.name]);
-			dataChanged();
+	}
+	// PURGE ALL
+	self.purgeAll = function() {
+		localStorage.removeItem('STATE');
+	}
+	// EVENT HANDLERS
+	self.on('UI_INIT_STATE',function(opt_state) {
+		self.initState(opt_state);
+	});
+	self.on('UI_SET_STATE',function(req_obj) {
+		if(key = Object.keys(req_obj)[0]) {
+			self.setState(key,req_obj[key]);
 		}
 	});
-
-	self.on('UI_SET_DATA',function(obj) {
-		data[obj.name] = obj.data;
-		dataChanged();
+	self.on('UI_GET_STATE',function(req_key) {
+		req_key ? self.getState(req_key) : self.error('UI_GET_STATE',req_key);
 	});
-
-	self.on('UI_SET_STATE',function(newState) {
-		for(var key in newState) {
-			state[key] = newState[key];
-		}
-		stateChanged();
+	self.on('UI_DELETE_STATE',function(req_key) {
+		req_key ? self.deleteState(req_key) : self.error('UI_DELETE_STATE',req_key);
 	});
-
-	self.on('UI_PURGE_DATA',function(key) {
-		key && data[key] ? localStorage.removeItem(data[key]) : localStorage.removeItem('data');
-	});
-
-	self.on('UI_PURGE_STATE',function(key) {
-		key && state[key] ? localStorage.removeItem(state[key]) : localStorage.removeItem('state');
-	});
-
 	self.on('UI_PURGE_ALL',function() {
-		localStorage.removeItem('state');
-		stateChanged();
-		localStorage.removeItem('data');
-		dataChanged();
+		self.purgeAll();
 	});
-
 };

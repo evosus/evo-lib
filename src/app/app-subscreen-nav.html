@@ -31,15 +31,16 @@
 		// ----------------------------------------
 		// ON UI STATE CHANGE
 		// ----------------------------------------
-		RiotControl.on('UI_STATE_CHANGED',function(state) {
-			title = state.title;
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			if(newState['app-subscreen-nav']) {
+			title = newState['app-subscreen-nav'].title;
 			self.update();
 		});
 		// ----------------------------------------
 		// ON MOUNT
 		// ----------------------------------------
 		this.on('mount',function() {
-			RiotControl.trigger('UI_SET_STATE',{ title:"Initializing..." });
+			RC.trigger('UI_SET_STATE',{ 'app-subscreen-nav':{ title:'Initializing...' } });
 		});
 	</script>
 </app-subscreen-nav>
