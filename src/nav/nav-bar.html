@@ -1,0 +1,28 @@
+<!--
+NAV BAR
+!-->
+<nav-bar>
+	<div class="nav-bar f-row ai-center jc-between { opts.css }">
+		<div class="left f-row ai-center">
+			<ui-icon mdicon="mdi mdi-menu" onclick="{ menuOpen }"/>
+			<nav-bar-logo />
+		</div>
+		<div class="right f-row ai-center">
+			<ui-icon mdicon="mdi mdi-magnify" />
+			<ui-icon mdicon="mdi mdi-history" />
+			<ui-icon mdicon="mdi mdi-comment-text-outline" />
+		</div>
+	</div>
+	<style>
+		.nav-bar { height:3.5em; }
+		.left { padding-left:.5em; }
+		.right { padding-right:.5em; }
+	</style>
+	<script>
+		this.mixin(IO);
+		menuOpen = function() {
+			NAV.nav_menu.isOpen = true;
+			RC.trigger('UI_SET_STATE',{ 'NAV':NAV });
+		};
+	</script>
+</nav-bar>

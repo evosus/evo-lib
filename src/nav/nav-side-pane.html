@@ -1,0 +1,310 @@
+<nav-right-pane id="pane-right" class="pane-right ui-teal">
+	<ui-bar css="ui-teal">
+		<ui-bar-left>
+			<ui-btn-icon if="{ isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin-off" css="ui-teal" io="{ ui }" />
+			<ui-btn-icon if="{ !isPinned }" class="hide block-mq-3" name="pane_right_pin" mdicon="mdi mdi-pin" css="ui-teal" io="{ ui }" />
+			<div class="hide-mq-3 pad-dot-25"></div>
+		</ui-bar-left>
+		<ui-bar-tabs css="{ f-one }" name="pane_right_tabs" tabs="{ rightPaneTabs }" active="{ activeTab }" io="{ ui }" />
+		<ui-bar-right>
+			<ui-btn-icon name="pane_right_close" mdicon="mdi mdi-close" css="ui-teal" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+
+	<ui-bar if="{ !filtersOpen }" css="ui-teal ui-bar-shadow jc-between">
+		<ui-bar-left>&nbsp;</ui-bar-left>
+		<ui-bar-middle css="f-one jc-center">
+			<ui-input-search name="pane_right_search_input" mdicon="mdi mdi-magnify" placeholder="Type to search..." io="{ ui }" />
+		</ui-bar-middle>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_right_search_options" mdicon="mdi mdi-dots-vertical" css="ui-teal" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+
+	<ui-bar if="{ filtersOpen }" css="ui-teal-lt ui-bar-shadow jc-between">
+		<ui-bar-left>
+			<ui-btn-icon name="pane_right_search_options_reset" mdicon="mdi mdi-refresh" css="ui-teal-lt" io="{ ui }" />
+			<!-- <ui-bar-title value="Filters" /> !-->
+			<ui-bar-title-stack title="Filters" subtitle="Subtitle" />
+		</ui-bar-left>
+		<ui-bar-right>
+			<ui-btn-icon name="pane_right_search_options_close" mdicon="mdi mdi-check" css="ui-teal-lt" io="{ ui }" />
+		</ui-bar-right>
+	</ui-bar>
+	<div class="scroll-1 ui-secondary">
+
+		<div if="{ activeTab == 'activity'}" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<h1>So active!</h1>
+		</div>
+
+		<div if="{ activeTab == 'history'}" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<h1>So historic!</h1>
+		</div>
+
+		<div if="{ activeTab == 'search' && !filtersOpen }" class="f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<div class="f-col ai-center" style="opacity:0.15;">
+				<i style="font-size:400%;" class="mdi mdi-magnify"></i>
+				<h1>search</h1>
+			</div>
+		</div>
+		<div if="{ activeTab == 'search' && filtersOpen }" class="ui-secondary f-col ai-center jc-center" style="height:100%;overflow:hidden;">
+			<div class="f-col ai-center" style="opacity:0.15;">
+				<i style="font-size:400%;" class="mdi mdi-filter-outline"></i>
+				<h1>filter</h1>
+			</div>
+		</div>
+	</div>
+	<script>
+		var self = this;
+		activeTab = 'search';
+		isPinned = false;
+		filtersOpen = false;
+		tabClick(e) {
+			console.log("clicked");
+			console.dir(e);
+			self.update();
+		}
+		ui.on('pane_right_search_options_close:click',function() {
+			filtersOpen = false;
+			self.update();
+		});
+		ui.on('pane_right_search_options:click',function() {
+			if(filtersOpen) {
+				filtersOpen = false;
+			} else {
+				filtersOpen = true;
+			}
+			self.update();
+		});
+		ui.on('pane_right_close:click',function() {
+			isPinned = false;
+			var pl = document.getElementById('pane-right');
+			pl.style.position = 'absolute';	
+			pl.style.boxShadow = '-5px 0px 5px rgba(0,0,0,0.25)';
+			panes.toggle('pane-right');
+			self.update();
+		});	
+		ui.on('pane_right_pin:click',function() { 
+			var pl = document.getElementById('pane-right');
+			if(isPinned) {
+				isPinned = false;
+				pl.style.position = 'absolute';	
+				pl.style.boxShadow = '-5px 0px 5px rgba(0,0,0,0.25)';
+			} else {
+				isPinned = true;
+				pl.style.position = 'relative';	
+				pl.style.boxShadow = 'none';
+			}
+			self.update();
+		});	
+		rightPaneTabs = [
+			{ "name":"activity" },
+			{ "name":"history" },
+			{	"name":"search" }
+		]
+		ui.on('pane_right_tabs:click',function(e) {
+			activeTab = e.item.name;
+			self.update();
+		});
+	</script>
+	<style>
+		/* PINNED */
+		.pinned {
+			min-width:300px;
+			box-shadow:none!important;
+			position:static;
+			z-index:0;
+		}	
+		/* PANES */
+		.panes {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			height: 100vh;
+			overflow: hidden;
+			z-index: 100;
+		}
+		.pane-main {
+			overflow: hidden;
+			flex: 1;
+			position: relative;
+		}
+		.pane-left {
+			position:static;
+			overflow: hidden;
+			width: 0;
+			height: 100vh;
+			transform: translateZ(0);
+			transition: 0.15s linear width;
+		}
+		.pane-right {
+			overflow: hidden;
+			width: 0;
+			right: 0;
+			height: 100vh;
+			transform: translateZ(0);
+			transition: 0.15s linear width;
+		}
+		/* SMALLEST */
+		@media only screen {
+			.pane-left.open {
+				box-shadow:5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 300;
+				width: 100%;
+			}
+
+			.pane-left.closed {
+				box-shadow: none;
+				position: absolute;
+				z-index: 300;
+				width: 0;
+			}
+
+			.pane-right.open {
+				box-shadow:-5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 200;
+				width: 100%;
+			}
+
+			.pane-right.closed {
+				position: absolute;
+				z-index: 200;
+				width: 0;
+			}
+		}
+		/* SMALL */
+		@media only screen and (min-width: 640px) {
+
+			.pane-left.open {
+				box-shadow:5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 300;
+				width: 22em;
+			}
+
+			.pane-left.closed {
+				position: absolute;
+				z-index: 300;
+				width: 0;
+			}
+
+			.pane-right.open {
+				box-shadow:-5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 200;
+				width: 22em;
+			}
+
+			.pane-right.closed {
+				position: absolute;
+				z-index: 200;
+				width: 0;
+			}
+		}
+		/* MEDIUM */
+		@media only screen and (min-width: 1024px) {
+			.pane-left.open {
+				box-shadow:5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 300;
+				width: 22em;
+			}
+
+			.pane-left.closed {
+				position: absolute;
+				z-index: 300;
+				width: 0;
+			}
+
+			.pane-right.open {
+				box-shadow:-5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 200;
+				width: 22em;
+			}
+
+			.pane-right.closed {
+				position: absolute;
+				z-index: 200;
+				width: 0;
+			}
+		}
+		/* LARGE */
+		@media only screen and (min-width: 1440px) {
+			.pane-left.open {
+				box-shadow:5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 300;
+				width: 22em;
+			}
+
+			.pane-left.closed {
+				position: absolute;
+				z-index: 300;
+				width: 0;
+			}
+
+			.pane-right.open {
+				box-shadow:-5px 0px 3px rgba(0,0,0,0.15);
+				position: absolute;
+				z-index: 200;
+				width: 22em
+			}
+
+			.pane-right.closed {
+				position: absolute;
+				z-index: 200;
+				width: 0;
+			}
+		}
+		/* BEGIN UI-BAR */
+		.ui-bar { height:3.5em; }
+		.ui-bar-shadow { position:relative;box-shadow:0px 3px 3px rgba(0,0,0,0.2); }
+		.ui-bar-left, .ui-bar-right { height:3.5em;padding:0em .25em; }
+		.ui-bar-middle { height:3.5em; }
+		.ui-bar-app-name {
+			padding:0em .5em;
+			height:3.5em;
+			font-weight:700;
+			font-size:110%;
+		}
+		.ui-bar-title {
+			padding:0em .5em;
+			height:3.5em;
+			font-weight:400;
+			font-size:110%;
+		}
+		.ui-bar-title-stack { padding:0em .5em;height:3.5em; }
+		.ui-bar-title-stack .ui-title {
+			font-weight:400;
+			font-size:110%;
+			padding-bottom:.1em;
+		}
+		.ui-bar-title-stack .ui-subtitle {
+			font-size:80%;
+			letter-spacing:1px;
+			text-transform:uppercase;
+			opacity:0.5;
+			font-weight:700;
+			padding-top:.1em;
+		}
+		/* END UI-BAR */
+		/* BEGIN UI-BAR-CONTROLS */
+		.ui-bar-controls { height:3.5em;width:100%; }
+		.ui-bar-controls .ui-bar-control-item { padding:0em .25em; }
+		.ui-bar-controls .ui-bar-control-item:first-child { padding:0em .25em 0em 0em; }
+		.ui-bar-controls .ui-bar-control-item:last-child { padding:0em 0em 0em .25em; }
+		/* END UI-BAR-CONTROLS */
+		/* BEGIN UI-BAR-TABS */
+		.ui-bar-tabs { height:3.5em; }
+		.ui-bar-tab { cursor:pointer;transition:.25s ease-in-out all; }
+		.ui-bar-tab-top { opacity:0.75;text-transform:capitalize;transition:.25s ease-in-out all; }
+		.ui-bar-tab-underline { width:100%;height:2px; }
+		.ui-bar-tab-fill { background:#ffffff;width:0;height:2px;transition:.25s ease-in-out all; }
+		.ui-bar-tab.active .ui-bar-tab-top { opacity:1.0; }
+		.ui-bar-tab.active .ui-bar-tab-fill { width:100%; }
+		/* END UI-BAR-TABS */
+	</style>
+</nav-right-pane>

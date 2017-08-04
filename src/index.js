@@ -8,8 +8,6 @@ var preload = [
 	{ template:'nav-bar-tabs',url:'/nav/nav-bar-tabs.html' },
 	{ template:'nav-bar-icons',url:'/nav/nav-bar-icons.html' },
 	{ template:'nav-menu',url:'/nav/nav-menu.html' },
-	{ template:'view-card',url:'/view/view-card.html' },
-	{ template:'view-form',url:'/view/view-form.html' },
 	{ template:'ui-button',url:'/ui/ui-button.html' },
 	{ template:'ui-checkbox',url:'/ui/ui-checkbox.html' },
 	{ template:'ui-icon',url:'/ui/ui-icon.html' },

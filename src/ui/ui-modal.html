@@ -2,7 +2,7 @@
 UI-MODAL WIP
 !-->
 <ui-modal>
-	<div onclick="{ closeOutsideModal }" class="ui-modal f-col ai-center jc-center { fill:isMounted }">
+	<div if="{ opts.show}" onclick="{ closeOutsideModal }" class="ui-modal f-col ai-center jc-center { fill:isMounted }">
 		<div if="{ isModal }" class="ui-white rounded modal-shadow pad-1">
 			<div class="modal-contents">
 				<div class="modal-close f-row ai-center jc-end" onclick="{ closeModal }">
@@ -43,6 +43,7 @@ UI-MODAL WIP
 		}
 	</style>
 	<script>
+		this.mixin(IO);
 		var self = this;
 		isMounted = false;
 		isModal = false;

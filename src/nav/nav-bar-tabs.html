@@ -1,0 +1,42 @@
+<!--
+NAV TAB BAR
+!-->
+<nav-bar-tabs>
+	<div class="nav-bar-tabs f-row ai-stretch { NAV.nav_bar_tabs.css }">
+		<virtual each="{ tab in NAV.nav_bar_tabs.items }">
+			<div class="tab { active:NAV.nav_bar_tabs.activeTab==tab.name } f-one f-row ai-center jc-center"
+				onclick="{ tabClick }">
+				<span>{ tab.name }</span>
+			</div>
+		</virtual>
+	</div>
+	<style>
+		.nav-bar-tabs { height:3em;padding:0em 1em;box-shadow:0px 3px 3px 1px rgba(0,0,0,0.25); }
+		.tab { border-bottom:2px solid transparent;cursor:pointer;transition:.2s ease-in-out all; }
+		.tab:hover { background:rgba(0,0,0,0.1); }
+		.active { border-bottom:2px solid white;cursor:default; }
+		.tab.active:hover { background:none; }
+		.tab > span { font-size:.875em;font-weight:400;margin:0;opacity:0.8; }
+		.tab.active span { font-weight:700;opacity:1; }
+	</style>
+	<script>
+		NAV.nav_bar_tabs = {
+			activeTab:null,
+			activeTabCss:'ui-secondary',
+			css:'ui-primary',
+			items:[]
+		}
+		tabClick = function(e) {
+			RC.trigger('UI_SET_STATE',{ 'NAV':NAV });
+		}
+		this.on('update',function(e) {
+			if(e) {
+				NAV.nav_bar_tabs = {
+					activeTab: e.activeTab,
+					css: e.css,
+					items: e.items
+				}
+			}
+		});
+	</script>
+</nav-bar-tabs>

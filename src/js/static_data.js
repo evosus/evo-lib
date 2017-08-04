@@ -4,6 +4,18 @@
 */
 /** Nav Menu Items */
 var navMenuItems =  [
+	{ "name":"view-home", "route":"/view-home","mdicon":"mdi mdi-grid" },
+	{ "name":"view-card", "route":"/view-card","mdicon":"mdi mdi-grid" },
+	{ "name":"view-dashboard", "route":"/view-dashboard","mdicon":"mdi mdi-grid" },
+	{ "name":"view-deadend", "route":"/view-deadend","mdicon":"mdi mdi-grid" },
+	{ "name":"view-detail", "route":"/view-detail","mdicon":"mdi mdi-grid" },
+	{ "name":"view-print", "route":"/view-print","mdicon":"mdi mdi-grid" },
+	{ "name":"view-search", "route":"/view-search","mdicon":"mdi mdi-grid" },
+	{ "name":"view-summary", "route":"/view-summary","mdicon":"mdi mdi-grid" }
+];
+/** OLD Nav Menu Items */
+/*
+var navMenuItems =  [
 	{ "name":"Home", "route":"/","mdicon":"mdi mdi-home" },
 	{ "name":"Navigation", "route":"/navigation","mdicon":"mdi mdi-map-marker" },
 	{ "name":"Theme", "route":"/theme","mdicon":"mdi mdi-palette" },
@@ -13,6 +25,7 @@ var navMenuItems =  [
 	{ "name":"Steps", "route":"/steps","mdicon":"mdi mdi-format-list-numbers" },
 	{ "name":"List", "route":"/list","mdicon":"mdi mdi-format-list-bulleted" }
 ];
+*/
 /** Color Palette */
 var palette_descending = [
   { "name":"darkred" },
@@ -43,6 +56,34 @@ var tabBarItems = [
 	{ "name":"Tab One" },
 	{ "name":"Tab Two" },
 	{ "name":"Tab Three" }
+]
+/** View Items */
+var viewItems = [
+	{ 
+		title:'<view-card>',
+		subtitle: 'view-card.html',
+		description: 'desc'
+	 },
+	{
+		title:'<view-deadend>',
+		subtitle: 'view-deadend.html',
+		description: 'desc'
+	},
+	{
+		title:'<view-overview>',
+		subtitle: 'view-overview.html',
+		description: 'desc'
+	},
+	{
+		title:'<view-profile>',
+		subtitle: 'view-profile.html',
+		description: 'desc'
+	},
+	{
+		title:'<view-search>',
+		subtitle: 'view-search.html',
+		description: 'desc'
+	}
 ]
 /** UI List Items */
 var uiListItems = [
@@ -79,77 +120,5 @@ var uiListItems = [
 	},
 	{
 		"leftTop":"Text Only"
-	}
-]
-var uiDemoList = [
-	{
-		"leftTop":"Lists",
-		"leftBot":"ui-list",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Tab Bar",
-		"leftBot":"ui-tab-bar",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Navigation Menu",
-		"leftBot":"nav-menu",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Navigation Bar",
-		"leftBot":"nav-bar",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Navigation Bar Icon",
-		"leftBot":"nav-bar-icon",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Navigation Bar Logo",
-		"leftBot":"nav-bar-logo",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Title Bar",
-		"leftBot":"title-bar",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Subtitle Bar",
-		"leftBot":"subtitle-bar",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Button",
-		"leftBot":"ui-btn",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Icon Button",
-		"leftBot":"ui-btn-icon",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Checkbox",
-		"leftBot":"ui-checkbox",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Form Checkbox",
-		"leftBot":"form-checkbox",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Form Input",
-		"leftBot":"form-input",
-		"mdicon":"mdi mdi-chevron-right",
-	},
-	{
-		"leftTop":"Form Select Menu",
-		"leftBot":"form-select",
-		"mdicon":"mdi mdi-chevron-right",
 	}
 ]

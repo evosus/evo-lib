@@ -1,0 +1,64 @@
+<!--
+NAV MENU
+!-->
+<nav-menu>
+	<div class="nav-menu { css } { closed: !isOpen }">
+		<div class="nav-menu-bar f-row ai-center jc-between { cssHead }">
+			<ui-icon mdicon="mdi mdi-close" onclick="{ menuClose }" />
+		</div>
+		<div class="nav-menu-bar f-row ai-center shadow-bar { cssHead }">
+			<ui-icon mdicon="mdi mdi-account-circle" />
+			<div class="pad-dot-25"></div>
+			<div class="f-col f-one">
+				<span>Joe User</span>
+				<span>Company, Inc.</span>
+			</div>
+			<ui-icon mdicon="mdi mdi-chevron-down" />
+		</div>
+		<div class="links">
+			<div class="pad-dot-5"></div>
+			<div class="nav-link f-row ai-center jc-start" each="{ items }" route="{ route }" onclick="{ menuClick }">
+				<ui-icon mdicon="{ mdicon }" />
+				<h4>{ name }</h4>
+			</div>
+		</div>
+	</div>
+	<style>
+		.nav-menu {
+			position:fixed;z-index:10000;
+			width:19em;height:100vh;top:0;left:0;
+			box-shadow: 1px 0px 3px 2px rgba(0,0,0,0.25);
+			transition:.2s ease-in-out all;
+		}
+		.links {
+			height:calc(100vh - 7em);
+			overflow-y:auto;	
+		}
+		.nav-menu.closed { left:-20em;box-shadow:none; }
+		.nav-menu-bar { height:3.5em;padding:0em .5em; }
+		.nav-link { padding:0em .5em;cursor:pointer;transition:.2s ease-in-out all; }
+		.nav-link:hover { background:rgba(0,0,0,0.1); }
+		h4 { font-weight:400;margin:0;padding:0em .5em; }
+	</style>
+	<script>
+		css = '';
+		cssHead = '';
+		isOpen = false;
+		items =  [];
+		menuClick = function(e) {
+			route(e.item.route,e.item.name);
+		}
+		menuClose = function(e) { 
+			NAV.nav_menu.isOpen = false;
+			RC.trigger('UI_SET_STATE',{ 'NAV':NAV });
+		};
+		this.on('update',function(e) {
+			if(e) {
+				css = e.css;
+				cssHead = e.cssHead;
+				isOpen = e.isOpen;
+				items = e.items;
+			}
+		});
+	</script>
+</nav-menu>

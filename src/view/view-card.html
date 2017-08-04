@@ -1,0 +1,90 @@
+<view-card>
+	<ui-card ref="ui_card" />
+	<script>
+		this.mixin(IO);
+		this.on('mount',function() {
+
+			var primary = 'ui-teal',
+					primary_fg = 'fg-teal',
+					primary_dk = 'ui-teal-dk';
+
+			var CFG = {
+				key:opts.title,
+				ui_card: {
+					cssButton: primary,
+					cssContainer: 'ui-white',
+					cssContent: primary_dk,
+					cssInput: primary,
+					cssHeader: primary,
+					cssLink: primary_fg,
+					title:'ui-card',
+					subtitle:'ui/ui-card.html'
+				}
+			}
+			this.refs.ui_card.setOpts(CFG.ui_card);
+			RC.trigger('UI_SET_STATE',CFG);
+
+		});
+
+		RC.on(opts.title + ':changed',function(newState) {
+			console.info("CARD STATE");
+			console.dir(newState);
+		});
+
+		this.on('unmount',function() {
+			RC.off(opts.title + ':changed');
+		});
+
+	</script>
+</view-card>
+<ui-card>
+	<div class="content f-row ai-center jc-center { opts.cssContent }">
+		<div class="container-centered ui-white">
+			<div class="container-head pad-2 { opts.cssHeader }">
+				<div style="font-weight:500;font-size:1.8em;">{ opts.title }</div>
+				<div class="pad-dot-25"></div>
+				<div style="font-weight:500;font-size:1.2em;">{ opts.subtitle }</div>
+			</div>
+			<div class="container-body { opts.cssContainer }">
+				<div class="pad-2">
+					<ui-input ref="email" name="email" label="Enter your email" css="{ opts.cssInput }" auto="true" />
+					<div class="pad-dot-25"></div>
+					<ui-input ref="password" name="password" label="Enter your password" type="password" css="{ opts.cssInput }" />
+					<div class="pad-dot-5"></div>
+					<div class="f-row ai-center jc-between">
+						<ui-button ref="help_button" label="Help" css="{ opts.cssLink }" />
+						<ui-button ref="login_button" label="Login" onclick="route('/view-home')" css="{ opts.cssButton }" />
+					</div>
+				</div>
+			</div>
+			<div class="container-foot ui-white f-row ai-center jc-center">
+			</div>
+		</div>
+	</div>
+	<style>
+		.content { height:100vh;overflow:hidden; }
+		.container-centered {
+			min-width:25em;
+			border-radius:.15em;
+			box-shadow:0px 2px 8px 2px rgba(0,0,0,0.15);
+		}
+		.container-head {
+			border-top-left-radius:.15em;
+			border-top-right-radius:.15em;
+		}
+		.container-nav { height:2.5em; }
+		.container-nav-icon { width:2.5em;height:2.5em; }
+		.container-nav-icon > i { font-size:1.25em; }
+		.container-title { height:3.5em; }
+		.container-title > div { padding:0em 2em; }
+		.container-title > div > span { font-size:1.5em; }
+		.container-foot {
+			min-height:5em;
+			border-bottom-left-radius:.15em;
+			border-bottom-right-radius:.15em;
+		}
+	</style>
+	<script>
+		this.mixin(IO);
+	</script>
+</ui-card>

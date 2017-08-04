@@ -28,7 +28,7 @@ h4 { font-size: 1.12em; }
 h5 { font-size: 0.83em; }
 h6 { font-size: 0.75em; }
 h1,h2,h3,h4,h5,h6
-{ font-family:'Roboto',Helvetica,Arial,sans-serif;font-weight:700; }
+{ font-family:'Roboto',Helvetica,Arial,sans-serif;font-weight:500; }
 hr { margin:1em 0;border:none;border-top:1px solid rgba(0,0,0,0.1);border-bottom:1px solid rgba(0,0,0,0.1); }
 p { padding:1em 0 0 0; }
 /* CONTANIER STYLES */
@@ -150,6 +150,7 @@ ul.link-list.pane {
 	.block-mq-2 { display:block; }
 	.flex-mq-2 { display:-webkit-box;display:flex; }
 	.pad-0-1 { padding:1em; }
+	.pad-1-2 { padding:2em; }
 	.hide-mq-2 { display:none!important; }
 	.ui-layout-left-sidebar { flex:1 0 25%;height:calc(100vh - 7em);overflow:auto; }
 	.ui-layout-left-body { flex:1 0 75%;height:calc(100vh - 7em);overflow:auto; }
@@ -157,7 +158,6 @@ ul.link-list.pane {
 	.ui-layout-right-sidebar { flex:1 0 25%;height:calc(100vh - 7em);overflow:auto; }
 }
 @media only screen and (min-width:1200px) {
-	.pad-1-2 { padding:2em; }
 	.block-mq-3 { display:block; }
 	.flex-mq-3 { display:-webkit-box;display:flex; }
 	.hide-mq-3 { display:none!important; }

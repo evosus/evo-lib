@@ -3,99 +3,45 @@
 // --------------------------------------
 // ROUTES
 // --------------------------------------
-// GUIDE BREAKPOINTS
-// --------------------------------------
-route('/breakpoints', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-breakpoints', url:'/guide/guide-breakpoints.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE BUTTONS
-// --------------------------------------
-route('/buttons', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-buttons', url:'/guide/guide-buttons.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE FORMS
-// --------------------------------------
-route('/forms', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-subscreen-nav', url:'/app/app-subscreen-nav.html'	},
-		{ id:'#subscreenNavMount', template:'guide-forms', url:'/guide/guide-forms.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE STEPPER
-// --------------------------------------
-route('/steps', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-steps', url:'/guide/guide-steps.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE LISTS
-// --------------------------------------
-route('/list', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-list', url:'/guide/guide-list.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE HEADLESS
-// --------------------------------------
-route('/headless', function() {
-	GF.mountArray([{ id:'#appMount', template:'guide-headless', url:'/guide/guide-headless.html' }]);
-});
-// --------------------------------------
-// GUIDE NAVIGATION
-// --------------------------------------
-route('/navigation', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-navigation', url:'/guide/guide-navigation.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE THEME
-// --------------------------------------
-route('/theme', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-theme', url:'/guide/guide-theme.html'	}
-	]);
-});
-// --------------------------------------
-// GUIDE HOME
-// --------------------------------------
-route('/home', function() {
-	GF.mountArray([
-		{ id:'#appMount', template:'app-global-nav', url:'/app/app-global-nav.html'	},
-		{ id:'#globalNavMount', template:'app-module-nav', url:'/app/app-module-nav.html'	},
-		{ id:'#moduleNavMount', template:'guide-home', url:'/guide/guide-home.html'	}
-	]);
-});
 route('/login',function() {
-	GF.mountArray([{ id:'#appMount', template:'guide-headless', url:'/guide/guide-headless.html'}]);
+	var opts = { title:'login' };
+	GF.mountArray([{ id:'#appMount', template:'view-card', url:'/view/view-card.html', 'opts':opts }]);
+});
+// --------------------------------------
+// !!! DEV VIEW ROUTES !!!
+// --------------------------------------
+route('/view-home',function() {
+	var opts = { title:'view-home' };
+	GF.mountArray([{ id:'#appMount', template:'view-home', url:'/view/view-home.html', 'opts':opts }]);
+});
+route('/view-card',function() {
+	var opts = { title:'view-card' };
+	GF.mountArray([{ id:'#appMount', template:'view-card', url:'/view/view-card.html', 'opts':opts }]);
+});
+route('/view-dashboard',function() {
+	var opts = { title:'view-dashboard' };
+	GF.mountArray([{ id:'#appMount', template:'view-dashboard', url:'/view/view-dashboard.html', 'opts':opts }]);
+});
+route('/view-deadend',function() {
+	var opts = { title:'view-deadend' };
+	GF.mountArray([{ id:'#appMount', template:'view-deadend', url:'/view/view-deadend.html', 'opts':opts }]);
+});
+route('/view-detail',function() {
+	var opts = { title:'view-detail' };
+	GF.mountArray([{ id:'#appMount', template:'view-detail', url:'/view/view-detail.html', 'opts':opts }]);
+});
+route('/view-print',function() {
+	var opts = { title:'view-print' };
+	GF.mountArray([{ id:'#appMount', template:'view-print', url:'/view/view-print.html', 'opts':opts }]);
+});
+route('/view-search',function() {
+	var opts = { title:'view-search' };
+	GF.mountArray([{ id:'#appMount', template:'view-search', url:'/view/view-search.html', 'opts':opts }]);
 });
 // --------------------------------------
 // !!! DEFAULT ROUTE !!!
 // --------------------------------------
 route('/', function() {
-	GF.mountArray([{ id:'#appMount', template:'view-index', url:'/view/view-index.html'}]);
-	//GF.mountArray([{ id:'#appMount', template:'tmpl-card', url:'/tmpl/tmpl-card.html'}]);
 	// TODO: AUTH CHECK
-	//route('/login','Login');
+	route('/login','Login');
 });
