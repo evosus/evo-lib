@@ -16,9 +16,6 @@
 		var self = this;
 		isVisible = true;
 
-		this.on('before_mount',function() {
-		});
-
 		this.on('mount',function() {
 			var CFG = {
 				key: opts.title,
@@ -29,7 +26,14 @@
 					isOpen: false,
 					items:navMenuItems
 				},
-				nav_bar:{ css:'ui-primary' },
+				nav_bar:{
+					css:'ui-primary',
+					menuClick:function() { console.log("menu clicked!"); },
+					searchClick:function() { console.log("search clicked!"); },
+					historyClick:function() { console.log("history clicked!"); },
+					messageClick:function() { console.log("message clicked!"); },
+			
+				},
 				nav_bar_icons:{
 					css:'shadow-bar ui-primary',
 					mdicon:'mdi mdi-dots-vertical',
