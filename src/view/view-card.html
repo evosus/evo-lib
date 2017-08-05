@@ -1,38 +1,57 @@
 <view-card>
 	<ui-card ref="ui_card" />
 	<script>
-		this.mixin(IO);
+		var self = this;
 		this.on('mount',function() {
 
 			var primary = 'ui-teal',
 					primary_fg = 'fg-teal',
 					primary_dk = 'ui-teal-dk';
 
-			var CFG = {
-				key:opts.title,
-				ui_card: {
-					cssButton: primary,
-					cssContainer: 'ui-white',
-					cssContent: primary_dk,
-					cssInput: primary,
-					cssHeader: primary,
-					cssLink: primary_fg,
-					title:'ui-card',
-					subtitle:'ui/ui-card.html'
-				}
+			opts = this.opts;
+
+			opts.route = '/view-card';
+
+			opts.ui_card = {
+				cssButton: primary,
+				cssContainer: 'ui-white',
+				cssContent: primary_dk,
+				cssInput: primary,
+				cssHeader: primary,
+				cssLink: primary_fg,
+				title:'ui-card',
+				subtitle:'ui/ui-card.html'
 			}
-			this.refs.ui_card.setOpts(CFG.ui_card);
-			RC.trigger('UI_SET_STATE',CFG);
+			this.refs.ui_card.setOpts(opts.ui_card);
+			RC.trigger('UI_INIT_STATE',{ [opts.route]:opts });
 
 		});
 
-		RC.on(opts.title + ':changed',function(newState) {
-			console.info("CARD STATE");
+		RC.on('UI_STATE_CHANGED',function(newState) {
+
+			console.info(opts.route + ':changed');
 			console.dir(newState);
+
+			var route = Object.keys(newState)[0];
+
+			console.log("CHANGED ROUTE: " + route);
+
+
+			if(route == opts.route) {
+				console.log("LOOP REFS");
+				Object.keys(self.refs).forEach(function(ref) {
+					var currentOpts = self.refs[ref].opts;
+					//console.log("NEW")
+					//console.dir(newState[route][ref]);
+					if(currentOpts != newState[route][ref]) {
+						self.refs[ref].setOpts(newState[route][ref]);
+					}
+				});
+			}
 		});
 
 		this.on('unmount',function() {
-			RC.off(opts.title + ':changed');
+			RC.off('UI_STATE_CHANGED');
 		});
 
 	</script>

@@ -1,10 +1,8 @@
 <view-home>
 	<ui-modal ref="ui_modal" />
 	<nav-menu ref="nav_menu" />
-	<div class="scroll-away-bar { expand:isVisible,contract:!isVisible }">
-		<nav-bar ref="nav_bar" />
-	</div>
-	<div data-is="scroller" ref="scroller" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }">
+	<nav-bar ref="nav_bar" />
+	<div class="scroll-1">
 		<div class="pad-1-2">
 			<div each="{ num in new Array(45) }">
 				<h1>num</h1>
@@ -12,92 +10,63 @@
 		</div>
 	</div>
 	<script>
-
+		this.mixin(IO);
 		var self = this;
-		isVisible = true;
-
+		// MOUNT
 		this.on('mount',function() {
-			var CFG = {
-				key: opts.title,
-				nav_menu: {
-					css:'ui-white fg-teal',
-					cssActive:'ui-teal',
-					cssHead:'ui-teal',
-					isOpen: false,
-					items:navMenuItems
-				},
-				nav_bar:{
-					css:'ui-primary',
-					menuClick:function() { console.log("menu clicked!"); },
-					searchClick:function() { console.log("search clicked!"); },
-					historyClick:function() { console.log("history clicked!"); },
-					messageClick:function() { console.log("message clicked!"); },
-			
-				},
-				nav_bar_icons:{
-					css:'shadow-bar ui-primary',
-					mdicon:'mdi mdi-dots-vertical',
-					sideBarIsOpen:false,
-					title:'View Templates'
-				},
-				side_bar:{
-					css:'fg-primary',
-					cssActive:'fg-accent'
-				},
-				ui_modal: {
-					show:false
-				}
-			}
+			// OPTS
+			opts = this.opts;
+			// ROUTE
+			opts.route = '/view-home';
+			// NAV MENU
+			opts.nav_menu = {
+				companyName:'Devosus, Inc',
+				css:'ui-white fg-teal',
+				cssActive:'ui-teal',
+				cssHead:'ui-teal',
+				isOpen: false,
+				items:navMenuItems,
+				userName:'Corey Holten',
+			};
+			// NAV BAR
+			opts.nav_bar = { css:'ui-primary', };
+			// UI MODAL
+			opts.ui_modal = {
+				isOpen: false,
+				template:null,
+			};
+			// INIT STATE
+			RC.trigger('UI_INIT_STATE',{ [opts.route]:opts });
+		});
+		// HANDLE COMPONENT EVENTS
+		navBarMenuClick = function() { toggleNavMenu(); };
+		navMenuClose = function() { toggleNavMenu() };
+		//navMenuClick = function() { };
+		//navBarSearchClick = function() { };
+		//navBarHistoryClick = function() { };
+		//navBarMessageClick = function() { };
+		//closeModal: function() { };
 
-			this.refs.nav_bar.setOpts(CFG.nav_bar);
-			RC.trigger('UI_SET_STATE',CFG);
+		// TOGGLE NAV MENU
+		toggleNavMenu = function() {
+			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
+			RC.trigger('UI_SET_STATE',{ [opts.route]:opts });
+		}
 
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			var route = Object.keys(newState)[0];
+			self.setOpts(newState[route]);
 		});
 
-		RC.on(opts.title + ':changed',function(newState) {
-			console.info("HOME STATE");
-			console.dir(newState);
+		this.on('update',function() {
+			Object.keys(self.refs).forEach(function(REF) {
+				self.refs[REF].setOpts(opts[REF]);
+			});
 		});
-
+		// UNMOUNT
 		this.on('unmount',function() {
-			RC.off(opts.title + ':changed');
+			RC.off('UI_STATE_CHANGED');
 		});
 
 	</script>
-	<style>
-		.scroll-away-bar,
-		.root-mount,
-		.nav-bar { transition:.2s ease-in-out all; }
-		.scroll-away-bar { overflow:hidden;}
-		.scroll-away-bar.expand { height:3.5em; }
-		.scroll-away-bar.contract { height:0;overflow:hidden; }
-		.scroll-away-bar.expand .nav-bar { margin-top:0; }
-		.scroll-away-bar.contract .nav-bar { margin-top:-3.5em; }
-		.root-mount.expand { height:calc(100vh - 3.5em); }
-		.root-mount.contract { height:100vh; }
-		.title-bar-spacer { height:3.5em; }
-		.side-bar { flex:0; }
-		.side-bar.expanded { flex:0 0 3.5em; }
-		.expanded .icon-bar {
-			position:fixed;
-			height:calc(100vh - 7em);
-			overflow:auto;
-		}
-		.side-bar.contracted .icon-bar { display:none; }
-		.container-flex-1280 {
-			flex:1;
-			margin-left:0;
-			margin-right:0;
-			min-height:100%;
-			overflow-y:auto;
-		}
-		@media only screen and (min-width:992px) {
-			.container-flex-1280 {
-				flex:1;
-				max-width:1280px;
-				margin-left:auto;
-				margin-right:auto;
-			}
-		}
-	</style>
 </view-home>

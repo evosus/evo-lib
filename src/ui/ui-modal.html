@@ -2,10 +2,10 @@
 UI-MODAL WIP
 !-->
 <ui-modal>
-	<div if="{ opts.show}" onclick="{ closeOutsideModal }" class="ui-modal f-col ai-center jc-center { fill:isMounted }">
+	<div if="{ opts.isOpen }" onclick="{ opts.closeOutsideModal }" class="ui-modal f-col ai-center jc-center { fill:isMounted }">
 		<div if="{ isModal }" class="ui-white rounded modal-shadow pad-1">
 			<div class="modal-contents">
-				<div class="modal-close f-row ai-center jc-end" onclick="{ closeModal }">
+				<div class="modal-close f-row ai-center jc-end" onclick="{ opt.closeModal }">
 					<i class="mdi mdi-close"></i>
 				</div>
 				<div id="modalMount">
@@ -45,32 +45,32 @@ UI-MODAL WIP
 	<script>
 		this.mixin(IO);
 		var self = this;
-		isMounted = false;
-		isModal = false;
-		closeOutsideModal = function(e) {
-			if(e.target.classList.contains('ui-modal')) {
-				RC.trigger('UI_SET_STATE',{ modal:false });
-			};
-		};
-		closeModal = function() {
-			RC.trigger('UI_SET_STATE',{ modal:false });
-		}
 		this.on('mount',function() {
-			setTimeout(function() {
-				isMounted = true;
+			opts = this.opts;
+			opts.isMounted = false;
+			opts.isModal = false;
+			opts.closeOutsideModal = function(e) {
+				if(e.target.classList.contains('ui-modal')) {
+					opts.closeModal();
+				}
+			}
+		});
+		this.on('update',function() {	
+			if(opts.isOpen) {
 				setTimeout(function() {
-					isModal = true;
-					self.update();
+					opts.isMounted = true;
 					setTimeout(function() {
-						if(opts.template) {
-							riot.compile(function() {
-								riot.mount('#modalMount',opts.template);
-							});
-						}
-					},25);
-				},50);
-				self.update();
-			},100);
+						opts.isModal = true;
+						setTimeout(function() {
+							if(opts.template) {
+								riot.compile(function() {
+									riot.mount('#modalMount',opts.template);
+								});
+							}
+						},25);
+					},50);
+				},100);
+			}
 		});
 	</script>
 </ui-modal>
