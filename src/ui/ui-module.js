@@ -10,8 +10,15 @@ var UserInterface = function() {
 	self.initState = function(obj) {
 		var route = Object.keys(obj)[0],
 				STORED = self.getStore();
+/*
+		console.info("INIT STATE");
+		console.dir(obj);
+		console.log("route: " + route);
+		console.info("STORED");
+		console.dir(STORED);
+*/
 		// IF route in storage
-		if(route && STORED) {
+		if(route && STORED[route]) {
 			// SET STATE route from storage
 			STATE[route] = STORED[route];
 			// TRIGGER state change
@@ -43,7 +50,8 @@ var UserInterface = function() {
 	}
 	// SET STORE
 	self.setStore = function(key) {
-		console.info("SET STORE: " + key);
+		console.info("SET STORE");
+		console.dir(key);
 		// IF stringify
 		if(val = JSON.stringify(STATE)) {
 			// SET STORAGE
