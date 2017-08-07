@@ -1,172 +1,94 @@
 <view-detail>
-	<ui-modal ref="modal" if="{ NAV.modal }" />
-	<nav-menu ref="nav_menu" if="{ NAV.nav_menu }" />
-	<div class="scroll-away-bar { expand:isVisible,contract:!isVisible }">
-		<nav-bar ref="nav_bar" />
-	</div>
-	<div ref="scroller" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }">
-		<nav-bar-icons ref="nav_bar_icons" if="{ NAV.nav_bar_icons }" />
-		<nav-bar-form ref="nav_bar_form" if="{ NAV.nav_bar_form }" />
-		<div class="title-bar-spacer"></div>
-		<div style="min-height:calc(100vh - 7em);overflow:auto;">
-			<div style="min-height:calc(100vh - 7em);" class="container-flex-1280 ui-white shadow">
-				<div class="pad-1-2">
-					<h1>View Profile</h1>
-					<span>view-detail.html</span>
-				</div>
+	<ui-modal ref="ui_modal" />
+	<nav-menu ref="nav_menu" />
+	<nav-bar ref="nav_bar" />
+	<nav-bar-detail ref="nav_bar_detail" />
+	<div class="scroll-1">
+		<div class="pad-1-2">
+			<div each="{ num in new Array(45) }">
+				<h1>num</h1>
 			</div>
 		</div>
-
 	</div>
 	<script>
-		// VARIABLES
+		// MIXIN
+		this.mixin(IO);
+		// SELF
 		var self = this;
-		isVisible = true;
-		iconBarItems = navMenuItems;
-		// FORM VIEW
-		NAV = {
-			spinner:null,
-			modal:null,
-			nav_menu: {
+		// MOUNT
+		this.on('mount',function() {
+			// OPTS
+			opts = this.opts;
+			// TITLE
+			opts.title = 'View Detail';
+			// NAV MENU
+			opts.nav_menu = {
+				companyName:'Devosus, Inc',
 				css:'ui-white fg-teal',
 				cssActive:'ui-teal',
 				cssHead:'ui-teal',
 				isOpen: false,
-				items:navMenuItems
-			},
-			nav_bar:{ css:'ui-primary' },
-			subscreen_bar:null,
-			nav_bar_icons:null,
-			nav_bar_form:{
-				category:'category',
+				items:navMenuItems,
+				userName:'Corey Holten'
+			};
+			// NAV BAR
+			opts.nav_bar = { css:'ui-primary' };
+			// NAV BAR DETAIL
+			opts.nav_bar_detail = {
+				title:'View Detail',
 				css:'ui-primary',
-				mdicon:'mdi mdi-arrow-left',
-				title:'Form Title'
-			},
-			tab_bar:null,
-			side_bar:null,
-			banner:null,
-			content:null
-		}
-		// --------------------------------------
-		// ON MOUNT
-		// --------------------------------------
-		self.on('mount',function() {
-			NAV.nav_menu.items = navMenuItems;
-			RC.trigger('UI_SET_STATE',{ 'NAV':NAV });
-			scrollAway();
+				mdicon:'mdi mdi-arrow-left'
+			};
+			// UI MODAL
+			opts.ui_modal = { isOpen: false, template:null };
+			// INIT STATE
+			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
 		});
+		// HANDLE COMPONENT EVENTS
+		navBarMenuClick = function() { toggleNavMenu(); };
+		navMenuClose = function() { toggleNavMenu() };
+		navMenuClick = function(e) {
+			if(e) { route(e.item.route); }
+		}
+		//navBarSearchClick = function() { };
+		//navBarHistoryClick = function() { };
+		//navBarMessageClick = function() { };
+		//closeModal: function() { };
+
+		// TOGGLE NAV MENU
+		toggleNavMenu = function() {
+			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
+			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
-			if(newState.NAV) {
-				Object.keys(newState.NAV).forEach(function(key) {
-					if(self.refs[key] && self.refs[key].hasOwnProperty('update')) {
-						NAV[key] = newState.NAV[key];
-						self.refs[key].update(NAV[key]);	
-					} else {
-						NAV[key] = newState.NAV[key];
-					}
-				});
+			if(newState[opts.title]) {
+				self.setOpts(newState[opts.title]);
 			}
 		});
-		scrollAway = function() {
-			// --------------------------------------
-			// NAV-BAR SCROLL-AWAY
-			// --------------------------------------
-			var SCROLLER = self.refs.scroller,
-					isScrolling = -1,
-					lastPosition = 0;
-			SCROLLER.onscroll = function() {
-				if(isScrolling != -1) {
-					clearTimeout(isScrolling);
+		// UPDATE
+		this.on('update',function() {
+			Object.keys(self.refs).forEach(function(REF) {
+				// UPDATE SELF REF
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(opts[REF]);
 				}
-				isScrolling = window.setTimeout("scrollStop()",200);
-			}
-			scrollStop = function() {
-				var currentPosition = SCROLLER.scrollTop;
-				if(currentPosition < lastPosition) {
-					var DIFF = lastPosition - currentPosition;
-					if(DIFF > 56 && isVisible == false) {
-						isVisible = true;
-						lastPosition = currentPosition;
-						self.update();
-					}
-				} else if(currentPosition > lastPosition) {
-					var DIFF = currentPosition - lastPosition;
-					if(DIFF > 56 && isVisible == true) {
-						isVisible = false;
-						lastPosition = currentPosition;
-						self.update();
-					}
-				} else if(currentPosition == lastPosition) {
-					lastPosition = currentPosition;
+				// IF CHILD REFS
+				if(self.refs[REF].refs) {
+					// LOOP CHILD REFS
+					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+						// UPDATE CHILD REF
+						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
+						}
+					});
 				}
-			}
-		}
-		// INDEX VIEW
-		/*
-		NAV = {
-			spinner:null,
-			modal:null,
-			nav_menu: {
-				css:'ui-white fg-teal',
-				cssActive:'ui-teal',
-				cssHead:'ui-teal',
-				isOpen: false,
-				items:navMenuItems
-			},
-			nav_bar:{ css:'ui-primary' },
-			subscreen_bar:null,
-			nav_bar_index:{
-				css:'shadow-bar ui-primary',
-				mdicon:'mdi mdi-code-tags',
-				sideBarIsOpen:false,
-				title:'view-overview.html'
-			},
-			tab_bar:null,
-			side_bar:{
-				css:'fg-primary',
-				cssActive:'fg-accent',
-				isOpen:false
-			},
-			banner:null,
-			content:null
-		}
-		*/
+			});
+		});
+		// UNMOUNT
+		this.on('unmount',function() {
+			RC.off('UI_STATE_CHANGED');
+		});
+
 	</script>
-	<style>
-		.scroll-away-bar,
-		.root-mount,
-		.nav-bar { transition:.2s ease-in-out all; }
-		.scroll-away-bar { overflow:hidden;}
-		.scroll-away-bar.expand { height:3.5em; }
-		.scroll-away-bar.contract { height:0;overflow:hidden; }
-		.scroll-away-bar.expand .nav-bar { margin-top:0; }
-		.scroll-away-bar.contract .nav-bar { margin-top:-3.5em; }
-		.root-mount.expand { height:calc(100vh - 3.5em); }
-		.root-mount.contract { height:100vh; }
-		.title-bar-spacer { height:3.5em; }
-		.side-bar { flex:0; }
-		.side-bar.expanded { flex:0 0 3.5em; }
-		.expanded .icon-bar {
-			position:fixed;
-			height:calc(100vh - 7em);
-			overflow:auto;
-		}
-		.side-bar.contracted .icon-bar { display:none; }
-		.container-flex-1280 {
-			flex:1;
-			margin-left:0;
-			margin-right:0;
-			min-height:100%;
-			overflow-y:auto;
-		}
-		@media only screen and (min-width:992px) {
-			.container-flex-1280 {
-				flex:1;
-				max-width:1280px;
-				margin-left:auto;
-				margin-right:auto;
-			}
-		}
-	</style>
 </view-detail>

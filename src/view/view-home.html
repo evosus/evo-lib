@@ -1,24 +1,51 @@
 <view-home>
 	<ui-modal ref="ui_modal" />
 	<nav-menu ref="nav_menu" />
-	<nav-bar ref="nav_bar" />
-	<div class="scroll-1">
-		<div class="pad-1-2">
-			<div each="{ num in new Array(45) }">
-				<h1>num</h1>
+	<div class="scroll-away-bar { expand:isVisible,contract:!isVisible }">
+		<nav-bar ref="nav_bar" />
+	</div>
+	<div ref="scroller" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }">
+		<nav-bar-icons ref="nav_bar_icons" />
+		<div class="title-bar-spacer"></div>
+		<div class="f-row" style="min-height:calc(100vh - 7em);overflow:auto;">
+			<div ref="side_bar" class="side-bar { expanded:opts.isOpen,contracted:!opts.isOpen }">
+				<div class="icon-bar fg-teal pad-dot-5">
+					<virtual each="{ opts.sideBarItems }">
+						<ui-icon
+							css="{ fg-primary:name == opts.title, noshadow:name == opts.title }"
+							mdicon="{ mdicon }"
+							onclick="{ sideBarIconClick }">
+						</ui-icon>
+					</virtual>
+				</div>
+			</div>
+			<div id="moduleNavMount" class="container-flex-1280 ui-white shadow">
+				<div class="pad-1-2">
+					/src/view/view-form.html
+					<div each="{num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]}" no-reorder>
+						<div class="pad-dot-5"></div>
+						<h1>{ num }</h1>
+					</div>
+				</div>
 			</div>
 		</div>
+
 	</div>
 	<script>
 		// MIXIN
 		this.mixin(IO);
 		// SELF
 		var self = this;
+		// VARIABLES
+		isVisible = true;
+		opts.isOpen = false;
+		opts.sideBarItems = navMenuItems;
 		// MOUNT
-		this.on('mount',function() {
+		self.on('mount',function() {
+			console.log(this.refs);
 			// OPTS
 			opts = this.opts;
-			// ROUTE
+			// TITLE
 			opts.title = 'View Home';
 			// NAV MENU
 			opts.nav_menu = {
@@ -28,27 +55,31 @@
 				cssHead:'ui-teal',
 				isOpen: false,
 				items:navMenuItems,
-				userName:'Corey Holten',
-			};
+				userName:'Corey Holten'
+			}
 			// NAV BAR
-			opts.nav_bar = { css:'ui-primary', };
+			opts.nav_bar = { css:'ui-primary' };
+			// NAV BAR FORM
+			opts.nav_bar_icons = {
+				category:'category',
+				css:'ui-primary',
+				mdicon:'mdi mdi-arrow-left',
+				title:'Form Title',
+				isOpen:false
+			}
 			// UI MODAL
-			opts.ui_modal = {
-				isOpen: false,
-				template:null,
-			};
+			opts.ui_modal = { isOpen: false, template:null };
 			// INIT STATE
 			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
 		});
 		// HANDLE COMPONENT EVENTS
+		navBarIconClick = function() {
+			opts.isOpen ? opts.isOpen = false : opts.isOpen = true;
+			opts.nav_bar_icons.isOpen = opts.isOpen;
+			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		};
 		navBarMenuClick = function() { toggleNavMenu(); };
 		navMenuClose = function() { toggleNavMenu() };
-		//navMenuClick = function() { };
-		//navBarSearchClick = function() { };
-		//navBarHistoryClick = function() { };
-		//navBarMessageClick = function() { };
-		//closeModal: function() { };
-
 		// TOGGLE NAV MENU
 		toggleNavMenu = function() {
 			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
@@ -63,13 +94,96 @@
 		// UPDATE
 		this.on('update',function() {
 			Object.keys(self.refs).forEach(function(REF) {
-				self.refs[REF].setOpts(opts[REF]);
+				// UPDATE SELF REF
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(opts[REF]);
+				}
+				// IF CHILD REFS
+				if(self.refs[REF].refs) {
+					// LOOP CHILD REFS
+					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+						// UPDATE CHILD REF
+						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
+						}
+					});
+				}
 			});
+			scrollAway();
 		});
 		// UNMOUNT
 		this.on('unmount',function() {
 			RC.off('UI_STATE_CHANGED');
 		});
-
+		scrollAway = function() {
+			// --------------------------------------
+			// NAV-BAR SCROLL-AWAY
+			// --------------------------------------
+			var SCROLLER = self.refs.scroller,
+					isScrolling = -1,
+					lastPosition = 0;
+			SCROLLER.onscroll = function() {
+				if(isScrolling != -1) {
+					clearTimeout(isScrolling);
+				}
+				isScrolling = window.setTimeout("scrollStop()",200);
+			}
+			scrollStop = function() {
+				var currentPosition = SCROLLER.scrollTop;
+				if(currentPosition < lastPosition) {
+					var DIFF = lastPosition - currentPosition;
+					if(DIFF > 56 && isVisible == false) {
+						isVisible = true;
+						lastPosition = currentPosition;
+						self.update();
+					}
+				} else if(currentPosition > lastPosition) {
+					var DIFF = currentPosition - lastPosition;
+					if(DIFF > 56 && isVisible == true) {
+						isVisible = false;
+						lastPosition = currentPosition;
+						self.update();
+					}
+				} else if(currentPosition == lastPosition) {
+					lastPosition = currentPosition;
+				}
+			}
+		}
 	</script>
+	<style>
+		.scroll-away-bar,
+		.root-mount,
+		.nav-bar { transition:.2s ease-in-out all; }
+		.scroll-away-bar { overflow:hidden;}
+		.scroll-away-bar.expand { height:3.5em; }
+		.scroll-away-bar.contract { height:0;overflow:hidden; }
+		.scroll-away-bar.expand .nav-bar { margin-top:0; }
+		.scroll-away-bar.contract .nav-bar { margin-top:-3.5em; }
+		.root-mount.expand { height:calc(100vh - 3.5em); }
+		.root-mount.contract { height:100vh; }
+		.title-bar-spacer { height:3.5em; }
+		.side-bar { flex:0; }
+		.side-bar.expanded { flex:0 0 3.5em; }
+		.expanded .icon-bar {
+			position:fixed;
+			height:calc(100vh - 7em);
+			overflow:auto;
+		}
+		.side-bar.contracted .icon-bar { display:none; }
+		.container-flex-1280 {
+			flex:1;
+			margin-left:0;
+			margin-right:0;
+			min-height:100%;
+			overflow-y:auto;
+		}
+		@media only screen and (min-width:992px) {
+			.container-flex-1280 {
+				flex:1;
+				max-width:1280px;
+				margin-left:auto;
+				margin-right:auto;
+			}
+		}
+	</style>
 </view-home>

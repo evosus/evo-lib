@@ -42,5 +42,8 @@ NAV MENU
 	</style>
 	<script>
 		this.mixin(IO);
+		navMenuClick = function(e) {
+			if(e) { route(e.item.route); }
+		}
 	</script>
 </nav-menu>

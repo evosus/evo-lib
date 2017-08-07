@@ -36,6 +36,7 @@ UI INPUT
 		input { height:100%;font-size:100%;font-weight:500;border:none;background:transparent;padding:0; }
 	</style>
 	<script>
+		this.mixin(IO);
 		var self = this;
 		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
 		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }

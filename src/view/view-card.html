@@ -1,5 +1,18 @@
 <view-card>
-	<ui-card ref="ui_card" />
+	<ui-card ref="ui_card">
+		<!-- Content will yield into ui-card template !-->
+		<div class="ui-card-content">
+			<ui-input ref="ui_input_email" />
+			<div class="pad-dot-25"></div>
+			<ui-input ref="ui_input_password" />
+			<div class="pad-dot-5"></div>
+			<div class="f-row ai-center jc-end">
+				<ui-button ref="ui_button_help" onclick="{ uiButtonHelpClick }" />
+				<div class="pad-dot-5"></div>
+				<ui-button ref="ui_button_login" onclick="{ uiButtonLoginClick }" />
+			</div>
+		</div>
+	</ui-card>
 	<script>
 		// MIXIN
 		this.mixin(IO);
@@ -11,35 +24,59 @@
 			var primary = 'ui-teal',
 					primary_fg = 'fg-teal',
 					primary_dk = 'ui-teal-dk';
-			// OPTS
+			// VIEW CARD
 			opts = this.opts;
-			// TITLE
 			opts.title = 'View Card';
+			opts.css_button = primary;
+			opts.css_input = primary;
+			opts.css_link = primary_fg;
 			// UI CARD
 			opts.ui_card = {
-				cssButton: primary,
-				cssContainer: 'ui-white',
-				cssContent: primary_dk,
-				cssInput: primary,
-				cssHeader: primary,
-				cssLink: primary_fg,
-				title:'ui-card',
-				subtitle:'ui/ui-card.html'
+				css_container: 'ui-white',
+				css_content: primary_dk,
+				css_header: 'ui-teal',
+				title:'Evosus UI Library',
+				subtitle:'Please log in'
 			}
+			// INPUT EMAIL
+			opts.ui_input_email = { label: 'Enter your email', css:primary, default: 'evosusAdmin@evosus.com' }
+			// INPUT PASSWORD
+			opts.ui_input_password = { type: 'password', label: 'Enter your password', css:primary, default: 'evosus7414' }
+			// BUTTON HELP
+			opts.ui_button_help = { label: 'Help', css:primary_fg }
+			// BUTTON LOGIN
+			opts.ui_button_login = { label: 'Login', css:primary }
+			// SET FOCUS
+			self.refs.ui_card.refs.ui_input_email.setFocus();
 			// INIT STATE
 			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
-
 		});
+		// HELP CLICK
+		uiButtonHelpClick = function() { console.log("HELP CLICK!"); };
+		uiButtonLoginClick = function() { route('/view-home') };
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
 				self.setOpts(newState[opts.title]);
 			}
 		});
-		// UDPATE
+		// UPDATE
 		this.on('update',function() {
 			Object.keys(self.refs).forEach(function(REF) {
-				self.refs[REF].setOpts(opts[REF]);
+				// UPDATE SELF REF
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(opts[REF]);
+				}
+				// IF CHILD REFS
+				if(self.refs[REF].refs) {
+					// LOOP CHILD REFS
+					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+						// UPDATE CHILD REF
+						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
+						}
+					});
+				}
 			});
 		});
 		// UNMOUNT
@@ -48,61 +85,10 @@
 		});
 
 	</script>
-</view-card>
-<ui-card>
-	<div class="content f-col ai-center jc-center { opts.cssContent }">
-		<div class="container-centered ui-white">
-			<div class="container-head { opts.cssHeader }">
-				<div class="container-title">
-					<span>{ opts.title }</span>
-				</div>
-				<div class="pad-dot-25"></div>
-				<div class="container-subtitle">
-					<span>{ opts.subtitle }</span>
-				</div>
-			</div>
-			<div class="container-body { opts.cssContainer }">
-				<div class="pad-2">
-					<ui-input ref="email" name="email" label="Enter your email" css="{ opts.cssInput }" auto="true" />
-					<div class="pad-dot-25"></div>
-					<ui-input ref="password" name="password" label="Enter your password" type="password" css="{ opts.cssInput }" />
-					<div class="pad-dot-5"></div>
-					<div class="f-row ai-center jc-between">
-						<ui-button ref="help_button" label="Help" css="{ opts.cssLink }" />
-						<ui-button ref="login_button" label="Login" onclick="route('/view-home')" css="{ opts.cssButton }" />
-					</div>
-				</div>
-			</div>
-			<div class="container-foot f-row ai-center jc-center">
-			</div>
-		</div>
-	</div>
 	<style>
-		.content { height:100vh;overflow:hidden; }
-		.container-centered {
-			min-width:25em;
-			border-radius:.15em;
-			box-shadow:0px 2px 8px 2px rgba(0,0,0,0.15);
-			overflow:hidden;
-		}
-		.container-head {
-			/*
-			border-top-left-radius:.15em;
-			border-top-right-radius:.15em;
-			*/
-		}
-		.container-title > span { font-size:1.8em; }
-		.container-subtitle > span { font-size:1.2em;opacity:0.65; }
-		.container-head { padding:2em; }
-		.container-foot {
-			min-height:5em;
-			/*
-			border-bottom-left-radius:.15em;
-			border-bottom-right-radius:.15em;
-			*/
-		}
+		.ui-card-content { padding:2em; }
+/*
+		.ui-card-content { padding:0em 2em 2em 2em; }
+*/
 	</style>
-	<script>
-		this.mixin(IO);
-	</script>
-</ui-card>
+</view-card>

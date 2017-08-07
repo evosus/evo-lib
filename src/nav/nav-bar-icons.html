@@ -2,10 +2,10 @@
 NAV BAR ICONS
 !-->
 <nav-bar-icons>
-	<div class="nav-bar-icons f-row ai-center jc-between { css }">
+	<div class="nav-bar-icons f-row ai-center jc-between { opts.css }">
 		<div class="left f-row ai-center">
-			<ui-icon mdicon="mdi { mdi-chevron-up:isOpen, mdi-chevron-down:!isOpen }" onclick="{ iconClick }" />
-			<div class="title"><span>{ title }</span></div>
+			<ui-icon mdicon="mdi { mdi-chevron-up:opts.isOpen, mdi-chevron-down:!opts.isOpen }" onclick="{ navBarIconClick }" />
+			<div class="title"><span>{ opts.title }</span></div>
 		</div>
 		<div class="right f-row ai-center">
 			<ui-icon ref="icon_settings" mdicon="mdi mdi-settings" />
@@ -20,20 +20,6 @@ NAV BAR ICONS
 		.ui-icon:hover { box-shadow:none; }
 	</style>
 	<script>
-		isOpen = false;
-		iconClick = function() {
-			NAV.nav_bar_icons.sideBarIsOpen = isOpen ? false : true;
-			RC.trigger('UI_SET_STATE',{ 'NAV':NAV });
-		};
-		this.on('update',function(e) {
-			if(e) {
-				//console.info("ICON CLICK");
-				//console.dir(NAV);
-				css = e.css;
-				mdicon = e.mdicon;
-				isOpen = e.sideBarIsOpen;
-				title = e.title;
-			}
-		});
+		this.mixin(IO);
 	</script>
 </nav-bar-icons>
