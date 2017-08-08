@@ -4,14 +4,13 @@
 */
 /** Nav Menu Items */
 var navMenuItems =  [
-	{ "name":"view-home", "route":"/view-home","mdicon":"mdi mdi-grid" },
-	{ "name":"view-card", "route":"/view-card","mdicon":"mdi mdi-grid" },
-	{ "name":"view-dashboard", "route":"/view-dashboard","mdicon":"mdi mdi-grid" },
-	{ "name":"view-deadend", "route":"/view-deadend","mdicon":"mdi mdi-grid" },
-	{ "name":"view-detail", "route":"/view-detail","mdicon":"mdi mdi-grid" },
-	{ "name":"view-print", "route":"/view-print","mdicon":"mdi mdi-grid" },
-	{ "name":"view-search", "route":"/view-search","mdicon":"mdi mdi-grid" },
-	{ "name":"view-summary", "route":"/view-summary","mdicon":"mdi mdi-grid" }
+	{ "title":"View Home", "route":"/view-home","mdicon":"mdi mdi-home" },
+	{ "title":"View Card", "route":"/view-card","mdicon":"mdi mdi-credit-card" },
+	{ "title":"View Dashboard", "route":"/view-dashboard","mdicon":"mdi mdi-view-dashboard" },
+	{ "title":"View Deadend", "route":"/view-deadend","mdicon":"mdi mdi-alert" },
+	{ "title":"View Detail", "route":"/view-detail","mdicon":"mdi mdi-microscope" },
+	{ "title":"View Print", "route":"/view-print","mdicon":"mdi mdi-printer" },
+	{ "title":"View Search", "route":"/view-search","mdicon":"mdi mdi-magnify" }
 ];
 /** OLD Nav Menu Items */
 /*

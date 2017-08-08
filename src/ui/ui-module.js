@@ -2,21 +2,14 @@
 // UI MODULE
 // --------------------------------------
 var UserInterface = function() {
-
+	// OBSERVABLE
 	riot.observable(this);
+	// SELF & STATE
 	var self = this, STATE = {};
-
 	// INIT STATE
 	self.initState = function(obj) {
 		var route = Object.keys(obj)[0],
 				STORED = self.getStore();
-/*
-		console.info("INIT STATE");
-		console.dir(obj);
-		console.log("route: " + route);
-		console.info("STORED");
-		console.dir(STORED);
-*/
 		// IF route in storage
 		if(route && STORED[route]) {
 			// SET STATE route from storage
@@ -50,8 +43,7 @@ var UserInterface = function() {
 	}
 	// SET STORE
 	self.setStore = function(key) {
-		console.info("SET STORE");
-		console.dir(key);
+		//console.info("SET STORE: " + key);
 		// IF stringify
 		if(val = JSON.stringify(STATE)) {
 			// SET STORAGE
@@ -61,14 +53,11 @@ var UserInterface = function() {
 	};
 	// SET STATE
 	self.setState = function(obj) {
-
 		var route = Object.keys(obj)[0];
-
 		if(route) {
 			STATE[route] = obj[route];
 			self.stateChanged(route);
 		}
-
 	};
 	// EVENT HANDLERS
 	self.on('UI_SET_STATE',function(req_obj) {

@@ -4,6 +4,8 @@
 .ui-inactive { opacity:0.5; }
 
 .ui-primary { background:#333333; }
+.ui-primary-lt { background:#444444; }
+.ui-primary-dk { background:#000000; }
 .ui-secondary { background:#444444; }
 .ui-accent { background:#F09419; }
 .ui-active { background:#2196F3; }
@@ -23,6 +25,8 @@
 .ui-black-dot-75 { background:rgba(0,0,0,0.75); }
 
 .fg-primary { color:#333333; }
+.fg-primary-lt { color:#444444; }
+.fg-primary-dk { color:#000000; }
 .fg-secondary { color:#444444; }
 .fg-white { color:white; }
 .fg-accent { color:#F09419; }
@@ -48,8 +52,7 @@
 .ui-teal-dk, .ui-teal-lt, .ui-blue,
 .ui-blue-dk, .ui-blue-lt, .ui-purple,
 .ui-purple-dk, .ui-purple-lt, .ui-grey,
-.ui-grey-dk, .ui-black, .ui-black-dot-1,
-.ui-black-dot-25, .ui-black-dot-5, .ui-black-dot-75
+.ui-grey-dk, .ui-black
 { color:white; } 
 
 .ui-grey { background:#cccccc; }

@@ -6,7 +6,7 @@ var preload = [
 	{ template:'nav-bar-logo',url:'/nav/nav-bar-logo.html' },
 	{ template:'nav-bar-detail',url:'/nav/nav-bar-detail.html' },
 	{ template:'nav-bar-tabs',url:'/nav/nav-bar-tabs.html' },
-	{ template:'nav-bar-icons',url:'/nav/nav-bar-icons.html' },
+	{ template:'nav-bar-home',url:'/nav/nav-bar-home.html' },
 	{ template:'nav-menu',url:'/nav/nav-menu.html' },
 	{ template:'ui-button',url:'/ui/ui-button.html' },
 	{ template:'ui-card',url:'/ui/ui-card.html' },
@@ -18,6 +18,7 @@ var preload = [
 	{ template:'ui-select',url:'/ui/ui-select.html' },
 	{ template:'ui-spinner',url:'/ui/ui-spinner.html' },
 	{ template:'ui-subtitle-bar',url:'/ui/ui-subtitle-bar.html' },
+	{ template:'ui-test',url:'/ui/ui-test.html' }
 ]
 // ----------------------------------------
 // RIOT STARTUP

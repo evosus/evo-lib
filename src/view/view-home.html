@@ -5,14 +5,18 @@
 		<nav-bar ref="nav_bar" />
 	</div>
 	<div ref="scroller" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }">
-		<nav-bar-icons ref="nav_bar_icons" />
+		<nav-bar-home ref="nav_bar_home" />
 		<div class="title-bar-spacer"></div>
 		<div class="f-row" style="min-height:calc(100vh - 7em);overflow:auto;">
 			<div ref="side_bar" class="side-bar { expanded:opts.isOpen,contracted:!opts.isOpen }">
-				<div class="icon-bar fg-teal pad-dot-5">
+				<div class="icon-bar fg-primary-lt pad-dot-5">
 					<virtual each="{ opts.sideBarItems }">
 						<ui-icon
-							css="{ fg-primary:name == opts.title, noshadow:name == opts.title }"
+							css="{
+								active:title == parent.opts.title,
+								fg-primary:title == parent.opts.title,
+								noshadow:title == parent.opts.title
+							}"
 							mdicon="{ mdicon }"
 							onclick="{ sideBarIconClick }">
 						</ui-icon>
@@ -21,7 +25,8 @@
 			</div>
 			<div id="moduleNavMount" class="container-flex-1280 ui-white shadow">
 				<div class="pad-1-2">
-					/src/view/view-form.html
+					<h1>View Home</h1>
+					/src/view/view-home.html
 					<div each="{num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]}" no-reorder>
 						<div class="pad-dot-5"></div>
 						<h1>{ num }</h1>
@@ -39,7 +44,7 @@
 		// VARIABLES
 		isVisible = true;
 		opts.isOpen = false;
-		opts.sideBarItems = navMenuItems;
+		opts.sideBarItems = [];
 		// MOUNT
 		self.on('mount',function() {
 			console.log(this.refs);
@@ -47,48 +52,74 @@
 			opts = this.opts;
 			// TITLE
 			opts.title = 'View Home';
+			// SIDE BAR ITEMS
+			opts.sideBarItems = navMenuItems;
 			// NAV MENU
 			opts.nav_menu = {
 				companyName:'Devosus, Inc',
-				css:'ui-white fg-teal',
-				cssActive:'ui-teal',
+				css:'ui-background fg-primary',
+				cssActive:'ui-black-dot-1 fg-primary',
 				cssHead:'ui-teal',
+				cssLinks:'fg-primary-lt',
 				isOpen: false,
 				items:navMenuItems,
+				route:'/view-home',
 				userName:'Corey Holten'
 			}
 			// NAV BAR
 			opts.nav_bar = { css:'ui-primary' };
 			// NAV BAR FORM
-			opts.nav_bar_icons = {
+			opts.nav_bar_home = {
 				category:'category',
-				css:'ui-primary',
+				css:'ui-primary shadow',
 				mdicon:'mdi mdi-arrow-left',
-				title:'Form Title',
+				title:'View Home',
 				isOpen:false
 			}
 			// UI MODAL
-			opts.ui_modal = { isOpen: false, template:null };
+			opts.ui_modal = { isOpen: false };
 			// INIT STATE
 			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
+			scrollAway();
 		});
-		// HANDLE COMPONENT EVENTS
-		navBarIconClick = function() {
-			opts.isOpen ? opts.isOpen = false : opts.isOpen = true;
-			opts.nav_bar_icons.isOpen = opts.isOpen;
+		// SET STATE
+		setState = function() {
 			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		// MODAL CLOSE
+		modalClose = function() {
+			opts.ui_modal = { isOpen: false };
+			setState();
+		}
+		// NAV BAR HOME MENU TOGGLE
+		navBarHomeMenuToggle = function() {
+			opts.isOpen ? opts.isOpen = false : opts.isOpen = true;
+			opts.nav_bar_home.isOpen = opts.isOpen;
+			setState();
 		};
+		// NAV BAR HOME OPTIONS CLICK
+		navBarHomeOptionsClick = function() {
+			opts.ui_modal = { isOpen: true };
+			setState();
+		}
+		// NAV BAR MENU CLICK
 		navBarMenuClick = function() { toggleNavMenu(); };
+		// NAV MENU CLOSE
 		navMenuClose = function() { toggleNavMenu() };
 		// TOGGLE NAV MENU
 		toggleNavMenu = function() {
 			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
-			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+			setState();
 		}
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
 				self.setOpts(newState[opts.title]);
+				if(opts.ui_modal.isOpen) {
+					riot.compile(function() {
+						riot.mount('#modalMount','ui-test');
+					});
+				}
 			}
 		});
 		// UPDATE
@@ -109,7 +140,6 @@
 					});
 				}
 			});
-			scrollAway();
 		});
 		// UNMOUNT
 		this.on('unmount',function() {
@@ -169,6 +199,9 @@
 			height:calc(100vh - 7em);
 			overflow:auto;
 		}
+		.ui-icon.active {
+			background:rgba(0,0,0,0.15);
+		}
 		.side-bar.contracted .icon-bar { display:none; }
 		.container-flex-1280 {
 			flex:1;
@@ -187,3 +220,6 @@
 		}
 	</style>
 </view-home>
+<modal-test>
+	<h1>MODAL TEST</h1>
+</modal-test>
