@@ -86,6 +86,13 @@ p { padding:1em 0 0 0; }
 .fw-700 { font-weight:700; }
 /* CONTAINERS */
 .container-1280 { display:block;max-width:1280px;margin:0; }
+.container-flex-1280 {
+	flex:1;
+	margin-left:0;
+	margin-right:0;
+	min-height:100%;
+	overflow-y:auto;
+}
 /* UI-BOX */
 .ui-layout-box { display:block;padding:1em;margin:0em 0em 2em 0em;overflow:hidden; }
 /* UI-CELL */
@@ -148,6 +155,12 @@ ul.link-list.pane {
 }
 @media only screen and (min-width:992px) {
 	.block-mq-2 { display:block; }
+	.container-flex-1280 {
+		flex:1;
+		max-width:1280px;
+		margin-left:auto;
+		margin-right:auto;
+	}
 	.flex-mq-2 { display:-webkit-box;display:flex; }
 	.pad-0-1 { padding:1em; }
 	.pad-1-2 { padding:2em; }

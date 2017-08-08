@@ -5,13 +5,19 @@
 	<div class="view-search scroll-1">
 <!-- BEGIN CONTENT !-->
 		<div class="f-col ai-center jc-center" style="height:100%;">
-			<h1>View Search</h1>
+			<div class="f-col ai-center jc-center">
+				<h1>View Search</h1>
+				<ui-button label="Show Modal" onclick="{ modalShow }" />
+			</div>
 		</div>
 <!-- END CONTENT !-->
 	</div>
 	<script>
+		// MIXIN
 		this.mixin(IO);
+		// SELF
 		var self = this;
+		// MOUNT
 		this.on('mount',function() {
 			// OPTS
 			opts = this.opts;
@@ -35,6 +41,16 @@
 		// SET STATE
 		setState = function() {
 			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		// MODAL SHOW
+		modalShow = function() {
+			opts.ui_modal = { isOpen: true };
+			setState();
+		}
+		// MODAL CLOSE
+		modalClose = function() {
+			opts.ui_modal = { isOpen: false };
+			setState();
 		}
 		// NAV BAR HOME MENU TOGGLE
 		navBarHomeMenuToggle = function() {
