@@ -1,25 +1,40 @@
-<view-detail>
+<library-home>
 	<ui-modal ref="ui_modal" />
 	<nav-menu ref="nav_menu" />
 	<div class="scroll-away-bar { expand:isVisible,contract:!isVisible }">
 		<nav-bar ref="nav_bar" />
 	</div>
 	<div ref="scroller" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }">
-		<nav-bar-detail ref="nav_bar_detail" />
+		<nav-bar-home ref="nav_bar_home" />
 		<div class="title-bar-spacer"></div>
-		<div class="mount-body">
-		<div id="moduleNavMount" class="container-flex-1280 ui-white shadow">
-<!-- BEGIN CONTENT !-->
-			<div class="pad-1-2">
-				<h1>View Detail</h1>
-				/src/view/view-detail.html
-				<div each="{num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]}" no-reorder>
-					<div class="pad-dot-5"></div>
-					<h1>{ num }</h1>
+		<div class="mount-body f-row">
+			<div ref="side_bar" class="side-bar { expanded:opts.isOpen,contracted:!opts.isOpen }">
+				<div class="icon-bar fg-primary-lt pad-dot-5">
+					<virtual each="{ opts.sideBarItems }">
+						<ui-icon
+							css="{
+								active:title == parent.opts.title,
+								fg-primary:title == parent.opts.title,
+								noshadow:title == parent.opts.title
+							}"
+							mdicon="{ mdicon }"
+							onclick="{ sideBarIconClick }">
+						</ui-icon>
+					</virtual>
 				</div>
 			</div>
+			<div id="moduleNavMount" class="container-flex-1280 ui-white shadow">
+<!-- BEGIN CONTENT !-->
+				<div class="pad-1-2">
+					<h1>Evosus UI Library</h1>
+					/src/app/library/library-home.html
+					<div each="{num in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]}" no-reorder>
+						<div class="pad-dot-5"></div>
+						<h1>{ num }</h1>
+					</div>
+				</div>
 <!-- END CONTENT !-->
-		</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -29,14 +44,17 @@
 		var self = this;
 		// VARIABLES
 		isVisible = true;
+		opts.isOpen = false;
+		opts.sideBarItems = [];
 		// MOUNT
-		this.on('mount',function() {
+		self.on('mount',function() {
+			console.log(this.refs);
 			// OPTS
 			opts = this.opts;
 			// TITLE
-			opts.title = 'View Detail';
+			opts.title = 'Evosus UI Library';
 			// UI MODAL
-			opts.ui_modal = { isOpen: false };
+			opts.ui_modal = { isOpen: false }
 			// NAV MENU
 			opts.nav_menu = {
 				companyName:'Devosus, Inc',
@@ -46,22 +64,21 @@
 				cssLinks:'fg-primary-lt',
 				isOpen: false,
 				items:navMenuItems,
-				route:'/view-detail',
+				route:'/library-home',
 				userName:'Corey Holten'
 			}
-			// NAV BAR
-			opts.nav_bar = { css:'ui-primary' };
-			// NAV BAR DETAIL
-			opts.nav_bar_detail = {
+			// SIDE BAR ITEMS
+			opts.sideBarItems = navMenuItems;
+			// NAV BAR 
+			opts.nav_bar = { css:'ui-primary' }
+			// NAV BAR HOME
+			opts.nav_bar_home = {
 				category:'category',
 				css:'ui-primary shadow',
-				mdicon:'mdi mdi-arrow-left',
-				title:'View Detail',
+				title:'Evosus UI Library',
 				isOpen:false,
 				icons: [
-					{ ref:'ui_icon_print', mdicon:'mdi mdi-printer', onclick:printClick },
-					{ ref:'ui_icon_clone', mdicon:'mdi mdi-content-duplicate', onclick:printClick },
-					{ ref:'ui_icon_help', mdicon:'mdi mdi-help-circle-outline', onclick:printClick }
+					{ ref:'ui_icon_options', mdicon:'mdi mdi-dots-vertical', onclick:navBarHomeOptionsClick }
 				]
 			}
 			// INIT STATE
@@ -92,8 +109,6 @@
 		navBarMenuClick = function() { toggleNavMenu(); };
 		// NAV MENU CLOSE
 		navMenuClose = function() { toggleNavMenu() };
-		// PRINT CLICK
-		printClick = function() { console.log("PRINT CLICK!"); }
 		// SIDE BAR ICON CLICK
 		sideBarIconClick = function(e) { 
 			if(e) { route(e.item.route); }
@@ -107,7 +122,7 @@
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
 				self.setOpts(newState[opts.title]);
-				if(opts.ui_modal && opts.ui_modal.isOpen) {
+				if(opts.ui_modal.isOpen) {
 					riot.compile(function() {
 						riot.mount('#modalMount','ui-test');
 					});
@@ -184,6 +199,17 @@
 		.root-mount.expand { height:calc(100vh - 3.5em); }
 		.root-mount.contract { height:100vh; }
 		.title-bar-spacer { height:3.5em; }
+		.side-bar { flex:0; }
+		.side-bar.expanded { flex:0 0 3.5em; }
+		.expanded .icon-bar {
+			position:fixed;
+			height:calc(100vh - 7em);
+			overflow:auto;
+		}
+		.ui-icon.active {
+			background:rgba(0,0,0,0.15);
+		}
+		.side-bar.contracted .icon-bar { display:none; }
 		.mount-body { min-height:calc(100vh - 7em); }
 		.container-flex-1280 {
 			flex:1;
@@ -201,4 +227,4 @@
 			}
 		}
 	</style>
-</view-detail>
+</library-home>

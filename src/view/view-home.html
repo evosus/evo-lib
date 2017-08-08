@@ -7,7 +7,7 @@
 	<div ref="scroller" class="root-mount scroll-1 { expand:isVisible,contract:!isVisible }">
 		<nav-bar-home ref="nav_bar_home" />
 		<div class="title-bar-spacer"></div>
-		<div class="f-row" style="min-height:calc(100vh - 7em);overflow:auto;">
+		<div class="mount-body f-row">
 			<div ref="side_bar" class="side-bar { expanded:opts.isOpen,contracted:!opts.isOpen }">
 				<div class="icon-bar fg-primary-lt pad-dot-5">
 					<virtual each="{ opts.sideBarItems }">
@@ -24,6 +24,7 @@
 				</div>
 			</div>
 			<div id="moduleNavMount" class="container-flex-1280 ui-white shadow">
+<!-- BEGIN CONTENT !-->
 				<div class="pad-1-2">
 					<h1>View Home</h1>
 					/src/view/view-home.html
@@ -32,9 +33,9 @@
 						<h1>{ num }</h1>
 					</div>
 				</div>
+<!-- END CONTENT !-->
 			</div>
 		</div>
-
 	</div>
 	<script>
 		// MIXIN
@@ -52,8 +53,8 @@
 			opts = this.opts;
 			// TITLE
 			opts.title = 'View Home';
-			// SIDE BAR ITEMS
-			opts.sideBarItems = navMenuItems;
+			// UI MODAL
+			opts.ui_modal = { isOpen: false }
 			// NAV MENU
 			opts.nav_menu = {
 				companyName:'Devosus, Inc',
@@ -66,18 +67,20 @@
 				route:'/view-home',
 				userName:'Corey Holten'
 			}
-			// NAV BAR
-			opts.nav_bar = { css:'ui-primary' };
-			// NAV BAR FORM
+			// SIDE BAR ITEMS
+			opts.sideBarItems = navMenuItems;
+			// NAV BAR 
+			opts.nav_bar = { css:'ui-primary' }
+			// NAV BAR HOME
 			opts.nav_bar_home = {
 				category:'category',
 				css:'ui-primary shadow',
-				mdicon:'mdi mdi-arrow-left',
 				title:'View Home',
-				isOpen:false
+				isOpen:false,
+				icons: [
+					{ ref:'ui_icon_options', mdicon:'mdi mdi-dots-vertical', onclick:navBarHomeOptionsClick }
+				]
 			}
-			// UI MODAL
-			opts.ui_modal = { isOpen: false };
 			// INIT STATE
 			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
 			scrollAway();
@@ -106,6 +109,10 @@
 		navBarMenuClick = function() { toggleNavMenu(); };
 		// NAV MENU CLOSE
 		navMenuClose = function() { toggleNavMenu() };
+		// SIDE BAR ICON CLICK
+		sideBarIconClick = function(e) { 
+			if(e) { route(e.item.route); }
+	 }
 		// TOGGLE NAV MENU
 		toggleNavMenu = function() {
 			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
@@ -203,6 +210,7 @@
 			background:rgba(0,0,0,0.15);
 		}
 		.side-bar.contracted .icon-bar { display:none; }
+		.mount-body { min-height:calc(100vh - 7em); }
 		.container-flex-1280 {
 			flex:1;
 			margin-left:0;
@@ -220,6 +228,3 @@
 		}
 	</style>
 </view-home>
-<modal-test>
-	<h1>MODAL TEST</h1>
-</modal-test>

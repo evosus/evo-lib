@@ -1,5 +1,89 @@
-<view-deadend>
-	<div class="view-deadend { css }">
-		<h1>view-deadend.html</h1>
+<view-search>
+	<ui-modal ref="ui_modal" />
+	<nav-menu ref="nav_menu" />
+	<nav-bar ref="nav_bar" />
+	<div class="view-search scroll-1">
+<!-- BEGIN CONTENT !-->
+		<div class="f-col ai-center jc-center" style="height:100%;">
+			<h1>View Search</h1>
+		</div>
+<!-- END CONTENT !-->
 	</div>
-</view-deadend>
+	<script>
+		this.mixin(IO);
+		var self = this;
+		this.on('mount',function() {
+			// OPTS
+			opts = this.opts;
+			opts.title = 'View Search';
+			opts.nav_bar =  { css:'ui-primary shadow' }
+			opts.nav_menu = {
+				companyName:'Devosus, Inc',
+				css:'ui-background fg-primary',
+				cssActive:'ui-black-dot-1 fg-primary',
+				cssHead:'ui-teal',
+				cssLinks:'fg-primary-lt',
+				isOpen: false,
+				items:navMenuItems,
+				route:'/view-search',
+				userName:'Corey Holten'
+			}
+			opts.ui_modal =  { isOpen: false }
+			// INIT STATE
+			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
+		});
+		// SET STATE
+		setState = function() {
+			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		// NAV BAR HOME MENU TOGGLE
+		navBarHomeMenuToggle = function() {
+			opts.isOpen ? opts.isOpen = false : opts.isOpen = true;
+			opts.nav_bar_home.isOpen = opts.isOpen;
+			setState();
+		};
+		// NAV BAR MENU CLICK
+		navBarMenuClick = function() { toggleNavMenu(); };
+		// NAV MENU CLOSE
+		navMenuClose = function() { toggleNavMenu() };
+		// TOGGLE NAV MENU
+		toggleNavMenu = function() {
+			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
+			setState();
+		}
+		// STATE CHANGE
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			if(newState[opts.title]) {
+				self.setOpts(newState[opts.title]);
+				if(opts.ui_modal && opts.ui_modal.isOpen) {
+					riot.compile(function() {
+						riot.mount('#modalMount','ui-test');
+					});
+				}
+			}
+		});
+		// UPDATE
+		this.on('update',function() {
+			Object.keys(self.refs).forEach(function(REF) {
+				// UPDATE SELF REF
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(opts[REF]);
+				}
+				// IF CHILD REFS
+				if(self.refs[REF].refs) {
+					// LOOP CHILD REFS
+					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+						// UPDATE CHILD REF
+						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
+						}
+					});
+				}
+			});
+		});
+		// UNMOUNT
+		this.on('unmount',function() {
+			RC.off('UI_STATE_CHANGED');
+		});
+	</script>
+</view-search>

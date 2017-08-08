@@ -8,14 +8,14 @@ UI INPUT
 			<input ref="field"
 				name="{ opts.name }"
 				value="{ opts.default }"
-				class="f-one"
+				class="f-one fg-primary-lt"
 				type="{ opts.type }"
 				placeholder="{ opts.placeholder }"
 				onfocus="{ setFocus }"
 				onblur="{ setBlur }"
 			/></input>
 			<i if="{ isValid }" class="mdi mdi-check fg-valid"></i>
-			<i if="{ isInvalid }" class="mdi mdi-block-helper fg-invalid"></i>
+			<i if="{ isInvalid }" class="mdi mdi-alert-circle-outline fg-invalid"></i>
 		</div>
 		<div if="{ !isValid && !isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length }"></div>
 		<div if="{ isValid || isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
@@ -23,7 +23,7 @@ UI INPUT
 	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
 	<style>
 		.ui-input { height:4.5em;width:100%; }
-		i { margin:0em .5em; }
+		i { margin:0em 0em 0em .5em;font-size:1.5em; }
 		.label { padding:.25em 0em; }
 		.label > span { font-size:0.9em;letter-spacing:0;transition:.2s linear all; }
 		.label.focused > span { font-size:0.9em;letter-spacing:1px; }
@@ -32,7 +32,7 @@ UI INPUT
 		.stack { position:relative;height:2em; }
 		.field { position:absolute;z-index:200;height:2em;width:100%; }
 		.fill { opacity:0.2;position:absolute;z-index:100;height:2em;width:100%;transition:.2s ease-in-out all;bottom:0; }
-		.fill.underline { opacity:1;height:1px; }
+		.fill.underline { opacity:1;height:2px; }
 		input { height:100%;font-size:100%;font-weight:500;border:none;background:transparent;padding:0; }
 	</style>
 	<script>

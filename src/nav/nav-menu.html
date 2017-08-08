@@ -57,6 +57,7 @@ NAV MENU
 	<script>
 		this.mixin(IO);
 		navMenuClick = function(e) {
+			navMenuClose();
 			if(e) { route(e.item.route); }
 		}
 	</script>

@@ -6,25 +6,11 @@
 var navMenuItems =  [
 	{ "title":"View Home", "route":"/view-home","mdicon":"mdi mdi-home" },
 	{ "title":"View Card", "route":"/view-card","mdicon":"mdi mdi-credit-card" },
-	{ "title":"View Dashboard", "route":"/view-dashboard","mdicon":"mdi mdi-view-dashboard" },
 	{ "title":"View Deadend", "route":"/view-deadend","mdicon":"mdi mdi-alert" },
 	{ "title":"View Detail", "route":"/view-detail","mdicon":"mdi mdi-microscope" },
 	{ "title":"View Print", "route":"/view-print","mdicon":"mdi mdi-printer" },
 	{ "title":"View Search", "route":"/view-search","mdicon":"mdi mdi-magnify" }
 ];
-/** OLD Nav Menu Items */
-/*
-var navMenuItems =  [
-	{ "name":"Home", "route":"/","mdicon":"mdi mdi-home" },
-	{ "name":"Navigation", "route":"/navigation","mdicon":"mdi mdi-map-marker" },
-	{ "name":"Theme", "route":"/theme","mdicon":"mdi mdi-palette" },
-	{ "name":"Breakpoints", "route":"/breakpoints","mdicon":"mdi mdi-cellphone-link" },
-	{ "name":"Buttons", "route":"/buttons","mdicon":"mdi mdi-cursor-pointer" },
-	{ "name":"Forms", "route":"/forms","mdicon":"mdi mdi-checkbox-multiple-marked" },
-	{ "name":"Steps", "route":"/steps","mdicon":"mdi mdi-format-list-numbers" },
-	{ "name":"List", "route":"/list","mdicon":"mdi mdi-format-list-bulleted" }
-];
-*/
 /** Color Palette */
 var palette_descending = [
   { "name":"darkred" },
@@ -50,12 +36,6 @@ var palette_descending = [
   { "name":"mediumpurple" }
 ]
 var palette = palette_descending;
-/** Tab Bar Items */
-var tabBarItems = [
-	{ "name":"Tab One" },
-	{ "name":"Tab Two" },
-	{ "name":"Tab Three" }
-]
 /** View Items */
 var viewItems = [
 	{ 
@@ -69,13 +49,18 @@ var viewItems = [
 		description: 'desc'
 	},
 	{
-		title:'<view-overview>',
-		subtitle: 'view-overview.html',
+		title:'<view-detail>',
+		subtitle: 'view-detail.html',
 		description: 'desc'
 	},
 	{
-		title:'<view-profile>',
-		subtitle: 'view-profile.html',
+		title:'<view-home>',
+		subtitle: 'view-home.html',
+		description: 'desc'
+	},
+	{
+		title:'<view-print>',
+		subtitle: 'view-print.html',
 		description: 'desc'
 	},
 	{

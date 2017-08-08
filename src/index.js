@@ -5,6 +5,7 @@ var preload = [
 	{ template:'nav-bar',url:'/nav/nav-bar.html' },
 	{ template:'nav-bar-logo',url:'/nav/nav-bar-logo.html' },
 	{ template:'nav-bar-detail',url:'/nav/nav-bar-detail.html' },
+	{ template:'nav-bar-print',url:'/nav/nav-bar-print.html' },
 	{ template:'nav-bar-tabs',url:'/nav/nav-bar-tabs.html' },
 	{ template:'nav-bar-home',url:'/nav/nav-bar-home.html' },
 	{ template:'nav-menu',url:'/nav/nav-menu.html' },

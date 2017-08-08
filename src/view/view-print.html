@@ -1,5 +1,82 @@
 <view-print>
-	<div class="view-print">
-		<h1>view-print.html</h1>
+	<nav-bar-print ref="nav_bar_print" />
+	<div class="view-print scroll-1">
+<!-- BEGIN CONTENT !-->
+		<div class="pad-1-2">
+			<h1>View Print</h1>
+		</div>
+<!-- END CONTENT !-->
 	</div>
+	<script>
+		// TODO: make 'nav-bar-print' hide after ~5s
+		// TODO: make 'nav-bar-print' show after mouse move
+		// TODO: add @print media queries + examples
+		// MIXIN
+		this.mixin(IO);
+		// SELF
+		var self = this;
+		// MOUNT
+		this.on('mount',function() {
+			// OPTS
+			opts = this.opts;
+			// TITLE
+			opts.title = 'view-print';
+			// NAV BAR PRINT
+			opts.nav_bar_print = {
+				css:'ui-primary shadow',
+				mdicon:'mdi mdi-arrow-left',
+				title:'View Print',
+				isOpen:false,
+				icons: [
+					{ ref:'ui_icon_print', mdicon:'mdi mdi-printer', onclick:printClick },
+					{ ref:'ui_icon_clone', mdicon:'mdi mdi-content-duplicate', onclick:printClick },
+					{ ref:'ui_icon_help', mdicon:'mdi mdi-help-circle-outline', onclick:printClick }
+				]
+			}
+			// INIT STATE
+			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
+		});
+		// PRINT CLICK
+		printClick = function() {
+			console.log("PRINT CLICK");
+		}
+		// SET STATE
+		setState = function() {
+			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		// STATE CHANGE
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			if(newState[opts.title]) {
+				self.setOpts(newState[opts.title]);
+				if(opts.ui_modal && opts.ui_modal.isOpen) {
+					riot.compile(function() {
+						riot.mount('#modalMount','ui-test');
+					});
+				}
+			}
+		});
+		// UPDATE
+		this.on('update',function() {
+			Object.keys(self.refs).forEach(function(REF) {
+				// UPDATE SELF REF
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(opts[REF]);
+				}
+				// IF CHILD REFS
+				if(self.refs[REF].refs) {
+					// LOOP CHILD REFS
+					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+						// UPDATE CHILD REF
+						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
+						}
+					});
+				}
+			});
+		});
+		// UNMOUNT
+		this.on('unmount',function() {
+			RC.off('UI_STATE_CHANGED');
+		});
+	</script>
 </view-print>

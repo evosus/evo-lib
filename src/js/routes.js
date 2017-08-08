@@ -3,40 +3,32 @@
 // --------------------------------------
 // ROUTES
 // --------------------------------------
+route('/home',function() {
+	GF.mountArray([{ id:'#appMount', template:'library-home', url:'/app/library/library-home.html' }]);
+});
 route('/login',function() {
-	var opts = { title:'login' };
-	GF.mountArray([{ id:'#appMount', template:'view-card', url:'/view/view-card.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'login-template', url:'/app/login/login-template.html' }]);
 });
 // --------------------------------------
 // !!! DEV VIEW ROUTES !!!
 // --------------------------------------
 route('/view-home',function() {
-	var opts = { title:'view-home' };
-	GF.mountArray([{ id:'#appMount', template:'view-home', url:'/view/view-home.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'view-home', url:'/view/view-home.html' }]);
 });
 route('/view-card',function() {
-	var opts = { title:'view-card' };
-	GF.mountArray([{ id:'#appMount', template:'view-card', url:'/view/view-card.html', 'opts':opts }]);
-});
-route('/view-dashboard',function() {
-	var opts = { title:'view-dashboard' };
-	GF.mountArray([{ id:'#appMount', template:'view-dashboard', url:'/view/view-dashboard.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'view-card', url:'/view/view-card.html' }]);
 });
 route('/view-deadend',function() {
-	var opts = { title:'view-deadend' };
-	GF.mountArray([{ id:'#appMount', template:'view-deadend', url:'/view/view-deadend.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'view-deadend', url:'/view/view-deadend.html' }]);
 });
 route('/view-detail',function() {
-	var opts = { title:'view-detail' };
-	GF.mountArray([{ id:'#appMount', template:'view-detail', url:'/view/view-detail.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'view-detail', url:'/view/view-detail.html' }]);
 });
 route('/view-print',function() {
-	var opts = { title:'view-print' };
-	GF.mountArray([{ id:'#appMount', template:'view-print', url:'/view/view-print.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'view-print', url:'/view/view-print.html' }]);
 });
 route('/view-search',function() {
-	var opts = { title:'view-search' };
-	GF.mountArray([{ id:'#appMount', template:'view-search', url:'/view/view-search.html', 'opts':opts }]);
+	GF.mountArray([{ id:'#appMount', template:'view-search', url:'/view/view-search.html' }]);
 });
 // --------------------------------------
 // !!! DEFAULT ROUTE !!!

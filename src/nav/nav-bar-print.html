@@ -1,0 +1,33 @@
+<!--
+NAV BAR PRINT
+!-->
+<nav-bar-print>
+	<div class="nav-bar-print f-row ai-center jc-between shadow-bar { opts.css }">
+		<div class="left f-row ai-center">
+			<ui-icon ref="icon_back" mdicon="{ opts.mdicon }" onclick="{ navBarFormBackClick }" />
+			<div class="f-col jc-center">
+				<div class="title"><span>{ opts.title }</span></div>
+				<div class="category"><span>{ opts.category }</span></div>
+			</div>
+		</div>
+		<div class="right f-row ai-center">
+			<ui-icon each="{ opts.icons }" ref="{ ref }" mdicon="{ mdicon }" onclick="{ onclick }" />
+		</div>
+	</div>
+	<style>
+		.title { padding:0em .5em; }
+		.title span { font-size:1.15em;font-weight:500; }
+		.category { padding:0em .5em; }
+		.category span { font-size:0.875;font-weight:400;opacity:0.5;text-transform:uppercase; }
+		.fixed { position:fixed;width:100%; }
+		.nav-bar-print { height:3.5em; }
+		.left { padding-left:.5em; }
+		.right { padding-right:.5em; }
+	</style>
+	<script>
+		this.mixin(IO);
+			navBarFormBackClick = function() {
+				window.history.back();
+			}
+	</script>
+</nav-bar-print>

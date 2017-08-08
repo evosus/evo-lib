@@ -5,7 +5,7 @@ UI-MODAL WIP
 	<div if="{ opts.isOpen }" onclick="{ closeOutsideModal }" class="ui-modal f-col ai-center jc-center fill">
 		<div class="ui-white rounded modal-shadow pad-1">
 			<div class="modal-contents">
-				<div if="{ opts.canDismiss }" class="modal-close f-row ai-center jc-end" onclick="{ closeModal }">
+				<div if="{ !opts.noDismiss }" class="modal-close f-row ai-center jc-end" onclick="{ closeModal }">
 					<i class="mdi mdi-close"></i>
 				</div>
 				<div id="modalMount">
@@ -46,12 +46,12 @@ UI-MODAL WIP
 		this.mixin(IO);
 		var self = this;
 		closeModal = function() {
-			if(opts.canDismiss) {
+			if(!opts.noDismiss) {
 				modalClose();
 			}
 		}
 		closeOutsideModal = function(e) {
-			if(opts.canDismiss) {
+			if(!opts.noDismiss) {
 				if(e.target.classList.contains('ui-modal')) {
 					modalClose();
 				}

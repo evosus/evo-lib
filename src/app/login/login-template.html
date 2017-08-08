@@ -1,13 +1,15 @@
-<view-card>
+<login-template>
 	<ui-card ref="ui_card">
 		<!-- Content will yield into ui-card template !-->
 		<div class="ui-card-content">
-			<ui-input ref="ui_input" />
+			<ui-input ref="ui_input_email" />
+			<div class="pad-dot-25"></div>
+			<ui-input ref="ui_input_password" />
 			<div class="pad-dot-5"></div>
 			<div class="f-row ai-center jc-end">
-				<ui-button ref="ui_button_back" onclick="{ uiButtonBackClick }" />
+				<ui-button ref="ui_button_help" onclick="{ uiButtonHelpClick }" />
 				<div class="pad-dot-5"></div>
-				<ui-button ref="ui_button_action" onclick="{ uiButtonActionClick }" />
+				<ui-button ref="ui_button_login" onclick="{ uiButtonLoginClick }" />
 			</div>
 		</div>
 	</ui-card>
@@ -19,12 +21,12 @@
 		// MOUNT
 		this.on('mount',function() {
 			// VARS
-			var primary = 'ui-blue-lt',
-					primary_fg = 'fg-blue-lt',
-					primary_dk = 'ui-background';
+			var primary = 'ui-teal',
+					primary_fg = 'fg-teal',
+					primary_dk = 'ui-teal-dk';
 			// VIEW CARD
 			opts = this.opts;
-			opts.title = 'View Card';
+			opts.title = 'Login';
 			opts.css_button = primary;
 			opts.css_input = primary;
 			opts.css_link = primary_fg;
@@ -32,25 +34,26 @@
 			opts.ui_card = {
 				css_container: 'ui-white',
 				css_content: primary_dk,
-				css_header: 'ui-blue-lt',
-				title:'View Card',
-				subtitle:'view/view-card.html'
+				css_header: 'ui-teal',
+				title:'Evosus UI Library',
+				subtitle:'Please log in'
 			}
 			// INPUT EMAIL
-			opts.ui_input = { label: 'ui-input', css:primary, default:'default value' }
-			// BUTTON BACK
-			opts.ui_button_back = { label: 'Back', css:primary_fg }
-			// BUTTON ACTION
-			opts.ui_button_action = { label: 'Action', css:primary }
+			opts.ui_input_email = { label: 'Enter your email', css:primary, default: 'evosusAdmin@evosus.com' }
+			// INPUT PASSWORD
+			opts.ui_input_password = { type: 'password', label: 'Enter your password', css:primary, default: 'evosus7414' }
+			// BUTTON HELP
+			opts.ui_button_help = { label: 'Help', css:primary_fg }
+			// BUTTON LOGIN
+			opts.ui_button_login = { label: 'Login', css:primary }
 			// SET FOCUS
-			self.refs.ui_card.refs.ui_input.setFocus();
-			self.refs.ui_card.refs.ui_input.setValid();
+			self.refs.ui_card.refs.ui_input_email.setFocus();
 			// INIT STATE
 			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
 		});
 		// HELP CLICK
-		uiButtonBackClick = function() { window.history.back(); };
-		uiButtonActionClick = function() { alert("ACTION!"); };
+		uiButtonHelpClick = function() { console.log("HELP CLICK!"); };
+		uiButtonLoginClick = function() { route('/view-home') };
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
@@ -85,4 +88,4 @@
 	<style>
 		.ui-card-content { padding:2em; }
 	</style>
-</view-card>
+</login-template>
