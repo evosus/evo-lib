@@ -55,7 +55,7 @@
 .ui-grey-dk, .ui-black
 { color:white; } 
 
-.ui-grey { background:#cccccc; }
+.ui-grey { background:#aaaaaa; }
 .ui-grey-dk { background:#888888; }
 .ui-grey-lt { background:#bbbbbb; }
 .ui-red { background:firebrick; }
@@ -79,9 +79,9 @@
 .ui-purple { background:rebeccapurple; }
 .ui-purple-dk { background:indigo; }
 .ui-purple-lt { background:mediumpurple; }
-.fg-grey { color:#cccccc; }
-.fg-grey-dk { color:#aaaaaa; }
-.fg-grey-lt { color:#eeeeee; }
+.fg-grey { background:#aaaaaa; }
+.fg-grey-dk { background:#888888; }
+.fg-grey-lt { background:#bbbbbb; }
 .fg-red { color:firebrick; }
 .fg-red-dk { color:darkred; }
 .fg-red-lt { color:tomato; }
@@ -143,12 +143,12 @@
 .ui-input.ui-gold-dk .label { color:darkgoldenrod; }
 .ui-input.ui-gold-dk .fill { background:darkgoldenrod; }
 
-.ui-input.ui-grey .label { color:#cccccc; }
-.ui-input.ui-grey .fill { background:#cccccc; }
-.ui-input.ui-grey-lt .label { color:#eeeeee; }
-.ui-input.ui-grey-lt .fill { background:#eeeeee; }
-.ui-input.ui-grey-dk .label { color:#aaaaaa; }
-.ui-input.ui-grey-dk .fill { background:#aaaaaa; }
+.ui-input.ui-grey .label { color:#aaaaaa; }
+.ui-input.ui-grey .fill { background:#aaaaaa; }
+.ui-input.ui-grey-lt .label { color:#bbbbbb; }
+.ui-input.ui-grey-lt .fill { background:#bbbbbb; }
+.ui-input.ui-grey-dk .label { color:#888888; }
+.ui-input.ui-grey-dk .fill { background:#888888; }
 
 .ui-input.ui-green .label { color:olivedrab; }
 .ui-input.ui-green .fill { background:olivedrab; }
@@ -208,11 +208,11 @@
 .ui-checkbox.ui-gold-dk .icon { color:darkgoldenrod; }
 
 .ui-checkbox.ui-grey .label,
-.ui-checkbox.ui-grey .icon { color:#cccccc; }
+.ui-checkbox.ui-grey .icon { color:#aaaaaa; }
 .ui-checkbox.ui-grey-lt .label,
-.ui-checkbox.ui-grey-lt .icon { color:#eeeeee; }
+.ui-checkbox.ui-grey-lt .icon { color:#bbbbbb; }
 .ui-checkbox.ui-grey-dk .label,
-.ui-checkbox.ui-grey-dk .icon { color:#aaaaaa; }
+.ui-checkbox.ui-grey-dk .icon { color:#888888; }
 
 .ui-checkbox.ui-green .label,
 .ui-checkbox.ui-green .icon { color:olivedrab; }
@@ -289,14 +289,14 @@
 .ui-select.ui-gold-dk .fill { background:darkgoldenrod; }
 
 .ui-select.ui-grey select,
-.ui-select.ui-grey i { color:#cccccc; }
-.ui-select.ui-grey .fill { background:#cccccc; }
+.ui-select.ui-grey i { color:#aaaaaa; }
+.ui-select.ui-grey .fill { background:#aaaaaa; }
 .ui-select.ui-grey-lt select,
-.ui-select.ui-grey-lt i { color:#eeeeee; }
-.ui-select.ui-grey-lt .fill { background:#eeeeee; }
+.ui-select.ui-grey-lt i { color:#bbbbbb; }
+.ui-select.ui-grey-lt .fill { background:#bbbbbb; }
 .ui-select.ui-grey-dk select,
-.ui-select.ui-grey-dk i { color:#aaaaaa; }
-.ui-select.ui-grey-dk .fill { background:#aaaaaa; }
+.ui-select.ui-grey-dk i { color:#888888; }
+.ui-select.ui-grey-dk .fill { background:#888888; }
 
 .ui-select.ui-green select,
 .ui-select.ui-green i { color:olivedrab; }
