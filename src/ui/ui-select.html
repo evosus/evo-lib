@@ -4,8 +4,8 @@ UI SELECT
 <ui-select>
 	<div class="ui-select { opts.css }">
 		<div class="f-row ai-center">
-			<select ref="htmlselect" value="{ selected }" onchange="{ change }" onfocus="{ focus }" onblur="{ blur }">
-				<option class="{ opts.menucss }" each="{ item in opts.options }" selected="{ index == selected }">{ item.label }</option>
+			<select ref="htmlselect" value="{ selected }">
+				<option class="{ opts.menucss }" each="{ item in opts.options }" selected="{ item.label == opts.selecton }">{ item.label }</option>
 			</select>
 			<i class="mdi mdi-menu-down"></i>
 		</div>
@@ -24,7 +24,6 @@ UI SELECT
 			font-size:100%;
 			-webkit-appearance: none;
 			-moz-appearance: none;
-			text-indent: -2px;
 			text-overflow: '';
 		}
 		option {
@@ -35,7 +34,7 @@ UI SELECT
 			bottom:0;
 			z-index:100;
 			width:100%;
-			height:1px;
+			height:2px;
 			background:#888888;
 		}
 		.ui-select i {
@@ -47,8 +46,10 @@ UI SELECT
 		}
 	</style>
 	<script>
+		this.mixin(IO);
 		var self = this;
-		selectIsOpen = false;
+		//selectIsOpen = false;
+/*
 		this.on('mount',function() {
 			// --------------------------------------
 			// SET Selected Item
@@ -67,5 +68,6 @@ UI SELECT
 		blur() { isFocused = false;self.update(); }
 		focus() { selectIsOpen = true;self.update(); }
 		change(e) { selectIsOpen = false;self.refs.htmlselect.blur();self.update(); }
+*/
 	</script>
 </ui-select>
