@@ -8,9 +8,7 @@ NAV BAR
 			<nav-bar-logo />
 		</div>
 		<div class="right f-row ai-center">
-			<ui-icon ref="search_icon" mdicon="mdi mdi-magnify" onclick="{ navBarSearchClick }" />
-			<ui-icon ref="history_icon" mdicon="mdi mdi-history" onclick="{ navBarHistoryClick }" />
-			<ui-icon ref="message_icon" mdicon="mdi mdi-comment-text-outline" onclick="{ navBarMessageClick }" />
+			<ui-icon each="{ opts.icons }" ref="{ ref }" mdicon="{ mdicon }" onclick="{ onclick }" />
 		</div>
 	</div>
 	<style>

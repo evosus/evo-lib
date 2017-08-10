@@ -51,7 +51,6 @@ VIEW HOME
 		opts.sideBarItems = [];
 		// MOUNT
 		self.on('mount',function() {
-			console.log(this.refs);
 			// OPTS
 			opts = this.opts;
 			// TITLE
@@ -73,7 +72,14 @@ VIEW HOME
 			// SIDE BAR ITEMS
 			opts.sideBarItems = navMenuItems;
 			// NAV BAR 
-			opts.nav_bar = { css:'ui-primary' }
+			opts.nav_bar = {
+				css:'ui-primary',
+				icons: [
+					{ ref:'search_icon', mdicon:'mdi mdi-magnify', onclick:navBarSearchClick },
+					{ ref:'history_icon', mdicon:'mdi mdi-history', onclick:navBarHistoryClick },
+					{ ref:'message_icon', mdicon:'mdi mdi-comment-text-outline', onclick:navBarMessageClick }
+				]
+			}
 			// NAV BAR HOME
 			opts.nav_bar_home = {
 				category:'category',
@@ -91,6 +97,15 @@ VIEW HOME
 		// SET STATE
 		setState = function() {
 			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		navBarSearchClick = function() {
+			console.log("NAV BAR SEARCH CLICKED!");
+		}
+		navBarHistoryClick = function() {
+			console.log("NAV BAR HISTORY CLICKED!");
+		}
+		navBarMessageClick = function() {
+			console.log("NAV BAR MESSAGE CLICKED!");
 		}
 		// MODAL CLOSE
 		modalClose = function() {
