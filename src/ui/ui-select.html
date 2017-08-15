@@ -45,29 +45,5 @@ UI SELECT
 			pointer-events:none;
 		}
 	</style>
-	<script>
-		this.mixin(IO);
-		var self = this;
-		//selectIsOpen = false;
-/*
-		this.on('mount',function() {
-			// --------------------------------------
-			// SET Selected Item
-			// --------------------------------------
-			if(!opts.selection) {
-				self.refs.htmlselect.selectedIndex = 0;
-			} else {
-				var len = opts.options.length;
-				for(i = 0; i < len; i++) {
-					if(opts.options[i].label == opts.selection) {
-						self.refs.htmlselect.selectedIndex = i;
-					}
-				}
-			}
-		});
-		blur() { isFocused = false;self.update(); }
-		focus() { selectIsOpen = true;self.update(); }
-		change(e) { selectIsOpen = false;self.refs.htmlselect.blur();self.update(); }
-*/
-	</script>
+	<script>this.mixin(IO);</script>
 </ui-select>

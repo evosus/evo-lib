@@ -1,0 +1,193 @@
+<view-tabs>
+	<ui-modal ref="ui_modal" />
+	<nav-menu ref="nav_menu" />
+<!--
+	<div class="f-row ai-center nav-bar-search ui-primary" style="height:5em;">
+		<div class="pad-dot-25"></div>
+		<ui-icon mdicon="mdi mdi-arrow-left" />
+		<div class="pad-dot-25"></div>
+		<div class="f-one" style="margin-bottom:-.5em;">
+			<ui-input label="" css="ui-white" placeholder="Search Customers" />
+		</div>
+		<div class="pad-dot-25"></div>
+		<ui-icon mdicon="mdi mdi-close-circle" />
+		<div class="pad-dot-25"></div>
+	</div>
+!-->
+	<div class="f-row ai-center nav-bar-search ui-primary" style="height:3.5em;">
+		<div class="left f-row ai-center">
+			<div class="pad-dot-25"></div>
+			<ui-icon mdicon="mdi mdi-arrow-left" />
+			<div class="pad-dot-25"></div>
+			<h3>Back</h3>
+			<div class="pad-dot-5"></div>
+		</div>
+
+		<div class="mid f-row ai-center search-input ui-white rounded shadow">
+			<div class="pad-dot-5"></div>
+			<i class="mdi mdi-magnify fg-primary-lt"></i>
+			<div class="pad-dot-25"></div>
+			<input ref="input_search" onkeyup="{ doSearch }" class="f-one" placeholder="Search Customers" />
+			<div class="pad-dot-25"></div>
+			<i if="{ searchString }" class="mdi mdi-close-circle fg-primary-lt" onclick="{ clearSearch }"></i>
+			<div class="pad-dot-5"></div>
+		</div>
+
+		<div class="right f-row ai-center jc-end">
+			<ui-icon label="Options" mdicon="mdi mdi-filter-variant" css="ui-primary" />
+			<div class="pad-dot-25"></div>
+		</div>
+
+	</div>
+	<div class="f-row ai-center ui-primary shadow" style="position:relative;">
+		<div class="left"></div>
+		<div class="mid">
+			<nav-bar-tabs ref="nav_bar_tabs" />	
+		</div>
+		<div class="right"></div>
+	</div>
+	<div class="view-tabs scroll-2 container-flex-1280 ui-white shadow">
+<!-- BEGIN CONTENT !-->
+		<ui-list items="{ uiListItems }" />
+<!-- END CONTENT !-->
+	</div>
+	<style>
+		.mid {
+			flex:0 0 1024px;
+		}
+		.left, .right {
+			flex:1;
+		}
+		.search-input input {
+			background:none;
+			border:none;
+			font-size:1.25em;
+			padding:.4em;
+		}
+		.search-input i {
+			font-size:1.5em;
+		}
+	</style>
+	<script>
+		searchString = null;
+		doSearch = function(e) {
+			searchString += e.key;
+			self.update();
+		}
+		clearSearch = function() {
+			searchString = '';
+			self.refs.input_search.value = '';
+			self.refs.input_search.focus();
+		}
+		// MIXIN
+		this.mixin(IO);
+		// SELF
+		var self = this;
+		// MOUNT
+		this.on('mount',function() {
+			self.refs.input_search.focus();
+			// OPTS
+			opts = this.opts;
+			// TITLE
+			opts.title = 'View Search';
+			// NAV BAR
+			opts.nav_bar =  { css:'ui-primary' }
+			// NAV BAR TABS
+			opts.nav_bar_tabs =  {
+				activeTab:'All Customers',
+				css:'ui-primary',
+				tabs: [
+					{ label:'All Customers'},
+					{ label:'Recent Activity'},
+					{ label:'Recent Purchasers'},
+					{ label:'Open Balance'},
+					{ label:'VIP Customers'}
+				]
+			}
+			// NAV MENU
+			opts.nav_menu = {
+				companyName:'Devosus, Inc',
+				css:'ui-background fg-primary',
+				cssActive:'ui-black-dot-1 fg-primary',
+				cssHead:'ui-teal',
+				cssLinks:'fg-primary-lt',
+				isOpen: false,
+				items:navMenuItems,
+				route:'/view-tabs',
+				userName:'Corey Holton'
+			}
+			// UI MODAL
+			opts.ui_modal =  { isOpen: false }
+			// INIT STATE
+			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
+		});
+		// SET STATE
+		setState = function() {
+			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
+		// MODAL SHOW
+		modalShow = function() {
+			opts.ui_modal = { isOpen: true };
+			setState();
+		}
+		// MODAL CLOSE
+		modalClose = function() {
+			opts.ui_modal = { isOpen: false };
+			setState();
+		}
+		// NAV BAR TABS CLICK
+		navBarTabsClick = function(e) {
+			opts.nav_bar_tabs.activeTab = e.item.tab.label;
+			setState();
+		}
+		// NAV BAR HOME MENU TOGGLE
+		navBarHomeMenuToggle = function() {
+			opts.isOpen ? opts.isOpen = false : opts.isOpen = true;
+			opts.nav_bar_home.isOpen = opts.isOpen;
+			setState();
+		};
+		// NAV BAR MENU CLICK
+		navBarMenuClick = function() { toggleNavMenu(); };
+		// NAV MENU CLOSE
+		navMenuClose = function() { toggleNavMenu() };
+		// TOGGLE NAV MENU
+		toggleNavMenu = function() {
+			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
+			setState();
+		}
+		// STATE CHANGE
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			if(newState[opts.title]) {
+				self.setOpts(newState[opts.title]);
+				if(opts.ui_modal && opts.ui_modal.isOpen) {
+					riot.compile(function() {
+						riot.mount('#modalMount','ui-test');
+					});
+				}
+			}
+		});
+		// UPDATE
+		this.on('update',function() {
+			Object.keys(self.refs).forEach(function(REF) {
+				// UPDATE SELF REF
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(opts[REF]);
+				}
+				// IF CHILD REFS
+				if(self.refs[REF].refs) {
+					// LOOP CHILD REFS
+					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+						// UPDATE CHILD REF
+						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
+						}
+					});
+				}
+			});
+		});
+		// UNMOUNT
+		this.on('unmount',function() {
+			RC.off('UI_STATE_CHANGED');
+		});
+	</script>
+</view-tabs>

@@ -12,6 +12,9 @@ route('/login',function() {
 // --------------------------------------
 // !!! DEV VIEW ROUTES !!!
 // --------------------------------------
+route('/view-tabs',function() {
+	GF.mountArray([{ id:'#appMount', template:'view-tabs', url:'/view/view-tabs.html' }]);
+});
 route('/view-home',function() {
 	GF.mountArray([{ id:'#appMount', template:'view-home', url:'/view/view-home.html' }]);
 });

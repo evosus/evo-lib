@@ -123,7 +123,8 @@
 .ui-input.ui-invalid .fill { background:#AD423C; }
 
 .ui-input.ui-white .label { color:white; }
-.ui-input.ui-white .fill { background:rgba(255,255,255,0.3; }
+.ui-input.ui-white input { color:white; }
+.ui-input.ui-white .fill { background:white; }
 
 .ui-input.ui-red .label { color:firebrick; }
 .ui-input.ui-red .fill { background:firebrick; }
