@@ -1,7 +1,7 @@
 <ui-card>
 	<div class="content f-col ai-center jc-center { opts.css_content }">
 		<div class="container-centered ui-white">
-			<div class="container-head { opts.css_header }">
+			<div if="{ opts.title || opts.subtitle }" class="container-head { opts.css_header }">
 				<div class="container-title">
 					<span>{ opts.title }</span>
 				</div>
