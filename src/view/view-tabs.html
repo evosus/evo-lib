@@ -48,7 +48,24 @@
 	</div>
 	<div class="view-tabs scroll-2 container-flex-1280 ui-white shadow">
 <!-- BEGIN CONTENT !-->
+		<!--
 		<ui-list items="{ uiListItems }" />
+		!-->
+		<div if="{ opts.activeTab == 'All Customers' }" class="pad-1-2">
+			<h1>All Customers</h1>
+		</div>
+		<div if="{ opts.activeTab == 'Recent Activity' }" class="pad-1-2">
+			<h1>Recent Activity</h1>
+		</div>
+		<div if="{ opts.activeTab == 'Recent Purchasers' }" class="pad-1-2">
+			<h1>Recent Purchasers</h1>
+		</div>
+		<div if="{ opts.activeTab == 'Open Balance' }" class="pad-1-2">
+			<h1>Open Balance</h1>
+		</div>
+		<div if="{ opts.activeTab == 'VIP Customers' }" class="pad-1-2">
+			<h1>VIP Customers</h1>
+		</div>
 <!-- END CONTENT !-->
 	</div>
 	<style>
@@ -83,6 +100,8 @@
 		this.mixin(IO);
 		// SELF
 		var self = this;
+		// ACTIVE TAB
+		opts.activeTab = 'All Customers';
 		// TITLE
 		opts.title = 'View Tabs';
 		// MOUNT
@@ -90,7 +109,6 @@
 			// CHECK STATE
 			if(self.checkState(opts.title)) {
 				setState();
-				self.refs.input_search.focus();
 			} else {
 				// OPTS
 				opts = self.opts;
@@ -98,7 +116,7 @@
 				opts.nav_bar =  { css:'ui-primary' }
 				// NAV BAR TABS
 				opts.nav_bar_tabs =  {
-					activeTab:'All Customers',
+					activeTab:opts.activeTab,
 					css:'ui-primary',
 					tabs: [
 						{ label:'All Customers'},
@@ -125,6 +143,8 @@
 				// SET STATE
 				setState();
 			}
+			// SET focus
+			self.refs.input_search.focus();
 		});
 		// SET STATE
 		setState = function() {
@@ -143,6 +163,7 @@
 		// NAV BAR TABS CLICK
 		navBarTabsClick = function(e) {
 			opts.nav_bar_tabs.activeTab = e.item.tab.label;
+			opts.activeTab = e.item.tab.label;
 			setState();
 		}
 		// NAV BAR HOME MENU TOGGLE
@@ -162,9 +183,6 @@
 		}
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
-			console.log("UI STATE CHANGED");
-			console.log(opts.title);
-			console.dir(newState);
 			if(newState[opts.title]) {
 				self.setOpts(newState[opts.title]);
 				if(opts.ui_modal && opts.ui_modal.isOpen) {
@@ -175,28 +193,7 @@
 			}
 		});
 		// UPDATE
-		this.on('update',function() {
-			console.log("UPDATE");
-			self.updateRefs();
-/*
-			Object.keys(self.refs).forEach(function(REF) {
-				// UPDATE SELF REF
-				if(self.refs[REF].hasOwnProperty('setOpts')) {
-					self.refs[REF].setOpts(opts[REF]);
-				}
-				// IF CHILD REFS
-				if(self.refs[REF].refs) {
-					// LOOP CHILD REFS
-					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
-						// UPDATE CHILD REF
-						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
-							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
-						}
-					});
-				}
-			});
-*/
-		});
+		this.on('update',function() { self.updateRefs(); });
 		// UNMOUNT
 		this.on('unmount',function() {
 			RC.off('UI_STATE_CHANGED');
