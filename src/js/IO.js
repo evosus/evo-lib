@@ -28,6 +28,13 @@ var IO  = {
 					self.refs[REF].setOpts(self.opts[REF]);
 				}
 			}
+			if(self.refs[REF].refs) {
+				Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
+					if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
+						self.refs[REF].refs[CHILD_REF].setOpts(self.opts[CHILD_REF]);
+					}
+				});
+			}
 		});
 	}
 };
