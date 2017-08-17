@@ -47,6 +47,11 @@ UI INPUT
 		self.setMessage = function(msg) {
 			if(msg || self.msg) { self.msg = msg; } else { self.msg == null; } self.update();
 		}
+		self.unsetValidation = function() { 
+			self.isValid = null;
+			self.isInvalid = null;
+			self.setMessage();
+		}
 		self.clear = function() {
 			self.refs.field.value = '';
 			self.isFocused = null;
