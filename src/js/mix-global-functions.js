@@ -73,6 +73,19 @@ var GF = (function() {
 		});
 	}
 	// --------------------------------------
+	// GET STATE
+	// --------------------------------------
+	// Returns stored state by key (screen title)
+	// --------------------------------------
+	var getState = function(key) {
+		// IF STATE in storage
+		if(STORED = JSON.parse(localStorage.getItem('STATE'))) {
+			return STORED[key];
+		} else {
+			return false;
+		}
+	}
+	// --------------------------------------
 	// MOUNT ARRAY
 	// --------------------------------------
 	// Attempts to load and mount an array of templates
@@ -124,6 +137,7 @@ var GF = (function() {
 	return {
 		addCommas: function(number) { return addCommas(number); },
 		getElapsed: function(datetime) { return getElapsed(datetime); },
+		getState: function(key) { return getState(key); },
 		isNeg: function(string) { return isNeg(string); },
 		truncate: function(string, limit) { return truncate(string, limit) },
 		iconByTitle: function(title) { return iconByTitle(title) },

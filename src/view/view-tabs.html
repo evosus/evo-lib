@@ -83,43 +83,59 @@
 		this.mixin(IO);
 		// SELF
 		var self = this;
+		// GET STATE
+		getState = function(key) {
+			//IF STATE in storage
+			if(STORED = JSON.parse(localStorage.getItem('STATE'))) {
+				return STORED[key];
+			} else {
+				return false;
+			}
+		}
 		// MOUNT
 		this.on('mount',function() {
-			self.refs.input_search.focus();
-			// OPTS
-			opts = this.opts;
 			// TITLE
-			opts.title = 'View Search';
-			// NAV BAR
-			opts.nav_bar =  { css:'ui-primary' }
-			// NAV BAR TABS
-			opts.nav_bar_tabs =  {
-				activeTab:'All Customers',
-				css:'ui-primary',
-				tabs: [
-					{ label:'All Customers'},
-					{ label:'Recent Activity'},
-					{ label:'Recent Purchasers'},
-					{ label:'Open Balance'},
-					{ label:'VIP Customers'}
-				]
+			opts.title = 'View Tabs';
+			//getState('View Tabs');
+			if(stored_state = getState(opts.title)) {
+				console.dir(self.opts);
+				Object.assign(self.opts, stored_state);
+				setState();
+				self.refs.input_search.focus();
+			} else {
+				// OPTS
+				opts = self.opts;
+				// NAV BAR
+				opts.nav_bar =  { css:'ui-primary' }
+				// NAV BAR TABS
+				opts.nav_bar_tabs =  {
+					activeTab:'All Customers',
+					css:'ui-primary',
+					tabs: [
+						{ label:'All Customers'},
+						{ label:'Recent Activity'},
+						{ label:'Recent Purchasers'},
+						{ label:'Open Balance'},
+						{ label:'VIP Customers'}
+					]
+				}
+				// NAV MENU
+				opts.nav_menu = {
+					companyName:'Devosus, Inc',
+					css:'ui-background fg-primary',
+					cssActive:'ui-black-dot-1 fg-primary',
+					cssHead:'ui-teal',
+					cssLinks:'fg-primary-lt',
+					isOpen: false,
+					items:navMenuItems,
+					route:'/view-tabs',
+					userName:'Corey Holton'
+				}
+				// UI MODAL
+				opts.ui_modal =  { isOpen: false }
+				// SET STATE
+				setState();
 			}
-			// NAV MENU
-			opts.nav_menu = {
-				companyName:'Devosus, Inc',
-				css:'ui-background fg-primary',
-				cssActive:'ui-black-dot-1 fg-primary',
-				cssHead:'ui-teal',
-				cssLinks:'fg-primary-lt',
-				isOpen: false,
-				items:navMenuItems,
-				route:'/view-tabs',
-				userName:'Corey Holton'
-			}
-			// UI MODAL
-			opts.ui_modal =  { isOpen: false }
-			// INIT STATE
-			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
 		});
 		// SET STATE
 		setState = function() {

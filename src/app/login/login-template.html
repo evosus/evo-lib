@@ -46,10 +46,13 @@
 			opts.ui_button_help = { label: 'Help', css:primary_fg }
 			// BUTTON LOGIN
 			opts.ui_button_login = { label: 'Login', css:primary }
-			// SET FOCUS
-			self.refs.ui_card.refs.ui_input_email.setFocus();
-			// INIT STATE
-			RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
+			// TIMEOUT TO CATCH NEXT 'TICK'
+			setTimeout(function() {
+				// SET FOCUS
+				self.refs.ui_card.refs.ui_input_email.setFocus();
+				// INIT STATE
+				RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
+			},0);
 		});
 		// HELP CLICK
 		uiButtonHelpClick = function() { console.log("HELP CLICK!"); };

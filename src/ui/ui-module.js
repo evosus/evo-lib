@@ -6,24 +6,6 @@ var UserInterface = function() {
 	riot.observable(this);
 	// SELF & STATE
 	var self = this, STATE = {};
-	// INIT STATE
-	self.initState = function(obj) {
-		var route = Object.keys(obj)[0],
-				STORED = self.getStore();
-		// IF route in storage
-		if(route && STORED[route]) {
-			// SET STATE route from storage
-			STATE[route] = STORED[route];
-			// TRIGGER state change
-			self.stateChanged(route);
-		// ELSE route not in storage
-		} else {
-			// SET STATE and SET STORE
-			STATE[route] = obj[route];
-			// SET store
-			self.setStore(route);
-		}
-	};
 	// ERROR
 	self.error = function(req_event_name,opt_payload) {
 		console.error(req_event_name,opt_payload);
@@ -43,7 +25,6 @@ var UserInterface = function() {
 	}
 	// SET STORE
 	self.setStore = function(key) {
-		//console.info("SET STORE: " + key);
 		// IF stringify
 		if(val = JSON.stringify(STATE)) {
 			// SET STORAGE
@@ -56,14 +37,11 @@ var UserInterface = function() {
 		var route = Object.keys(obj)[0];
 		if(route) {
 			STATE[route] = obj[route];
-			self.stateChanged(route);
+			self.setStore(obj[route]);
 		}
 	};
 	// EVENT HANDLERS
 	self.on('UI_SET_STATE',function(req_obj) {
 		self.setState(req_obj);
-	});
-	self.on('UI_INIT_STATE',function(req_obj) {
-		self.initState(req_obj);
 	});
 };
