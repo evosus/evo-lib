@@ -83,23 +83,12 @@
 		this.mixin(IO);
 		// SELF
 		var self = this;
-		// GET STATE
-		getState = function(key) {
-			//IF STATE in storage
-			if(STORED = JSON.parse(localStorage.getItem('STATE'))) {
-				return STORED[key];
-			} else {
-				return false;
-			}
-		}
+		// TITLE
+		opts.title = 'View Tabs';
 		// MOUNT
 		this.on('mount',function() {
-			// TITLE
-			opts.title = 'View Tabs';
-			//getState('View Tabs');
-			if(stored_state = getState(opts.title)) {
-				console.dir(self.opts);
-				Object.assign(self.opts, stored_state);
+			// CHECK STATE
+			if(self.checkState(opts.title)) {
 				setState();
 				self.refs.input_search.focus();
 			} else {
@@ -173,6 +162,9 @@
 		}
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
+			console.log("UI STATE CHANGED");
+			console.log(opts.title);
+			console.dir(newState);
 			if(newState[opts.title]) {
 				self.setOpts(newState[opts.title]);
 				if(opts.ui_modal && opts.ui_modal.isOpen) {
@@ -184,6 +176,9 @@
 		});
 		// UPDATE
 		this.on('update',function() {
+			console.log("UPDATE");
+			self.updateRefs();
+/*
 			Object.keys(self.refs).forEach(function(REF) {
 				// UPDATE SELF REF
 				if(self.refs[REF].hasOwnProperty('setOpts')) {
@@ -200,6 +195,7 @@
 					});
 				}
 			});
+*/
 		});
 		// UNMOUNT
 		this.on('unmount',function() {

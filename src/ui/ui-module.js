@@ -37,7 +37,7 @@ var UserInterface = function() {
 		var route = Object.keys(obj)[0];
 		if(route) {
 			STATE[route] = obj[route];
-			self.setStore(obj[route]);
+			self.setStore(route);
 		}
 	};
 	// EVENT HANDLERS
