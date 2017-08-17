@@ -12,6 +12,8 @@ var UserInterface = function() {
 	}
 	// STATE CHANGED
 	self.stateChanged = function(key) {
+		console.info("STATE CHANGED");
+		console.dir(STATE);
 		self.trigger('UI_STATE_CHANGED',{ [key]:STATE[key] });
 	}
 	// GET STORE
@@ -34,6 +36,9 @@ var UserInterface = function() {
 	};
 	// SET STATE
 	self.setState = function(obj) {
+		if(self.getStore()) {
+			STATE = self.getStore();
+		}
 		var route = Object.keys(obj)[0];
 		if(route) {
 			STATE[route] = obj[route];
