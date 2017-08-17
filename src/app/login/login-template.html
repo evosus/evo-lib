@@ -18,45 +18,52 @@
 		this.mixin(IO);
 		// SELF
 		var self = this;
+		// TITLE
+		opts.title = 'Login';
 		// MOUNT
 		this.on('mount',function() {
-			// VARS
-			var primary = 'ui-teal',
-					primary_fg = 'fg-teal',
-					primary_dk = 'ui-teal-dk';
-			// VIEW CARD
-			opts = this.opts;
-			opts.title = 'Login';
-			opts.css_button = primary;
-			opts.css_input = primary;
-			opts.css_link = primary_fg;
-			// UI CARD
-			opts.ui_card = {
-				css_container: 'ui-white',
-				css_content: primary_dk,
-				css_header: 'ui-teal',
-				title:'Evosus UI Library',
-				subtitle:'Please log in'
+			// CHECK STATE
+			if(self.checkState(opts.title)) {
+				setState();
+			} else {
+				// VARS
+				var primary = 'ui-teal',
+						primary_fg = 'fg-teal',
+						primary_dk = 'ui-teal-dk';
+				// VIEW CARD
+				opts = this.opts;
+				opts.css_button = primary;
+				opts.css_input = primary;
+				opts.css_link = primary_fg;
+				// UI CARD
+				opts.ui_card = {
+					css_container: 'ui-white',
+					css_content: primary_dk,
+					css_header: 'ui-teal',
+					title:'Evosus UI Library',
+					subtitle:'Please log in'
+				}
+				// INPUT EMAIL
+				opts.ui_input_email = { label: 'Enter your email', css:primary, default: 'evosusAdmin@evosus.com' }
+				// INPUT PASSWORD
+				opts.ui_input_password = { type: 'password', label: 'Enter your password', css:primary, default: 'evosus7414' }
+				// BUTTON HELP
+				opts.ui_button_help = { label: 'Help', css:primary_fg }
+				// BUTTON LOGIN
+				opts.ui_button_login = { label: 'Login', css:primary }
+				// SET STATE
+				setState();
 			}
-			// INPUT EMAIL
-			opts.ui_input_email = { label: 'Enter your email', css:primary, default: 'evosusAdmin@evosus.com' }
-			// INPUT PASSWORD
-			opts.ui_input_password = { type: 'password', label: 'Enter your password', css:primary, default: 'evosus7414' }
-			// BUTTON HELP
-			opts.ui_button_help = { label: 'Help', css:primary_fg }
-			// BUTTON LOGIN
-			opts.ui_button_login = { label: 'Login', css:primary }
-			// TIMEOUT TO CATCH NEXT 'TICK'
-			setTimeout(function() {
-				// SET FOCUS
-				self.refs.ui_card.refs.ui_input_email.setFocus();
-				// INIT STATE
-				RC.trigger('UI_INIT_STATE',{ [opts.title]:opts });
-			},0);
+			// SET focus
+			self.refs.ui_card.refs.ui_input_email.setFocus();
 		});
 		// HELP CLICK
 		uiButtonHelpClick = function() { console.log("HELP CLICK!"); };
 		uiButtonLoginClick = function() { route('/view-home') };
+		// SET STATE
+		setState = function() {
+			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
+		}
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
@@ -64,24 +71,7 @@
 			}
 		});
 		// UPDATE
-		this.on('update',function() {
-			Object.keys(self.refs).forEach(function(REF) {
-				// UPDATE SELF REF
-				if(self.refs[REF].hasOwnProperty('setOpts')) {
-					self.refs[REF].setOpts(opts[REF]);
-				}
-				// IF CHILD REFS
-				if(self.refs[REF].refs) {
-					// LOOP CHILD REFS
-					Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
-						// UPDATE CHILD REF
-						if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
-							self.refs[REF].refs[CHILD_REF].setOpts(opts[CHILD_REF]);
-						}
-					});
-				}
-			});
-		});
+		this.on('update',function() { self.updateRefs(); });
 		// UNMOUNT
 		this.on('unmount',function() {
 			RC.off('UI_STATE_CHANGED');
