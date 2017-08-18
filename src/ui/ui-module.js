@@ -12,8 +12,6 @@ var UserInterface = function() {
 	}
 	// STATE CHANGED
 	self.stateChanged = function(key) {
-		console.info("STATE CHANGED");
-		console.dir(STATE);
 		self.trigger('UI_STATE_CHANGED',{ [key]:STATE[key] });
 	}
 	// GET STORE
