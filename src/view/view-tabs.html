@@ -27,9 +27,9 @@
 			<div class="pad-dot-5"></div>
 			<i class="mdi mdi-magnify fg-primary-lt"></i>
 			<div class="pad-dot-25"></div>
-			<input ref="input_search" onkeyup="{ doSearch }" class="f-one" placeholder="Search Customers" />
+			<input ref="input_search" onkeyup="{ doSearch }" class="f-one" placeholder="Search Customers" value="{ opts.searchString }" />
 			<div class="pad-dot-25"></div>
-			<i if="{ searchString }" class="mdi mdi-close-circle fg-primary-lt" onclick="{ clearSearch }"></i>
+			<i if="{ opts.searchString }" class="mdi mdi-close-circle fg-primary-lt" onclick="{ clearSearch }"></i>
 			<div class="pad-dot-5"></div>
 		</div>
 
@@ -86,30 +86,36 @@
 		}
 	</style>
 	<script>
-		searchString = null;
 		doSearch = function(e) {
-			searchString += e.key;
-			self.update();
+			opts.searchString = e.target.value;
+			if(e.target.value.length > 3) {
+				setState();
+			}
 		}
 		clearSearch = function() {
-			searchString = '';
+			opts.searchString = '';
 			self.refs.input_search.value = '';
 			self.refs.input_search.focus();
+			setState();
 		}
 		// MIXIN
 		this.mixin(IO);
 		// SELF
 		var self = this;
-		// ACTIVE TAB
-		opts.activeTab = 'All Customers';
 		// TITLE
 		opts.title = 'View Tabs';
+		// ACTIVE TAB
+		opts.activeTab = 'All Customers';
 		// MOUNT
 		this.on('mount',function() {
+			// SEARCH STRING
+			opts.searchString = '';
 			// CHECK STATE
 			if(self.checkState(opts.title)) {
+				console.info("MOUNT FROM STORAGE");
 				setState();
 			} else {
+				console.info("MOUNT FROM SCRATCH");
 				// OPTS
 				opts = self.opts;
 				// NAV BAR
@@ -184,6 +190,11 @@
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
+/*
+				if(opts.searchString.length) {
+					self.refs.input_search.value = opts.searchString;
+				}
+*/
 				self.setOpts(newState[opts.title]);
 				if(opts.ui_modal && opts.ui_modal.isOpen) {
 					riot.compile(function() {
