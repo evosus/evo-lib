@@ -86,20 +86,9 @@
 		}
 	</style>
 	<script>
-		doSearch = function(e) {
-			opts.searchString = e.target.value;
-			if(e.target.value.length > 3) {
-				setState();
-			}
-		}
-		clearSearch = function() {
-			opts.searchString = '';
-			self.refs.input_search.value = '';
-			self.refs.input_search.focus();
-			setState();
-		}
 		// MIXIN
 		this.mixin(IO);
+		this.mixin(VT);
 		// SELF
 		var self = this;
 		// TITLE
@@ -113,7 +102,7 @@
 			// CHECK STATE
 			if(self.checkState(opts.title)) {
 				console.info("MOUNT FROM STORAGE");
-				setState();
+				VT.setState(opts);
 			} else {
 				console.info("MOUNT FROM SCRATCH");
 				// OPTS
@@ -147,46 +136,26 @@
 				// UI MODAL
 				opts.ui_modal =  { isOpen: false }
 				// SET STATE
-				setState();
+				VT.setState(opts);
 			}
 			// SET focus
 			self.refs.input_search.focus();
 		});
-		// SET STATE
-		setState = function() {
-			RC.trigger('UI_SET_STATE',{ [opts.title]:opts });
-		}
-		// MODAL SHOW
-		modalShow = function() {
-			opts.ui_modal = { isOpen: true };
-			setState();
-		}
-		// MODAL CLOSE
-		modalClose = function() {
-			opts.ui_modal = { isOpen: false };
-			setState();
-		}
-		// NAV BAR TABS CLICK
-		navBarTabsClick = function(e) {
-			opts.nav_bar_tabs.activeTab = e.item.tab.label;
-			opts.activeTab = e.item.tab.label;
-			setState();
-		}
-		// NAV BAR HOME MENU TOGGLE
-		navBarHomeMenuToggle = function() {
-			opts.isOpen ? opts.isOpen = false : opts.isOpen = true;
-			opts.nav_bar_home.isOpen = opts.isOpen;
-			setState();
-		};
-		// NAV BAR MENU CLICK
-		navBarMenuClick = function() { toggleNavMenu(); };
-		// NAV MENU CLOSE
-		navMenuClose = function() { toggleNavMenu() };
-		// TOGGLE NAV MENU
-		toggleNavMenu = function() {
-			opts.nav_menu.isOpen ? opts.nav_menu.isOpen = false : opts.nav_menu.isOpen = true;
-			setState();
-		}
+
+		doSearch =  function(e) { VT.doSearch(e) }
+		clearSearch =  function() { VT.clearSearch() }
+		setState = function(opts) { VT.setState(opts) }
+		modalShow = function() { VT.modalShow() }
+		modalClose = function() { VT.modalClose() }
+		navBarTabsClick = function(e) { VT.navBarTabsClick(e) }
+		navBarHomeMenuToggle = function() { VT.navBarHomeMenuToggle() }
+		navBarMenuClick = function() { VT.toggleNavMenu() }
+		navMenuClose = function() { VT.toggleNavMenu() },
+		toggleNavMenu = function() { VT.toggleNavMenu() }
+
+
+
+
 		// STATE CHANGE
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
