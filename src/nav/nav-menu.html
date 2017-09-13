@@ -6,7 +6,7 @@ NAV MENU
 		<div class="nav-menu-bar f-row ai-center jc-between { opts.cssHead }">
 			<ui-icon mdicon="mdi mdi-close" onclick="{ navMenuClose }" />
 		</div>
-		<div class="nav-menu-bar f-row ai-center shadow-bar { opts.cssHead }">
+		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
 			<ui-icon mdicon="mdi mdi-account-circle" />
 			<div class="pad-dot-25"></div>
 			<div class="f-col f-one">
@@ -17,7 +17,10 @@ NAV MENU
 		</div>
 		<div class="links { opts.cssLinks }">
 			<div class="pad-dot-5"></div>
-
+				<div class="nav-link inactive f-row ai-center jc-start" onclick="{ resetStorage }">
+					<ui-icon mdicon="mdi mdi-refresh" />
+					<h4>Reset</h4>
+				</div>
 			<virtual each="{ opts.items }">
 				<div if="{ route != parent.opts.route }"
 					class="nav-link inactive f-row ai-center jc-start"
@@ -73,7 +76,11 @@ NAV MENU
 					{ "title":"View Print", "route":"/view-print","mdicon":"mdi mdi-printer" },
 					{ "title":"View Search", "route":"/view-search","mdicon":"mdi mdi-magnify" }
 				]
-			},
+			}
 		];
+		resetStorage = function() {
+			window.localStorage.clear();
+			location.reload(true);
+		}
 	</script>
 </nav-menu>
