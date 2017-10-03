@@ -5,7 +5,8 @@
 // --------------------------------------
 var IO  = {
 	checkState: function(key) {
-		if(STORED = JSON.parse(localStorage.getItem('STATE'))) {
+		const STORED = JSON.parse(localStorage.getItem('STATE'));
+		if(STORED) {
 			Object.assign(this.opts, STORED[key]);
 			return STORED[key];
 		} else {
@@ -28,13 +29,8 @@ var IO  = {
 					self.refs[REF].setOpts(self.opts[REF]);
 				}
 			}
-			if(self.refs[REF].refs) {
-				Object.keys(self.refs[REF].refs).forEach(function(CHILD_REF) {
-					if(self.refs[REF].refs[CHILD_REF].hasOwnProperty('setOpts')) {
-						self.refs[REF].refs[CHILD_REF].setOpts(self.opts[CHILD_REF]);
-					}
-				});
-			}
 		});
 	}
 };
+
+export default IO;

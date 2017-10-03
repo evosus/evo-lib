@@ -1,3 +1,4 @@
+//import IO from 'lib/evo-lib/src/js/IO.js';
 // --------------------------------------
 // UI MODULE
 // --------------------------------------
@@ -48,3 +49,5 @@ var UserInterface = function() {
 		self.setState(req_obj);
 	});
 };
+
+export default UserInterface;
