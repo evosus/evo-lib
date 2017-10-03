@@ -39,7 +39,7 @@ UI INPUT
 	<script>
 		this.mixin(IO);
 		var self = this;
-		isFocused = null;isValid = null;isInvalid = null;isLocked = null;
+		self.isFocused = null;self.isValid = null;self.isInvalid = null;self.isLocked = null;
 		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }
 		self.setFocus = function(msg) { self.refs.field.focus();self.isFocused = true;self.setMessage(msg); }
 		self.setValid = function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); }
