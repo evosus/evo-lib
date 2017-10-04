@@ -15,11 +15,15 @@ var UserInterface = function() {
 	self.stateChanged = function(key) {
 		self.trigger('UI_STATE_CHANGED',{ [key]:STATE[key] });
 	}
-	// GET STORE
-	self.getStore = function() {
-		//IF STATE in storage
-		if(stored = JSON.parse(localStorage.getItem('STATE'))) {
-			return stored;
+	// GET STATEE
+	self.getState = function(opt_key) {
+		var STORED = JSON.parse(localStorage.getItem('STATE'));
+		if(STORED) {
+			if(STORED[opt_key]) {
+				return STORED[opt_key];
+			}	else {
+				return SORED;
+			}
 		} else {
 			return false;
 		}
@@ -35,8 +39,8 @@ var UserInterface = function() {
 	};
 	// SET STATE
 	self.setState = function(obj) {
-		if(self.getStore()) {
-			STATE = self.getStore();
+		if(self.getState()) {
+			STATE = self.getState();
 		}
 		var route = Object.keys(obj)[0];
 		if(route) {
