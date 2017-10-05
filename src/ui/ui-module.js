@@ -22,7 +22,7 @@ var UserInterface = function() {
 			if(STORED[opt_key]) {
 				return STORED[opt_key];
 			}	else {
-				return SORED;
+				return STORED;
 			}
 		} else {
 			return false;
