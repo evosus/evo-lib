@@ -27,10 +27,11 @@ var IO  = {
 		}
 	},
 	updateRefs: function updateRefs() {
-		Object.keys(this.refs).forEach(function(REF) {
-			if(this.opts[REF]) {
-				if(this.refs[REF].hasOwnProperty('setOpts')) {
-					this.refs[REF].setOpts(this.opts[REF]);
+		var self = this;
+		Object.keys(self.refs).forEach(function(REF) {
+			if(self.opts[REF]) {
+				if(self.refs[REF].hasOwnProperty('setOpts')) {
+					self.refs[REF].setOpts(self.opts[REF]);
 				}
 			}
 		});
