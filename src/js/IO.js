@@ -7,11 +7,11 @@ var IO  = {
 	init: function(opts) {
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
-				setOpts(newState[opts.title]);
+				IO.setOpts(newState[opts.title]);
 			}
 		});
 		this.on('update',function() {
-			updateRefs();	
+			IO.updateRefs();	
 		});
 	},
 	checkState: function checkState(key) {
