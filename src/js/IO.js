@@ -5,13 +5,14 @@
 // --------------------------------------
 var IO  = {
 	init: function(opts) {
+		var self = this;
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
-				IO.setOpts(newState[opts.title]);
+				self.setOpts(newState[opts.title]);
 			}
 		});
 		this.on('update',function() {
-			IO.updateRefs();	
+			self.updateRefs();	
 		});
 	},
 	checkState: function checkState(key) {
