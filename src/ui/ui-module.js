@@ -31,7 +31,8 @@ var UserInterface = function() {
 	// SET STORE
 	self.setStore = function(key) {
 		// IF stringify
-		if(val = JSON.stringify(STATE)) {
+		const val = JSON.stringify(STATE);
+		if(val) {
 			// SET STORAGE
 			localStorage.setItem('STATE',val);
 			self.stateChanged(key);
