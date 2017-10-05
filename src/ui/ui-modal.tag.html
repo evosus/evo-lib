@@ -44,12 +44,12 @@ UI-MODAL WIP
 	<script>
 		this.mixin(IO);
 		var self = this;
-		closeModal = function() {
-			modalClose();
+		function closeModal() {
+			self.modalClose();
 		}
-		closeOutsideModal = function(e) {
+		function closeOutsideModal(e) {
 			if(e.target.classList.contains('ui-modal')) {
-				modalClose();
+				self.modalClose();
 			}
 		}
 	</script>

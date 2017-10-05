@@ -23,7 +23,7 @@ UI CHECKBOX
 	</style>
 	<script>
 		var self = this;
-		isChecked = false;
+		self.isChecked = false;
 		self.setCheck = function(e) {
 			self.isChecked ? self.isChecked = false : self.isChecked = true;
 			IO.trigger(opts.name + ':checked',e);

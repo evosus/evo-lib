@@ -60,7 +60,7 @@ NAV MENU
 	</style>
 	<script>
 		this.mixin(IO);
-		navMenuClick = function(e) {
+		function navMenuClick(e) {
 			navMenuClose();
 			if(e) { route(e.item.route); }
 		}
@@ -79,7 +79,7 @@ NAV MENU
 				]
 			}
 		];
-		resetStorage = function() {
+		function resetStorage() {
 			window.localStorage.clear();
 			location.reload(true);
 		}

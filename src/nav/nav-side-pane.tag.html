@@ -57,28 +57,28 @@ import IO from 'lib/evo-lib/src/js/IO.js';
 	</div>
 	<script>
 		var self = this;
-		activeTab = 'search';
-		isPinned = false;
-		filtersOpen = false;
-		tabClick(e) {
+		self.activeTab = 'search';
+		self.isPinned = false;
+		self.filtersOpen = false;
+		function tabClick(e) {
 			console.log("clicked");
 			console.dir(e);
 			self.update();
 		}
 		ui.on('pane_right_search_options_close:click',function() {
-			filtersOpen = false;
+			self.filtersOpen = false;
 			self.update();
 		});
 		ui.on('pane_right_search_options:click',function() {
-			if(filtersOpen) {
-				filtersOpen = false;
+			if(self.filtersOpen) {
+				self.filtersOpen = false;
 			} else {
-				filtersOpen = true;
+				self.filtersOpen = true;
 			}
 			self.update();
 		});
 		ui.on('pane_right_close:click',function() {
-			isPinned = false;
+			self.isPinned = false;
 			var pl = document.getElementById('pane-right');
 			pl.style.position = 'absolute';	
 			pl.style.boxShadow = '-5px 0px 5px rgba(0,0,0,0.25)';
@@ -87,24 +87,24 @@ import IO from 'lib/evo-lib/src/js/IO.js';
 		});	
 		ui.on('pane_right_pin:click',function() { 
 			var pl = document.getElementById('pane-right');
-			if(isPinned) {
-				isPinned = false;
+			if(self.isPinned) {
+				self.isPinned = false;
 				pl.style.position = 'absolute';	
 				pl.style.boxShadow = '-5px 0px 5px rgba(0,0,0,0.25)';
 			} else {
-				isPinned = true;
+				self.isPinned = true;
 				pl.style.position = 'relative';	
 				pl.style.boxShadow = 'none';
 			}
 			self.update();
 		});	
-		rightPaneTabs = [
+		self.rightPaneTabs = [
 			{ "name":"activity" },
 			{ "name":"history" },
 			{	"name":"search" }
 		]
 		ui.on('pane_right_tabs:click',function(e) {
-			activeTab = e.item.name;
+			self.activeTab = e.item.name;
 			self.update();
 		});
 	</script>
