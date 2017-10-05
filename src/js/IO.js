@@ -7,7 +7,7 @@ var IO  = {
 	init: function(opts) {
 		RC.on('UI_STATE_CHANGED',function(newState) {
 			if(newState[opts.title]) {
-				this.setOpts(newState[opts.title]);
+				setOpts(newState[opts.title]);
 			}
 		});
 		this.on('update',function() {
