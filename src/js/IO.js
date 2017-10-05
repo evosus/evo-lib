@@ -4,6 +4,16 @@
 // Observable for tag IO control
 // --------------------------------------
 var IO  = {
+	init: function(opts) {
+		RC.on('UI_STATE_CHANGED',function(newState) {
+			if(newState[opts.title]) {
+				this.setOpts(newState[opts.title]);
+			}
+		});
+		this.on('update',function() {
+			updateRefs();	
+		});
+	},
 	checkState: function checkState(key) {
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {
