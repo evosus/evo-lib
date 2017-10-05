@@ -4,7 +4,7 @@
 // Observable for tag IO control
 // --------------------------------------
 var IO  = {
-	checkState: function(key) {
+	checkState: function checkState(key) {
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {
 			Object.assign(this.opts, STORED[key]);
@@ -13,20 +13,24 @@ var IO  = {
 			return false;
 		}
 	},
-	getOpts: function() { return this.opts },
-	setOpts: function (opts,update) {
+	getOpts: function getOpts() { return this.opts },
+	setOpts: function setOpts(opts,update) {
 		this.opts = opts;
 		if(!update) {
 			this.update();
 			return this;
 		}
 	},
-	updateRefs: function() {
-		var self = this;
-		Object.keys(self.refs).forEach(function(REF) {
-			if(self.opts[REF]) {
-				if(self.refs[REF].hasOwnProperty('setOpts')) {
-					self.refs[REF].setOpts(self.opts[REF]);
+	setState: function setState() {
+		if(this.opts && this.opts.title) {
+			RC.trigger('UI_SET_STATE',{ [this.opts.title]:this.opts });
+		}
+	},
+	updateRefs: function updateRefs() {
+		Object.keys(this.refs).forEach(function(REF) {
+			if(this.opts[REF]) {
+				if(this.refs[REF].hasOwnProperty('setOpts')) {
+					this.refs[REF].setOpts(this.opts[REF]);
 				}
 			}
 		});
