@@ -1,0 +1,40 @@
+import IO from 'lib/evo-lib/src/js/IO.js';
+<!--
+NAV TAB BAR
+!-->
+<nav-bar-tabs>
+	<div class="nav-bar-tabs f-row ai-stretch { opts.css }">
+		<div each="{ tab in opts.tabs }"
+			class="tab { active:parent.opts.activeTab==tab.label } f-row ai-center jc-center"
+			onclick="{ navBarTabsClick }">
+			<div>{ tab.label }</div>
+		</div>
+	</div>
+	<style>
+		.nav-bar-tabs {
+			height:3em;
+			overflow-y:auto;
+		}
+		::-webkit-scrollbar {
+			display:none;
+		}
+		.tab {
+			border-bottom:2px solid transparent;
+			cursor:pointer;
+			transition:.2s ease-in-out all;
+			padding:0em 1em;
+		}
+		.tab:hover { background:rgba(0,0,0,0.1); }
+		.active { border-bottom:2px solid white;cursor:default; }
+		.tab.active:hover { background:none; }
+		.tab > div {
+			font-size:1em;
+			font-weight:400;
+			margin:0;
+			opacity:0.5;
+			white-space:nowrap;
+		}
+		.tab.active div { opacity:1; }
+	</style>
+	<script>this.mixin(IO);</script>
+</nav-bar-tabs>

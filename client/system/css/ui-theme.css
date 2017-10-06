@@ -1,0 +1,343 @@
+/* MAIN COLOR THEME */
+/* EVOSUS THEME */
+.ui-primary,.ui-secondary,.ui-accent,.ui-active,.ui-inactive,.ui-valid,.ui-invalid { color:white; }
+.ui-inactive { opacity:0.5; }
+
+.ui-primary { background:#333333; }
+.ui-primary-lt { background:#444444; }
+.ui-primary-dk { background:#000000; }
+.ui-secondary { background:#444444; }
+.ui-accent { background:#F09419; }
+.ui-active { background:#2196F3; }
+.ui-inactive { background:transparent; }
+.ui-valid { background:#3F9D2F!important; }
+.ui-invalid { background:#AD423C!important; }
+.ui-background { background:#e7e5e2; }
+.ui-white { background:white; }
+.ui-white-dot-1 { background:rgba(255,255,255,0.1); }
+.ui-white-dot-25 { background:rgba(255,255,255,0.25); }
+.ui-white-dot-5 { background:rgba(255,255,255,0.5); }
+.ui-white-dot-75 { background:rgba(255,255,255,0.75); }
+.ui-black { background:black; }
+.ui-black-dot-1 { background:rgba(0,0,0,0.1); }
+.ui-black-dot-25 { background:rgba(0,0,0,0.25); }
+.ui-black-dot-5 { background:rgba(0,0,0,0.5); }
+.ui-black-dot-75 { background:rgba(0,0,0,0.75); }
+
+.fg-primary { color:#333333; }
+.fg-primary-lt { color:#444444; }
+.fg-primary-dk { color:#000000; }
+.fg-secondary { color:#444444; }
+.fg-white { color:white; }
+.fg-accent { color:#F09419; }
+.fg-active { color:#2196F3; }
+.fg-inactive { color:lightgray; }
+.fg-valid { color:#3F9D2F!important; }
+.fg-invalid { color:#AD423C!important; }
+.fg-white-dot-1 { color:rgba(255,255,255,0.1); }
+.fg-white-dot-25 { color:rgba(255,255,255,0.25); }
+.fg-white-dot-5 { color:rgba(255,255,255,0.5); }
+.fg-white-dot-75 { color:rgba(255,255,255,0.75); }
+.fg-black { color:black; }
+.fg-black-dot-1 { color:rgba(0,0,0,0.1); }
+.fg-black-dot-25 { color:rgba(0,0,0,0.25); }
+.fg-black-dot-5 { color:rgba(0,0,0,0.5); }
+.fg-black-dot-75 { color:rgba(0,0,0,0.75); }
+
+/* ADDITIONAL COLORS */
+.ui-red, .ui-red-dk, .ui-red-lt, .ui-orange,
+.ui-orange-dk, .ui-orange-lt, .ui-gold,
+.ui-gold-dk, .ui-gold-lt, .ui-green,
+.ui-green-dk, .ui-green-lt, .ui-teal,
+.ui-teal-dk, .ui-teal-lt, .ui-blue,
+.ui-blue-dk, .ui-blue-lt, .ui-purple,
+.ui-purple-dk, .ui-purple-lt, .ui-grey,
+.ui-grey-dk, .ui-black
+{ color:white; } 
+
+.ui-grey { background:#aaaaaa; }
+.ui-grey-dk { background:#888888; }
+.ui-grey-lt { background:#bbbbbb; }
+.ui-red { background:firebrick; }
+.ui-red-dk { background:darkred; }
+.ui-red-lt { background:tomato; }
+.ui-orange { background:orange; }
+.ui-orange-dk { background:darkorange; }
+.ui-orange-lt { background:sandybrown; }
+.ui-gold { background:goldenrod; }
+.ui-gold-dk { background:darkgoldenrod; }
+.ui-gold-lt { background:burlywood; }
+.ui-green { background:olivedrab; }
+.ui-green-dk { background:darkolivegreen; }
+.ui-green-lt { background:darkkhaki; }
+.ui-teal { background:darkcyan; }
+.ui-teal-dk { background:#005959; }
+.ui-teal-lt { background:mediumaquamarine; }
+.ui-blue { background:royalblue; }
+.ui-blue-dk { background:darkslateblue; }
+.ui-blue-lt { background:dodgerblue; }
+.ui-purple { background:rebeccapurple; }
+.ui-purple-dk { background:indigo; }
+.ui-purple-lt { background:mediumpurple; }
+.fg-grey { color:#aaaaaa; }
+.fg-grey-dk { color:#888888; }
+.fg-grey-lt { color:#bbbbbb; }
+.fg-red { color:firebrick; }
+.fg-red-dk { color:darkred; }
+.fg-red-lt { color:tomato; }
+.fg-orange { color:orange; }
+.fg-orange-dk { color:darkorange; }
+.fg-orange-lt { color:sandybrown; }
+.fg-gold { color:goldenrod; }
+.fg-gold-dk { color:darkgoldenrod; }
+.fg-gold-lt { color:burlywood; }
+.fg-green { color:olivedrab; }
+.fg-green-dk { color:darkolivegreen; }
+.fg-green-lt { color:darkkhaki; }
+.fg-teal { color:darkcyan; }
+.fg-teal-dk { color:#005959; }
+.fg-teal-lt { color:mediumaquamarine; }
+.fg-blue { color:royalblue; }
+.fg-blue-dk { color:darkslateblue; }
+.fg-blue-lt { color:dodgerblue; }
+.fg-purple { color:rebeccapurple; }
+.fg-purple-dk { color:indigo; }
+.fg-purple-lt { color:mediumpurple; }
+
+/* UI-INPUT COLORS */
+.ui-input.ui-primary .label { color:#02708C; }
+.ui-input.ui-primary .fill { background:#02708C; }
+.ui-input.ui-secondary .label { color:#007F9C; }
+.ui-input.ui-secondary .fill { background:#007F9C; }
+.ui-input.ui-accent .label { color:#F09419; }
+.ui-input.ui-accent .fill { background:#F09419; }
+
+.ui-input.ui-active .label { color:#2196F3; }
+.ui-input.ui-active .fill { background:#2196F3; }
+.ui-input.ui-inactive .label { color:rgba(0,0,0,0.3); }
+.ui-input.ui-inactive .fill { background:rgba(0,0,0,0.3); }
+
+.ui-input.ui-valid .label { color:#3F9D2F; }
+.ui-input.ui-valid .fill { background:#3F9D2F; }
+.ui-input.ui-invalid .label { color:#AD423C; }
+.ui-input.ui-invalid .fill { background:#AD423C; }
+
+.ui-input.ui-white .label { color:white; }
+.ui-input.ui-white input { color:white; }
+.ui-input.ui-white .fill { background:white; }
+
+.ui-input.ui-red .label { color:firebrick; }
+.ui-input.ui-red .fill { background:firebrick; }
+.ui-input.ui-red-lt .label { color:tomato; }
+.ui-input.ui-red-lt .fill { background:tomato; }
+.ui-input.ui-red-dk .label { color:darkred; }
+.ui-input.ui-red-dk .fill { background:darkred; }
+
+.ui-input.ui-orange .label { color:orange; }
+.ui-input.ui-orange .fill { background:orange; }
+.ui-input.ui-orange-lt .label { color:sandybrown; }
+.ui-input.ui-orange-lt .fill { background:sandybrown; }
+.ui-input.ui-orange-dk .label { color:darkorange; }
+.ui-input.ui-orange-dk .fill { background:darkorange; }
+
+.ui-input.ui-gold .label { color:goldenrod; }
+.ui-input.ui-gold .fill { background:goldenrod; }
+.ui-input.ui-gold-lt .label { color:burlywood; }
+.ui-input.ui-gold-lt .fill { background:burlywood; }
+.ui-input.ui-gold-dk .label { color:darkgoldenrod; }
+.ui-input.ui-gold-dk .fill { background:darkgoldenrod; }
+
+.ui-input.ui-grey .label { color:#aaaaaa; }
+.ui-input.ui-grey .fill { background:#aaaaaa; }
+.ui-input.ui-grey-lt .label { color:#bbbbbb; }
+.ui-input.ui-grey-lt .fill { background:#bbbbbb; }
+.ui-input.ui-grey-dk .label { color:#888888; }
+.ui-input.ui-grey-dk .fill { background:#888888; }
+
+.ui-input.ui-green .label { color:olivedrab; }
+.ui-input.ui-green .fill { background:olivedrab; }
+.ui-input.ui-green-lt .label { color:darkkhaki; }
+.ui-input.ui-green-lt .fill { background:darkkhaki; }
+.ui-input.ui-green-dk .label { color:darkolivegreen; }
+.ui-input.ui-green-dk .fill { background:darkolivegreen; }
+
+.ui-input.ui-teal .label { color:darkcyan; }
+.ui-input.ui-teal .fill { background:darkcyan; }
+.ui-input.ui-teal-lt .label { color:mediumaquamarine; }
+.ui-input.ui-teal-lt .fill { background:mediumaquamarine; }
+.ui-input.ui-teal-dk .label { color:#005959; }
+.ui-input.ui-teal-dk .fill { background:#005959; }
+
+.ui-input.ui-blue .label { color:royalblue; }
+.ui-input.ui-blue .fill { background:royalblue; }
+.ui-input.ui-blue-lt .label { color:dodgerblue; }
+.ui-input.ui-blue-lt .fill { background:dodgerblue; }
+.ui-input.ui-blue-dk .label { color:darkslateblue; }
+.ui-input.ui-blue-dk .fill { background:darkslateblue; }
+
+.ui-input.ui-purple .label { color:rebeccapurple; }
+.ui-input.ui-purple .fill { background:rebeccapurple; }
+.ui-input.ui-purple-lt .label { color:mediumpurple; }
+.ui-input.ui-purple-lt .fill { background:mediumpurple; }
+.ui-input.ui-purple-dk .label { color:indigo; }
+.ui-input.ui-purple-dk .fill { background:indigo; }
+
+/* UI-CHECKBOX COLORS */
+.ui-checkbox.ui-primary .label,
+.ui-checkbox.ui-primary .icon { color:#02708C; }
+.ui-checkbox.ui-secondary .label,
+.ui-checkbox.ui-secondary .icon { color:#007F9C; }
+.ui-checkbox.ui-accent .label,
+.ui-checkbox.ui-accent .icon { color:#F09419; }
+
+.ui-checkbox.ui-red .label,
+.ui-checkbox.ui-red .icon { color:firebrick; }
+.ui-checkbox.ui-red-lt .label,
+.ui-checkbox.ui-red-lt .icon { color:tomato; }
+.ui-checkbox.ui-red-dk .label,
+.ui-checkbox.ui-red-dk .icon { color:darkred; }
+
+.ui-checkbox.ui-orange .label,
+.ui-checkbox.ui-orange .icon { color:orange; }
+.ui-checkbox.ui-orange-lt .label,
+.ui-checkbox.ui-orange-lt .icon { color:sandybrown; }
+.ui-checkbox.ui-orange-dk .label,
+.ui-checkbox.ui-orange-dk .icon { color:darkorange; }
+
+.ui-checkbox.ui-gold .label,
+.ui-checkbox.ui-gold .icon { color:goldenrod; }
+.ui-checkbox.ui-gold-lt .label,
+.ui-checkbox.ui-gold-lt .icon { color:burlywood; }
+.ui-checkbox.ui-gold-dk .label,
+.ui-checkbox.ui-gold-dk .icon { color:darkgoldenrod; }
+
+.ui-checkbox.ui-grey .label,
+.ui-checkbox.ui-grey .icon { color:#aaaaaa; }
+.ui-checkbox.ui-grey-lt .label,
+.ui-checkbox.ui-grey-lt .icon { color:#bbbbbb; }
+.ui-checkbox.ui-grey-dk .label,
+.ui-checkbox.ui-grey-dk .icon { color:#888888; }
+
+.ui-checkbox.ui-green .label,
+.ui-checkbox.ui-green .icon { color:olivedrab; }
+.ui-checkbox.ui-green-lt .label,
+.ui-checkbox.ui-green-lt .icon { color:darkkhaki; }
+.ui-checkbox.ui-green-dk .label,
+.ui-checkbox.ui-green-dk .icon { color:darkolivegreen; }
+
+.ui-checkbox.ui-teal .label,
+.ui-checkbox.ui-teal .icon { color:lightseagreen; }
+.ui-checkbox.ui-teal-lt .label,
+.ui-checkbox.ui-teal-lt .icon { color:mediumaquamarine; }
+.ui-checkbox.ui-teal-dk .label,
+.ui-checkbox.ui-teal-dk .icon { color:darkcyan; }
+
+.ui-checkbox.ui-blue .label,
+.ui-checkbox.ui-blue .icon { color:royalblue; }
+.ui-checkbox.ui-blue-lt .label,
+.ui-checkbox.ui-blue-lt .icon { color:dodgerblue; }
+.ui-checkbox.ui-blue-dk .label,
+.ui-checkbox.ui-blue-dk .icon { color:darkslateblue; }
+
+.ui-checkbox.ui-purple .label,
+.ui-checkbox.ui-purple .icon { color:rebeccapurple; }
+.ui-checkbox.ui-purple-lt .label,
+.ui-checkbox.ui-purple-lt .icon { color:mediumpurple; }
+.ui-checkbox.ui-purple-dk .label,
+.ui-checkbox.ui-purple-dk .icon { color:indigo; }
+
+/* UI-SELECT COLORS */
+.ui-select.ui-primary select,
+.ui-select.ui-primary i { color:#02708C; }
+.ui-select.ui-primary .fill { background:#02708C; }
+.ui-select.ui-secondary select,
+.ui-select.ui-secondary i { color:#007F9C; }
+.ui-select.ui-secondary .fill { background:#007F9C; }
+.ui-select.ui-accent select,
+.ui-select.ui-accent i { color:#F09419; }
+.ui-select.ui-accent .fill { background:#F09419; }
+
+.ui-select.ui-white select,
+.ui-select.ui-white i { color:#ffffff; }
+.ui-select.ui-white .fill { background:#ffffff; }
+.ui-select.ui-white option { color:#333333; }
+
+.ui-select.ui-red select,
+.ui-select.ui-red i { color:firebrick; }
+.ui-select.ui-red .fill { background:firebrick; }
+.ui-select.ui-red-lt select,
+.ui-select.ui-red-lt i { color:tomato; }
+.ui-select.ui-red-lt .fill { background:tomato; }
+.ui-select.ui-red-dk select,
+.ui-select.ui-red-dk i { color:darkred; }
+.ui-select.ui-red-dk .fill { background:darkred; }
+
+.ui-select.ui-orange select,
+.ui-select.ui-orange i { color:orange; }
+.ui-select.ui-orange .fill { background:orange; }
+.ui-select.ui-orange-lt select,
+.ui-select.ui-orange-lt i { color:sandybrown; }
+.ui-select.ui-orange-lt .fill { background:sandybrown; }
+.ui-select.ui-orange-dk select,
+.ui-select.ui-orange-dk i { color:darkorange; }
+.ui-select.ui-orange-dk .fill { background:darkorange; }
+
+.ui-select.ui-gold select,
+.ui-select.ui-gold i { color:goldenrod; }
+.ui-select.ui-gold .fill { background:goldenrod; }
+.ui-select.ui-gold-lt select,
+.ui-select.ui-gold-lt i { color:burlywood; }
+.ui-select.ui-gold-lt .fill { background:burlywood; }
+.ui-select.ui-gold-dk select,
+.ui-select.ui-gold-dk i { color:darkgoldenrod; }
+.ui-select.ui-gold-dk .fill { background:darkgoldenrod; }
+
+.ui-select.ui-grey select,
+.ui-select.ui-grey i { color:#aaaaaa; }
+.ui-select.ui-grey .fill { background:#aaaaaa; }
+.ui-select.ui-grey-lt select,
+.ui-select.ui-grey-lt i { color:#bbbbbb; }
+.ui-select.ui-grey-lt .fill { background:#bbbbbb; }
+.ui-select.ui-grey-dk select,
+.ui-select.ui-grey-dk i { color:#888888; }
+.ui-select.ui-grey-dk .fill { background:#888888; }
+
+.ui-select.ui-green select,
+.ui-select.ui-green i { color:olivedrab; }
+.ui-select.ui-green .fill { background:olivedrab; }
+.ui-select.ui-green-lt select,
+.ui-select.ui-green-lt i { color:darkkhaki; }
+.ui-select.ui-green-lt .fill { background:darkkhaki; }
+.ui-select.ui-green-dk select,
+.ui-select.ui-green-dk i { color:darkolivegreen; }
+.ui-select.ui-green-dk .fill { background:darkolivegreen; }
+
+.ui-select.ui-teal select,
+.ui-select.ui-teal i { color:lightseagreen; }
+.ui-select.ui-teal .fill { background:lightseagreen; }
+.ui-select.ui-teal-lt select,
+.ui-select.ui-teal-lt i { color:mediumaquamarine; }
+.ui-select.ui-teal-lt .fill { background:mediumaquamarine; }
+.ui-select.ui-teal-dk select,
+.ui-select.ui-teal-dk i { color:darkcyan; }
+.ui-select.ui-teal-dk .fill { background:darkcyan; }
+
+.ui-select.ui-blue select,
+.ui-select.ui-blue i { color:royalblue; }
+.ui-select.ui-blue .fill { background:royalblue; }
+.ui-select.ui-blue-lt select,
+.ui-select.ui-blue-lt i { color:dodgerblue; }
+.ui-select.ui-blue-lt .fill { background:dodgerblue; }
+.ui-select.ui-blue-dk select,
+.ui-select.ui-blue-dk i { color:darkslateblue; }
+.ui-select.ui-blue-dk .fill { background:darkslateblue; }
+
+.ui-select.ui-purple select,
+.ui-select.ui-purple i { color:rebeccapurple; }
+.ui-select.ui-purple .fill { background:rebeccapurple; }
+.ui-select.ui-purple-lt select,
+.ui-select.ui-purple-lt i { color:mediumpurple; }
+.ui-select.ui-purple-lt .fill { background:mediumpurple; }
+.ui-select.ui-purple-dk select,
+.ui-select.ui-purple-dk i { color:indigo; }
+.ui-select.ui-purple-dk .fill { color:indigo; }

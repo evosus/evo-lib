@@ -1,0 +1,143 @@
+import IO from 'lib/evo-lib/src/js/IO.js';
+<!--
+LOADING SPINNER
+!-->
+<loading-spinner>
+	<div class="loading { opts.css }">
+		<div class="evo-spinner-wrap">
+			<div class="layer-one"><div class="evo-spinner aaa"></div></div>
+			<div class="layer-two"><div class="evo-spinner bbb"></div> </div>
+			<div class="layer-three"><div class="evo-spinner ccc"></div></div>
+			<div class="layer-four"><div class="evo-spinner ddd"></div></div>
+			<div class="layer-five"><div class="evo-spinner eee"></div></div>
+			<div class="layer-six"><div class="evosus-icon"></div></div>
+		</div>
+		<span class="text">{ opts.txt || 'loading' }</span>
+		<span if="{ opts.msg }" class="status">{ opts.msg || '...' }</span>
+	</div>
+	<style scoped>
+		.c-top { padding-top: 20%; }
+		button { flex-direction: row; }
+		button > i { padding-right: .5em; margin-top:.1em; }
+		.loading {
+			/* height:100%; */
+			height:calc(100vh - 3.5em);
+			overflow:hidden;
+			width:100%;
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+			justify-content:center;
+		}
+		.loading > i { font-size:400%; }
+		.loading > span.text {
+			font-size:120%;
+			font-weight:300;
+			color:silver;
+			text-transform:uppercase;
+			letter-spacing:2px;
+			padding-top:.5em;
+		}
+		.loading > span.status {
+			font-size:80%;
+			font-weight:700;
+			color:silver;
+			letter-spacing:1px;
+			padding-top:.5em;
+		}
+		.loading > .evo-spinner-wrap {
+			width:10em;
+			height:10em;
+			position:relative;
+		}
+
+		.loading > .evo-spinner-wrap .layer-one,
+		.loading > .evo-spinner-wrap .layer-two,
+		.loading > .evo-spinner-wrap .layer-three,
+		.loading > .evo-spinner-wrap .layer-four,
+		.loading > .evo-spinner-wrap .layer-five,
+		.loading > .evo-spinner-wrap .layer-six {
+			width:100%;
+			height:100%;
+			position:absolute;
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+			justify-content:center;
+		}
+		.loading > .evo-spinner-wrap .layer-one { z-index:100;opacity:0.5; }
+		.loading > .evo-spinner-wrap .layer-two { z-index:200;opacity:0.6; }
+		.loading > .evo-spinner-wrap .layer-three { z-index:300;opacity:0.7; }
+		.loading > .evo-spinner-wrap .layer-four { z-index:400;opacity:0.8; }
+		.loading > .evo-spinner-wrap .layer-five { z-index:500;opacity:0.9; }
+		.loading > .evo-spinner-wrap .layer-six { z-index:600; }
+
+		.loading > .evo-spinner-wrap .evosus-icon {
+			height:3.01em; /* fixes bg image clipping */
+			width:3.01em; /* fixes bg image clipping */
+			background-image:url(/img/evosus_icon-black.svg);
+			background-position:center center;
+			background-size:contain;
+			background-repeat:no-repeat;
+			cursor:pointer;
+			opacity:0.1;
+			-webkit-animation: pulse 1s ease-in-out infinite!important;
+			animation: pulse 1s ease-in-out infinite!important;
+		}
+
+		.loading > .evo-spinner-wrap .evo-spinner {
+			border:2px solid rgba(255,255,255,0.1);
+			border-radius: 50%;
+			border-top: 2px solid rgba(0,0,0,0.1);
+			border-bottom: 2px solid  rgba(0,0,0,0.1);
+		}
+		.loading > .evo-spinner-wrap .evo-spinner.aaa {
+			width:80px;
+			height:80px;
+			-webkit-animation: spin 1s linear infinite!important;
+			animation: spin 1s linear infinite!important;
+		}
+		.loading > .evo-spinner-wrap .evo-spinner.bbb {
+			width:90px;
+			height:90px;
+			-webkit-animation: spin .9s linear infinite!important;
+			animation: spin .9s linear infinite!important;
+		}
+		.loading > .evo-spinner-wrap .evo-spinner.ccc {
+			width:100px;
+			height:100px;
+			-webkit-animation: spin .8s linear infinite!important;
+			animation: spin .8s linear infinite!important;
+		}
+		.loading > .evo-spinner-wrap .evo-spinner.ddd {
+			width:110px;
+			height:110px;
+			-webkit-animation: spin .7s linear infinite!important;
+			animation: spin .7s linear infinite!important;
+		}
+		.loading > .evo-spinner-wrap .evo-spinner.eee {
+			width:120px;
+			height:120px;
+			-webkit-animation: spin .6s linear infinite!important;
+			animation: spin .6s linear infinite!important;
+		}
+
+		@-webkit-keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+
+		@-webkit-keyframes pulse {
+			0% { transform: scale(1,1); }
+			50% { transform: scale(1.15,1.15); }
+			100% { transform: scale(1,1); }
+		}
+		a.action { text-decoration: none; }
+
+		.support-error,.status { max-width: 30em; }
+	</style>
+</loading-spinner>
