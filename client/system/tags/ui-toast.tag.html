@@ -1,10 +1,5 @@
 <ui-toast>
 	<div
-		onclick="{ resetTimeout }"
-		onmouseover="{ resetTimeout }"
-		onmousemove="{ resetTimeout }"
-		onblur="{ restartTimeout }"
-		onmouseout="{ restartTimeout }"
 		class="ui-toast f-row ai-center { opts.css } { closed: !opts.isOpen }">
 		<span>{ opts.message }</span>
 	</div>
@@ -12,22 +7,14 @@
 		import IO from '../IO.js';
 		this.mixin(IO);
 		const self = this;
-		this.hideToast;
-		this.one('update',() => {
+		this.on('update',() => {
 			self.startTimeout();
 		});
 		this.startTimeout = () => {
 			self.hideToast = setTimeout(() => {
 				self.opts.isOpen = false;
 				self.update();
-			},(self.opts.timeout || 1000));
-		}
-		this.restartTimeout = () => {
-			clearTimeout(self.hideToast);
-			self.startTimeout();
-		}
-		this.resetTimeout = () => {
-			clearTimeout(self.hideToast);
+			},(self.opts.timeout || 3000));
 		}
 	</script>
 	<style>
