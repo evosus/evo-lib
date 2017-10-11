@@ -17,19 +17,16 @@
 			self.startTimeout();
 		});
 		this.startTimeout = () => {
-			console.log("TIMEOUT START");
 			self.hideToast = setTimeout(() => {
 				self.opts.isOpen = false;
 				self.update();
 			},(self.opts.timeout || 1000));
 		}
 		this.restartTimeout = () => {
-			console.log("TIMEOUT RESTART");
 			clearTimeout(self.hideToast);
 			self.startTimeout();
 		}
 		this.resetTimeout = () => {
-			console.log("TIMEOUT RESET");
 			clearTimeout(self.hideToast);
 		}
 	</script>
