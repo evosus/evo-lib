@@ -36,8 +36,10 @@ module.exports = {
         query: {type: 'none'}
       },
       { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules\/(?!evo\-lib\/).*/ },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+			{
+					test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+					loader: 'url-loader'
+			},
       {
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract({
@@ -63,3 +65,8 @@ module.exports = {
     port: 8001
   }
 };
+/*
+
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=30000&mimetype=application/font-woff2" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+*/
