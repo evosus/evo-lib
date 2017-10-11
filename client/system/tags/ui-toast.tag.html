@@ -2,6 +2,9 @@
 	<div
 		onclick="{ resetTimeout }"
 		onmouseover="{ resetTimeout }"
+		onmousemove="{ resetTimeout }"
+		onblur="{ restartTimeout }"
+		onmouseout="{ restartTimeout }"
 		class="ui-toast f-row ai-center { opts.css } { closed: !opts.isOpen }">
 		<span>{ opts.message }</span>
 	</div>
@@ -10,18 +13,24 @@
 		this.mixin(IO);
 		const self = this;
 		this.hideToast;
-		this.on('update',() => {
-			self.resetTimeout();
+		this.one('update',() => {
+			self.startTimeout();
 		});
-		this.resetTimeout = () => {
-			clearTimeout(self.hideToast);	
+		this.startTimeout = () => {
+			console.log("TIMEOUT START");
 			self.hideToast = setTimeout(() => {
-				if(self.opts.isOpen == true) {
-					self.opts.isOpen = false;
-					self.update();
-				}
+				self.opts.isOpen = false;
 				self.update();
 			},(self.opts.timeout || 1000));
+		}
+		this.restartTimeout = () => {
+			console.log("TIMEOUT RESTART");
+			clearTimeout(self.hideToast);
+			self.startTimeout();
+		}
+		this.resetTimeout = () => {
+			console.log("TIMEOUT RESET");
+			clearTimeout(self.hideToast);
 		}
 	</script>
 	<style>
