@@ -1,0 +1,96 @@
+<ui-toast>
+	<div
+		onclick="{ resetTimeout }"
+		onmouseover="{ resetTimeout }"
+		class="ui-toast f-row ai-center { opts.css } { closed: !opts.isOpen }">
+		<span>{ opts.message }</span>
+	</div>
+	<script>
+		import IO from '../IO.js';
+		this.mixin(IO);
+		const self = this;
+		this.hideToast;
+		this.on('update',() => {
+			self.resetTimeout();
+		});
+		this.resetTimeout = () => {
+			clearTimeout(self.hideToast);	
+			self.hideToast = setTimeout(() => {
+				if(self.opts.isOpen == true) {
+					self.opts.isOpen = false;
+					self.update();
+				}
+				self.update();
+			},(self.opts.timeout || 1000));
+		}
+	</script>
+	<style>
+		.ui-toast {
+			min-height:3em;
+			min-width:12em;
+			max-width:23em;
+			z-index: 900;
+			position: fixed;
+			right: 1em;
+			bottom: 1em;
+			padding:0em 1em;
+		}
+		.ui-toast > span {
+		}
+		.closed {
+			display:none;
+		}
+		#snackbar {
+			visibility: visible;
+			width: 270px;
+			margin-left: -125px;
+			background-color: #ffffff;
+			text-align: center;
+			border-radius: 2px;
+			padding: 16px;
+			position: fixed;
+			z-index: 900;
+			right: 2%;
+			bottom: 30px;
+			font-size: 17px;
+			border: 2px solid #40aca1;
+			box-shadow: 2px 5px 2px;
+			max-height: 3em;
+		}
+		#snackbar.show {
+			visibility: visible;
+			-webkit-animation: fadein 0.5s, fadeout 5s 5s;
+			animation: fadein 0.5s, fadeout 5s 5s;
+		}
+		.toast { z-index: 999; }
+		.toast-label { color:#40aca1; font-weight: 900; font-size: 100%; height: 2em; margin-left: -.75em; }
+		.message { display: flex; color: #444; font-weight: 400; margin-left: .5em; font-size: 8px; text-align: left; padding-left:1em;}
+		.toast-wrap { display: flex; height: 100%; width: 100%; }
+		.item { flex-direction: column;  background: transparent; }
+		@-webkit-keyframes fadein {
+			from {bottom: 0; opacity: 0;}
+			to {bottom: 30px; opacity: 1;}
+		}
+		@keyframes fadein {
+			from {bottom: 0; opacity: 0;}
+			to {bottom: 30px; opacity: 1;}
+		}
+		@-webkit-keyframes fadeout {
+			from {bottom: 30px; opacity: 1;}
+			to {bottom: 0; opacity: 0;}
+		}
+		@keyframes fadeout {
+			from {bottom: 30px; opacity: 1;}
+			to {bottom: 0; opacity: 0;}
+		}
+		svg { z-index: 900; }
+		.icon-svg {
+				background-image: url('../img/evosus_icon.svg');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center center;
+				width: 100%;
+				height: 100%;
+		}
+	</style>
+</ui-toast>

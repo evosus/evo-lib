@@ -2,7 +2,7 @@ import IO from '../IO.js';
 <!--
 UI INPUT
 !-->
-<ui-input class="ui-input { opts.css }">
+<ui-input class="ui-input { opts.css } { ui-grey:opts.disabled }">
 	<div class="label { fg-valid:isValid,fg-invalid:isInvalid,focused:isFocused }"><span>{ opts.label }</span></div>
 	<div class="stack f-row">
 		<div class="field f-row ai-center">
@@ -39,6 +39,11 @@ UI INPUT
 	<script>
 		this.mixin(IO);
 		var self = this;
+		this.on('mount',() => {
+			if(opts.disabled) {
+				self.refs.field.disabled = opts.disabled;
+			}
+		});
 		self.isFocused = null;self.isValid = null;self.isInvalid = null;self.isLocked = null;
 		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }
 		self.setFocus = function(msg) { self.refs.field.focus();self.isFocused = true;self.setMessage(msg); }

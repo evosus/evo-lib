@@ -1,5 +1,26 @@
 <app-template>
+	<ui-banner ref="ui_banner" />
+	<ui-toast ref="ui_toast" />
 	<div class="f-col ai-center jc-center fg-purple">
-		<h1>Hola!</h1>
+		<div style="width:10em;">
+			<ui-input label="Test Input" css="ui-active" disabled="true"></ui-input>
+		</div>
+		<div class="pad-dot-5"></div>
+		<div>
+			<ui-button label="Launch Toast" css="ui-active" onclick="{ testButton }" ></ui-input>
+		</div>
 	</div>
+	<script>
+		import IO from '../system/IO.js';
+		this.mixin(IO);
+		const self = this;
+		this.testButton = () => {
+			opts.ui_toast = {
+				isOpen: true,
+				message: 'Toast popped!',
+				css: 'ui-orange-dk rounded',
+				timeout:3000
+			}
+		}
+	</script>
 </app-template>
