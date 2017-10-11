@@ -6,6 +6,7 @@ route('/',function() {
 	Promise.all([
 		import('client/system/tags/ui-banner.tag.html'),
 		import('client/system/tags/ui-button.tag.html'),
+		import('client/system/tags/ui-icon.tag.html'),
 		import('client/system/tags/ui-input.tag.html'),
 		import('client/system/tags/ui-toast.tag.html'),
 		import('client/app/app-template.tag.html')

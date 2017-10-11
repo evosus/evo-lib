@@ -3,18 +3,28 @@
 	<ui-toast ref="ui_toast" />
 	<div class="f-col ai-center jc-center fg-purple">
 		<div style="width:10em;">
-			<ui-input label="Test Input" css="ui-active" disabled="true"></ui-input>
+			<ui-input label="Test Input" css="ui-active" disabled="true">
 		</div>
 		<div class="pad-dot-5"></div>
-		<div>
-			<ui-button label="Launch Toast" css="ui-active" onclick="{ testButton }" ></ui-input>
+		<div class="f-row">
+			<ui-button label="Launch Toast" css="ui-active" onclick="{ testToast }" />
+			<div class="pad-dot-5"></div>
+			<ui-button label="Launch Banner" css="ui-active" onclick="{ testBanner }" />
 		</div>
 	</div>
 	<script>
 		import IO from '../system/IO.js';
 		this.mixin(IO);
 		const self = this;
-		this.testButton = () => {
+		this.testBanner = () => {
+			opts.ui_banner = {
+				isOpen: true,
+				mdicon: 'mdi mdi-alert',
+				message: 'Banner popped!',
+				css: 'ui-active noshadow'
+			}
+		}
+		this.testToast = () => {
 			opts.ui_toast = {
 				isOpen: true,
 				message: 'Toast popped!',

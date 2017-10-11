@@ -5,7 +5,7 @@ const ExtractTextPlugin	= require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: __dirname + '/client/index.js',
+  entry: './client/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
@@ -15,7 +15,9 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       riot: 'riot',
+      firebase: 'firebase',
       RC: 'riotcontrol',
+      IO: 'evo_lib/IO.js'
     }),
     new CleanWebpackPlugin([__dirname + '/dist/*.*'], {verbose: true}),
     new HtmlWebpackPlugin({template: './client/index.html'}),
@@ -27,8 +29,15 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.tag.html$/, loader: 'babel-loader!riot-tag-loader?type=es6&ext=html'},
+      {
+        enforce: 'pre',
+        test: /\.tag.html$/,
+        loader: 'customize-riotjs-loader',
+        query: {type: 'none'}
+      },
       { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules\/(?!evo\-lib\/).*/ },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
       {
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract({
@@ -43,12 +52,14 @@ module.exports = {
   resolve: {
     extensions: ['.html', '.js', '.json', '.tag.html', '.css'],
     alias:{
-      lib: path.resolve(__dirname, "node_modules"),
-      client: path.resolve(__dirname, "client")
+      client: path.resolve(__dirname, "client"),
+			evo_lib: path.resolve(__dirname, "node_modules/evo-lib/client/system/"),
+      lib: path.resolve(__dirname, "node_modules")
     }
   },
   devServer: {
-		contentBase: path.join(__dirname, 'dist'),
-		port: 8001
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 8001
   }
 };
