@@ -32,6 +32,22 @@ var IO  = {
 			return false;
 		}
 	},
+	deleteState(key) {
+		const STORED = JSON.parse(localStorage.getItem('STATE'));
+		if(STORED && STORED[key]) {
+			delete STORED[key];	
+			const val = JSON.stringify(STORED);
+			if(val) {
+				// SET STORAGE
+				localStorage.setItem('STATE',val);
+				return STORED;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	},
 	getState(opt_key) {
 		var STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {
@@ -46,8 +62,13 @@ var IO  = {
 	},
 	setState(opt_key,opt_opts) {
 		let opts = opt_opts || this.opts;
-		let key = opt_key || this.opts.title;
-		if(opts) {
+		let key;
+		if(opt_key) {
+			key = opt_key;
+		}	 else if(this.opts && this.opts.title) {
+			key = this.opts.title;
+		}
+		if(opts && key) {
 			RC.trigger('UI_SET_STATE',{ [key]:opts });
 		} else {
 			return false;

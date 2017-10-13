@@ -22,7 +22,29 @@ const ctrl = {
 		ctrl.opts.ui_banner = { isOpen: false };
 		ctrl.opts.ui_modal = { isOpen: false };
 		ctrl.opts.ui_toast = { isOpen: false };
-		ctrl.setState();
+
+		const cfg = IO.default.getState()['FLAG'];
+		if(cfg) {
+			switch(cfg.type) {
+				case 'banner':
+					ctrl.openBanner(cfg);
+					break;
+				case 'modal':
+					ctrl.openModal(cfg);
+					break;
+				case 'toast':
+					ctrl.openToast(cfg);
+					break;
+			}
+		} else {
+			ctrl.setState();
+		}
+	},
+	deleteFlag() {
+		IO.default.deleteState('FLAG');	
+	},
+	setFlag(flag) {
+		IO.default.setState('FLAG',flag);	
 	},
 	setState() {
 		IO.default.setState(ctrl.opts.title,ctrl.opts);
@@ -80,6 +102,7 @@ const ctrl = {
 
 	closeToast() {
 		ctrl.opts.ui_toast.isOpen = false;
+		ctrl.deleteFlag();
 		ctrl.setState();
 	},
 

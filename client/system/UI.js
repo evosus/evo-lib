@@ -14,7 +14,7 @@ var UserInterface = function() {
 	self.stateChanged = function(key) {
 		self.trigger('UI_STATE_CHANGED',{ [key]:STATE[key] });
 	}
-	// GET STATEE
+	// GET STATE
 	self.getState = function(opt_key) {
 		var STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {

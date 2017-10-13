@@ -20,12 +20,24 @@
 			<div class="pad-dot-5">
 				<ui-button label="Nav Menu" css="ui-active" onclick="{ testNavMenu }" />
 			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Set Flag" css="ui-active" onclick="{ testFlag }" />
+			</div>
 		</div>
 	</div>
 	<script>
 		import GN from 'client/system/tags/global-nav-ctrl.js';
 		this.mixin(IO.default,GN);
 		const self = this;
+		this.testFlag = () => {
+			GN.setFlag({
+				type:'toast',
+				isOpen: true,
+				message: 'Toast from flag!',
+				css: 'ui-purple rounded',
+				timeout:3000
+			});
+		}
 		this.testNavMenu = () => {
 			GN.openNavMenu();
 		}
