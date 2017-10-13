@@ -55,7 +55,7 @@ module.exports = {
     extensions: ['.html', '.js', '.json', '.tag.html', '.css'],
     alias:{
       client: path.resolve(__dirname, "client"),
-			evo_lib: path.resolve(__dirname, "node_modules/evo-lib/client/system/"),
+			evo_lib: path.resolve(__dirname, "client/system/"),
       lib: path.resolve(__dirname, "node_modules")
     }
   },

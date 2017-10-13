@@ -10,11 +10,10 @@
 		<ui-icon mdicon="mdi mdi-close" onclick="{ dismiss }" />
 	</div>
 	<script>
-		import IO from '../IO.js';
-		this.mixin(IO);
+		this.mixin(IO.default);
 		const self = this;
 		this.dismiss = function() {
-			self.opts.isOpen = false;
+			self.parent.closeBanner();
 		}
 	</script>
 	<style>

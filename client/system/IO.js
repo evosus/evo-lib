@@ -44,9 +44,13 @@ var IO  = {
 			return false;
 		}
 	},
-	setState() {
-		if(this.opts && this.opts.title) {
-			RC.trigger('UI_SET_STATE',{ [this.opts.title]:this.opts });
+	setState(opt_key,opt_opts) {
+		let opts = opt_opts || this.opts;
+		let key = opt_key || this.opts.title;
+		if(opts) {
+			RC.trigger('UI_SET_STATE',{ [key]:opts });
+		} else {
+			return false;
 		}
 	},
 	updateRefs() {

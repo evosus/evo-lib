@@ -1,21 +1,34 @@
 <app-template>
-	<ui-banner ref="ui_banner" />
-	<ui-toast ref="ui_toast" />
 	<div class="f-col ai-center jc-center fg-purple">
 		<div style="width:10em;">
 			<ui-input label="Test Input" css="ui-active" disabled="true">
 		</div>
 		<div class="pad-dot-5"></div>
-		<div class="f-row">
-			<ui-button label="Launch Toast" css="ui-active" onclick="{ testToast }" />
-			<div class="pad-dot-5"></div>
-			<ui-button label="Launch Banner" css="ui-active" onclick="{ testBanner }" />
+		<div class="f-row f-wrap">
+			<div class="pad-dot-5">
+				<ui-button label="Toast 1" css="ui-active" onclick="{ testToast1 }" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Toast 2" css="ui-active" onclick="{ testToast2 }" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Banner 1" css="ui-active" onclick="{ testBanner1 }" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Banner 2" css="ui-active" onclick="{ testBanner2 }" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Nav Menu" css="ui-active" onclick="{ testNavMenu }" />
+			</div>
 		</div>
 	</div>
 	<script>
-		import IO from '../system/IO.js';
-		this.mixin(IO);
+		import GN from 'client/system/tags/global-nav-ctrl.js';
+		this.mixin(IO.default,GN);
 		const self = this;
+		this.testNavMenu = () => {
+			GN.openNavMenu();
+		}
 		this.testBanner = () => {
 			opts.ui_banner = {
 				isOpen: true,
@@ -24,13 +37,40 @@
 				css: 'ui-active'
 			}
 		}
-		this.testToast = () => {
-			opts.ui_toast = {
+		this.testToast1 = () => {
+			GN.openToast({
 				isOpen: true,
-				message: 'Toast popped!',
-				css: 'ui-orange-dk rounded',
-				timeout:3000
-			}
+				message: '1 Second Toast Popped!',
+				css: 'ui-red-dk rounded',
+				timeout:1000
+			});
 		}
+		this.testToast2 = () => {
+			GN.openToast({
+				isOpen: true,
+				message: '3 Second Toast Popped!',
+				css: 'ui-primary rounded',
+				timeout:3000
+			});
+		}
+		this.testBanner1 = () => {
+			GN.openBanner({
+				isOpen: true,
+				mdicon: 'mdi mdi-check',
+				message: 'Test Banner One!',
+				css: 'ui-valid'
+			});
+		}
+		this.testBanner2 = () => {
+			GN.openBanner({
+				isOpen: true,
+				mdicon: 'mdi mdi-block-helper',
+				message: 'Test Banner One!',
+				css: 'ui-invalid'
+			});
+		}
+		this.on('route',() => {
+			console.info("ROUTE CHANGED");
+		});
 	</script>
 </app-template>

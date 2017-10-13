@@ -1,21 +1,9 @@
 <ui-toast>
-	<div
-		class="ui-toast f-row ai-center { opts.css } { closed: !opts.isOpen }">
+	<div class="ui-toast f-row ai-center { opts.css } { closed: !opts.isOpen }">
 		<span>{ opts.message }</span>
 	</div>
 	<script>
-		import IO from '../IO.js';
-		this.mixin(IO);
-		const self = this;
-		this.on('update',() => {
-			self.startTimeout();
-		});
-		this.startTimeout = () => {
-			self.hideToast = setTimeout(() => {
-				self.opts.isOpen = false;
-				self.update();
-			},(self.opts.timeout || 3000));
-		}
+		this.mixin(IO.default);
 	</script>
 	<style>
 		.ui-toast {

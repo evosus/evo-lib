@@ -1,0 +1,12 @@
+import CTRL from 'client/system/tags/global-nav-ctrl.js';
+<global-nav>
+	<nav-menu ref="nav_menu" />
+	<ui-banner ref="ui_banner" />
+	<ui-modal ref="ui_modal" />
+	<ui-toast ref="ui_toast" />
+	<nav-bar ref="nav_bar" />
+	<div id="appMount"></div>
+	<script>
+		this.mixin(IO.default,CTRL);
+	</script>
+</global-nav>

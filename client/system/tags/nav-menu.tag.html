@@ -1,11 +1,7 @@
-import IO from '../IO.js';
-<!--
-NAV MENU
-!-->
 <nav-menu>
 	<div class="nav-menu { opts.css } { closed: !opts.isOpen }">
 		<div class="nav-menu-bar f-row ai-center jc-between { opts.cssHead }">
-			<ui-icon mdicon="mdi mdi-close" onclick="{ navMenuClose }" />
+			<ui-icon mdicon="mdi mdi-close" onclick="{ parent.closeNavMenu }" />
 		</div>
 		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
 			<ui-icon mdicon="mdi mdi-account-circle" />
@@ -25,7 +21,7 @@ NAV MENU
 			<virtual each="{ opts.items }">
 				<div if="{ route != parent.opts.route }"
 					class="nav-link inactive f-row ai-center jc-start"
-					route="{ route }" onclick="{ navMenuClick }">
+					route="{ route }" onclick="{ parent.navMenuLink }">
 					<ui-icon mdicon="{ mdicon }" />
 					<h4>{ title }</h4>
 				</div>
@@ -59,11 +55,8 @@ NAV MENU
 		.nav-link.inactive:hover { background:rgba(0,0,0,0.1); }
 	</style>
 	<script>
-		this.mixin(IO);
-		function navMenuClick(e) {
-			navMenuClose();
-			if(e) { route(e.item.route); }
-		}
+		this.mixin(IO.default);
+		const self = this;
 		var testMenuItems =  [
 			{
 				"title":"Views",
