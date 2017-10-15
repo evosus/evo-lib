@@ -1,4 +1,10 @@
-import IO from '../IO.js';
 <ui-test>
-	<span>UI TEST</span>
+	<div class="pad-2 { opts.css }">
+		<span>UI TEST</span>
+	</div>
+	<script>
+		this.on('mount',() => {
+			console.log(JSON.stringify(this.opts,null,2));
+		});
+	</script>
 </ui-test>

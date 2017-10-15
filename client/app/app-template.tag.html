@@ -23,12 +23,44 @@
 			<div class="pad-dot-5">
 				<ui-button label="Set Flag" css="ui-active" onclick="{ testFlag }" />
 			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Modal 1" css="ui-active" onclick="{ testModal1 }" />
+			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Modal 2" css="ui-active" onclick="{ testModal2 }" />
+			</div>
 		</div>
 	</div>
 	<script>
 		import GN from 'client/system/tags/global-nav-ctrl.js';
 		this.mixin(IO.default,GN);
 		const self = this;
+		this.testModal2 = () => {
+			Promise.all([
+				import('client/system/tags/ui-test.tag.html')
+			]).then( (tmpl) => {
+				GN.openModal({
+					isOpen: true,
+					template: 'ui-test',
+					templateOpts: {
+						css: 'ui-purple'
+					}
+				});
+			});				
+		}
+		this.testModal1 = () => {
+			Promise.all([
+				import('client/system/tags/ui-test.tag.html')
+			]).then( (tmpl) => {
+				GN.openModal({
+					isOpen: true,
+					template: 'ui-test',
+					templateOpts: {
+						css: 'ui-teal'
+					}
+				});
+			});				
+		}
 		this.testFlag = () => {
 			GN.setFlag({
 				type:'toast',

@@ -59,11 +59,12 @@ const ctrl = {
 		ctrl.setState();
 	},
 
-	openModal() {
+	openModal(cfg) {
 		ctrl.opts.ui_modal = {
 			css: cfg.css,
 			isOpen: true,
 			template: cfg.template,
+			templateOpts: cfg.templateOpts
 		};
 		ctrl.setState();
 	},

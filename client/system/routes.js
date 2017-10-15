@@ -8,6 +8,7 @@ route('/',function() {
 		import('client/system/tags/ui-button.tag.html'),
 		import('client/system/tags/ui-icon.tag.html'),
 		import('client/system/tags/ui-input.tag.html'),
+		import('client/system/tags/ui-modal.tag.html'),
 		import('client/system/tags/ui-toast.tag.html'),
 		import('client/system/tags/nav-menu.tag.html'),
 		import('client/app/app-template.tag.html'),

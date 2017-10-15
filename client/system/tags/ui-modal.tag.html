@@ -1,9 +1,5 @@
-import IO from '../IO.js';
-<!--
-UI-MODAL WIP
-!-->
 <ui-modal>
-	<div if="{ opts.isOpen }" onclick="{ closeOutsideModal }" class="ui-modal f-col ai-center jc-center fill">
+	<div if="{ opts.isOpen }" onclick="{ closeModal }" class="ui-modal f-col ai-center jc-center fill">
 		<div class="ui-white rounded modal-shadow">
 			<div class="modal-contents">
 				<div id="modalMount">
@@ -15,16 +11,9 @@ UI-MODAL WIP
 		</div>
 	</div>
 	<style>
-		.modal-close {
-			cursor:pointer;
-		}
-		.modal-close i {
-			color:grey;
-			transition:.2s ease-in-out all;
-		}
-		.modal-close:hover i {
-			color:red;
-		}
+		.modal-close { cursor:pointer; }
+		.modal-close i { color:grey;transition:.2s ease-in-out all; }
+		.modal-close:hover i { color:red; }
 		.ui-modal {
 			position:absolute;
 			z-index:10000;	
@@ -33,24 +22,24 @@ UI-MODAL WIP
 			background:transparent;
 			transition:.2s ease-in-out all;
 		}
-		.ui-modal.fill {
-			background:rgba(0,0,0,0.75);
-		}
+		.ui-modal.fill { background:rgba(0,0,0,0.75); }
 		.modal-shadow {
 			overflow:hidden;
 			box-shadow:0px 10px 60px 10px rgba(0,0,0,0.5);
 		}
 	</style>
 	<script>
-		this.mixin(IO);
-		var self = this;
-		function closeModal() {
-			self.modalClose();
-		}
-		function closeOutsideModal(e) {
-			if(e.target.classList.contains('ui-modal')) {
-				self.modalClose();
+		this.mixin(IO.default);
+		const self = this;
+		this.on('update',() => {
+			if(this.opts.template) {
+				riot.mount('#modalMount',this.opts.template,this.opts.templateOpts || {});	
+			} else {
+				console.info("NOT YET");
 			}
+		});
+		this.closeModal = () => {
+			self.parent.closeModal();
 		}
 	</script>
 </ui-modal>
