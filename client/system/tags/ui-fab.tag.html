@@ -1,0 +1,33 @@
+<ui-fab>
+	<div class="ui-fab f-col ai-center jc-center { opts.css }">
+		<i class="{ opts.mdicon }"></i>
+	</div>
+	<style>
+		.ui-fab {
+			position:absolute;
+			z-index:9000;
+			width:4em;
+			height:4em;
+			bottom:4em;
+			right:28em;
+			transition:.2s ease-in-out all;
+			cursor:pointer;
+			border-radius:50%;
+			box-shadow:0 2px 5px rgba(0,0,0,0.4);
+			opacity:0;
+			pointer-events:none;
+		}
+		.ui-fab.open {
+			opacity:1;
+			pointer-events:auto;
+		}
+		.ui-fab:hover { box-shadow:0 5px 10px rgba(0,0,0,0.4); }
+		i { font-size:2em; }
+		tr,td,th {
+		   cursor: pointer;
+	   }
+	</style>
+	<script>
+		this.mixin(IO.default);
+	</script>
+</ui-fab>
