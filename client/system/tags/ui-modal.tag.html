@@ -34,8 +34,6 @@
 		this.on('update',() => {
 			if(this.opts.template) {
 				riot.mount('#modalMount',this.opts.template,this.opts.templateOpts || {});	
-			} else {
-				console.info("NOT YET");
 			}
 		});
 		this.closeModal = () => {
