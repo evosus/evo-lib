@@ -4,6 +4,10 @@
 			<ui-input label="Test Input" css="ui-active" disabled="true">
 		</div>
 		<div class="pad-dot-5"></div>
+		<div style="width:10em;">
+			<ui-select ref="ui_select" css="ui-active" options="{ testOptions }" selection="Other" />
+		</div>
+		<div class="pad-dot-5"></div>
 		<div class="f-row f-wrap">
 			<div class="pad-dot-5">
 				<ui-button label="Toast 1" css="ui-active" onclick="{ testToast1 }" />
@@ -29,12 +33,23 @@
 			<div class="pad-dot-5">
 				<ui-button label="Modal 2" css="ui-active" onclick="{ testModal2 }" />
 			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Get Select" css="ui-active" onclick="{ testSelect }" />
+			</div>
 		</div>
 	</div>
 	<script>
 		import GN from 'client/system/tags/global-nav-ctrl.js';
 		this.mixin(IO.default,GN);
 		const self = this;
+		this.testSelect = function() {
+			self.refs.ui_select.getSelected();
+		};
+		this.testOptions = [
+			{"Active":true,"label":"Commercial","ID":"-KwYPG1qQvOQ9ceEtzOi","IsDefault":false,"SortOrder":1},
+			{"Active":true,"label":"Residential","ID":"-KwYPaFklZeQkFzKU3HX","IsDefault":false,"SortOrder":2},
+			{"Active":true,"label":"Other","ID":"-KwYPu_3MAvN1zqqSYZC","IsDefault":false,"SortOrder":3}
+		]
 		this.testModal2 = () => {
 			Promise.all([
 				import('client/system/tags/ui-test.tag.html')

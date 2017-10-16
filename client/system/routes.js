@@ -4,6 +4,7 @@ import route from 'riot-route';
  */
 route('/',function() {
 	Promise.all([
+		import('client/system/tags/ui-select.tag.html'),
 		import('client/system/tags/ui-banner.tag.html'),
 		import('client/system/tags/ui-button.tag.html'),
 		import('client/system/tags/ui-icon.tag.html'),

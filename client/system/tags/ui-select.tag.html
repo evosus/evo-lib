@@ -8,6 +8,18 @@
 		</div>
 		<div class="fill"></div>
 	</div>
+	<script>
+		this.mixin(IO.default);
+		this.getSelected = function() {
+			if(opts.options && opts.selection) {
+				opts.options.forEach(function(OBJ) {
+					if(OBJ.label == opts.selection) {
+						return OBJ;	
+					}
+				});
+			}
+		};
+	</script>
 	<style>
 		.ui-select { position:relative;background:none; }
 		.ui-select select {
@@ -42,5 +54,4 @@
 			pointer-events:none;
 		}
 	</style>
-	<script>this.mixin(IO.default);</script>
 </ui-select>
