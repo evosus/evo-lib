@@ -42,9 +42,12 @@
 		import GN from 'client/system/tags/global-nav-ctrl.js';
 		this.mixin(IO.default,GN);
 		const self = this;
+
 		this.testSelect = function() {
-			self.refs.ui_select.getSelected();
+			var selectedOption  = self.refs.ui_select.getSelected();
+			console.log(JSON.stringify(selectedOption,null,2));
 		};
+
 		this.testOptions = [
 			{"Active":true,"label":"Commercial","ID":"-KwYPG1qQvOQ9ceEtzOi","IsDefault":false,"SortOrder":1},
 			{"Active":true,"label":"Residential","ID":"-KwYPaFklZeQkFzKU3HX","IsDefault":false,"SortOrder":2},

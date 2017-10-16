@@ -11,12 +11,14 @@
 	<script>
 		this.mixin(IO.default);
 		this.getSelected = function() {
+			let selectedOption = null;
 			if(opts.options && opts.selection) {
 				opts.options.forEach(function(OBJ) {
 					if(OBJ.label == opts.selection) {
-						return OBJ;	
+						selectedOption = OBJ;	
 					}
 				});
+				return selectedOption;
 			}
 		};
 	</script>
