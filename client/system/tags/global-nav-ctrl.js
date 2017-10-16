@@ -20,7 +20,7 @@ const ctrl = {
 		this.opts.ui_modal = { isOpen: false };
 		this.opts.ui_toast = { isOpen: false };
 
-		const cfg = IO.default.getState()['FLAG'];
+		const cfg = this.getState()['FLAG'];
 		if(cfg) {
 			switch(cfg.type) {
 				case 'banner':
@@ -38,13 +38,13 @@ const ctrl = {
 		}
 	},
 	deleteFlag() {
-		IO.default.deleteState('FLAG');	
+		this.deleteState('FLAG');	
 	},
 	setFlag(flag) {
-		IO.default.setState('FLAG',flag);	
+		this.setState('FLAG',flag);	
 	},
 	setState() {
-		IO.default.setState(this.opts.title,this.opts);
+		this.setState(this.opts.title,this.opts);
 	},
 	openBanner(cfg) {
 		this.opts.ui_banner = {
