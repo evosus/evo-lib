@@ -1,14 +1,11 @@
 import route from 'riot-route';
 const ctrl = {
-	self:this,
-	opts:{},
 	init(opts) {
-		ctrl.opts = opts;
 		this.on('mount', this.onMount());
 	},
 	onMount() {
-		ctrl.opts.title = 'NAV';
-		ctrl.opts.nav_menu = {
+		this.opts.title = 'NAV';
+		this.opts.nav_menu = {
 			companyName:'',
 			css:'ui-background fg-primary',
 			cssActive:'ui-black-dot-1 fg-primary',
@@ -19,25 +16,25 @@ const ctrl = {
 			route: '',
 			userName:'Display name not set'
 		}
-		ctrl.opts.ui_banner = { isOpen: false };
-		ctrl.opts.ui_modal = { isOpen: false };
-		ctrl.opts.ui_toast = { isOpen: false };
+		this.opts.ui_banner = { isOpen: false };
+		this.opts.ui_modal = { isOpen: false };
+		this.opts.ui_toast = { isOpen: false };
 
 		const cfg = IO.default.getState()['FLAG'];
 		if(cfg) {
 			switch(cfg.type) {
 				case 'banner':
-					ctrl.openBanner(cfg);
+					this.openBanner(cfg);
 					break;
 				case 'modal':
-					ctrl.openModal(cfg);
+					this.openModal(cfg);
 					break;
 				case 'toast':
-					ctrl.openToast(cfg);
+					this.openToast(cfg);
 					break;
 			}
 		} else {
-			ctrl.setState();
+			this.setState();
 		}
 	},
 	deleteFlag() {
@@ -47,72 +44,72 @@ const ctrl = {
 		IO.default.setState('FLAG',flag);	
 	},
 	setState() {
-		IO.default.setState(ctrl.opts.title,ctrl.opts);
+		IO.default.setState(this.opts.title,this.opts);
 	},
 	openBanner(cfg) {
-		ctrl.opts.ui_banner = {
+		this.opts.ui_banner = {
 			css: cfg.css,
 			isOpen: true,
 			mdicon: cfg.mdicon,
 			message: cfg.message
 		};
-		ctrl.setState();
+		this.setState();
 	},
 
 	openModal(cfg) {
-		ctrl.opts.ui_modal = {
+		this.opts.ui_modal = {
 			css: cfg.css,
 			isOpen: true,
 			template: cfg.template,
 			templateOpts: cfg.templateOpts
 		};
-		ctrl.setState();
+		this.setState();
 	},
 
 	openNavMenu() {
-		ctrl.opts.nav_menu.isOpen = true;
-		ctrl.setState();
+		this.opts.nav_menu.isOpen = true;
+		this.setState();
 	},
 
 	openToast(cfg) {
-		ctrl.opts.ui_toast = {
+		this.opts.ui_toast = {
 			css: cfg.css,
 			isOpen: true,
 			message: cfg.message
 		};
-		ctrl.setState();
+		this.setState();
 		setTimeout(() => {
-			ctrl.closeToast();
+			this.closeToast();
 		},(cfg.timeout || 3000));
 	},
 
 	closeBanner() {
-		ctrl.opts.ui_banner.isOpen = false;
-		ctrl.setState();
+		this.opts.ui_banner.isOpen = false;
+		this.setState();
 	},
 
 	closeModal() {
-		ctrl.opts.ui_modal.isOpen = false;
-		ctrl.setState();
+		this.opts.ui_modal.isOpen = false;
+		this.setState();
 	},
 
 	closeNavMenu() {
-		ctrl.opts.nav_menu.isOpen = false;
-		ctrl.setState();
+		this.opts.nav_menu.isOpen = false;
+		this.setState();
 	},
 
 	closeToast() {
-		ctrl.opts.ui_toast.isOpen = false;
-		ctrl.deleteFlag();
-		ctrl.setState();
+		this.opts.ui_toast.isOpen = false;
+		this.deleteFlag();
+		this.setState();
 	},
 
 	navMenuLink(link) {
 		if(link.item.route) {
-			ctrl.closeNavMenu();
+			this.closeNavMenu();
 			route(link.item.route);	
 		}
 	}
 }
 
-export default ctrl;
+export default this;

@@ -25,7 +25,7 @@ var IO  = {
 	},
 	checkState(key) {
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
-		if(STORED) {
+		if(STORED && STORED[key]) {
 			Object.assign(this.opts, STORED[key]);
 			return STORED[key];
 		} else {
