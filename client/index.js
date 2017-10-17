@@ -9,4 +9,17 @@ import flexbox from 'client/system/css/ui-flexbox.css';
 import mdi from 'lib/mdi/css/materialdesignicons.css';
 var UI = new UserInterface();
 RC.addStore(UI); // UI State Manager
-route.start(true); // Start Router
+Promise.all([
+	import('client/system/tags/ui-banner.tag.html'),
+	import('client/system/tags/ui-icon.tag.html'),
+	import('client/system/tags/ui-modal.tag.html'),
+	import('client/system/tags/ui-toast.tag.html'),
+	import('client/system/tags/nav-menu.tag.html'),
+	import('client/app/app-template.tag.html'),
+	import('client/system/tags/global-nav.tag.html')
+]).then( () => {
+	riot.mount('#mainMount','global-nav');
+	route.start(true); // Start Router
+}).catch( err => {
+	console.trace(err);
+});

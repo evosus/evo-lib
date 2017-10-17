@@ -1,11 +1,13 @@
 import route from 'riot-route';
-const ctrl = {
+var ctrl = {
+	opts:{},
 	init(opts) {
+		ctrl.opts = opts;
 		this.on('mount', this.onMount());
 	},
 	onMount() {
-		this.opts.title = 'NAV';
-		this.opts.nav_menu = {
+		ctrl.opts.title = 'NAV';
+		ctrl.opts.nav_menu = {
 			companyName:'',
 			css:'ui-background fg-primary',
 			cssActive:'ui-black-dot-1 fg-primary',
@@ -16,9 +18,9 @@ const ctrl = {
 			route: '',
 			userName:'Display name not set'
 		}
-		this.opts.ui_banner = { isOpen: false };
-		this.opts.ui_modal = { isOpen: false };
-		this.opts.ui_toast = { isOpen: false };
+		ctrl.opts.ui_banner = { isOpen: false };
+		ctrl.opts.ui_modal = { isOpen: false };
+		ctrl.opts.ui_toast = { isOpen: false };
 
 		const cfg = this.getState()['FLAG'];
 		if(cfg) {
@@ -34,74 +36,74 @@ const ctrl = {
 					break;
 			}
 		} else {
-			this.setState();
+			this.setNavState();
 		}
 	},
 	deleteFlag() {
 		this.deleteState('FLAG');	
 	},
 	setFlag(flag) {
-		this.setState('FLAG',flag);	
+		this.setNavState('FLAG',flag);	
 	},
-	setState() {
-		this.setState(this.opts.title,this.opts);
+	setNavState() {
+		IO.default.setState(this.opts.title,this.opts);
 	},
 	openBanner(cfg) {
-		this.opts.ui_banner = {
+		ctrl.opts.ui_banner = {
 			css: cfg.css,
 			isOpen: true,
 			mdicon: cfg.mdicon,
 			message: cfg.message
 		};
-		this.setState();
+		this.setNavState();
 	},
 
 	openModal(cfg) {
-		this.opts.ui_modal = {
+		ctrl.opts.ui_modal = {
 			css: cfg.css,
 			isOpen: true,
 			template: cfg.template,
 			templateOpts: cfg.templateOpts
 		};
-		this.setState();
+		this.setNavState();
 	},
 
 	openNavMenu() {
-		this.opts.nav_menu.isOpen = true;
-		this.setState();
+		ctrl.opts.nav_menu.isOpen = true;
+		this.setNavState();
 	},
 
 	openToast(cfg) {
-		this.opts.ui_toast = {
+		ctrl.opts.ui_toast = {
 			css: cfg.css,
 			isOpen: true,
 			message: cfg.message
 		};
-		this.setState();
+		this.setNavState();
 		setTimeout(() => {
 			this.closeToast();
 		},(cfg.timeout || 3000));
 	},
 
 	closeBanner() {
-		this.opts.ui_banner.isOpen = false;
-		this.setState();
+		ctrl.opts.ui_banner.isOpen = false;
+		this.setNavState();
 	},
 
 	closeModal() {
-		this.opts.ui_modal.isOpen = false;
-		this.setState();
+		ctrl.opts.ui_modal.isOpen = false;
+		this.setNavState();
 	},
 
 	closeNavMenu() {
-		this.opts.nav_menu.isOpen = false;
-		this.setState();
+		ctrl.opts.nav_menu.isOpen = false;
+		this.setNavState();
 	},
 
 	closeToast() {
-		this.opts.ui_toast.isOpen = false;
+		ctrl.opts.ui_toast.isOpen = false;
 		this.deleteFlag();
-		this.setState();
+		this.setNavState();
 	},
 
 	navMenuLink(link) {
@@ -112,4 +114,4 @@ const ctrl = {
 	}
 }
 
-export default this;
+export default ctrl;
