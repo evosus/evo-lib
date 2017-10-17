@@ -18,10 +18,7 @@ var UserInterface = function() {
 	self.getState = function() {
 		var STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {
-				return STORED;
-			}	else {
-				return false;
-			}
+			return STORED;
 		} else {
 			return false;
 		}
@@ -30,12 +27,8 @@ var UserInterface = function() {
 	self.getStateByKey = function(req_key) {
 		if(req_key) {
 			var STORED = JSON.parse(localStorage.getItem('STATE'));
-			if(STORED) {
-				if(STORED[req_key]) {
-					return STORED[req_key];
-				}	else {
-					return false;
-				}
+			if(STORED && STORED[req_key]) {
+				return STORED[req_key];
 			} else {
 				return false;
 			}
