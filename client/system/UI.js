@@ -15,13 +15,29 @@ var UserInterface = function() {
 		self.trigger('UI_STATE_CHANGED',{ [key]:STATE[key] });
 	}
 	// GET STATE
-	self.getState = function(opt_key) {
+	self.getState = function() {
 		var STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {
-			if(STORED[opt_key]) {
-				return STORED[opt_key];
-			}	else {
 				return STORED;
+			}	else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	// GET STATE BY KEY
+	self.getStateByKey = function(req_key) {
+		if(req_key) {
+			var STORED = JSON.parse(localStorage.getItem('STATE'));
+			if(STORED) {
+				if(STORED[req_key]) {
+					return STORED[req_key];
+				}	else {
+					return false;
+				}
+			} else {
+				return false;
 			}
 		} else {
 			return false;

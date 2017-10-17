@@ -48,13 +48,24 @@ var IO  = {
 			return false;
 		}
 	},
-	getState(opt_key) {
+	getState() {
 		var STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED) {
-			if(STORED[opt_key]) {
-				return STORED[opt_key];
-			}	else {
 				return STORED;
+			}	else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	},
+	getStateByKey(req_key) {
+		var STORED = JSON.parse(localStorage.getItem('STATE'));
+		if(STORED) {
+			if(STORED[req_key]) {
+				return STORED[req_key];
+			}	else {
+				return false;
 			}
 		} else {
 			return false;
