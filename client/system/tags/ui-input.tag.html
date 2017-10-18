@@ -7,7 +7,7 @@ UI INPUT
 	<div class="stack f-row">
 		<div class="field f-row ai-center">
 			<input ref="field"
-				id="{ opts.id }"
+				name="{ name }"
 				value="{ opts.default }"
 				class="f-one fg-primary-lt"
 				type="{ opts.type }"
@@ -40,6 +40,8 @@ UI INPUT
 		this.mixin(IO);
 		var self = this;
 		this.on('mount',() => {
+			this.name = opts.name;
+			self.update();
 			if(opts.disabled) {
 				self.refs.field.disabled = opts.disabled;
 			}
