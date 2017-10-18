@@ -15,6 +15,7 @@ var IO  = {
 			self.updateRefs();	
 		});
 	},
+	obs:riot.observable(),
 	getOpts() { return this.opts },
 	setOpts(opts,update) {
 		this.opts = opts;
