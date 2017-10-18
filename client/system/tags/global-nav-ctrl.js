@@ -38,6 +38,27 @@ var ctrl = {
 		} else {
 			this.setNavState();
 		}
+		IO.default.obs.on('SET_NAV_MENU',(cfg) => {
+			ctrl.setMenu(cfg);
+		});
+		IO.default.obs.on('OPEN_NAV_MENU',() => {
+			ctrl.openNavMenu();
+		});
+		IO.default.obs.on('OPEN_BANNER',(cfg) => {
+			ctrl.openBanner(cfg);
+		});
+		IO.default.obs.on('OPEN_MODAL',(cfg) => {
+			ctrl.openModal(cfg);
+		});
+		IO.default.obs.on('OPEN_TOAST',(cfg) => {
+			ctrl.openToast(cfg);
+		});
+		IO.default.obs.on('SET_FLAG',(flag) => {
+			ctrl.setFlag();
+		});
+		IO.default.obs.on('DELETE_FLAG',() => {
+			ctrl.deleteFlag();
+		});
 	},
 	deleteFlag() {
 		this.deleteState('FLAG');	
