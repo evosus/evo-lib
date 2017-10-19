@@ -36,9 +36,9 @@ module.exports = {
         query: {type: 'none'}
       },
       { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules\/(?!evo\-lib\/).*/ },
-			{
-					test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-					loader: 'url-loader'
+      {
+				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+				loader: 'url-loader'
 			},
       {
 				test: /\.css$/,
@@ -47,8 +47,7 @@ module.exports = {
 					use: 'css-loader',
 					publicPath: '/dist'
 				})
-			},
-      { test: /\.(png|jpg)$/, use: 'url-loader?limit=8192'}
+			}
     ]
   },
   resolve: {

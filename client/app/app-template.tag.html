@@ -1,4 +1,5 @@
 <app-template>
+	<nav-bar ref="nav_bar" />
 	<div class="f-col ai-center jc-center fg-purple">
 		<div style="width:10em;">
 			<ui-input label="Test Input" css="ui-active" disabled="true">
@@ -43,6 +44,11 @@
 		this.mixin(IO.default,GN);
 		const self = this;
 
+		this.on('mount',() => {
+			this.opts.nav_bar = { css:'ui-primary' }	
+			self.setState();
+		});
+
 		this.testSelect = function() {
 			var selectedOption  = self.refs.ui_select.getSelected();
 			console.log(JSON.stringify(selectedOption,null,2));
@@ -53,6 +59,7 @@
 			{"Active":true,"label":"Residential","ID":"-KwYPaFklZeQkFzKU3HX","IsDefault":false,"SortOrder":2},
 			{"Active":true,"label":"Other","ID":"-KwYPu_3MAvN1zqqSYZC","IsDefault":false,"SortOrder":3}
 		]
+
 		this.testModal2 = () => {
 			Promise.all([
 				import('client/system/tags/ui-test.tag.html')
