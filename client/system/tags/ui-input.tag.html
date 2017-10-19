@@ -41,10 +41,10 @@ UI INPUT
 		var self = this;
 		this.on('mount',() => {
 			this.name = opts.name;
-			self.update();
 			if(opts.disabled) {
 				self.refs.field.disabled = opts.disabled;
 			}
+			self.update();
 		});
 		self.isFocused = null;self.isValid = null;self.isInvalid = null;self.isLocked = null;
 		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }
