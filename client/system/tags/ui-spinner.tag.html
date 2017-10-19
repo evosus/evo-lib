@@ -1,8 +1,4 @@
-import IO from '../IO.js';
-<!--
-LOADING SPINNER
-!-->
-<loading-spinner>
+<ui-spinner>
 	<div class="loading { opts.css }">
 		<div class="evo-spinner-wrap">
 			<div class="layer-one"><div class="evo-spinner aaa"></div></div>
@@ -15,6 +11,9 @@ LOADING SPINNER
 		<span class="text">{ opts.txt || 'loading' }</span>
 		<span if="{ opts.msg }" class="status">{ opts.msg || '...' }</span>
 	</div>
+	<script>
+		this.mixin(IO.default);
+	</script>
 	<style scoped>
 		.c-top { padding-top: 20%; }
 		button { flex-direction: row; }
@@ -140,4 +139,4 @@ LOADING SPINNER
 
 		.support-error,.status { max-width: 30em; }
 	</style>
-</loading-spinner>
+</ui-spinner>

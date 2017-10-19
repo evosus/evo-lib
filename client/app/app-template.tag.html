@@ -43,7 +43,7 @@
 		import GN from 'client/system/tags/global-nav-ctrl.js';
 		this.mixin(IO.default,GN);
 		const self = this;
-
+		this.opts.title = 'APP TEST';
 		this.on('mount',() => {
 			this.opts.nav_bar = { css:'ui-primary' }	
 			self.setState();
