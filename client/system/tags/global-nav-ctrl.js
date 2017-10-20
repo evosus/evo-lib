@@ -3,24 +3,29 @@ var ctrl = {
 	opts:{},
 	init(opts) {
 		ctrl.opts = opts;
+		ctrl.opts.title = 'NAV';
 		this.on('mount', this.onMount());
 	},
 	onMount() {
-		ctrl.opts.title = 'NAV';
-		ctrl.opts.nav_menu = {
-			companyName:'',
-			css:'ui-background fg-primary',
-			cssActive:'ui-black-dot-1 fg-primary',
-			cssHead:'ui-teal',
-			cssLinks:'fg-primary-lt',
-			isOpen: false,
-			items:[],
-			route: '',
-			userName:'Display name not set'
+		const STORED = JSON.parse(localStorage.getItem('STATE'));
+		if(STORED && STORED['NAV']) {
+			Object.assign(ctrl.opts, STORED['NAV']);
+		} else {
+			ctrl.opts.nav_menu = {
+				companyName:'',
+				css:'ui-background fg-primary',
+				cssActive:'ui-black-dot-1 fg-primary',
+				cssHead:'ui-teal',
+				cssLinks:'fg-primary-lt',
+				isOpen: false,
+				items:[],
+				route: '',
+				userName:'Display name not set'
+			}
+			ctrl.opts.ui_banner = { isOpen: false };
+			ctrl.opts.ui_modal = { isOpen: false };
+			ctrl.opts.ui_toast = { isOpen: false };
 		}
-		ctrl.opts.ui_banner = { isOpen: false };
-		ctrl.opts.ui_modal = { isOpen: false };
-		ctrl.opts.ui_toast = { isOpen: false };
 
 		const cfg = this.getState()['FLAG'];
 		if(cfg) {
@@ -38,6 +43,7 @@ var ctrl = {
 		} else {
 			this.setNavState();
 		}
+
 		IO.default.obs.on('SET_NAV_MENU',(cfg) => {
 			ctrl.setNavMenu(cfg);
 		});
@@ -62,6 +68,10 @@ var ctrl = {
 		IO.default.obs.on('DELETE_FLAG',() => {
 			ctrl.deleteFlag();
 		});
+
+		// SET STATE
+		this.setNavState();
+
 	},
 	deleteFlag() {
 		this.deleteState('FLAG');	
@@ -74,7 +84,7 @@ var ctrl = {
 		this.setNavState();
 	},
 	setNavState() {
-		IO.default.setState(this.opts.title,this.opts);
+		IO.default.setState(this.opts.title,ctrl.opts);
 	},
 	openBanner(cfg) {
 		ctrl.opts.ui_banner = {
