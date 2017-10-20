@@ -41,6 +41,9 @@ var ctrl = {
 		IO.default.obs.on('SET_NAV_MENU',(cfg) => {
 			ctrl.setNavMenu(cfg);
 		});
+		IO.default.obs.on('NAV_MENU_LINK',(link) => {
+			ctrl.navMenuLink(link);
+		});
 		IO.default.obs.on('OPEN_NAV_MENU',() => {
 			ctrl.openNavMenu();
 		});
@@ -132,9 +135,9 @@ var ctrl = {
 	},
 
 	navMenuLink(link) {
-		if(link.item.route) {
+		if(link) {
 			this.closeNavMenu();
-			route(link.item.route);	
+			route(link);	
 		}
 	}
 }

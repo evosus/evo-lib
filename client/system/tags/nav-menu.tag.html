@@ -21,7 +21,7 @@
 			<virtual each="{ opts.items }">
 				<div if="{ route != parent.opts.route }"
 					class="nav-link inactive f-row ai-center jc-start"
-					route="{ route }" onclick="{ parent.navMenuLink }">
+					route="{ route }" onclick="{ link }">
 					<ui-icon mdicon="{ mdicon }" />
 					<h4>{ title }</h4>
 				</div>
@@ -35,6 +35,17 @@
 
 		</div>
 	</div>
+	<script>
+		this.mixin(IO.default);
+		const self = this;
+		this.resetStorage = () => {
+			window.localStorage.clear();
+			location.reload(true);
+		}
+		this.link = (e) => {
+			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
+		}
+	</script>
 	<style>
 		h4 { font-weight:400;margin:0;padding:0em .5em; }
 		.nav-menu {
@@ -54,27 +65,4 @@
 		.nav-link.inactive { cursor:pointer; }
 		.nav-link.inactive:hover { background:rgba(0,0,0,0.1); }
 	</style>
-	<script>
-		this.mixin(IO.default);
-		const self = this;
-		var testMenuItems =  [
-			{
-				"title":"Views",
-				"mdicon":"mdi mdi-view-dashboard",
-				"route":null,
-				"subitems":[
-					{ "title":"View Home", "route":"/view-home","mdicon":"mdi mdi-home" },
-					{ "title":"View Card", "route":"/view-card","mdicon":"mdi mdi-credit-card" },
-					{ "title":"View Deadend", "route":"/view-deadend","mdicon":"mdi mdi-alert" },
-					{ "title":"View Detail", "route":"/view-detail","mdicon":"mdi mdi-microscope" },
-					{ "title":"View Print", "route":"/view-print","mdicon":"mdi mdi-printer" },
-					{ "title":"View Search", "route":"/view-search","mdicon":"mdi mdi-magnify" }
-				]
-			}
-		];
-		function resetStorage() {
-			window.localStorage.clear();
-			location.reload(true);
-		}
-	</script>
 </nav-menu>
