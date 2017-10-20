@@ -39,7 +39,7 @@ var ctrl = {
 			this.setNavState();
 		}
 		IO.default.obs.on('SET_NAV_MENU',(cfg) => {
-			ctrl.setMenu(cfg);
+			ctrl.setNavMenu(cfg);
 		});
 		IO.default.obs.on('OPEN_NAV_MENU',() => {
 			ctrl.openNavMenu();
@@ -65,6 +65,10 @@ var ctrl = {
 	},
 	setFlag(flag) {
 		this.setNavState('FLAG',flag);	
+	},
+	setNavMenu(cfg) {
+		ctrl.opts.nav_menu = cfg;
+		this.setNavState();
 	},
 	setNavState() {
 		IO.default.setState(this.opts.title,this.opts);
