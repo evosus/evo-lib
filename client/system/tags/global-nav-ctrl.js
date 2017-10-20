@@ -24,6 +24,7 @@ var ctrl = {
 			}
 			ctrl.opts.ui_banner = { isOpen: false };
 			ctrl.opts.ui_modal = { isOpen: false };
+			ctrl.opts.ui_spinner = { isOpen: false };
 			ctrl.opts.ui_toast = { isOpen: false };
 		}
 
@@ -59,6 +60,9 @@ var ctrl = {
 		IO.default.obs.on('OPEN_MODAL',(cfg) => {
 			ctrl.openModal(cfg);
 		});
+		IO.default.obs.on('OPEN_SPINNER',(cfg) => {
+			ctrl.openSpinner(cfg);
+		});
 		IO.default.obs.on('OPEN_TOAST',(cfg) => {
 			ctrl.openToast(cfg);
 		});
@@ -74,7 +78,7 @@ var ctrl = {
 
 	},
 	deleteFlag() {
-		this.deleteState('FLAG');	
+		IO.default.deleteState('FLAG');	
 	},
 	setFlag(flag) {
 		this.setNavState('FLAG',flag);	
@@ -111,6 +115,12 @@ var ctrl = {
 		this.setNavState();
 	},
 
+	openSpinner() {
+		console.log("OPEN SPINNER CALLED");
+		ctrl.opts.ui_spinner.isOpen = true;
+		this.setNavState();
+	},
+
 	openToast(cfg) {
 		ctrl.opts.ui_toast = {
 			css: cfg.css,
@@ -135,6 +145,11 @@ var ctrl = {
 
 	closeNavMenu() {
 		ctrl.opts.nav_menu.isOpen = false;
+		this.setNavState();
+	},
+
+	closeSpinner() {
+		ctrl.opts.ui_spinner.isOpen = false;
 		this.setNavState();
 	},
 

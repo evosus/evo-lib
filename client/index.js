@@ -15,7 +15,6 @@ Promise.all([
 	import('client/system/tags/ui-modal.tag.html'),
 	import('client/system/tags/ui-toast.tag.html'),
 	import('client/system/tags/nav-menu.tag.html'),
-	import('client/app/app-template.tag.html'),
 	import('client/system/tags/global-nav.tag.html')
 ]).then( () => {
 	riot.mount('#mainMount','global-nav');

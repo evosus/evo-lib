@@ -37,6 +37,9 @@
 			<div class="pad-dot-5">
 				<ui-button label="Get Select" css="ui-active" onclick="{ testSelect }" />
 			</div>
+			<div class="pad-dot-5">
+				<ui-button label="Open Spinner" css="ui-active" onclick="{ testSpinner }" />
+			</div>
 		</div>
 	</div>
 	<script>
@@ -49,6 +52,10 @@
 			self.setState();
 		});
 
+		this.testSpinner = function() {
+			console.log("TEST SPINNER CLICKED");
+			GN.openSpinner();
+		};
 		this.testSelect = function() {
 			var selectedOption  = self.refs.ui_select.getSelected();
 			console.log(JSON.stringify(selectedOption,null,2));
