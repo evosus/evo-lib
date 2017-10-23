@@ -13,10 +13,6 @@
 		</div>
 		<div class="links { opts.cssLinks }">
 			<div class="pad-dot-5"></div>
-				<div class="nav-link inactive f-row ai-center jc-start" onclick="{ resetStorage }">
-					<ui-icon mdicon="mdi mdi-refresh" />
-					<h4>Reset</h4>
-				</div>
 			<virtual each="{ opts.items }">
 				<div if="{ route != parent.opts.route }"
 					class="nav-link inactive f-row ai-center jc-start"
@@ -36,11 +32,6 @@
 	</div>
 	<script>
 		this.mixin(IO.default);
-		const self = this;
-		this.resetStorage = () => {
-			window.localStorage.clear();
-			location.reload(true);
-		}
 		this.link = (e) => {
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
