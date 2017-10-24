@@ -1,5 +1,5 @@
 /* APP DEFAULTS */
-* { font-family:'Roboto',Helvetica, Arial,sans-serif; }
+* { font-family:Roboto,Helvetica, Arial,sans-serif!important; }
 body {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-touch-callout: none;
