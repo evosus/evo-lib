@@ -1,0 +1,61 @@
+<nav-bar-onboarding>
+	<div class="nav-bar-onboarding f-row ai-center jc-start { opts.css }">
+
+		<div class="step f-row ai-center { active:opts.title == 'Signup' }">
+			<div if="{ opts.title == 'Signup' }" class="ui-step-icon ui-active f-col ai-center jc-center">
+					<i class="mdi mdi-pencil"></i>
+			</div>
+			<div if="{ opts.title != 'Signup' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-check"></i>
+			</div>
+			<div class="pad-dot-5"></div>
+			<div class="title"><span>Create Account</span></div>
+		</div>
+		<div class="pad-dot-5"></div>
+		<div class="step-line"></div>
+		<div class="pad-dot-5"></div>
+		<div class="step f-row ai-center { active:opts.title == 'Company Setup' }">
+			<div if="{ opts.title == 'Signup' }" class="ui-step-icon f-col ai-center jc-center ui-grey">
+				<span>2</span>
+			</div>
+			<div if="{ opts.title == 'Company Setup' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-pencil"></i>
+			</div>
+			<div if="{ opts.title == 'Confirm Order' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-check"></i>
+			</div>
+			<div class="pad-dot-5"></div>
+			<div class="f-col jc-center">
+				<div class="title"><span>Company Setup</span></div>
+			</div>
+		</div>
+		<div class="pad-dot-5"></div>
+		<div class="step-line"></div>
+		<div class="pad-dot-5"></div>
+		<div class="step f-row ai-center { active:opts.title == 'Confirm Order' }">
+			<div if="{ opts.title != 'Confirm Order' }" class="ui-step-icon f-col ai-center jc-center ui-grey">
+				<span>3</span>
+			</div>
+			<div if="{ opts.title == 'Confirm Order' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-pencil"></i>
+			</div>
+			<div class="pad-dot-5"></div>
+			<div class="f-col jc-center">
+				<div class="title"><span>Confirm Order</span></div>
+			</div>
+		</div>
+
+	</div>
+	<style>
+		.step-line { width:4em;height:1px;background:#aaaaaa; }
+		.step .title > span { font-weight:400;color:#aaaaaa; }
+		.nav-bar-onboarding { height:5em;padding:0em 1em; }
+		.nav-bar-onboarding.shadow { position:relative;z-index:100; }
+		.ui-step-icon { width:2em;height:2em;border-radius:50%; }
+		.ui-step-icon >  span { font-weight:700;font-size:1.25em;color:#white; }
+		.step.active .title > span { font-weight:700;color:#444444; }
+	</style>
+	<script>
+		this.mixin(IO.default);
+	</script>
+</nav-bar-onboarding>
