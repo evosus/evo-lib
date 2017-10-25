@@ -8,7 +8,7 @@
 			<i class="mdi mdi-menu-down"></i>
 		</div>
 		<div class="fill"></div>
-		<div if="{ msg }" class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
+		<div if="{ !opts.hidemsg }" class="message"></div>
 	</div>
 	<script>
 		this.mixin(IO.default);
