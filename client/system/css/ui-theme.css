@@ -257,6 +257,12 @@
 .ui-select.ui-accent i { color:#F09419; }
 .ui-select.ui-accent .fill { background:#F09419; }
 
+.ui-select.ui-active .label,
+.ui-select.ui-active i { color:#02708C; }
+.ui-select.ui-active .fill { background:#2196F3; }
+.ui-select.ui-active select,
+.ui-select.ui-active option { color:#333333; }
+
 .ui-select.ui-white select,
 .ui-select.ui-white i { color:#ffffff; }
 .ui-select.ui-white .fill { background:#ffffff; }
