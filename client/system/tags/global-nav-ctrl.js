@@ -60,6 +60,9 @@ var ctrl = {
 		IO.default.obs.on('OPEN_MODAL',(cfg) => {
 			ctrl.openModal(cfg);
 		});
+		IO.default.obs.on('CLOSE_MODAL',(cfg) => {
+			ctrl.closeModal();
+		});
 		IO.default.obs.on('OPEN_SPINNER',(cfg) => {
 			ctrl.openSpinner(cfg);
 		});
@@ -139,7 +142,7 @@ var ctrl = {
 	},
 
 	closeModal() {
-		ctrl.opts.ui_modal.isOpen = false;
+		ctrl.opts.ui_modal = { isOpen: false }
 		this.setNavState();
 	},
 

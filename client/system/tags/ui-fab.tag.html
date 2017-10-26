@@ -1,5 +1,5 @@
 <ui-fab>
-	<div class="ui-fab f-col ai-center jc-center { opts.css }">
+	<div class="ui-fab f-col ai-center jc-center { open: opts.isOpen }{ opts.css }">
 		<i class="{ opts.mdicon }"></i>
 	</div>
 	<style>
@@ -9,7 +9,10 @@
 			width:4em;
 			height:4em;
 			bottom:4em;
+			right:4em;
+/*
 			right:28em;
+*/
 			transition:.2s ease-in-out all;
 			cursor:pointer;
 			border-radius:50%;

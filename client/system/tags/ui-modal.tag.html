@@ -1,5 +1,5 @@
 <ui-modal>
-	<div if="{ opts.isOpen }" onclick="{ closeModal }" class="ui-modal f-col ai-center jc-center fill">
+	<div if="{ opts.isOpen }" class="ui-modal f-col ai-center jc-center fill">
 		<div class="ui-white rounded modal-shadow">
 			<div class="modal-contents">
 				<div id="modalMount">
@@ -30,14 +30,10 @@
 	</style>
 	<script>
 		this.mixin(IO.default);
-		const self = this;
 		this.on('update',() => {
 			if(this.opts.template) {
 				riot.mount('#modalMount',this.opts.template,this.opts.templateOpts || {});	
 			}
 		});
-		this.closeModal = () => {
-			self.parent.closeModal();
-		}
 	</script>
 </ui-modal>
