@@ -3,12 +3,27 @@
 		<div class="left f-row ai-center">
 			<ui-icon ref="menu_icon" mdicon="mdi mdi-menu" onclick="{ navMenuClick }" />
 			<div class="logo-resize"><div class="logo-bg"></div></div>
+
+			<virtual if="{ opts.title }">
+			<div class="pad-dot-25"></div>
+			<i class="mdi mdi-chevron-right fg-orange-dk" style="font-size:1.5em;"></i>
+			<div class="pad-dot-25"></div>
+			<div class="f-col jc-center">
+				<div class="title"><span>{ opts.title || 'Untitled Screen' }</span></div>
+				<div if="{ opts.category }" class="category fg-orange-dk"><span>{ opts.category || 'Uncategorized' }</span></div>
+			</div>
+			</virtual>
+
 		</div>
 		<div class="right f-row ai-center">
 			<ui-icon each="{ opts.icons }" ref="{ ref }" mdicon="{ mdicon }" onclick="{ onclick }" />
 		</div>
 	</div>
 	<style>
+		.title { padding:0em .5em; }
+		.title span { font-size:1.15em;font-weight:500; }
+		.category { padding:0em .5em; }
+		.category span { font-size:0.875em;font-weight:400;text-transform:uppercase; }
 		.nav-bar { height:3.5em; }
 		.left { padding-left:.5em; }
 		.right { padding-right:.5em; }
