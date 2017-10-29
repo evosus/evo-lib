@@ -4,15 +4,15 @@
 			<ui-icon ref="menu_icon" mdicon="mdi mdi-menu" onclick="{ navMenuClick }" />
 			<div class="logo-resize"><div class="logo-bg"></div></div>
 
-			<virtual if="{ opts.title }">
-			<div class="pad-dot-25"></div>
-			<i class="mdi mdi-chevron-right fg-orange-dk" style="font-size:1.5em;"></i>
-			<div class="pad-dot-25"></div>
-			<div class="f-col jc-center">
-				<div class="title"><span>{ opts.title || 'Untitled Screen' }</span></div>
-				<div if="{ opts.category }" class="category fg-orange-dk"><span>{ opts.category || 'Uncategorized' }</span></div>
+			<div if="{ opts.title }" class="f-row ai-center">
+				<div class="pad-dot-25"></div>
+				<i class="mdi mdi-chevron-right fg-orange" style="font-size:1.5em;"></i>
+				<div class="pad-dot-25"></div>
+				<div class="f-col jc-center">
+					<div class="title"><span>{ opts.title || 'Untitled Screen' }</span></div>
+					<div if="{ opts.category }" class="category fg-orange"><span>{ opts.category || 'Uncategorized' }</span></div>
+				</div>
 			</div>
-			</virtual>
 
 		</div>
 		<div class="right f-row ai-center">
