@@ -92,6 +92,9 @@ var IO  = {
 				}
 			}
 		});
+	},
+	goBack() {
+		window.history.back();
 	}
 };
 
