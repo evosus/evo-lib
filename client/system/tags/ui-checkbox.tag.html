@@ -26,7 +26,6 @@ UI CHECKBOX
 		self.isChecked = false;
 		self.setCheck = function(e) {
 			self.isChecked ? self.isChecked = false : self.isChecked = true;
-			IO.trigger(opts.name + ':checked',e);
 			self.update();
 		}
 		this.on('mount',function() {
