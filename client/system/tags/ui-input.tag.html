@@ -9,7 +9,7 @@
 				class="fg-primary-lt"
 				type="{ opts.type }"
 				placeholder="{ opts.placeholder }"
-				onfocus="{ setFocus }"
+				onfocus="{ setIsFocused }"
 				onblur="{ setBlur }"
 			/></input>
 			<i if="{ isFocused }" class="mdi mdi-pencil fg-grey"></i>
@@ -43,6 +43,12 @@
 		});
 		self.isFocused = null;self.isValid = null;self.isInvalid = null;self.isLocked = null;
 		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }
+		self.setIsFocused = function() { 
+			setTimeout( () => {
+				self.isFocused = true;
+				self.update();
+			},200);
+		}
 		self.setFocus = function(msg) { self.refs.field.focus();self.isFocused = true;self.setMessage(msg); }
 		self.setValid = function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); }
 		self.setInvalid = function(msg) { self.isInvalid = true;self.isValid = null;self.setMessage(msg); }
