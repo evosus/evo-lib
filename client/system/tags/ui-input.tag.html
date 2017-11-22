@@ -47,7 +47,8 @@
 			setTimeout( () => {
 				self.isFocused = true;
 				self.update();
-			},200);
+				self.refs.field.select();
+			},100);
 		}
 		self.setFocus = function(msg) { self.refs.field.focus();self.isFocused = true;self.setMessage(msg); }
 		self.setValid = function(msg) { self.isValid = true;self.isInvalid = null;self.setMessage(msg); }
