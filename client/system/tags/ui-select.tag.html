@@ -1,34 +1,45 @@
 <ui-select>
-	<div class="ui-select { opts.css }">
-		<div if="{ opts.label }" class="label"><span>{ opts.label }</span></div>
+	<div class="pui-select { opts.css }">
+		<div class="label { fg-valid:isValid,fg-invalid:isInvalid,focused:isFocused }"><span>{ opts.label }</span></div>
 		<div class="f-row ai-center">
 			<select ref="htmlselect" name="{ opts.name }" value="{ selected }">
 				<option class="{ opts.menucss }" each="{ item in opts.options }" selected="{ item.label == opts.selection }">{ item.label }</option>
 			</select>
-			<i class="mdi mdi-menu-down"></i>
+			<i class="mdi mdi-menu-down { fg-valid:isValid,fg-invalid:isInvalid }"></i>
 		</div>
-		<div class="fill"></div>
-		<div if="{ !opts.hidemsg }" class="message"></div>
+		<div if="{ !isValid && !isInvalid }" class="fill"></div>
+		<div if="{ isValid || isInvalid }" class="fill {ui-valid:isValid, ui-invalid:isInvalid }"></div>
+		<div if="{ !opts.hidemsg }" class="message"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
 	</div>
 	<script>
 		this.mixin(IO.default);
-		this.getSelected = function() {
+		const self = this;
+		self.getSelected = function() {
 			let selectedOption = null;
 			if(opts.options && opts.selection) {
 				opts.options.forEach(function(OBJ) {
 					if(OBJ.label == opts.selection) {
-						selectedOption = OBJ;	
+						selectedOption = OBJ;   
 					}
 				});
 				return selectedOption;
 			}
 		};
+		self.getValue = function() { return self.refs.htmlselect.value; }
+		self.setMessage = function(msg) { self.msg = msg !== undefined ? msg : ""; self.update(); }
+		self.setValid = function(msg) { self.isValid = true; self.isInvalid = null; self.setMessage(""); }
+		self.setInvalid = function(msg) { self.isInvalid = true; self.isValid = null; self.setMessage(msg); }
+		self.unsetValidation = function() { 
+			self.isValid = null;
+			self.isInvalid = null;
+			self.setMessage();
+	}
 	</script>
 	<style>
-		.label { padding:.25em 0em; }
+		.label { padding:.25em 0em; color: #2196F3;}
 		.label > span { font-size:0.9em;letter-spacing:0;transition:.2s linear all; }
-		.ui-select { position:relative;background:none; }
-		.ui-select select {
+		.pui-select { position:relative;background:none; }
+		.pui-select select {
 			cursor:pointer;
 			padding:0;
 			margin:0;
@@ -41,20 +52,24 @@
 			-moz-appearance: none;
 			text-overflow: '';
 		}
+		.pui-select.ui-active .fill.isInvalid { background:#2196F3; }
 		option {
 			padding:.5em;
 		}
 		.fill {
 			width:100%;
 			height:2px;
-			background:#888888;
+			background:#2196F3;
 		}
-		.ui-select i {
+		.pui-select i {
 			font-size:1.5em;
 			position:absolute;
 			z-index:100;
 			right:0;
 			pointer-events:none;
+		}
+		.pui-select.ui-active i {
+			color: #2196F3;
 		}
 		.message { height:1em; }
 		.message > span { padding:.25em 0em;font-style:italic;font-size:0.875em; }
