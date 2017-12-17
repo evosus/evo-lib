@@ -22,7 +22,7 @@
 			<div if="{ opts.title == 'Company Setup' }" class="ui-step-icon f-col ai-center jc-center ui-active">
 				<i class="mdi mdi-pencil"></i>
 			</div>
-			<div if="{ opts.title == 'Confirm Order' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+			<div if="{ ['Signup', 'Company Setup'].indexOf(opts.title) === -1 }" class="ui-step-icon f-col ai-center jc-center ui-active">
 				<i class="mdi mdi-check"></i>
 			</div>
 			<div class="pad-dot-5"></div>
@@ -36,13 +36,10 @@
 		<div class="pad-dot-5"></div>
 
 		<div class="step f-row ai-center { active:opts.title == 'Confirm Order' }">
-			<div if="{ opts.title != 'Confirm Order' }" class="ui-step-icon f-col ai-center jc-center ui-grey">
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order'].indexOf(opts.title) > -1 }" class="ui-step-icon f-col ai-center jc-center ui-grey">
 				<span>3</span>
 			</div>
-			<div if="{ opts.title == 'Confirm Order' }" class="ui-step-icon f-col ai-center jc-center ui-active">
-				<span>3</span>
-			</div>
-			<div if="{ opts.title == 'Complete Setup' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order'].indexOf(opts.title) === -1 }" class="ui-step-icon f-col ai-center jc-center ui-active">
 				<i class="mdi mdi-check"></i>
 			</div>
 			<div class="pad-dot-5"></div>
@@ -56,15 +53,18 @@
 		<div class="pad-dot-5"></div>
 
 		<div class="step f-row ai-center { active:opts.title == 'Complete Setup' }">
-			<div if="{ opts.title != 'Complete Setup' }" class="ui-step-icon f-col ai-center jc-center ui-grey">
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order'].indexOf(opts.title) > -1 }" class="ui-step-icon f-col ai-center jc-center ui-grey">
 				<span>4</span>
 			</div>
 			<div if="{ opts.title == 'Complete Setup' }" class="ui-step-icon f-col ai-center jc-center ui-active">
 				<i class="mdi mdi-pencil"></i>
 			</div>
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order', 'Complete Setup'].indexOf(opts.title) === -1 }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-check"></i>
+			</div>
 			<div class="pad-dot-5"></div>
 			<div class="f-col jc-center">
-				<div class="title"><span>Payment</span></div>
+				<div class="title"><span>Complete Setup</span></div>
 			</div>
 		</div>
 
