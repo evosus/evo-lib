@@ -55,14 +55,34 @@
 		<div class="step-line"></div>
 		<div class="pad-dot-5"></div>
 
-		<div class="step f-row ai-center { active:opts.title == 'Complete Setup' }">
+		<div class="step f-row ai-center { active:opts.title == 'Payment' }">
 			<div if="{ ['Signup', 'Company Setup', 'Confirm Order'].indexOf(opts.title) > -1 }" class="ui-step-icon f-col ai-center jc-center ui-grey">
 				<span>4</span>
+			</div>
+			<div if="{ opts.title == 'Payment' }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-pencil"></i>
+			</div>
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order', 'Payment'].indexOf(opts.title) === -1 }" class="ui-step-icon f-col ai-center jc-center ui-active">
+				<i class="mdi mdi-check"></i>
+			</div>
+			<div class="pad-dot-5"></div>
+			<div class="f-col jc-center">
+				<div class="title"><span>Payment</span></div>
+			</div>
+		</div>
+
+		<div class="pad-dot-5"></div>
+		<div class="step-line"></div>
+		<div class="pad-dot-5"></div>
+
+		<div class="step f-row ai-center { active:opts.title == 'Complete Setup' }">
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order', 'Payment'].indexOf(opts.title) > -1 }" class="ui-step-icon f-col ai-center jc-center ui-grey">
+				<span>5</span>
 			</div>
 			<div if="{ opts.title == 'Complete Setup' }" class="ui-step-icon f-col ai-center jc-center ui-active">
 				<i class="mdi mdi-pencil"></i>
 			</div>
-			<div if="{ ['Signup', 'Company Setup', 'Confirm Order', 'Complete Setup'].indexOf(opts.title) === -1 }" class="ui-step-icon f-col ai-center jc-center ui-active">
+			<div if="{ ['Signup', 'Company Setup', 'Confirm Order', 'Payment', 'Complete Setup'].indexOf(opts.title) === -1 }" class="ui-step-icon f-col ai-center jc-center ui-active">
 				<i class="mdi mdi-check"></i>
 			</div>
 			<div class="pad-dot-5"></div>
@@ -73,7 +93,7 @@
 
 	</div>
 	<style>
-		.step-line { width:4em;height:1px;background:#aaaaaa; }
+		.step-line { width:3em;height:1px;background:#aaaaaa; }
 		.step .title > span { font-weight:400;color:#aaaaaa; }
 		.nav-bar-onboarding { height:5em;padding:0em 1em; }
 		.nav-bar-onboarding.shadow { position:relative;z-index:100; }
