@@ -44,6 +44,18 @@
 .fg-black-dot-5 { color:rgba(0,0,0,0.5); }
 .fg-black-dot-75 { color:rgba(0,0,0,0.75); }
 
+.bd-primary { border-color:#333333; }
+.bd-primary-lt { border-color:#444444; }
+.bd-primary-dk { border-color:#000000; }
+.bd-secondary { border-color:#444444; }
+.bd-accent { border-color:#F09419; }
+.bd-active { border-color:#2196F3; }
+.bd-inactive { border-color:transparent; }
+.bd-valid { border-color:#3F9D2F!important; }
+.bd-invalid { border-color:#AD423C!important; }
+.bd-background { border-color:#e7e5e2; }
+.bd-white { border-color:white; }
+
 /* ADDITIONAL COLORS */
 .ui-red, .ui-red-dk, .ui-red-lt, .ui-orange,
 .ui-orange-dk, .ui-orange-lt, .ui-gold,
@@ -448,4 +460,3 @@
 .ui-textarea.ui-blue-dk .label,
 .ui-textarea.ui-blue-dk i { color:indigo; }
 .ui-textarea.ui-blue-dk textarea { border: 2px solid indigo; }
-
