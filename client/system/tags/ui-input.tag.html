@@ -26,10 +26,20 @@
 		</div>
 		<div if="{ !isValid && !isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length }"></div>
 		<div if="{ isValid || isInvalid }" class="{ fill:1,underline:isFocused || refs.field.value.length, ui-valid:isValid, ui-invalid:isInvalid }"></div>
+		<div if="{ isMenu }" class="menu-container">
+			<div id="menuMount" class="ui-white fg-primary shadow"></div>
+		</div>
 	</div>
 	<div class="message fg-failure"><span class="{ fg-valid:isValid,fg-invalid:isInvalid }">{ msg }</span></div>
 	<style>
 		.ui-input { height:4.5em;width:100%; }
+		.menu-container {
+			height:1px;
+			position:absolute;
+			top:2em;
+			z-index:1000;
+			width:100%;	
+		}
 		i { margin:0em .25em 0em .5em;font-size:1.5em; }
 		.label { padding:.25em 0em; }
 		.label > span { font-size:0.9em;letter-spacing:0;transition:.2s linear all; }
@@ -49,7 +59,7 @@
 			this.name = opts.name;
 			self.update();
 		});
-		self.isFocused = null;self.isValid = null;self.isInvalid = null;self.isLocked = null;
+		self.isFocused = null;self.isValid = null;self.isInvalid = null;self.isLocked = null;self.isMenu = null;
 		self.setBlur = function(msg) { self.isFocused = null;self.setMessage(msg); }
 		self.setFocus = function(msg) {
 			if(self.refs.field !== document.activeElement) {
@@ -77,6 +87,16 @@
 			self.isTouched = null;
 			self.refs.field.blur();
 			self.setMessage();
+		}
+		self.setMenu = function(menu) {
+			if(menu.template) {
+				self.isMenu = true;
+				self.update();// must update() to expose #menuMount
+				riot.mount('#menuMount',menu.template, menu.templateOpts || {});
+			} else {
+				self.isMenu = false;
+				self.update();
+			}
 		}
 	</script>
 </ui-input>
