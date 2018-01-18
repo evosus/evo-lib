@@ -51,6 +51,9 @@ var ctrl = {
 		IO.default.obs.on('NAV_MENU_LINK',(link) => {
 			ctrl.navMenuLink(link);
 		});
+		IO.default.obs.on('CLOSE_NAV_MENU',() => {
+			ctrl.closeNavMenu();
+		});
 		IO.default.obs.on('OPEN_NAV_MENU',() => {
 			ctrl.openNavMenu();
 		});
