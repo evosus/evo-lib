@@ -70,14 +70,14 @@ var IO  = {
 		}
 	},
 	setState(opt_key,opt_opts) {
-		let opts = opt_opts || this.opts;
+		let opts = opt_opts !== undefined ? opt_opts : this.opts;
 		let key;
 		if(opt_key) {
 			key = opt_key;
 		}	 else if(this.opts && this.opts.title) {
 			key = this.opts.title;
 		}
-		if(opts && key) {
+		if(opts !== undefined && key) {
 			RC.trigger('UI_SET_STATE',{ [key]:opts });
 		} else {
 			return false;
