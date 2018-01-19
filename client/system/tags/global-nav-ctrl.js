@@ -4,6 +4,7 @@ var ctrl = {
 	init(opts) {
 		ctrl.opts = opts;
 		ctrl.opts.title = 'NAV';
+		ctrl.self = this;
 		this.on('mount', this.onMount());
 	},
 	onMount() {
@@ -126,15 +127,18 @@ var ctrl = {
 		ctrl.opts.ui_spinner.isOpen = true;
 		this.setNavState();
 	},
-
+	timer:null,
 	openToast(cfg) {
+		if(ctrl.timer) {
+			clearTimeout(ctrl.timer);
+		}
 		ctrl.opts.ui_toast = {
 			css: cfg.css,
 			isOpen: true,
 			message: cfg.message
 		};
-		this.setNavState();
-		setTimeout(() => {
+		ctrl.self.update();
+		ctrl.timer = setTimeout(() => {
 			this.closeToast();
 		},(cfg.timeout || 3000));
 	},
@@ -162,7 +166,7 @@ var ctrl = {
 	closeToast() {
 		ctrl.opts.ui_toast.isOpen = false;
 		this.deleteFlag();
-		this.setNavState();
+		ctrl.self.update();
 	},
 
 	navMenuLink(link) {
