@@ -127,20 +127,15 @@ var ctrl = {
 		ctrl.opts.ui_spinner.isOpen = true;
 		this.setNavState();
 	},
-	timer:null,
 	openToast(cfg) {
-		if(ctrl.timer) {
-			clearTimeout(ctrl.timer);
-		}
-		ctrl.opts.ui_toast = {
+		ctrl.self.refs.ui_toast.setOpts({
 			css: cfg.css,
 			isOpen: true,
 			message: cfg.message
-		};
-		ctrl.self.update();
-		ctrl.timer = setTimeout(() => {
+		});
+		setTimeout(() => {
 			this.closeToast();
-		},(cfg.timeout || 3000));
+		},(cfg.timeout || 2000));
 	},
 
 	closeBanner() {
@@ -165,8 +160,12 @@ var ctrl = {
 
 	closeToast() {
 		ctrl.opts.ui_toast.isOpen = false;
+		ctrl.self.refs.ui_toast.setOpts({
+			css: '',
+			isOpen: false,
+			message: ''
+		});
 		this.deleteFlag();
-		ctrl.self.update();
 	},
 
 	navMenuLink(link) {
