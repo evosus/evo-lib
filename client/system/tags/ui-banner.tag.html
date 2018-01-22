@@ -1,5 +1,5 @@
 <ui-banner>
-	<div class="ui-banner f-row ai-center { opts.css } { closed: !opts.isOpen }">
+	<div class="ui-banner f-row ai-center shadow-bar { opts.css } { closed: !opts.isOpen }">
 		<div if="{ opts.mdicon }">
 			<ui-icon mdicon="{ opts.mdicon }" css="noshadow" />
 		</div>
@@ -19,9 +19,10 @@
 	<style>
 		.ui-banner {
 			min-height:3em;
-			width:100%;
 			z-index: 9900;
 			position: fixed;
+			left:0;
+			right:0;
 			top: 0;
 			padding:0em .5em;
 		}
