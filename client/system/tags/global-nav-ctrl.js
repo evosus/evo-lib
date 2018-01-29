@@ -158,7 +158,7 @@ var ctrl = {
 	},
 
 	closeToast() {
-		ctrl.opts.ui_toast = { isOpen = false };
+		ctrl.opts.ui_toast = { isOpen: false };
 		ctrl.self.refs.ui_toast.setOpts({
 			css: '',
 			isOpen: false,
