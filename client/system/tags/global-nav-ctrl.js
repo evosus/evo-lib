@@ -123,7 +123,6 @@ var ctrl = {
 	},
 
 	openSpinner() {
-		console.log("OPEN SPINNER CALLED");
 		ctrl.opts.ui_spinner.isOpen = true;
 		this.setNavState();
 	},
@@ -139,7 +138,7 @@ var ctrl = {
 	},
 
 	closeBanner() {
-		ctrl.opts.ui_banner.isOpen = false;
+		ctrl.opts.ui_banner = { isOpen: false, };
 		this.setNavState();
 	},
 
@@ -159,7 +158,7 @@ var ctrl = {
 	},
 
 	closeToast() {
-		ctrl.opts.ui_toast.isOpen = false;
+		ctrl.opts.ui_toast = { isOpen = false };
 		ctrl.self.refs.ui_toast.setOpts({
 			css: '',
 			isOpen: false,
