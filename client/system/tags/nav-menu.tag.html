@@ -14,13 +14,13 @@
 		<div class="links { opts.cssLinks }">
 			<div class="pad-dot-5"></div>
 			<virtual each="{ opts.items }">
-				<div if="{ route != parent.opts.route }"
+				<div if="{ route != currentRoute }"
 					class="nav-link inactive f-row ai-center jc-start"
 					route="{ route }" onclick="{ link }">
 					<ui-icon mdicon="{ mdicon }" />
 					<h4>{ title }</h4>
 				</div>
-				<div if="{ route == parent.opts.route }"
+				<div if="{ route == currentRoute }"
 					class="nav-link active f-row ai-center jc-start { parent.opts.cssActive }"
 					route="{ route }">
 					<ui-icon mdicon="{ mdicon }" />
@@ -32,9 +32,13 @@
 	</div>
 	<script>
 		this.mixin(IO.default);
+		this.currentRoute = '/';
 		this.link = (e) => {
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
+		this.on('update', () => {
+			this.currentRoute = '/' + window.location.hash.replace('#','');
+		});
 	</script>
 	<style>
 		h4 { font-weight:400;margin:0;padding:0em .5em; }
