@@ -12,21 +12,26 @@
 			</div>
 		</div>
 		<div class="links { opts.cssLinks }">
+
 			<div class="pad-dot-5"></div>
-			<virtual each="{ opts.items }">
+
+			<div each="{ opts.items }">
+
 				<div if="{ route != currentRoute }"
 					class="nav-link inactive f-row ai-center jc-start"
 					route="{ route }" onclick="{ link }">
 					<ui-icon mdicon="{ mdicon }" />
 					<h4>{ title }</h4>
 				</div>
+
 				<div if="{ route == currentRoute }"
 					class="nav-link active f-row ai-center jc-start { parent.opts.cssActive }"
 					route="{ route }">
 					<ui-icon mdicon="{ mdicon }" />
 					<h4>{ title }</h4>
 				</div>
-			</virtual>
+
+			</div>
 
 		</div>
 	</div>
