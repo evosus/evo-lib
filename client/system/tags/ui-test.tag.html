@@ -1,10 +1,16 @@
 <ui-test>
 	<div class="pad-2 { opts.css }">
-		<span>UI TEST</span>
+		<div class="f-row ai-center jc-between">
+			<span>UI TEST</span>
+			<ui-icon mdicon="mdi mdi-close" onclick="{ modalClose }" />
+		</div>
 	</div>
 	<script>
 		this.on('mount',() => {
 			console.log(JSON.stringify(this.opts,null,2));
 		});
+		this.modalClose = () => {
+			IO.default.obs.trigger('CLOSE_MODAL');
+		};
 	</script>
 </ui-test>

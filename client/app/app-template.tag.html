@@ -37,25 +37,16 @@
 			<div class="pad-dot-5">
 				<ui-button label="Get Select" css="ui-active" onclick="{ testSelect }" />
 			</div>
-			<div class="pad-dot-5">
-				<ui-button label="Open Spinner" css="ui-active" onclick="{ testSpinner }" />
-			</div>
 		</div>
 	</div>
 	<script>
-		import GN from 'client/system/tags/global-nav-ctrl.js';
-		this.mixin(IO.default,GN);
+		this.mixin(IO.default);
 		const self = this;
 		this.opts.title = 'APP TEST';
 		this.on('mount',() => {
 			this.opts.nav_bar = { css:'ui-primary' }	
 			self.setState();
 		});
-
-		this.testSpinner = function() {
-			console.log("TEST SPINNER CLICKED");
-			GN.openSpinner();
-		};
 		this.testSelect = function() {
 			var selectedOption  = self.refs.ui_select.getSelected();
 			console.log(JSON.stringify(selectedOption,null,2));
@@ -71,7 +62,7 @@
 			Promise.all([
 				import('client/system/tags/ui-test.tag.html')
 			]).then( (tmpl) => {
-				GN.openModal({
+				IO.default.obs.trigger('OPEN_MODAL',{
 					isOpen: true,
 					template: 'ui-test',
 					templateOpts: {
@@ -84,7 +75,7 @@
 			Promise.all([
 				import('client/system/tags/ui-test.tag.html')
 			]).then( (tmpl) => {
-				GN.openModal({
+				IO.default.obs.trigger('OPEN_MODAL',{
 					isOpen: true,
 					template: 'ui-test',
 					templateOpts: {
@@ -103,18 +94,10 @@
 			});
 		}
 		this.testNavMenu = () => {
-			GN.openNavMenu();
-		}
-		this.testBanner = () => {
-			opts.ui_banner = {
-				isOpen: true,
-				mdicon: 'mdi mdi-alert',
-				message: 'Banner popped!',
-				css: 'ui-active'
-			}
+			IO.default.obs.trigger('OPEN_NAV_MENU');
 		}
 		this.testToast1 = () => {
-			GN.openToast({
+			IO.default.obs.trigger('OPEN_TOAST',{
 				isOpen: true,
 				message: '1 Second Toast Popped!',
 				css: 'ui-red-dk rounded',
@@ -122,7 +105,7 @@
 			});
 		}
 		this.testToast2 = () => {
-			GN.openToast({
+			IO.default.obs.trigger('OPEN_TOAST',{
 				isOpen: true,
 				message: '3 Second Toast Popped!',
 				css: 'ui-primary rounded',
@@ -130,7 +113,7 @@
 			});
 		}
 		this.testBanner1 = () => {
-			GN.openBanner({
+			IO.default.obs.trigger('OPEN_BANNER', {
 				isOpen: true,
 				mdicon: 'mdi mdi-check',
 				message: 'Test Banner One!',
@@ -138,15 +121,12 @@
 			});
 		}
 		this.testBanner2 = () => {
-			GN.openBanner({
+			IO.default.obs.trigger('OPEN_BANNER', {
 				isOpen: true,
 				mdicon: 'mdi mdi-block-helper',
 				message: 'Test Banner One!',
 				css: 'ui-invalid'
 			});
 		}
-		this.on('route',() => {
-			console.info("ROUTE CHANGED");
-		});
 	</script>
 </app-template>
