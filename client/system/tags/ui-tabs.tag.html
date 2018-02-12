@@ -12,8 +12,16 @@
 		 * MOUNT
 		 */	
 		this.on('mount', () => {
+			this.update();
+		});
+		/**
+		 * UPDATE
+		 */
+		this.on('update', () => {
 			if(!this.opts.activeTab) {
-				this.setActiveTab(this.opts.tabs[0].label);
+				if(this.opts.tabs) {
+					this.setActiveTab(this.opts.tabs[0].label);
+				}
 			}
 		});
 		/**
