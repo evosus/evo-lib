@@ -3,10 +3,11 @@ import IO from '../IO.js';
 UI BUTTON BUSY
 !-->
 <ui-button-busy>
-	<button class="ui-button-busy rounded { opts.css }">
+	<button class="ui-button-busy rounded { opts.css } { noaction: opts.isBusy }">
 		<div class="wrap">
 			<div class="top f-row ai-center">
-				<span>{ opts.label }</span>
+				<span if="{ !opts.isBusy }">{ opts.label }</span>
+				<span if="{ opts.isBusy }">{ opts.msg }</span>
 			</div>
 			<div class="bot { busy: opts.isBusy }"></div>
 		</div>
@@ -15,12 +16,9 @@ UI BUTTON BUSY
 		this.mixin(IO);
 		let self = this;
 		this.setBusy = cfg => {
-			console.info("SET BUSY  OBJ");
-			console.dir(cfg);
-			if(cfg.label) { self.opts.label = cfg.label; }
-			if(cfg.css) { self.opts.css = cfg.css; }
-			if(cfg.busy) { self.opts.isBusy = cfg.busy; }
-			this.update();
+			this.opts.msg = cfg.msg || 'Busy...';
+			this.opts.css = cfg.css || this.opts.css;
+			this.opts.isBusy = cfg.busy;
 		}
 	</script>
 	<style>
@@ -38,7 +36,13 @@ UI BUTTON BUSY
 			transition:.25s ease-in-out all;
 			overflow:hidden;
 		}
-		.ui-button-busy:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+		.ui-button-busy:hover { box-shadow:0 0px 20px rgba(0,0,0,0.5); }
+		.noaction,
+		.noaction:hover {
+			pointer-events:none!important;
+			cursor:not-allowed!important;
+			box-shadow:none!important;
+		}
 		.wrap {
 			position:relative;
 			width:100%;
