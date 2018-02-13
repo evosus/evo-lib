@@ -137,18 +137,16 @@
 		this.testBusy = () => {
 			this.isBusy = true;
 			this.refs.ui_button_busy.setBusy({
-				css:this.refs.ui_button_busy.opts.css,
 				busy:true,
-				label:'Busy...'
+				msg:'Busy...'
 			});
 			this.update();
 		}
 		this.testUnbusy = () => {
 			this.isBusy = false;
 			this.refs.ui_button_busy.setBusy({
-				css:this.refs.ui_button_busy.opts.css,
 				busy:false,
-				label:'Bored'
+				msg:'Bored'
 			});
 			this.update();
 		}
