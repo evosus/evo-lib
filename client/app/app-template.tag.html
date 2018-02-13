@@ -37,6 +37,12 @@
 			<div class="pad-dot-5">
 				<ui-button label="Get Select" css="ui-active" onclick="{ testSelect }" />
 			</div>
+			<div class="pad-dot-5">
+				<ui-button-busy ref="ui_button_busy" label="Bored" css="ui-active" onclick="{ testBusy }" />
+			</div>
+			<div if="{ isBusy }" class="pad-dot-5">
+				<ui-button label="Make Unbusy" css="ui-active" onclick="{ testUnbusy }" />
+			</div>
 		</div>
 	</div>
 	<script>
@@ -127,6 +133,24 @@
 				message: 'Test Banner One!',
 				css: 'ui-invalid'
 			});
+		}
+		this.testBusy = () => {
+			this.isBusy = true;
+			this.refs.ui_button_busy.setBusy({
+				css:this.refs.ui_button_busy.opts.css,
+				busy:true,
+				label:'Busy...'
+			});
+			this.update();
+		}
+		this.testUnbusy = () => {
+			this.isBusy = false;
+			this.refs.ui_button_busy.setBusy({
+				css:this.refs.ui_button_busy.opts.css,
+				busy:false,
+				label:'Bored'
+			});
+			this.update();
 		}
 	</script>
 </app-template>
