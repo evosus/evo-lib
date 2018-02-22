@@ -1,6 +1,5 @@
 import route from 'riot-route';
 var ctrl = {
-	opts:{},
 	init(opts) {
 		ctrl.opts = opts;
 		ctrl.opts.title = 'NAV';
