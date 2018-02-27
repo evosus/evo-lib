@@ -4,9 +4,14 @@
 			<ui-icon ref="icon_back" mdicon="mdi mdi-arrow-left" />
 			<div class="title"><span>Back </span></div>
 		</div>
+		<div class="right f-row ai-center">
+			<yield />
+		</div>
+<!--
 		<div if="{ opts.icons }" class="right f-row ai-center">
 			<ui-icon each="{ opts.icons }" ref="{ ref }" mdicon="{ mdicon }" onclick="{ onclick }" />
 		</div>
+!-->
 	</div>
 	<style>
 		.title { padding:0em .5em; }
