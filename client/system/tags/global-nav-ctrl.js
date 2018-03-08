@@ -60,10 +60,13 @@ var ctrl = {
 		IO.default.obs.on('OPEN_BANNER',(cfg) => {
 			ctrl.openBanner(cfg);
 		});
+		IO.default.obs.on('CLOSE_BANNER',() => {
+			ctrl.closeBanner(cfg);
+		});
 		IO.default.obs.on('OPEN_MODAL',(cfg) => {
 			ctrl.openModal(cfg);
 		});
-		IO.default.obs.on('CLOSE_MODAL',(cfg) => {
+		IO.default.obs.on('CLOSE_MODAL',() => {
 			ctrl.closeModal();
 		});
 		IO.default.obs.on('OPEN_SPINNER',(cfg) => {
