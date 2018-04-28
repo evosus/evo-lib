@@ -6,6 +6,7 @@
  * @copyright 2018 Evosus, Inc
  */
 import route from 'riot-route';
+import { acl } from 'client/system/acl.js';
 import { spinnerSet } from 'client/system/tags/ui-spinner-set.js';
 import {
 	mountSearch,
@@ -38,9 +39,12 @@ route('/*', (module) => {
  * SEARCH
  */
 route('/search..', () => {
-	const q = route.query();
-	spinnerSet({ txt: 'QUERY', msg: JSON.stringify(q) });
-	mountSearch(q);
+	let q = route.query(),
+			s = { txt: 'QUERY', msg: JSON.stringify(q) },
+			a = { id: 'userID', action: 'search', params:q },
+			d = 'Unauthorized Access';
+	spinnerSet(s);
+	acl(a) ? mountSearch(q) : mountDeadEnd(d);
 	console.log(JSON.stringify({ 'QUERY': q },null,2));
 });
 
@@ -48,9 +52,12 @@ route('/search..', () => {
  * ITEM
  */
 route('/*/*', (collection, id) => {
-	const i = { collection: collection, id: id };
-	spinnerSet({ txt: 'ITEM', msg: JSON.stringify(i) });
-	mountRead(i);
+	let i = { collection: collection, id: id },
+			s = { txt: 'QUERY', msg: JSON.stringify(i) },
+			a = { id: 'userID', action: 'read', params:q },
+			d = 'Unauthorized Access';
+	spinnerSet(s);
+	acl(a) ? mountRead(i) : mountDeadEnd(d);
 	console.log(JSON.stringify({ 'ITEM': i },null,2));
 });
 
@@ -58,15 +65,21 @@ route('/*/*', (collection, id) => {
  * ITEM ACTION
  */
 route('/*/*/*', (collection, id, action) => {
-	const a = { collection: collection, id: id, action: action };
-	spinnerSet({ txt: 'ACTION', msg: JSON.stringify(a) });
-	/** Determine Action */
-	switch(action) {
-		case 'create': mountCreate(a); break;
-		case 'read': mountRead(a); break;
-		case 'update': mountUpdate(a); break;
-		case 'delete': mountDelete(a); break;
-		default: mountDeadEnd('Unknown Action'); break;
+	let i = { collection: collection, id: id, action: action },
+			s = { txt: 'ACTION', msg: JSON.stringify(i) }),
+			a = { id: 'userID', action: action, params:q },
+			d = 'Unauthorized Access';
+	if(acl(a)) {
+		/** Determine Action */
+		switch(action) {
+			case 'create': mountCreate(i); break;
+			case 'read': mountRead(i); break;
+			case 'update': mountUpdate(i); break;
+			case 'delete': mountDelete(i); break;
+			default: mountDeadEnd('Unknown Action:' + action); break;
+		}
+	} else {
+		mountDeadEnd(d);
 	}
 	console.log(JSON.stringify({ 'ACTION': a },null,2));
 });
