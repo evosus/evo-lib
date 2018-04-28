@@ -1,0 +1,73 @@
+<nav-bar-search>
+	<div class="nav-bar f-row ai-center jc-between { opts.css }">
+		<div class="left f-row ai-center">
+			<ui-icon ref="menu_icon" mdicon="mdi mdi-menu" onclick="{ navMenuClick }" />
+			<div class="logo-resize"><div class="logo-bg"></div></div>
+		</div>
+		<div class="f-row ai-center search-input ui-white rounded shadow" style="max-width:1024px;">
+			<div class="pad-dot-5"></div>
+			<i class="mdi mdi-magnify fg-primary-lt"></i>
+			<div class="pad-dot-25"></div>
+				<input type="text"
+					ref="input_search"
+					class="f-one"
+					placeholder="Search"
+					onkeyup="{ onSearch }"
+					onsearch="{ onSearch }"
+					value="{ opts.searchString }"
+					results=5
+				/>
+			<div class="pad-dot-25"></div>
+			<span if="{ opts.totalRows }" class="fg-orange-dk">{ opts.totalRows || 0 } result(s)</span>
+			<div class="pad-dot-25"></div>
+			<i if="{ opts.searchString }" class="mdi mdi-close-circle fg-primary-lt" onclick="{ clearSearch }"></i>
+			<div class="pad-dot-5"></div>
+		</div>
+		<div class="right f-row ai-center">
+			<div class="pad-dot-5"></div>
+		</div>
+	</div>
+	<script>
+		this.mixin(IO.default);
+		this.opts.totalRows = 0;
+		this.goBack = () => { return false; };
+		this.onSearch = () => { return false; };
+		this.clearSearch = () => { return false; };
+	</script>
+	<style>
+		.title { padding:0em .5em; }
+		.title span { font-size:1.15em;font-weight:500; }
+		.category { padding:0em .5em; }
+		.category span { font-size:0.875em;font-weight:400;text-transform:uppercase; }
+		.nav-bar { height:3.5em; }
+		.left { padding-left:.5em; }
+		.right { padding-right:.5em; }
+		.logo-resize { width:7.5em; height:1.8em; }
+		.logo-bg {
+			background-image:url('system/assets/img/evosus_logo-transparent.png');
+			background-size:contain;
+			background-repeat:no-repeat;
+			background-position:center center;
+			width:100%;
+			height:100%;
+		}
+		.left, .right {
+			flex:1;
+		}
+		.search-input input {
+			background:none;
+			border:none;
+			font-size:1.25em;
+			padding:.4em;
+		}
+		.search-input i {
+			font-size:1.5em;
+		}
+		.search-input {
+			-webkit-appearance: none;
+			font-size: 1em;
+			border: none;
+			width: 100%;
+		}
+	</style>
+</nav-bar-search>

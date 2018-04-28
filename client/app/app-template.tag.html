@@ -46,10 +46,16 @@
 		</div>
 	</div>
 	<script>
+		import Worker from 'worker-loader!../system/workers/test.worker.js';
 		this.mixin(IO.default);
 		const self = this;
 		this.opts.title = 'APP TEST';
 		this.on('mount',() => {
+			let w = new Worker();
+			w.postMessage('ping');
+			w.onmessage = event => {
+				console.info(event.data);
+			}
 			this.opts.nav_bar = {
 				css:'ui-teal-dk shadow-bar',
 				title:'Home'

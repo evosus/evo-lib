@@ -1,5 +1,5 @@
 import route from 'riot-route';
-import routes from 'client/system/routes.js';
+import routes from 'client/system/routes/routes.js';
 //import reset from 'client/system/css/ui-reset.css';
 import UserInterface from 'client/system/UI.js';
 import reset from 'client/system/css/bootstrap-reboot.min.css';
