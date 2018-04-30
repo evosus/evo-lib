@@ -66,8 +66,8 @@ route('/*/*', (collection, id) => {
  */
 route('/*/*/*', (collection, id, action) => {
 	let i = { collection: collection, id: id, action: action },
-			s = { txt: 'ACTION', msg: JSON.stringify(i) }),
-			a = { id: 'userID', action: action, params:q },
+			s = { txt: 'ACTION', msg: JSON.stringify(i) },
+			a = { id: 'userID', action: action, params:i },
 			d = 'Unauthorized Access';
 	if(acl(a)) {
 		/** Determine Action */
