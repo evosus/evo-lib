@@ -5,33 +5,47 @@
  * @license ISC
  * @copyright 2018 Evosus, Inc
  */
-const someWrapper = (self) => {
-	const monitor = (target, callback) => {
+const uimon = (self) => {
+	/**
+		* MODEL
+		* Stores ui props, proxied by state.
+		* @type {array} model
+		*/
+	const model = [];	
+	/**
+		* ELEMENTS
+		* Collection of element opts, keyed to their refs (riotjs refs).
+		* @type {object} elements
+		*/
+	const elements = self.refs; 
+	/**
+		* MONITOR
+		* Stores ui props, proxied by state.
+		* @param { array | object | function } target
+		* @param { object } response
+		*/
+	const monitor = (target, response) => {
+		/**
+			* HANDLER
+			* Stores traps used by the proxy.
+			*/
 		const handler = {
 			set: (target, ref, value) => {
-				console.log("SET CALLED");
 				target[ref] = value;
-				callback({
-					action: 'GET',
-					status: 'success',
-					ref: ref,
-					opts: value
-				});
+				response({ ref: ref, opts: value });
 				return true;
 			}
 		};
 		return new Proxy(target, handler);
 	}
-
-	self.state = monitor(self.model, (response) => {
-		console.log("MONITOR RESP:");
-		console.dir(response);
-		console.log("REFS:");
-		console.dir(self.refs);
-		if(response.ref in self.refs) {
-			console.log("WOOHOO");
-			self.refs[response.ref].setOpts(response.opts);
+	/**
+		* STATE
+		* Proxies model changes to set opts by ref.
+		*/
+	self.state = monitor(model, (response) => {
+		if(response.ref && response.opts && response.ref in elements) {
+			elements[response.ref].setOpts(response.opts);
 		}
 	});
 }
-export default someWrapper;
+export default uimon;
