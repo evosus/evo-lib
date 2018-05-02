@@ -13,26 +13,35 @@
 		</div>
 	</div>
 	<script>
+
+		// IMPORT
 		import uimon from 'client/system/tags/ui-monitor.js';
-		this.model = [];
+
+		// COUNTER
 		this.counter = 0;
+
+		// INCREMENT
 		this.increment = () => {
-			let css;
-			let c = this.counter;
-			c % 2 ? css = 'ui-green' : css = 'ui-red';
-			this.state.ui_button = {
-				css: css,
-				label: c
-			}
 			this.counter++;
+			let css, c = this.counter;
+			c % 2 ? css = 'ui-red' : css = 'ui-green';
+			this.state.ui_button = { css: css, label: c }
 		}
+
+		// MOUNT
 		this.on('mount', () => {
+			// INIT uimon
 			uimon(this);
+			// this.state provided by uimon
+			// setting an element's ref on state
+			// triggers an update of that element
+			// with the object you set:
 			this.state.ui_button = {
 				css: 'ui-active',
 				label: this.counter
 			}
 		});
+
 	</script>
 	<style>
 		.fs {
@@ -105,63 +114,3 @@
 		.ui-button.md > div > span { padding:0em .25em;text-transform:uppercase;font-size:.875em; }
 	</style>
 </ui-button>
-<proxy-crap-to-save>
-	<script>
-/*
-// SAVE
-
-		self.model = {
-			ui_button: {}
-		}
-
-		const monitor = (target, callback) => {
-			const handler = {
-				set: (target, ref, value) => {
-					if (ref in target) {
-						target[ref] = value;
-						callback({
-							action: 'GET',
-							status: 'success',
-							ref: ref,
-							opts: value
-						});
-						return true;
-					} else {
-						return true;
-					}
-				}
-			};
-			return new Proxy(target, handler);
-		}
-
-		const state = monitor(self.model, (response) => {
-			console.info("MONITOR RESPONSE:");
-			console.log(JSON.stringify(response,null,2));
-			if(response.ref in self.refs) {
-				console.log("WOOHOO");
-				self.refs[response.ref].setOpts(response.opts);
-			}
-		});
-	
-		this.increment = () => {
-			let css;
-			let c = self.counter;
-			c % 2 ? css = 'ui-green' : css = 'ui-red';
-			state.ui_button = {
-				css: css,
-				label: c
-			}
-			self.counter++;
-		}
-
-		this.counter = 0;
-
-		this.on('mount', () => {
-			state.ui_button = {
-				css: 'ui-active',
-				label: this.counter
-			}
-		});
-*/
-	</script>
-</proxy-crap-to-save>
