@@ -1,4 +1,167 @@
+// ui-button is at the end of this file
 <dead-end-template>
-	<h1>Dead End</h1>
-	<h4>{ opts.msg }</h4>
+	<div class="fs">
+		<div class="head">
+		</div>
+		<div class="body">
+			<div class="left">
+			</div>
+			<div class="middle">
+				<ui-button ref="ui_button" onclick="{ increment }" />
+			</div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<script>
+		import uimon from 'client/system/tags/ui-monitor.js';
+		this.model = [];
+		this.counter = 0;
+		this.increment = () => {
+			let css;
+			let c = this.counter;
+			c % 2 ? css = 'ui-green' : css = 'ui-red';
+			this.state.ui_button = {
+				css: css,
+				label: c
+			}
+			this.counter++;
+		}
+		this.on('mount', () => {
+			uimon(this);
+			this.state.ui_button = {
+				css: 'ui-active',
+				label: this.counter
+			}
+		});
+	</script>
+	<style>
+		.fs {
+			display:grid;
+			grid-template-rows: 3.5em auto;
+			height:100vh;
+		}
+		.head {
+			grid-row-start: 1;
+			background:rgba(255,0,0,0.1);
+			height:3.5em;
+		}
+		.body {
+			grid-row-start: 2;
+			background:rgba(0,255,0,0.1);
+			height:100%;
+			display:grid;
+			grid-template-columns: auto 1024px auto;
+		}
+		.body > .center {
+			grid-column-start:2;
+			background:pink;
+		}
+		.body > .left {
+			grid-column-start:1;
+			background:rgba(0,0,255,0.1);
+		}
+		.body > .right {
+			grid-column-start:3;
+			background:rgba(0,0,255,0.1);
+		}
+		.foot {
+			background:rgba(0,0,255,0.1);
+		}
+	</style>
 </dead-end-template>
+<ui-button>
+	<button class="ui-button rounded { opts.css }">
+		<div class="f-row ai-center jc-center">
+			<i if="{ opts.mdicon && !opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+			<span>{ opts.label }</span>
+			<i if="{ opts.mdicon && opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+		</div>
+	</button>
+	<script>
+		this.setOpts = (opts,preventUpdate) => {
+			this.opts = opts;
+			if(!preventUpdate) {
+				this.update();
+				return this;
+			}
+		}
+	</script>
+	<style>
+		.ui-button {
+			height:2.5em;
+			margin:0;
+			padding:0em .5em;
+			border:none;
+			cursor:pointer;
+			font-weight:700;
+			transition:.25s ease-in-out all;
+		}
+		.ui-button:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
+		.ui-button > div { height:2.5em; }
+		.ui-button > div > i { padding:0em .25em; }
+		.ui-button > div > span { padding:0em .25em;text-transform:uppercase;letter-spacing:1px; }
+		.ui-button.md { height:1.5em;font-weight:500; }
+		.ui-button.md > div { height:1.5em; }
+		.ui-button.md > div > span { padding:0em .25em;text-transform:uppercase;font-size:.875em; }
+	</style>
+</ui-button>
+<proxy-crap-to-save>
+	<script>
+/*
+// SAVE
+
+		self.model = {
+			ui_button: {}
+		}
+
+		const monitor = (target, callback) => {
+			const handler = {
+				set: (target, ref, value) => {
+					if (ref in target) {
+						target[ref] = value;
+						callback({
+							action: 'GET',
+							status: 'success',
+							ref: ref,
+							opts: value
+						});
+						return true;
+					} else {
+						return true;
+					}
+				}
+			};
+			return new Proxy(target, handler);
+		}
+
+		const state = monitor(self.model, (response) => {
+			console.info("MONITOR RESPONSE:");
+			console.log(JSON.stringify(response,null,2));
+			if(response.ref in self.refs) {
+				console.log("WOOHOO");
+				self.refs[response.ref].setOpts(response.opts);
+			}
+		});
+	
+		this.increment = () => {
+			let css;
+			let c = self.counter;
+			c % 2 ? css = 'ui-green' : css = 'ui-red';
+			state.ui_button = {
+				css: css,
+				label: c
+			}
+			self.counter++;
+		}
+
+		this.counter = 0;
+
+		this.on('mount', () => {
+			state.ui_button = {
+				css: 'ui-active',
+				label: this.counter
+			}
+		});
+*/
+	</script>
+</proxy-crap-to-save>
