@@ -30,6 +30,9 @@ const uimon = (self) => {
 			* Stores traps used by the proxy.
 			*/
 		const handler = {
+			get: (target, ref) => {
+				return ref in target ? target[ref] : {};
+			},
 			set: (target, ref, value) => {
 				target[ref] = value;
 				response({ ref: ref, opts: value });
@@ -47,5 +50,21 @@ const uimon = (self) => {
 			elements[response.ref].setOpts(response.opts);
 		}
 	});
+	/**
+		* RESTORE
+		* Restores model from storage
+		*/
+	self.restore = () => {
+		console.info("restore");
+		console.dir(model);
+	}
+	/**
+		* STORE
+		* Proxies model changes to set opts by ref.
+		*/
+	self.store = () => {
+		console.info("store");
+		console.dir(model);
+	}
 }
 export default uimon;

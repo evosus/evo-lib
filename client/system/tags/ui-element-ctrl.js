@@ -1,15 +1,12 @@
 /**
- * @file ui-mixin.js
+ * @file ui-element-ctrl.js
  * @description Provides reusable methods for ui components.
  * @author John Yee <johny@evosus.com>
  * @license ISC
  * @copyright 2018 Evosus, Inc
  */
 
-/*
- * UI
- */
-const UI = {
+const ctrl = {
 	/*
 	 * OBSERVABLE
 	 */
@@ -32,4 +29,4 @@ const UI = {
 		}
 	}
 };
-export default UI;
+export default ctrl;
