@@ -13,35 +13,8 @@
 		</div>
 	</div>
 	<script>
-
-		// IMPORT
-		import uimon from 'client/system/tags/ui-monitor.js';
-
-		// COUNTER
-		this.counter = 0;
-
-		// INCREMENT
-		this.increment = () => {
-			this.counter++;
-			let css, c = this.counter;
-			c % 2 ? css = 'ui-red' : css = 'ui-green';
-			this.state.ui_button = { css: css, label: c }
-		}
-
-		// MOUNT
-		this.on('mount', () => {
-			// INIT uimon
-			uimon(this);
-			// this.state provided by uimon
-			// setting an element's ref on state
-			// triggers an update of that element
-			// with the object you set:
-			this.state.ui_button = {
-				css: 'ui-active',
-				label: this.counter
-			}
-		});
-
+		import CTRL from 'client/system/crud/scripts/dead-end-ctrl.js';
+		this.mixin(CTRL);
 	</script>
 	<style>
 		.fs {
@@ -87,13 +60,9 @@
 		</div>
 	</button>
 	<script>
-		this.setOpts = (opts,preventUpdate) => {
-			this.opts = opts;
-			if(!preventUpdate) {
-				this.update();
-				return this;
-			}
-		}
+		// IMPORT
+		import UI from 'client/system/tags/ui-mixin.js';
+		this.mixin(UI);
 	</script>
 	<style>
 		.ui-button {
