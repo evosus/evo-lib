@@ -4,11 +4,10 @@
 // REQUIRE DEPENDENCIES
 var express = require('express');
 var subdomain = require('express-subdomain');
-var session = require('express-session');
 var router = express.Router();
 var logger = require('morgan');
 var path = require('path');
-
+/*
 function reqIsSecure(req) {
 	const xfpHeader = req.get('x-forwarded-proto');
 	return xfpHeader ? xfpHeader == 'https' : req.secure;
@@ -19,11 +18,11 @@ function requireHTTPS(req, res, next) {
     }
     next();
 }
-
+*/
 // CREATE EXPRESS APP
 var app = express();
 app.use(logger('dev'));
-app.use(requireHTTPS);
+//app.use(requireHTTPS);
 // SUBDOMAIN
 app.use(subdomain('*', router));
 // APP DIRECTORY SETTINGS
@@ -32,11 +31,6 @@ app.use(express.static(__dirname + '/dist'));
 app.use(express.static(__dirname + '/client'));
 app.use(express.static(__dirname + '/client/app'));
 app.use('/lib', express.static(__dirname + '/node_modules'));
-app.use(session({
-    resave: false,
-    saveUninitialized: false,
-    secret: 'smith'
-}));
 
 // EXPORT APP
 module.exports = app;

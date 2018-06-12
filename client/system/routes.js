@@ -9,7 +9,7 @@
 import route from 'riot-route';
 
 /** BEGIN ROUTE IMPORTS */
-
+import 'client/app/troy/troy-routes.js';
 
 
 
@@ -18,9 +18,4 @@ import route from 'riot-route';
 
 /** END ROUTE IMPORTS */
 
-/**
- * CRUD ROUTES
- * Should be loaded last to handle wildcard routes.
- */
-import 'client/system/crud/scripts/crud-routes.js';
 
