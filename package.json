@@ -7,7 +7,8 @@
     "start": "node ./server.js",
     "devstart": "NODE_ENV=development nodemon ./server.js",
     "wds": "node_modules/.bin/webpack-dev-server",
-    "monitor": "nodemon ./server.js"
+    "monitor": "nodemon ./server.js",
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -53,6 +54,8 @@
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.1.7",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-cli": "^3.0.6",
+    "webpack-command": "^0.2.1"
   }
 }

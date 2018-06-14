@@ -17,3 +17,10 @@ route('/',function() {
 		console.trace(err);
 	});
 });
+
+
+/** BEGIN ROUTE IMPORTS */
+
+import 'client/app/tbd/tbd-routes.js';
+
+/** END ROUTE IMPORTS */
