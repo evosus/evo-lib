@@ -86,7 +86,7 @@ const ctrl = {
     getSelectedRows() {
         //let gridOptions = this.refs.
         console.log('getselectedrows called')
-        var selectedNodes = ctrl.opts.ag_grid.gridOptions.api.getSelectedNodes()  
+        var selectedNodes = gridOptions.api.getSelectedNodes()  
         var selectedData = selectedNodes.map( function(node) { return node.data })
         var selectedDataStringPresentation = selectedData.map( function(node) { return node.make + ' ' + node.model }).join(', ')
         alert('Selected nodes: ' + selectedDataStringPresentation);
