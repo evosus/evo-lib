@@ -1,26 +1,38 @@
 import * as agGrid from 'ag-grid';
+//import 'ag-grid-enterprise'
 
-const columnDefs = [
-    {headerName: "Make", field: "make", checkboxSelection: true },
-    {headerName: "Model", field: "model"},
-    {headerName: "Price", field: "price"}
-]
-const gridOptions = {
+// START OF PARAMETERS FOR AG-GRID
+var columnDefs = [
+    {field: 'athlete', width: 150},
+    {field: 'age'},
+    {field: 'country', width: 150},
+    {field: 'year'},
+    {field: 'date'},
+    {field: 'sport'},
+    {field: 'gold'},
+    {field: 'silver'},
+    {field: 'bronze'},
+    {field: 'total'}
+];
+
+var gridOptions = {
+    suppressDragLeaveHidesColumns: true,
     columnDefs: columnDefs,
-    enableSorting: true,
-    enableFilter: true,
-    rowSelection: 'multiple'
-    
-}
+    defaultColDef: {
+        width: 100
+    }
+};
+// END OF PARAMETERS FOR AG-GRID
+
 const ctrl = {
     init(opts) {
         ctrl.opts = opts;
 		ctrl.opts.title = 'TBD';
-        ctrl.self = this;
-        this.gridOptions = gridOptions
+        //ctrl.self = this;
         ctrl.gridOptions = gridOptions
 		this.initEvents(opts)
     },
+
     initEvents() {
          // LIFECYCLE METHODS
         // TODO: pick up where we left off w/ modules
@@ -32,11 +44,10 @@ const ctrl = {
             this.unMount()
         })
     },
+
     onMount() {
-        console.dir(ctrl.opts)
         let store = null
         store = IO.default.getStateByKey(ctrl.opts.title)
-        console.log(store)
         if (store) {
             Object.assign(ctrl.opts, store)
         } else {
@@ -50,27 +61,30 @@ const ctrl = {
             ctrl.opts.ui_button_tbd_2 = {
                 label: 'button2'
             }
+            ctrl.opts.ag_button = {
+                label: 'Get Selected Rows',
+                css: 'ui-active'
+            }
         }
         this.agGridSetUp()
         this.setState()
     },
+
     setState() {
         IO.default.setState(ctrl.opts.title, ctrl.opts)
     },
+
     unMount() {
         IO.default.deleteState(ctrl.opts.title)
     },
-    agGridSetUp() {
 
+    agGridSetUp() {
         var eGridDiv = this.refs.ag_grid
-        console.log(gridOptions)
         // create the grid passing in the div to use together with the columns & data we want to use
-        new agGrid.Grid(eGridDiv, gridOptions);
-        fetch('https://api.myjson.com/bins/15psn9').then((response) => {
-            return response.json();
-        }).then(function(data) {
-            gridOptions.api.setRowData(data);
-        })
+        new agGrid.Grid(eGridDiv, gridOptions)
+        agGrid.simpleHttpRequest({url: 'https://raw.githubusercontent.com/ag-grid/ag-grid-docs/master/src/olympicWinnersSmall.json'}).then(function(data) {
+        gridOptions.api.setRowData(data);
+    });
     },
     // END OF LIFECYCLE METHODS
 
@@ -79,21 +93,39 @@ const ctrl = {
         ctrl.opts.nav_bar.title = 'cool new title'
         this.setState()
     },
+
     buttonClick2() {
         ctrl.opts.nav_bar.title = 'cooler new title'
         this.setState()
     },
-    getSelectedRows() {
-        //let gridOptions = this.refs.
-        console.log('getselectedrows called')
-        var selectedNodes = gridOptions.api.getSelectedNodes()  
-        var selectedData = selectedNodes.map( function(node) { return node.data })
-        var selectedDataStringPresentation = selectedData.map( function(node) { return node.make + ' ' + node.model }).join(', ')
-        alert('Selected nodes: ' + selectedDataStringPresentation);
-        this.setState()
+
+    onMedalsFirst() {
+        gridOptions.columnApi.moveColumns(['gold','silver','bronze','total'], 0);
+    },
+    
+    onMedalsLast() {
+        gridOptions.columnApi.moveColumns(['gold','silver','bronze','total'], 6);
+    },
+    
+    onCountryFirst() {
+        gridOptions.columnApi.moveColumn('country', 0);
+    },
+    
+    onSwapFirstTwo() {
+        gridOptions.columnApi.moveColumnByIndex(0, 1);
+    },
+    
+    onPrintColumns() {
+        var cols = gridOptions.columnApi.getAllGridColumns();
+        var colToNameFunc = function(col, index) {
+            return index + ' = ' + col.getId();
+        };
+        var colNames = cols.map(colToNameFunc).join(', ');
+        console.log('columns are: ' + colNames);
     }
     // END OF STATE CHANGING METHODS
 
+    // NECESARRY FOR REVEALING MODULE
     // return {
     //     buttonClick1,
     //     buttonClick2

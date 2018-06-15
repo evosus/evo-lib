@@ -7,6 +7,9 @@ import layout from 'client/system/css/ui-layout.css';
 import theme from 'client/system/css/ui-theme.css';
 import flexbox from 'client/system/css/ui-flexbox.css';
 import mdi from 'lib/mdi/css/materialdesignicons.css';
+import * as agGrid from 'ag-grid-enterprise'
+agGrid.LicenseManager.setLicenseKey("Evosus_Inc._MultiApp_1Devs18_October_2018__MTUzOTgxNzIwMDAwMA==2bcbdbb7ac76ff439ab605160c553be2");
+
 var UI = new UserInterface();
 RC.addStore(UI); // UI State Manager
 Promise.all([

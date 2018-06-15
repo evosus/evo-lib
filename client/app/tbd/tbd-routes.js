@@ -1,7 +1,6 @@
 import route from 'riot-route';
-// Customers redirect
+// tbd redirect
 route('/tbd', function() {
-    //console.log('tbd route called')
 	Promise.all([
         import('client/system/tags/ui-select.tag.html'),
 		import('client/system/tags/ui-button.tag.html'),
@@ -14,6 +13,5 @@ route('/tbd', function() {
 			key: 'value of something'
 		}
         riot.mount('#mainMount', 'tbd-template', props);
-        console.log('tbd test log')
 	});
 });
