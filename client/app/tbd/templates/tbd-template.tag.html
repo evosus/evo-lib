@@ -2,9 +2,12 @@
 	<nav-bar ref="nav_bar" />
 	<ui-button ref="ui_button_tbd" onclick="{buttonClick1}"/>
 	<ui-button ref="ui_button_tbd_2" onclick="{buttonClick2}"/>
+	<div class="fg-primary">
+		<button ref="ag_button" onclick="{getSelectedRows}">Get Selected Rows</button>
+		<div ref="ag_grid" id="myGrid" style="height: 600px;width:500px;" class="ag-theme-balham"></div>
+	</div>
 	<script>
 		import CTRL from 'client/app/tbd/scripts/tbd-ctrl.js'
-		this.mixin(IO.default, CTRL)
-
+		this.mixin(IO.default, CTRL);
 	</script>
 </tbd-template>
