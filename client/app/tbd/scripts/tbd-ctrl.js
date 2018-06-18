@@ -3,25 +3,49 @@ import * as agGrid from 'ag-grid';
 
 // START OF PARAMETERS FOR AG-GRID
 var columnDefs = [
-    {field: 'athlete', width: 150},
-    {field: 'age'},
-    {field: 'country', width: 150},
-    {field: 'year'},
-    {field: 'date'},
-    {field: 'sport'},
-    {field: 'gold'},
-    {field: 'silver'},
-    {field: 'bronze'},
-    {field: 'total'}
+   {lockPosition: true, valueGetter: 'node.rowIndex', cellClass: 'locked-col', width: 40, suppressNavigable: true},
+   {lockPosition: true, cellRenderer: controlsCellRenderer, cellClass: 'locked-col', suppressNavigable: true},
+   {field: 'athlete', width: 150},
+   {field: 'age'},
+   {field: 'country', width: 150},
+   {field: 'year'},
+   {field: 'date'},
+   {field: 'sport'},
+   {field: 'gold'},
+   {field: 'silver'},
+   {field: 'bronze'},
+   {field: 'total'}
 ];
 
 var gridOptions = {
     suppressDragLeaveHidesColumns: true,
+    enableColResize: true,
     columnDefs: columnDefs,
+    onColumnPinned: onColumnPinned,
     defaultColDef: {
         width: 100
     }
 };
+
+// simple cell renderer returns dummy buttons. in a real application, a component would probably
+// be used with operations tied to the buttons. in this example, the cell renderer is just for
+// display purposes.
+function controlsCellRenderer() {
+    return '<button>A</button><button>B</button><button>C</button>';
+}
+
+function onColumnPinned(event) {
+    var allCols = event.columnApi.getAllGridColumns();
+
+    var allFixedCols = allCols.filter( function(col) { return col.isLockPosition();} );
+    var allNonFixedCols = allCols.filter( function(col) { return !col.isLockPosition();} );
+
+    var pinnedCount = allNonFixedCols.filter( function(col) { return col.getPinned()==='left';} ).length;
+
+    var pinFixed = pinnedCount > 0;
+
+    event.columnApi.setColumnsPinned(allFixedCols, pinFixed);
+}
 // END OF PARAMETERS FOR AG-GRID
 
 const ctrl = {
@@ -122,7 +146,17 @@ const ctrl = {
         };
         var colNames = cols.map(colToNameFunc).join(', ');
         console.log('columns are: ' + colNames);
+    },
+
+    onPinAthlete() {
+        gridOptions.columnApi.setColumnPinned('athlete', 'left');
+    },
+    
+    onUnpinAthlete() {
+        gridOptions.columnApi.setColumnPinned('athlete', null);
     }
+
+
     // END OF STATE CHANGING METHODS
 
     // NECESARRY FOR REVEALING MODULE

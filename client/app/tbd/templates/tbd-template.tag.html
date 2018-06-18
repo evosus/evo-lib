@@ -7,14 +7,17 @@
 			<ui-button ref="ag_button" onclick="{getSelectedRows}" />
 		</div>
 	</div>
-	<div class="fg-primary pad-dot-5 f-row">
-		<div style="position: absolute; top: 0; left: 0">
-			<button onclick="{onMedalsFirst}">Medals First</button>
-			<button onclick="{onMedalsLast}">Medals Last</button>
-			<button onclick="{onCountryFirst}">Country First</button>
-			<button onclick="{onSwapFirstTwo}">Swap First Two</button>
-			<button onclick="{onPrintColumns}">Print Columns</button>
+	<div class="fg-secondary pad-dot-5 f-row">
+		<div>
+			<ui-button onclick="{onMedalsFirst}" label="Medals First" />
+			<ui-button onclick="{onMedalsLast}" label="Medals Last" />
+			<ui-button onclick="{onCountryFirst}" label="Country First" />
+			<ui-button onclick="{onSwapFirstTwo}" label="Swap First Two" />
+			<ui-button onclick="{onPrintColumns}" label="Print Columns" />
 		</div>
+	</div>
+	<div class="fg-primary pad-dot-5 f-row">
+		
 		<div ref="ag_grid" id="myGrid" style="height: 600px;width:1000px;" class="ag-theme-balham"></div>
 	</div>
 	<script>
