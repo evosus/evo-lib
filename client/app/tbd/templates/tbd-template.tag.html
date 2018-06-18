@@ -1,5 +1,6 @@
 <tbd-template>
 	<nav-bar ref="nav_bar" />
+	<nav-bar-detail ref="nav_bar_detail" />
 	<div class="f-row f-wrap">
 		<div class="pad-dot-5">
 			<ui-button ref="ui_button_tbd" onclick="{buttonClick1}"/>
@@ -7,19 +8,37 @@
 			<ui-button ref="ag_button" onclick="{getSelectedRows}" />
 		</div>
 	</div>
-	<div class="fg-secondary pad-dot-5 f-row">
-		<div>
-			<ui-button onclick="{onMedalsFirst}" label="Medals First" />
-			<ui-button onclick="{onMedalsLast}" label="Medals Last" />
-			<ui-button onclick="{onCountryFirst}" label="Country First" />
-			<ui-button onclick="{onSwapFirstTwo}" label="Swap First Two" />
-			<ui-button onclick="{onPrintColumns}" label="Print Columns" />
+	<div class="f-row f-wrap">
+		<div class="fg-primary pad-dot-5">
+			<ui-button ref="ath_asc" onclick="{athleteSort.bind(this, 'asc')}"/>
+			<ui-button ref="ath_desc" onclick="{athleteSort.bind(this, 'desc')}"/>
 		</div>
 	</div>
-	<div class="fg-primary pad-dot-5 f-row">
-		
+	<div class="fg-primary pad-dot-5 f-row grid-wrapper">
 		<div ref="ag_grid" id="myGrid" style="height: 600px;width:1000px;" class="ag-theme-balham"></div>
 	</div>
+	
+	<style>
+	.locked-visible {
+    	background: #008b8b;
+	}
+
+	.legend-box {
+		border: 1px solid #aaa;
+	}
+
+	.legend-bar {
+		
+		top: 0;
+		left: 0;
+	}
+
+	.grid-wrapper {
+		height: 100%;
+		padding-top: 26px;
+		box-sizing: border-box;
+	}
+	</style>
 	<script>
 		import CTRL from 'client/app/tbd/scripts/tbd-ctrl.js'
 		this.mixin(IO.default, CTRL);

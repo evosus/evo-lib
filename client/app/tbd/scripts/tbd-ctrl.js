@@ -1,30 +1,27 @@
 import * as agGrid from 'ag-grid';
-//import 'ag-grid-enterprise'
 
 // START OF PARAMETERS FOR AG-GRID
+//import 'ag-grid-enterprise'
+
 var columnDefs = [
-   {lockPosition: true, valueGetter: 'node.rowIndex', cellClass: 'locked-col', width: 40, suppressNavigable: true},
-   {lockPosition: true, cellRenderer: controlsCellRenderer, cellClass: 'locked-col', suppressNavigable: true},
-   {field: 'athlete', width: 150},
-   {field: 'age'},
-   {field: 'country', width: 150},
-   {field: 'year'},
-   {field: 'date'},
-   {field: 'sport'},
-   {field: 'gold'},
-   {field: 'silver'},
-   {field: 'bronze'},
-   {field: 'total'}
+    {headerName: "Athlete", field: "athlete", width: 150},
+    {headerName: "Age", field: "age", width: 90, sortingOrder: ['desc','asc']},
+    {headerName: "Country", field: "country", width: 120, sortingOrder: ['desc',null]},
+    {headerName: "Year", field: "year", width: 90, sortingOrder: ['asc']},
+    {headerName: "Date", field: "date", width: 110},
+    {headerName: "Sport", field: "sport", width: 110},
+    {headerName: "Gold", field: "gold", width: 100},
+    {headerName: "Silver", field: "silver", width: 100},
+    {headerName: "Bronze", field: "bronze", width: 100},
+    {headerName: "Total", field: "total", width: 100}
 ];
 
 var gridOptions = {
-    suppressDragLeaveHidesColumns: true,
-    enableColResize: true,
     columnDefs: columnDefs,
-    onColumnPinned: onColumnPinned,
-    defaultColDef: {
-        width: 100
-    }
+    rowData: null,
+    enableSorting: true,
+    animateRows: true,
+    sortingOrder: ['desc','asc',null]
 };
 
 // simple cell renderer returns dummy buttons. in a real application, a component would probably
@@ -77,7 +74,11 @@ const ctrl = {
         } else {
             ctrl.opts.nav_bar = {
                 css: 'ui-primary',
-                title: ctrl.opts.title
+                title: ctrl.opts.title,
+                category: 'category'
+            }
+            ctrl.opts.nav_bar_detail = {
+                css:'ui-secondary shadow-bar'
             }
             ctrl.opts.ui_button_tbd = {
                 label: 'button1'
@@ -88,6 +89,12 @@ const ctrl = {
             ctrl.opts.ag_button = {
                 label: 'Get Selected Rows',
                 css: 'ui-active'
+            }
+            ctrl.opts.ath_asc = {
+                label: 'Athlete Asc'
+            }
+            ctrl.opts.ath_desc = {
+                label: 'Athlete Desc'
             }
         }
         this.agGridSetUp()
@@ -123,37 +130,10 @@ const ctrl = {
         this.setState()
     },
 
-    onMedalsFirst() {
-        gridOptions.columnApi.moveColumns(['gold','silver','bronze','total'], 0);
-    },
-    
-    onMedalsLast() {
-        gridOptions.columnApi.moveColumns(['gold','silver','bronze','total'], 6);
-    },
-    
-    onCountryFirst() {
-        gridOptions.columnApi.moveColumn('country', 0);
-    },
-    
-    onSwapFirstTwo() {
-        gridOptions.columnApi.moveColumnByIndex(0, 1);
-    },
-    
-    onPrintColumns() {
-        var cols = gridOptions.columnApi.getAllGridColumns();
-        var colToNameFunc = function(col, index) {
-            return index + ' = ' + col.getId();
-        };
-        var colNames = cols.map(colToNameFunc).join(', ');
-        console.log('columns are: ' + colNames);
-    },
-
-    onPinAthlete() {
-        gridOptions.columnApi.setColumnPinned('athlete', 'left');
-    },
-    
-    onUnpinAthlete() {
-        gridOptions.columnApi.setColumnPinned('athlete', null);
+    athleteSort(sortBy) {
+        console.log('athlete button', sortBy)
+        let sort = [{colId: 'athlete', sort: sortBy}]
+        ctrl.gridOptions.api.setSortModel(sort)
     }
 
 

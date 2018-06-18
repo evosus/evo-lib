@@ -95,6 +95,7 @@ var IO  = {
 	},
 	goBack() {
 		window.history.back();
+		console.log('goBack')
 	}
 };
 

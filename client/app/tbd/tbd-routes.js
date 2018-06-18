@@ -7,6 +7,7 @@ route('/tbd', function() {
 		import('client/system/tags/ui-button-busy.tag.html'),
 		import('client/system/tags/ui-input.tag.html'),
 		import('client/system/tags/nav-bar.tag.html'),
+		import('client/system/tags/nav-bar-detail.tag.html'),
         import('client/app/tbd/templates/tbd-template.tag.html')
 	]).then( () => {
 		const props = {
