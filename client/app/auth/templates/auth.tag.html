@@ -1,0 +1,152 @@
+<auth>
+	<div class="auth ui-grad1">
+		<div></div>
+		<div class="center-row">
+			<div></div>
+			<div class="center-col">
+				<login />
+			</div>
+			<div></div>
+		</div>
+		<div></div>
+	</div>
+	<style>
+		.ui-grad1 {
+		    height: 200px;
+		    background: rgba(50,25,0,1.0); /* For browsers that do not support gradients */
+/*
+		    background: linear-gradient(to bottom, rgba(50,30,0,1.0), rgba(5,3,0,1.0)); /* Standard syntax (must be last) */
+*/
+		}
+		.auth {
+			font-size:16px;
+			font-family:sans-serif;
+			height:100vh;
+			display:grid;
+			grid-template-rows:auto auto auto;
+		}
+		.center-row {
+			grid-row-start:2;
+			display:grid;
+			grid-template-columns:auto 20em auto;	
+		}
+		.center-col {
+			grid-column-start:2;
+		}
+/*
+rgb(255,140,0)
+			color:rgba(0,150,255,0.75);
+*/
+	</style>
+</auth>
+<login>
+	<div class="login f-col">
+		<h1>Evosus Library</h1>
+		<h2>Login</h2>
+<!--
+		<label for="ver">Library Version</label>
+		<select id="ver">
+			<option selected>Ver 2.0</option>
+		</select>
+!-->
+		<div style="height:1em;"></div>
+		<label>Email Address</label>
+		<input type="email"  placeholder="" />
+		<div style="color:red;font-weight:700;height:2em;font-style:italic;opacity:0.5;font-size:.8175em;text-align:top;">
+<!--
+			^ this field is required
+!-->
+		</div>
+		<label>Password</label>
+		<input type="password" placeholder="" />
+		<div style="height:2em;font-style:italic;opacity:0.35;font-size:.875em;text-align:top;"></div>
+		<div style="height:1em;"></div>
+		<button>Confirm</button>
+		<div class="version">v2.0</div>
+	</div>
+	<style>
+		.version {
+			padding:1em;
+			text-align:center;
+			color:rgba(255,150,0,0.15);
+		}
+		h1,
+		label {
+			color:rgba(255,150,0,0.75);
+/*
+*/
+		}
+		h1 {
+			font-weight:400;
+			margin:0;
+		}
+		h2 {
+			font-weight:400;
+			color:white;
+			opacity:0.75;
+		}
+		input, select {
+			font-weight:700;
+			color:white;
+			background:none;
+			outline:none;
+			border:none;
+			box-shadow:none;
+			background-image: linear-gradient(to bottom, rgba(255,150,0,0.1), rgba(255,150,0,0.1));
+			border-bottom:2px solid transparent;
+			background-position: bottom;
+			background-size: 100% 100%;
+			background-repeat: repeat-x;
+			-webkit-transition:.2s ease-in-out all;
+			transition:.2s ease-in-out all;
+			padding:.5em;
+		}
+		input:focus, select:focus {
+			background-size: 0px 0px;
+			border-bottom:2px solid rgba(255,150,0,0.5);
+		}
+/*
+		input:not(:placeholder-shown) {
+			background-size: 0px 0px;
+			border-bottom:2px solid rgba(255,150,0,0.5);
+		}
+*/
+		select {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+		}
+		select:-moz-focusring {
+				color: transparent;
+				text-shadow: 0 0 0 #000;
+		}
+		option:not(:checked) {
+			color: black; /* prevent <option>s from becoming transparent as well */
+		}
+		button {
+			cursor:pointer;
+			border-radius:.25em;
+			box-shadow:none;
+			height:2.5em;
+			color:rgba(255,150,0,0.75);
+			border:2px solid rgba(255,150,0,0.0);
+			background:rgba(255,150,0,0.15);
+			font-weight:700;
+			text-transform:uppercase;
+			transition:.2s ease-in-out all;
+		}
+		button:focus,
+		button:hover {
+			color:white;
+			border:2px solid rgba(255,150,0,0.5);
+			outline:none;
+		}
+		button:active {
+			color:white;
+			background:rgba(255,150,0,0.5);
+			outline:none;
+		}
+		button::-moz-focus-inner {
+			border: 0;
+		}
+	</style>
+</login>

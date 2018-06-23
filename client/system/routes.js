@@ -8,8 +8,16 @@
 
 import route from 'riot-route';
 
+route('/', () => {
+	Promise.all([
+		import('client/app/auth/templates/auth.tag.html')
+	]).then( () => {
+		riot.mount('#base','auth');
+	}).catch( err => {
+		console.trace(err);
+	})
+});
 /** BEGIN ROUTE IMPORTS */
-import 'client/app/troy/troy-routes.js';
 
 
 

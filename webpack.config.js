@@ -11,8 +11,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = (env = {}) => {
-    console.log('webpack');
-    console.log(env);
+    console.log(`webpack: env == ${JSON.stringify(env)}`);
     return {
         entry: "./client/index.js",
         output: {
@@ -98,7 +97,6 @@ module.exports = (env = {}) => {
             alias: {
 								workers: path.resolve(__dirname, "client/system/workers"),
                 lib: path.resolve(__dirname, "node_modules"),
-                evo_lib: path.resolve(__dirname, "node_modules/evo-lib/client/system/"),
                 client: path.resolve(__dirname, "client")
             }
         },
