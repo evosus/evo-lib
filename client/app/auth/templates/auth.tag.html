@@ -13,9 +13,10 @@
 	<style>
 		.ui-grad1 {
 		    height: 200px;
-		    background: rgba(50,25,0,1.0); /* For browsers that do not support gradients */
+				background:rgba(0,0,0,0.9);
 /*
-		    background: linear-gradient(to bottom, rgba(50,30,0,1.0), rgba(5,3,0,1.0)); /* Standard syntax (must be last) */
+		    background: rgba(50,25,0,1.0);
+		    background: linear-gradient(to bottom, rgba(50,30,0,1.0), rgba(5,3,0,1.0));
 */
 		}
 		.auth {
@@ -43,28 +44,62 @@ rgb(255,140,0)
 	<div class="login f-col">
 		<h1>Evosus Library</h1>
 		<h2>Login</h2>
-<!--
 		<label for="ver">Library Version</label>
 		<select id="ver">
 			<option selected>Ver 2.0</option>
 		</select>
-!-->
 		<div style="height:1em;"></div>
-		<label>Email Address</label>
-		<input type="email"  placeholder="" />
+		<label for="eml">Email Address</label>
+
+		<input id="eml" type="email"  placeholder="" />
+
 		<div style="color:red;font-weight:700;height:2em;font-style:italic;opacity:0.5;font-size:.8175em;text-align:top;">
 <!--
 			^ this field is required
 !-->
 		</div>
-		<label>Password</label>
-		<input type="password" placeholder="" />
+		<label for="pwd">Password</label>
+		<input id="pwd" type="password" placeholder="" />
 		<div style="height:2em;font-style:italic;opacity:0.35;font-size:.875em;text-align:top;"></div>
+		<div class="f-row ai-center">
+			<input id="rem" type="checkbox" label="Checkbox" />
+			<label for="rem">Remember Me</label>
+		</div>
 		<div style="height:1em;"></div>
 		<button>Confirm</button>
 		<div class="version">v2.0</div>
 	</div>
 	<style>
+		input[type=checkbox] {
+			margin-right:1em;
+			transform: scale(1.5);
+			-moz-appearance:none;
+			-webkit-appearance:none;
+			-o-appearance:none;
+			-webkit-box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
+			-moz-box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
+			box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
+			background:rgba(255,150,0,0.1);
+			border-radius:.25em;
+			border:none!important;
+			outline:none!important;
+		}
+
+		input[type=checkbox]:focus {
+			background:none;
+			-webkit-box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
+			-moz-box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
+			box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
+
+		}
+
+		input[type=checkbox]:checked:before {
+			color:white;
+			content:"x";
+			position:absolute;
+			top:-.12em;
+			left:.2em;
+		}
 		.version {
 			padding:1em;
 			text-align:center;
