@@ -1,0 +1,114 @@
+/* BEGIN UI-THEME */
+.ui-theme {
+	background: white;
+}
+/* END UI-THEME */
+/* BEGIN HEADINGS & LABELS */
+.ui-theme h1,
+.ui-theme label {
+	color:rgba(0,150,255,0.75);
+}
+.ui-theme h1 {
+	font-weight:400;
+	margin:0;
+}
+.ui-theme h2 {
+	font-weight:400;
+	color:black;
+	opacity:0.75;
+}
+/* END HEADINGS & LABELS */
+/* BEGIN CHECKBOX */
+.ui-theme input[type=checkbox],
+.ui-theme input[type=radio] {
+	margin-right:1em;
+	transform: scale(1.5);
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-o-appearance:none;
+	-webkit-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.0);
+	-moz-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.0);
+	box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.0);
+	background:rgba(0,150,255,0.1);
+	border-radius:.25em;
+	border:none!important;
+	outline:none!important;
+}
+
+.ui-theme input[type=checkbox]:focus,
+.ui-theme input[type=radio]:focus {
+	background:none;
+	-webkit-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.5);
+	-moz-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.5);
+	box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.5);
+
+}
+.ui-theme input[type=checkbox]:checked:before,
+.ui-theme input[type=radio]:checked:before {
+	color:rgba(0,0,0,0.75);
+	content:"x";
+	position:absolute;
+	top:-.12em;
+	left:.225em;
+}
+/* END CHECKBOX */
+/* BEGIN INPUT & SELECT */
+.ui-theme input, .ui-theme select {
+	font-weight:700;
+	color:rgba(0,0,0,0.75);
+	background:none;
+	outline:none;
+	border:none;
+	box-shadow:none;
+	background-image: linear-gradient(to bottom, rgba(0,150,255,0.1), rgba(0,150,255,0.1));
+	border-bottom:2px solid transparent;
+	background-position: bottom;
+	background-size: 100% 100%;
+	background-repeat: repeat-x;
+	-webkit-transition:.2s ease-in-out all;
+	transition:.2s ease-in-out all;
+	padding:.5em;
+}
+.ui-theme input:focus, .ui-theme select:focus {
+	background-size: 0px 0px;
+	border-bottom:2px solid rgba(0,150,255,0.5);
+}
+.ui-theme select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+.ui-theme select:-moz-focusring {
+		color: transparent;
+		text-shadow: 0 0 0 #000;
+}
+.ui-theme option:not(:checked) {
+	color: black; /* prevent <option>s from becoming transparent as well */
+}
+/* END INPUT & SELECT */
+/* BEGIN BUTTON */
+.ui-theme button {
+	cursor:pointer;
+	border-radius:.25em;
+	box-shadow:none;
+	height:2.5em;
+	color:rgba(0,150,255,0.75);
+	border:2px solid rgba(0,150,255,0.0);
+	background:rgba(0,150,255,0.15);
+	font-weight:700;
+	text-transform:uppercase;
+	transition:.2s ease-in-out all;
+}
+.ui-theme button:focus,
+.ui-theme button:hover {
+	border:2px solid rgba(0,150,255,0.5);
+	outline:none;
+}
+.ui-theme button:active {
+	color:white;
+	background:rgba(0,150,255,0.5);
+	outline:none;
+}
+.ui-theme button::-moz-focus-inner {
+	border: 0;
+}
+/* END BUTTON */

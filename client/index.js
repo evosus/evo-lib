@@ -7,4 +7,6 @@ import layout from 'client/system/css/ui-layout.css';
 import theme from 'client/system/css/ui-theme.css';
 import mdi from 'lib/mdi/css/materialdesignicons.css';
 */
+import 'client/system/css/evo-theme.css';
+import 'client/system/css/evo-theme-dk.css';
 route.start(true);

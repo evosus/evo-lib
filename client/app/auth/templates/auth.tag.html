@@ -1,5 +1,5 @@
 <auth>
-	<div class="auth ui-grad1">
+	<div class="auth { theme }">
 		<div></div>
 		<div class="center-row">
 			<div></div>
@@ -10,15 +10,19 @@
 		</div>
 		<div></div>
 	</div>
-	<style>
-		.ui-grad1 {
-		    height: 200px;
-				background:rgba(0,0,0,0.9);
-/*
-		    background: rgba(50,25,0,1.0);
-		    background: linear-gradient(to bottom, rgba(50,30,0,1.0), rgba(5,3,0,1.0));
-*/
+	<script>
+		this.theme = 'ui-theme';
+		this.toggleTheme = e => {
+			console.info("TOGGLE THEME");
+			console.dir(e);
+			this.theme = e.target.value;
+			this.update();
 		}
+		this.on('mount', () => {
+			this.update();
+		});
+	</script>
+	<style>
 		.auth {
 			font-size:16px;
 			font-family:sans-serif;
@@ -34,154 +38,69 @@
 		.center-col {
 			grid-column-start:2;
 		}
-/*
-rgb(255,140,0)
-			color:rgba(0,150,255,0.75);
-*/
 	</style>
 </auth>
 <login>
-	<div class="login f-col">
+	<form class="login f-col">
+
 		<h1>Evosus Library</h1>
 		<h2>Login</h2>
-		<label for="ver">Library Version</label>
-		<select id="ver">
-			<option selected>Ver 2.0</option>
+
+		<div class="pad-dot-5"></div>
+
+		<label for="ver">Theme</label>
+		<select id="ver" onchange="{ parent.toggleTheme }">
+			<option value="ui-theme" selected>Light</option>
+			<option value="ui-theme-dk">Dark</option>
 		</select>
-		<div style="height:1em;"></div>
+
+		<div class="pad-dot-5"></div>
+
 		<label for="eml">Email Address</label>
+		<input id="eml" type="email"  placeholder="" required />
 
-		<input id="eml" type="email"  placeholder="" />
+		<div class="pad-dot-5"></div>
 
-		<div style="color:red;font-weight:700;height:2em;font-style:italic;opacity:0.5;font-size:.8175em;text-align:top;">
-<!--
-			^ this field is required
-!-->
-		</div>
 		<label for="pwd">Password</label>
-		<input id="pwd" type="password" placeholder="" />
-		<div style="height:2em;font-style:italic;opacity:0.35;font-size:.875em;text-align:top;"></div>
+		<input id="pwd" type="password" placeholder="" required />
+
+		<div class="pad-dot-5"></div>
+
 		<div class="f-row ai-center">
-			<input id="rem" type="checkbox" label="Checkbox" />
+			<input id="rem" type="checkbox" />
 			<label for="rem">Remember Me</label>
 		</div>
-		<div style="height:1em;"></div>
+
+		<div class="pad-dot-5"></div>
+
+		<div class="f-row ai-center">
+			<input name="radio" id="rad1" type="radio" checked />
+			<label for="rad1">Option 1</label>
+		</div>
+
+		<div class="pad-dot-5"></div>
+
+		<div class="f-row ai-center">
+			<input name="radio" id="rad2" type="radio" />
+			<label for="rad2">Option 2</label>
+		</div>
+		<div class="pad-dot-5"></div>
+
 		<button>Confirm</button>
+
+		<div class="pad-dot-5"></div>
+
 		<div class="version">v2.0</div>
-	</div>
+
+	</form>
 	<style>
-		input[type=checkbox] {
-			margin-right:1em;
-			transform: scale(1.5);
-			-moz-appearance:none;
-			-webkit-appearance:none;
-			-o-appearance:none;
-			-webkit-box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
-			-moz-box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
-			box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
-			background:rgba(255,150,0,0.1);
-			border-radius:.25em;
-			border:none!important;
-			outline:none!important;
-		}
-
-		input[type=checkbox]:focus {
-			background:none;
-			-webkit-box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
-			-moz-box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
-			box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
-
-		}
-
-		input[type=checkbox]:checked:before {
-			color:white;
-			content:"x";
-			position:absolute;
-			top:-.12em;
-			left:.2em;
+		.pad-dot-5 {
+			padding:.5em;
 		}
 		.version {
 			padding:1em;
 			text-align:center;
-			color:rgba(255,150,0,0.15);
-		}
-		h1,
-		label {
-			color:rgba(255,150,0,0.75);
-/*
-*/
-		}
-		h1 {
-			font-weight:400;
-			margin:0;
-		}
-		h2 {
-			font-weight:400;
-			color:white;
-			opacity:0.75;
-		}
-		input, select {
-			font-weight:700;
-			color:white;
-			background:none;
-			outline:none;
-			border:none;
-			box-shadow:none;
-			background-image: linear-gradient(to bottom, rgba(255,150,0,0.1), rgba(255,150,0,0.1));
-			border-bottom:2px solid transparent;
-			background-position: bottom;
-			background-size: 100% 100%;
-			background-repeat: repeat-x;
-			-webkit-transition:.2s ease-in-out all;
-			transition:.2s ease-in-out all;
-			padding:.5em;
-		}
-		input:focus, select:focus {
-			background-size: 0px 0px;
-			border-bottom:2px solid rgba(255,150,0,0.5);
-		}
-/*
-		input:not(:placeholder-shown) {
-			background-size: 0px 0px;
-			border-bottom:2px solid rgba(255,150,0,0.5);
-		}
-*/
-		select {
-			-moz-appearance: none;
-			-webkit-appearance: none;
-		}
-		select:-moz-focusring {
-				color: transparent;
-				text-shadow: 0 0 0 #000;
-		}
-		option:not(:checked) {
-			color: black; /* prevent <option>s from becoming transparent as well */
-		}
-		button {
-			cursor:pointer;
-			border-radius:.25em;
-			box-shadow:none;
-			height:2.5em;
-			color:rgba(255,150,0,0.75);
-			border:2px solid rgba(255,150,0,0.0);
-			background:rgba(255,150,0,0.15);
-			font-weight:700;
-			text-transform:uppercase;
-			transition:.2s ease-in-out all;
-		}
-		button:focus,
-		button:hover {
-			color:white;
-			border:2px solid rgba(255,150,0,0.5);
-			outline:none;
-		}
-		button:active {
-			color:white;
-			background:rgba(255,150,0,0.5);
-			outline:none;
-		}
-		button::-moz-focus-inner {
-			border: 0;
+			color:grey;
 		}
 	</style>
 </login>

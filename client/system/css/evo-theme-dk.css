@@ -1,0 +1,115 @@
+/* BEGIN UI-THEME-DK */
+.ui-theme-dk {
+	background: linear-gradient(to bottom, rgba(50,30,0,1.0), rgba(5,3,0,1.0));
+}
+/* END UI-THEME-DK */
+/* BEGIN HEADINGS & LABELS */
+.ui-theme-dk h1,
+.ui-theme-dk label {
+	color:rgba(255,150,0,0.75);
+}
+.ui-theme-dk h1 {
+	font-weight:400;
+	margin:0;
+}
+.ui-theme-dk h2 {
+	font-weight:400;
+	color:white;
+	opacity:0.75;
+}
+/* END HEADINGS & LABELS */
+/* BEGIN CHECKBOX  & RADIO */
+.ui-theme-dk input[type=checkbox],
+.ui-theme-dk input[type=radio] {
+	margin-right:1em;
+	transform: scale(1.5);
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-o-appearance:none;
+	-webkit-box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
+	-moz-box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
+	box-shadow: 0px 0px 0px 2px rgba(255,150,0,0.0);
+	background:rgba(255,150,0,0.1);
+	border-radius:.25em;
+	border:none!important;
+	outline:none!important;
+}
+
+.ui-theme-dk input[type=checkbox]:focus,
+.ui-theme-dk input[type=radio]:focus {
+	background:none;
+	-webkit-box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
+	-moz-box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
+	box-shadow: 0px 0px 0px 1px rgba(255,150,0,1.0);
+
+}
+.ui-theme-dk input[type=checkbox]:checked:before,
+.ui-theme-dk input[type=radio]:checked:before {
+	color:white;
+	content:"x";
+	position:absolute;
+	top:-.12em;
+	left:.2em;
+}
+/* END CHECKBOX & RADIO */
+/* BEGIN INPUT & SELECT */
+.ui-theme-dk input, .ui-theme-dk select {
+	font-weight:700;
+	color:white;
+	background:none;
+	outline:none;
+	border:none;
+	box-shadow:none;
+	background-image: linear-gradient(to bottom, rgba(255,150,0,0.1), rgba(255,150,0,0.1));
+	border-bottom:2px solid transparent;
+	background-position: bottom;
+	background-size: 100% 100%;
+	background-repeat: repeat-x;
+	-webkit-transition:.2s ease-in-out all;
+	transition:.2s ease-in-out all;
+	padding:.5em;
+}
+.ui-theme-dk input:focus, .ui-theme-dk select:focus {
+	background-size: 0px 0px;
+	border-bottom:2px solid rgba(255,150,0,0.5);
+}
+.ui-theme-dk select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+.ui-theme-dk select:-moz-focusring {
+		color: transparent;
+		text-shadow: 0 0 0 #000;
+}
+.ui-theme-dk option:not(:checked) {
+	color: black; /* prevent <option>s from becoming transparent as well */
+}
+/* END INPUT & SELECT */
+/* BEGIN BUTTON */
+.ui-theme-dk button {
+	cursor:pointer;
+	border-radius:.25em;
+	box-shadow:none;
+	height:2.5em;
+	color:rgba(255,150,0,0.75);
+	border:2px solid rgba(255,150,0,0.0);
+	background:rgba(255,150,0,0.15);
+	font-weight:700;
+	text-transform:uppercase;
+	transition:.2s ease-in-out all;
+}
+.ui-theme-dk button:focus,
+.ui-theme-dk button:hover {
+	color:white;
+	border:2px solid rgba(255,150,0,0.5);
+	outline:none;
+}
+.ui-theme-dk button:active {
+	color:white;
+	background:rgba(255,150,0,0.5);
+	outline:none;
+}
+.ui-theme-dk button::-moz-focus-inner {
+	border: 0;
+}
+/* END BUTTON */
