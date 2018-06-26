@@ -27,7 +27,6 @@
 	-webkit-appearance:none;
 	-o-appearance:none;
 	-webkit-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.0);
-	-moz-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.0);
 	box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.0);
 	background:rgba(0,150,255,0.1);
 	border-radius:.25em;
@@ -39,7 +38,6 @@
 .ui-theme input[type=radio]:focus {
 	background:none;
 	-webkit-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.5);
-	-moz-box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.5);
 	box-shadow: 0px 0px 0px 1.5px rgba(0,150,255,0.5);
 
 }
@@ -48,7 +46,7 @@
 	color:rgba(0,0,0,0.75);
 	content:"x";
 	position:absolute;
-	top:-.12em;
+	top:-.14em;
 	left:.225em;
 }
 /* END CHECKBOX */
@@ -73,13 +71,21 @@
 	background-size: 0px 0px;
 	border-bottom:2px solid rgba(0,150,255,0.5);
 }
+.ui-theme input:invalid:not(:placeholder-shown) {
+	background-size: 0px 0px;
+	border-bottom:2px solid rgba(255,50,50,0.75);
+}
+.ui-theme input:valid {
+	background-size: 0px 0px;
+	border-bottom:2px solid rgba(0,255,150,0.75);
+}
 .ui-theme select {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 }
 .ui-theme select:-moz-focusring {
 		color: transparent;
-		text-shadow: 0 0 0 rgba(0,0,0,0.75);
+		text-shadow: 0 0 0 #000;
 }
 .ui-theme option:not(:checked) {
 	color: rgba(0,0,0,0.75); /* prevent <option>s from becoming transparent as well */
