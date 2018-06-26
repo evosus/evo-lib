@@ -79,10 +79,10 @@
 }
 .ui-theme select:-moz-focusring {
 		color: transparent;
-		text-shadow: 0 0 0 #000;
+		text-shadow: 0 0 0 rgba(0,0,0,0.75);
 }
 .ui-theme option:not(:checked) {
-	color: black; /* prevent <option>s from becoming transparent as well */
+	color: rgba(0,0,0,0.75); /* prevent <option>s from becoming transparent as well */
 }
 /* END INPUT & SELECT */
 /* BEGIN BUTTON */
