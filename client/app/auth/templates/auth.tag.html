@@ -13,8 +13,6 @@
 	<script>
 		this.theme = 'ui-theme';
 		this.toggleTheme = e => {
-			console.info("TOGGLE THEME");
-			console.dir(e);
 			this.theme = e.target.value;
 			this.update();
 		}
@@ -57,12 +55,12 @@
 		<div class="pad-dot-5"></div>
 
 		<label for="email">Email Address</label>
-		<input id="email" type="email"  placeholder="" required autocomplete="email" autofocus>
+		<input id="email" type="email"  placeholder=" " required autocomplete="email" autofocus>
 
 		<div class="pad-dot-5"></div>
 
 		<label for="password">Password</label>
-		<input id="password" type="password" placeholder="" required>
+		<input id="password" type="password" placeholder=" " required>
 
 		<div class="pad-dot-5"></div>
 

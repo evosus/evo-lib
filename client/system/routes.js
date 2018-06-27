@@ -17,6 +17,15 @@ route('/', () => {
 		console.trace(err);
 	})
 });
+route('/my-account', () => {
+	Promise.all([
+		import('client/app/auth/templates/my-account.tag.html')
+	]).then( () => {
+		riot.mount('#base','my-account');
+	}).catch( err => {
+		console.trace(err);
+	})
+});
 /** BEGIN ROUTE IMPORTS */
 
 
