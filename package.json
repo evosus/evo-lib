@@ -7,7 +7,8 @@
     "start": "node ./server.js",
     "devstart": "NODE_ENV=development nodemon ./server.js",
     "wds": "node_modules/.bin/webpack-dev-server",
-    "monitor": "nodemon ./server.js"
+    "monitor": "nodemon ./server.js",
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
