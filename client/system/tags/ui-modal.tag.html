@@ -1,5 +1,5 @@
 <ui-modal>
-	<div if="{ opts.isOpen && opts.template }" class="ui-modal f-col ai-center jc-center fill">
+	<div if="{ opts.isOpen }" class="ui-modal f-col ai-center jc-center fill">
 		<div class="ui-white rounded modal-shadow">
 			<div class="modal-contents">
 				<div id="modalMount">
@@ -31,37 +31,15 @@
 	<script>
 		this.mixin(IO.default);
 		this.on('update',() => {
-			console.log('update', this.opts);
-			
 			if(this.opts.template && this.opts.templateOpts) {
 				riot.mount('#modalMount',this.opts.template,this.opts.templateOpts || {});	
 			}
 		});
-		// this.on('updated',() => {
-		// 	console.log(this.opts)
-		// 	if (this.opts.isOpen) {
-		// 		console.log('isOpen', this.opts.templateOpts)
-		// 		// console.log()
-		// 	}			
-		// })
 		this.on('before-mount', (e) => {
 			let navState = IO.default.getStateByKey('NAV')
 			if (navState.ui_modal.isOpen) {
-				console.log('modal is open')
 				IO.default.obs.trigger('CLOSE_MODAL')
-				this.update()
 			}
 		})
-		// this.on('mount', () => {
-			// IO.default.obs.trigger('CLOSE_MODAL');
-			// if (this.opts) {
-			// 	console.log('mount', this.opts)
-			// 	// IO.default.obs.trigger('CLOSE_MODAL')
-			// }
-			// try {
-			// } catch (e) {
-			// 	console.log('before-mount', this.opts)
-			// }
-		// })
 	</script>
 </ui-modal>
