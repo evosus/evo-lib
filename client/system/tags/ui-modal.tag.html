@@ -31,9 +31,15 @@
 	<script>
 		this.mixin(IO.default);
 		this.on('update',() => {
-			if(this.opts.template) {
+			if(this.opts.template && this.opts.templateOpts) {
 				riot.mount('#modalMount',this.opts.template,this.opts.templateOpts || {});	
 			}
 		});
+		this.on('before-mount', (e) => {
+			let navState = IO.default.getStateByKey('NAV')
+			if (navState.ui_modal.isOpen) {
+				IO.default.obs.trigger('CLOSE_MODAL')
+			}
+		})
 	</script>
 </ui-modal>
