@@ -1,0 +1,19 @@
+<ui-grid>
+    <div ref="grid" class="grid bordered rounded shadow ag-theme-material"></div>
+    <script>
+        import CTRL from './ui-grid-ctrl.js' 
+        this.mixin(IO.default, CTRL)
+    </script>
+    <style>
+        [data-is="ui-icon"] .ui-icon:hover {
+            background-color: lightgray;
+            box-shadow: none;
+        }
+        grid-list {
+            width: 100%;
+        }
+        .grid {
+            height: 600px;
+        }
+    </style>
+</ui-grid>
