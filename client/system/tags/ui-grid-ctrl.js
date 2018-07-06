@@ -25,8 +25,10 @@ const ctrl = {
 	 * Removes observable event handlers
 	 */
 	onUnMount() {
-		let OBS = IO.default.obs;
-		OBS.off(this.opts.observable, this.onListResponse())
+		if (this.opts.observable) {
+			let OBS = IO.default.obs;
+			OBS.off(this.opts.observable, this.onListResponse())
+		}
 	},
 	/**
 	 * Riot mount event handler
@@ -35,11 +37,15 @@ const ctrl = {
 	 */
 	onMount() {
         // set up observable
-        let OBS = IO.default.obs;
-        OBS.on(this.opts.observable, (e) => { this.onListResponse(e) })
+		if (this.opts.observable) {
+			let OBS = IO.default.obs;
+			OBS.on(this.opts.observable, (e) => { this.onListResponse(e) })
+		}
 		// UPDATE
-        this.updateRefs()
-        this.opts.getListItems()
+		this.updateRefs()
+		if (this.opts.getListItems) {
+			this.opts.getListItems()	
+		}
         ctrl.self.update()
 		var eGridDiv = this.refs.grid
         new agGrid.Grid(eGridDiv, this.opts.gridOptions)

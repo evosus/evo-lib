@@ -7,6 +7,9 @@ import layout from 'client/system/css/ui-layout.css';
 import theme from 'client/system/css/ui-theme.css';
 import flexbox from 'client/system/css/ui-flexbox.css';
 import mdi from 'lib/mdi/css/materialdesignicons.css';
+import 'ag-grid/src/styles/ag-grid.scss';
+import 'ag-grid/src/styles/ag-theme-material.scss'
+
 var UI = new UserInterface();
 RC.addStore(UI); // UI State Manager
 Promise.all([

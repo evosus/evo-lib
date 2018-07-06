@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<div class="f-row f-wrap">
-			<ui-grid />
+			<ui-grid ref="ui_grid"/>
 		</div>
 	</div>
 	<script>
@@ -86,6 +86,21 @@
 			IO.default.obs.trigger('SET_NAV_MENU', this.opts.nav_menu);
 			self.setState();
 		});
+		this.opts.ui_grid = {
+			gridOptions: {
+				columnDefs : [
+					{headerName: "Make", field: "make"},
+					{headerName: "Model", field: "model"},
+					{headerName: "Price", field: "price"}
+				],
+				rowData: [
+					{make: "Toyota", model: "Celica", price: 35000},
+					{make: "Ford", model: "Mondeo", price: 32000},
+					{make: "Porsche", model: "Boxter", price: 72000}
+				]
+			},
+			css : 'ui-grid'
+		}
 		this.testSelect = function() {
 			var selectedOption  = self.refs.ui_select.getSelected();
 			console.log(JSON.stringify(selectedOption,null,2));
@@ -184,4 +199,9 @@
 			this.update();
 		}
 	</script>
+	<style>
+		.grid {
+			width: 500px;
+		}
+	</style>
 </app-template>
