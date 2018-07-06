@@ -1,5 +1,4 @@
 import * as agGrid from 'ag-grid'
-import 'ag-grid-enterprise'
 
 const ctrl = {
 	/**
