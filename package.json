@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server.js",
-    "devstart": "NODE_ENV=development nodemon ./server.js",
-    "wds": "node_modules/.bin/webpack-dev-server",
+    "start": "export NODE_ENV=local && export env=local && nodemon ./server.js",
+    "watch": "./node_modules/.bin/webpack --mode=development --progress -w --env.NODE_ENV=local",
+    "build": "./node_modules/.bin/webpack --progress --env.NODE_ENV=local -w",
+    "nowatch": "./node_modules/.bin/webpack --progress --env.NODE_ENV=local",
+    "devstart": "export NODE_ENV=local && nodemon ./server.js",
     "monitor": "nodemon ./server.js"
   },
   "repository": {
