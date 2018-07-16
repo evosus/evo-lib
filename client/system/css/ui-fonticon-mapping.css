@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "mdisubset";
+  src:url("/client/system/assets/fonts/mdisubset.eot");
+  src:url("/client/system/assets/fonts/mdisubset.eot?#iefix") format("embedded-opentype"),
+    url("/client/system/assets/fonts/mdisubset.woff") format("woff"),
+    url("/client/system/assets/fonts/mdisubset.ttf") format("truetype"),
+    url("/client/system/assets/fonts/mdisubset.svg#mdisubset") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "mdisubset" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="mdi-"]:before,
+[class*=" mdi-"]:before {
+  font-family: "mdisubset" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mdi-account:before {
+  content: "\e000";
+}
+.mdi-account-circle:before {
+  content: "\e001";
+}
+.mdi-account-multiple:before {
+  content: "\e002";
+}
+.mdi-checkbox-blank-circle:before {
+  content: "\e003";
+}
+.mdi-check:before {
+  content: "\e004";
+}
+.mdi-cancel:before {
+  content: "\e005";
+}
+.mdi-file-pdf:before {
+  content: "\e006";
+}
+.mdi-link:before {
+  content: "\e007";
+}
+.mdi-home:before {
+  content: "\e008";
+}
+.mdi-refresh:before {
+  content: "\e009";
+}
+.mdi-receipt:before {
+  content: "\e00a";
+}
+.mdi-settings:before {
+  content: "\e00b";
+}
+.mdi-store:before {
+  content: "\e00c";
+}
+.mdi-logout:before {
+  content: "\e00d";
+}
+.mdi-checkbox-blank-outline:before {
+  content: "\e00e";
+}
+.mdi-account-plus:before {
+  content: "\e00f";
+}
+.mdi-apps:before {
+  content: "\e010";
+}
+.mdi-checkbox-marked-outline:before {
+  content: "\e011";
+}
+.mdi-magnify:before {
+  content: "\e012";
+}
+.mdi-tag:before {
+  content: "\e013";
+}
+.mdi-truck:before {
+  content: "\e014";
+}
+.mdi-map-marker:before {
+  content: "\e015";
+}
+.mdi-chevron-left:before {
+  content: "\e016";
+}
+.mdi-arrow-left:before {
+  content: "\e017";
+}
+.mdi-arrow-left-thick:before {
+  content: "\e018";
+}
+.mdi-chevron-right:before {
+  content: "\e019";
+}
+.mdi-menu:before {
+  content: "\e01a";
+}
+.mdi-update:before {
+  content: "\e01b";
+}
+.mdi-menu-down:before {
+  content: "\e01c";
+}
+.mdi-close:before {
+  content: "\e01d";
+}
+.mdi-arrow-right:before {
+  content: "\e01e";
+}
+.mdi-arrow-right-thick:before {
+  content: "\e01f";
+}
+.mdi-cloud-sync:before {
+  content: "\e020";
+}
+.mdi-open-in-new:before {
+  content: "\e021";
+}
+.mdi-pencil:before {
+  content: "\e022";
+}
+.mdi-credit-card:before {
+  content: "\e023";
+}
+.mdi-bank:before {
+  content: "\e024";
+}
+.mdi-backspace:before {
+  content: "\e025";
+}
+.mdi-currency-usd:before {
+  content: "\e026";
+}
+.mdi-phone:before {
+  content: "\e027";
+}
+.mdi-plus:before {
+  content: "\e028";
+}
+.mdi-email-outline:before {
+  content: "\e029";
+}
+.mdi-block-helper:before {
+  content: "\e02a";
+}
+.mdi-calculator:before {
+  content: "\e02b";
+}
+.mdi-eye:before {
+  content: "\e02c";
+}
+.mdi-power:before {
+  content: "\e02d";
+}
