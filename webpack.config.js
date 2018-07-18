@@ -37,8 +37,15 @@ module.exports = {
       },
       { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules\/(?!evo\-lib\/).*/ },
       {
-				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-				loader: 'url-loader'
+				test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '/dist',    // where the fonts will go
+            publicPath: '/dist' 
+          }
+        }]     
 			},
       {
 				test: /\.css$/,
