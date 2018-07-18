@@ -7,7 +7,7 @@ import layout from 'client/system/css/ui-layout.css';
 import theme from 'client/system/css/ui-theme.css';
 import flexbox from 'client/system/css/ui-flexbox.css';
 //import mdi from 'lib/mdi/css/materialdesignicons.css';
-import mdi from 'client/system/css/ui-fonticon-mapping.css';
+import mdi from 'client/system/assets/fonts/ui-fonticon-mapping.css';
 var UI = new UserInterface();
 RC.addStore(UI); // UI State Manager
 Promise.all([
