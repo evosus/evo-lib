@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "mdisubset";
-  src:url("./mdisubset.eot");
-  src:url("./mdisubset.eot?#iefix") format("embedded-opentype"),
-    url("./mdisubset.woff") format("woff"),
-    url("./mdisubset.ttf") format("truetype"),
-    url("./mdisubset.svg#mdisubset") format("svg");
+  src:url("./fonts/mdisubset.eot");
+  src:url("./fonts/mdisubset.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/mdisubset.woff") format("woff"),
+    url("./fonts/mdisubset.ttf") format("truetype"),
+    url("./fonts/mdisubset.svg#mdisubset") format("svg");
   font-weight: normal;
   font-style: normal;
 }
