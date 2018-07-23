@@ -9,6 +9,7 @@
     url("./fonts/mdisubset.svg#mdisubset") format("svg");
   font-weight: normal;
   font-style: normal;
+
 }
 
 [data-icon]:before {
@@ -18,7 +19,6 @@
   font-weight: normal !important;
   font-variant: normal !important;
   text-transform: none !important;
-  /*speak: none;*/
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,147 +31,275 @@
   font-weight: normal !important;
   font-variant: normal !important;
   text-transform: none !important;
-  /*speak: none;*/
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.mdi-account:before {
+.mdi-youtube:before {
   content: "\e000";
 }
-.mdi-account-circle:before {
+.mdi-update:before {
   content: "\e001";
 }
-.mdi-account-multiple:before {
+.mdi-truck:before {
   content: "\e002";
 }
-.mdi-checkbox-blank-circle:before {
+.mdi-trophy:before {
   content: "\e003";
 }
-.mdi-check:before {
+.mdi-trending-up:before {
   content: "\e004";
 }
-.mdi-cancel:before {
+.mdi-timer-sand:before {
   content: "\e005";
 }
-.mdi-file-pdf:before {
+.mdi-target:before {
   content: "\e006";
 }
-.mdi-link:before {
+.mdi-tag:before {
   content: "\e007";
 }
-.mdi-home:before {
+.mdi-svg:before {
   content: "\e008";
 }
-.mdi-refresh:before {
+.mdi-square-inc-cash:before {
   content: "\e009";
 }
-.mdi-receipt:before {
+.mdi-store:before {
   content: "\e00a";
 }
 .mdi-settings:before {
   content: "\e00b";
 }
-.mdi-store:before {
+.mdi-scale:before {
   content: "\e00c";
 }
-.mdi-logout:before {
+.mdi-sale:before {
   content: "\e00d";
 }
-.mdi-checkbox-blank-outline:before {
+.mdi-refresh:before {
   content: "\e00e";
 }
-.mdi-account-plus:before {
+.mdi-receipt:before {
   content: "\e00f";
 }
-.mdi-apps:before {
+.mdi-printer:before {
   content: "\e010";
 }
-.mdi-checkbox-marked-outline:before {
+.mdi-power:before {
   content: "\e011";
 }
-.mdi-magnify:before {
+.mdi-plus-circle-outline:before {
   content: "\e012";
 }
-.mdi-tag:before {
+.mdi-plus:before {
   content: "\e013";
 }
-.mdi-truck:before {
+.mdi-phone:before {
   content: "\e014";
 }
-.mdi-map-marker:before {
+.mdi-pencil:before {
   content: "\e015";
 }
-.mdi-chevron-left:before {
+.mdi-pause:before {
   content: "\e016";
 }
-.mdi-arrow-left:before {
+.mdi-open-in-new:before {
   content: "\e017";
 }
-.mdi-arrow-left-thick:before {
+.mdi-minus-circle-outline:before {
   content: "\e018";
 }
-.mdi-chevron-right:before {
+.mdi-microscope:before {
   content: "\e019";
 }
-.mdi-menu:before {
+.mdi-message-reply-text:before {
   content: "\e01a";
 }
-.mdi-update:before {
+.mdi-menu-down:before {
   content: "\e01b";
 }
-.mdi-menu-down:before {
+.mdi-menu:before {
   content: "\e01c";
 }
-.mdi-close:before {
+.mdi-map-marker:before {
   content: "\e01d";
 }
-.mdi-arrow-right:before {
+.mdi-magnify:before {
   content: "\e01e";
 }
-.mdi-arrow-right-thick:before {
+.mdi-logout:before {
   content: "\e01f";
 }
-.mdi-cloud-sync:before {
+.mdi-link:before {
   content: "\e020";
 }
-.mdi-open-in-new:before {
+.mdi-information-outline:before {
   content: "\e021";
 }
-.mdi-pencil:before {
+.mdi-home:before {
   content: "\e022";
 }
-.mdi-credit-card:before {
+.mdi-history:before {
   content: "\e023";
 }
-.mdi-bank:before {
+.mdi-help:before {
   content: "\e024";
 }
-.mdi-backspace:before {
+.mdi-filter-variant:before {
   content: "\e025";
 }
-.mdi-currency-usd:before {
+.mdi-file-pdf:before {
   content: "\e026";
 }
-.mdi-phone:before {
+.mdi-fax:before {
   content: "\e027";
 }
-.mdi-plus:before {
+.mdi-eye-off:before {
   content: "\e028";
 }
-.mdi-email-outline:before {
+.mdi-eye:before {
   content: "\e029";
 }
-.mdi-block-helper:before {
+.mdi-email-outline:before {
   content: "\e02a";
 }
-.mdi-calculator:before {
+.mdi-email:before {
   content: "\e02b";
 }
-.mdi-eye:before {
+.mdi-dots-vertical:before {
   content: "\e02c";
 }
-.mdi-power:before {
+.mdi-domain:before {
   content: "\e02d";
+}
+.mdi-directions-fork:before {
+  content: "\e02e";
+}
+.mdi-currency-usd:before {
+  content: "\e02f";
+}
+.mdi-credit-card:before {
+  content: "\e030";
+}
+.mdi-comment-text-outline:before {
+  content: "\e031";
+}
+.mdi-comment-processing:before {
+  content: "\e032";
+}
+.mdi-comment-outline:before {
+  content: "\e033";
+}
+.mdi-cloud-sync:before {
+  content: "\e034";
+}
+.mdi-close-circle-outline:before {
+  content: "\e035";
+}
+.mdi-close-circle:before {
+  content: "\e036";
+}
+.mdi-close:before {
+  content: "\e037";
+}
+.mdi-clock:before {
+  content: "\e038";
+}
+.mdi-clipboard-check:before {
+  content: "\e039";
+}
+.mdi-chevron-right:before {
+  content: "\e03a";
+}
+.mdi-chevron-left:before {
+  content: "\e03b";
+}
+.mdi-checkbox-marked-outline:before {
+  content: "\e03c";
+}
+.mdi-checkbox-marked:before {
+  content: "\e03d";
+}
+.mdi-checkbox-blank-outline:before {
+  content: "\e03e";
+}
+.mdi-backspace:before {
+  content: "\e03f";
+}
+.mdi-bank:before {
+  content: "\e040";
+}
+.mdi-account:before {
+  content: "\e041";
+}
+.mdi-account-multiple:before {
+  content: "\e042";
+}
+.mdi-block-helper:before {
+  content: "\e043";
+}
+.mdi-account-circle:before {
+  content: "\e044";
+}
+.mdi-account-plus:before {
+  content: "\e045";
+}
+.mdi-building:before {
+  content: "\e046";
+}
+.mdi-calculator:before {
+  content: "\e047";
+}
+.mdi-alert:before {
+  content: "\e048";
+}
+.mdi-alert-box:before {
+  content: "\e049";
+}
+.mdi-alert-circle:before {
+  content: "\e04a";
+}
+.mdi-cancel:before {
+  content: "\e04b";
+}
+.mdi-cart:before {
+  content: "\e04c";
+}
+.mdi-apps:before {
+  content: "\e04d";
+}
+.mdi-arrow-left:before {
+  content: "\e04e";
+}
+.mdi-arrow-left-thick:before {
+  content: "\e04f";
+}
+.mdi-arrow-right:before {
+  content: "\e050";
+}
+.mdi-arrow-right-thick:before {
+  content: "\e051";
+}
+.mdi-cart-plus:before {
+  content: "\e052";
+}
+.mdi-cash:before {
+  content: "\e053";
+}
+.mdi-cellphone-link:before {
+  content: "\e054";
+}
+.mdi-check:before {
+  content: "\e055";
+}
+.mdi-checkbox-blank:before {
+  content: "\e056";
+}
+.mdi-checkbox-blank-circle:before {
+  content: "\e057";
+}
+.mdi-alert-outline:before {
+  content: "\e058";
 }
