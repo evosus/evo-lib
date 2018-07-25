@@ -261,9 +261,6 @@
 .mdi-alert-circle:before {
   content: "\e04a";
 }
-.mdi-cancel:before {
-  content: "\e04b";
-}
 .mdi-cart:before {
   content: "\e04c";
 }
@@ -302,4 +299,10 @@
 }
 .mdi-alert-outline:before {
   content: "\e058";
+}
+.mdi-cancel:before {
+  content: "\e04b";
+}
+.mdi-plus-circle:before {
+  content: "\e059";
 }
