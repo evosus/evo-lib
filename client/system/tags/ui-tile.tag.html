@@ -3,12 +3,12 @@
 -->
 <ui-tile>
     <div class="pad-dot-5">
-        <div class="tile rounded shadow-box f-col ai-center { this.opts.tiles.bgcss }" style="overflow:hidden;" onclick="{ routeTo }">
+        <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;" onclick="{ routeTo }">
             <div class="tile-icon f-col ai-center jc-center">
-                <img type="image/svg+xml" data={this.opts.tiles.icon} />
+                <img type="image/svg+xml" data={opts.tiles.icon} />
             </div>
             <div class="pad-dot-5 fg-white">
-                <h3>{ this.opts.tiles.name }</h3>
+                <h3>{ opts.tiles.name }</h3>
                 <div class="pad-dot-5"></div>
             </div>    
         </div>
@@ -17,7 +17,6 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
-			debugger;
 			console.dir(this);
 		}); 
     </script>
