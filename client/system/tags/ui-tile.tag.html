@@ -17,10 +17,12 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
+			console.dir(self);
+			function test() {
+				debugger;
+			}
 		}); 
-		function test() {
-			debugger;
-		}
+
     </script>
     <style>
         .tile-icon { height:7em; }
