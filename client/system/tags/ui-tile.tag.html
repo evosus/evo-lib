@@ -6,9 +6,12 @@
         <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
             <div class="tile-icon f-col ai-center jc-center">
 				<!-- <a href="{opts.tiles.routeTo}" class="svgTest"> -->
-					<img src="{opts.tiles.icon}" />
+					<!-- <img src="{opts.tiles.icon}" /> -->
 				<!-- </a> -->
-                <!-- <object type="image/svg+xml" data={opts.tiles.icon} /> -->
+				<!-- <object type="image/svg+xml" data={opts.tiles.icon} /> -->
+				<object type="image/svg+xml" data="data:image/svg+xml;base64,{opts.tiles.icon}">
+					fallback
+				  </object>
             </div>
             <div class="pad-dot-5 fg-white">
                 <h3>{ opts.tiles.name }</h3>
