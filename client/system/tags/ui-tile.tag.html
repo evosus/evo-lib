@@ -14,16 +14,17 @@
         </div>
     </div>
     <script>
-        console.log(opts.name, opts.bgcss, opts.icon);
-        this.mixin(IO.default);
+        import route from 'riot-route';               
         this.routeTo = (e) => {
             debugger;
             if (e.item.route) {
 			route(e.item.route);
             } else if (e.item.link) {
                 window.open(e.item.link, '_blank');
-            }
+            }            
         }
+        console.log(opts.name, opts.bgcss, opts.icon);
+        this.mixin(IO.default);
         // ctrl.opts.tiles = [
 		// 	{ name: 'Open Company', css: 'fg-primary', route: '/company/dashboard', icon: 'system/assets/img/icons/16.svg', bgcss: 'bg-open-company' },
 		// 	{ name: 'Manage Users', css: 'fg-primary', route: '/users', icon: 'system/assets/img/icons/9.svg', bgcss: 'bg-manage-users' },
