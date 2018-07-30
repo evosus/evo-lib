@@ -3,12 +3,12 @@
 -->
 <ui-tile>
     <div class="pad-dot-5">
-        <div class="tile rounded shadow-box f-col ai-center { tiles.bgcss }" style="overflow:hidden;" onclick="{ routeTo }">
+        <div class="tile rounded shadow-box f-col ai-center { bgcss }" style="overflow:hidden;" onclick="{ routeTo }">
             <div class="tile-icon f-col ai-center jc-center">
-                <img type="image/svg+xml" data={tiles.icon} />
+                <img type="image/svg+xml" data={icon} />
             </div>
             <div class="pad-dot-5 fg-white">
-                <h3>{ tiles.name }</h3>
+                <h3>{ name }</h3>
                 <div class="pad-dot-5"></div>
             </div>    
         </div>
@@ -24,19 +24,20 @@
         }
         for(var i = 0; i < opts.length; i++){
             console.log(opts[i]);
+			debugger;
         }
-        this.tiles = [
-			{ name: 'Open Company', css: 'fg-primary', route: '/company/dashboard', icon: 'system/assets/img/icons/16.svg', bgcss: 'bg-open-company' },
-			{ name: 'Manage Users', css: 'fg-primary', route: '/users', icon: 'system/assets/img/icons/9.svg', bgcss: 'bg-manage-users' },
-			{ name: 'Integrations', css: 'fg-primary', route: '/integrations', icon: 'system/assets/img/icons/31.svg', bgcss: 'bg-integrations' },
-			{ name: 'Billing', css: 'fg-primary', route: '/billing', icon: 'system/assets/img/icons/55.svg', bgcss: 'bg-billing-history' },
-			{ name: 'POS Stations', css: 'fg-primary', route: '/pos/stations', icon: 'system/assets/img/icons/104.svg', bgcss: 'bg-pos-stations' },
-			{ name: 'Customized Lists', css: 'fg-primary', route: 'customized-lists', icon: 'system/assets/img/icons/110.svg', bgcss: 'bg-customized-lists' },
-			{ name: 'Fast Track Setup', css: 'fg-primary', route: '/company/fast-track', icon: 'system/assets/img/icons/49.svg', bgcss: 'bg-fast-track-setup' },
-			{ name: 'Quick Items', css: 'fg-primary', route: '/quick-items', icon: 'system/assets/img/icons/136.svg', bgcss: 'bg-manage-inventory' },
-			{ name: 'Taxes', css: 'fg-primary', route: '/tax-codes', icon: 'system/assets/img/icons/135.svg', bgcss: 'bg-taxes' },
-			{ name: 'Purchase POS Hardware', css: 'fg-primary', route: null, link: 'https://shopevosus.com/collections/evosus-pro-bundles', icon: 'system/assets/img/icons/104.svg', bgcss: 'bg-pos-stations' },
-		];
+        // this.tiles = [
+		// 	{ name: 'Open Company', css: 'fg-primary', route: '/company/dashboard', icon: 'system/assets/img/icons/16.svg', bgcss: 'bg-open-company' },
+		// 	{ name: 'Manage Users', css: 'fg-primary', route: '/users', icon: 'system/assets/img/icons/9.svg', bgcss: 'bg-manage-users' },
+		// 	{ name: 'Integrations', css: 'fg-primary', route: '/integrations', icon: 'system/assets/img/icons/31.svg', bgcss: 'bg-integrations' },
+		// 	{ name: 'Billing', css: 'fg-primary', route: '/billing', icon: 'system/assets/img/icons/55.svg', bgcss: 'bg-billing-history' },
+		// 	{ name: 'POS Stations', css: 'fg-primary', route: '/pos/stations', icon: 'system/assets/img/icons/104.svg', bgcss: 'bg-pos-stations' },
+		// 	{ name: 'Customized Lists', css: 'fg-primary', route: 'customized-lists', icon: 'system/assets/img/icons/110.svg', bgcss: 'bg-customized-lists' },
+		// 	{ name: 'Fast Track Setup', css: 'fg-primary', route: '/company/fast-track', icon: 'system/assets/img/icons/49.svg', bgcss: 'bg-fast-track-setup' },
+		// 	{ name: 'Quick Items', css: 'fg-primary', route: '/quick-items', icon: 'system/assets/img/icons/136.svg', bgcss: 'bg-manage-inventory' },
+		// 	{ name: 'Taxes', css: 'fg-primary', route: '/tax-codes', icon: 'system/assets/img/icons/135.svg', bgcss: 'bg-taxes' },
+		// 	{ name: 'Purchase POS Hardware', css: 'fg-primary', route: null, link: 'https://shopevosus.com/collections/evosus-pro-bundles', icon: 'system/assets/img/icons/104.svg', bgcss: 'bg-pos-stations' },
+		// ];
         this.mixin(IO.default);
     </script>
     <style>
