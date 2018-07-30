@@ -5,10 +5,9 @@
     <div class="pad-dot-5">
         <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
             <div class="tile-icon f-col ai-center jc-center">
-				<a href="{opts.tiles.routeTo}" class="svgTest">
-					<object data="{opts.tiles.icon}" type="image/svg+xml">
-					</object>
-				</a>
+				<!-- <a href="{opts.tiles.routeTo}" class="svgTest"> -->
+					<img data="{opts.tiles.icon}" />
+				<!-- </a> -->
                 <!-- <object type="image/svg+xml" data={opts.tiles.icon} /> -->
             </div>
             <div class="pad-dot-5 fg-white">
@@ -25,10 +24,7 @@
 		}); 
     </script>
     <style>
-		.svgTest:hover > object > svg {
-			width: 300px;
-		}
-		a.svgTest {
+		/* a.svgTest {
 			position: relative;
 			display: inline-block; 
 			}
@@ -39,9 +35,9 @@
 			right: 0;
 			bottom: 0;
 			left:0;
-			}
+			} */
         .tile-icon { height:7em; }
-		.tile-icon object {			
+		.tile-icon img {			
 			overflow: hidden;	
 			width: 6em; 
 		}
