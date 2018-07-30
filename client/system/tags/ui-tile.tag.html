@@ -5,13 +5,7 @@
     <div class="pad-dot-5">
         <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
             <div class="tile-icon f-col ai-center jc-center">
-				<!-- <a href="{opts.tiles.routeTo}" class="svgTest"> -->
-					<!-- <img src="{opts.tiles.icon}" /> -->
-				<!-- </a> -->
-				<!-- <object type="image/svg+xml" data={opts.tiles.icon} /> -->
-				<object type="image/svg+xml" data="data:image/svg+xml;base64,{opts.tiles.icon}">
-					fallback
-				  </object>
+				<object type="image/svg+xml" data={opts.tiles.icon} />
             </div>
             <div class="pad-dot-5 fg-white">
                 <h3>{ opts.tiles.name }</h3>
@@ -23,22 +17,9 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
-			console.dir(this);
 		}); 
     </script>
     <style>
-		/* a.svgTest {
-			position: relative;
-			display: inline-block; 
-			}
-			a.svgTest:after {
-			content: ""; 
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left:0;
-			} */
         .tile-icon { height:7em; }
 		.tile-icon img {			
 			overflow: hidden;	
