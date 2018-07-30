@@ -8,15 +8,16 @@
                 <img type="image/svg+xml" data={opts.icon} />
             </div>
             <div class="pad-dot-5 fg-white">
-                <h3>{ opts.name }</h3>
+                <h3>{ name }</h3>
                 <div class="pad-dot-5"></div>
             </div>    
         </div>
     </div>
     <script>
 		this.mixin(IO.default);
-		this.on('mount', () => {
-			console.dir(this.opts);
+		this.on('mount', () => {			
+			var name = this.opts.name;
+			console.dir(this);
 		}); 
     </script>
     <style>
