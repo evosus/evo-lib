@@ -1,0 +1,50 @@
+<!--
+    UI-TILE
+-->
+<ui-tile>
+    <div class="pad-dot-5">
+        <div class="tile rounded shadow-box f-col ai-center { bgcss }" style="overflow:hidden;" onclick="{ routeTo }">
+            <div class="tile-icon f-col ai-center jc-center">
+                <img type="image/svg+xml" data={ctrl.opts.icon} />
+            </div>
+            <div class="pad-dot-5 fg-white">
+                <h3>{ ctrl.name }</h3>
+                <div class="pad-dot-5"></div>
+            </div>    
+        </div>
+    </div>
+    <script>
+        this.mixin(IO.default);
+    </script>
+    <style>
+        .tile-icon { height:7em; }
+		.tile-icon img {			
+			overflow: hidden;	
+			width: 6em; 
+		}
+		.tile {
+			border:4px solid white;
+			cursor:pointer;
+			transition:.2s ease-in-out all;
+		}
+		.tile:hover {
+			border:2px solid white;
+			box-shadow:0 10px 20px rgba(0,0,0,0.25);
+		}
+        .bg-open-company { background-color:#FFD05B; }
+		.bg-manage-users { background-color:#324A5E; }
+		.bg-manage-products { background-color:#89D6F7; }
+		.bg-integrations { background-color:#90DFAA; }
+		.bg-billing-history { background-color:#84DBFF; }
+		.bg-security { background-color:#324A5E; }
+		.bg-audit-log { background-color:#F1543F; }
+		.bg-pos-stations { background-color:#96D0A5; }
+		.bg-messaging { background-color:#324A5E; }
+		.bg-customized-lists { background-color:#89D6F7; }
+		.bg-settings { background-color:#FFD05B; }
+		.bg-training-videos { background-color:#90DFAA; }
+		.bg-fast-track-setup { background-color:#FFD05B; }
+		.bg-manage-inventory { background-color:#FD8469; }
+		.bg-taxes { background-color:#324A5E; }
+    </style>
+</ui-tile>
