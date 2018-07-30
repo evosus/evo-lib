@@ -2,7 +2,7 @@
     UI-TILE
 -->
 <ui-tile>
-    <div class="pad-dot-5">
+    <div class="pad-dot-5" onmouseover="{test}">
         <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
             <div class="tile-icon f-col ai-center jc-center">
 				<object type="image/svg+xml" data={opts.tiles.icon} />
@@ -18,6 +18,9 @@
 		this.on('mount', () => {
 			var self = this;
 		}); 
+		function test() {
+			debugger;
+		}
     </script>
     <style>
         .tile-icon { height:7em; }
