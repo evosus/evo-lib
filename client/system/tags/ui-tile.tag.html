@@ -3,9 +3,13 @@
 -->
 <ui-tile>
     <div class="pad-dot-5">
-        <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;" onclick="{ routeTo }">
+        <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
             <div class="tile-icon f-col ai-center jc-center">
-                <object type="image/svg+xml" data={opts.tiles.icon} />
+				<a href="https://google.com" class="svgTest">
+					<object data="{opts.tiles.icon}" type="image/svg+xml">
+					</object>
+				</a>
+                <!-- <object type="image/svg+xml" data={opts.tiles.icon} /> -->
             </div>
             <div class="pad-dot-5 fg-white">
                 <h3>{ opts.tiles.name }</h3>
@@ -21,6 +25,18 @@
 		}); 
     </script>
     <style>
+		a.svgTest {
+			position: relative;
+			display: inline-block; 
+			}
+			a.svgTest:after {
+			content: ""; 
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left:0;
+			}
         .tile-icon { height:7em; }
 		.tile-icon object {			
 			overflow: hidden;	
