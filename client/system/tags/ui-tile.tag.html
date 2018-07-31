@@ -76,11 +76,11 @@
 		this.on('mount', () => {
 			var self = this;
 		});
-		// this.routeTo = function (e){
-		// 	if (e.item.tile.route) {
-		// 		route(e.item.route);
-		// 	}
-		// }
+		this.routeTo = function (e){
+			if (e.item.tile.route) {
+				route(e.item.route);
+			}
+		}
     </script>
     <style>
 		.tile-icon object {
