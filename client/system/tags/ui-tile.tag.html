@@ -75,6 +75,12 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
+			function routeTo(e) {
+			debugger;
+				if (e.item.route) {
+					route(e.item.route);
+				}
+			}
 		});
     </script>
     <style>
