@@ -75,7 +75,8 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
-			function routeTo(e) {
+		});
+		function routeTo(e) {
 				console.log(e);
 				console.dir(self);
 			debugger;
@@ -83,7 +84,6 @@
 					route(e.item.route);
 				}
 			}
-		});
     </script>
     <style>
 		.tile-icon object {
