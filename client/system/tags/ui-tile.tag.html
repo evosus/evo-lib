@@ -5,7 +5,7 @@
     <div class="pad-dot-5">
         <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
             <div class="tile-icon f-col ai-center jc-center">
-				<object id="{newId}" name="svgObject" type="image/svg+xml" data="{ opts.tiles.icon }" />
+				<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }" />
             </div>
             <div class="pad-dot-5 fg-white">
                 <h3>{ opts.tiles.name }</h3>
@@ -17,10 +17,6 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
-			var _index = 0;
-			var newId = "svgobj" + _index++;
-			console.log(newId);
-			console.dir(self);
 		});
     </script>
     <style>
