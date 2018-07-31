@@ -71,16 +71,18 @@
 		</div>
 	</div>
 
-    <script>
+    <script>		
+		import route from 'riot-route';
 		this.mixin(IO.default);
-		this.on('mount', () => {
+		this.on('mount', () => {			
 			var self = this;
-		});
-		this.routeTo = function (e){
-			if (e.item.tile.route) {
-				route(e.item.tile.route);
+			self.routeTo = function (e){
+				if (e.item.tile.route) {
+					route(e.item.tile.route);
+				}
 			}
-		}
+		});
+		
     </script>
     <style>
 		.tile-icon object {
