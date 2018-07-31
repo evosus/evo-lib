@@ -63,7 +63,7 @@
 					<div class="pad-dot-25"></div>
 					<h3>{ opts.tiles.name }</h3>
 				</div>
-				<ui-icon mdicon="mdi mdi-open-in-new" onclick="{ routeTo }" />
+				<ui-icon mdicon="mdi mdi-open-in-new" onclick="{ self.routeTo }" />
 			</div>
 			<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
 				<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
@@ -76,14 +76,11 @@
 		this.on('mount', () => {
 			var self = this;
 		});
-		this.routeTo = function (e){
-				console.log(e);
-				console.dir(self);
-			debugger;
-				if (e.item.route) {
-					route(e.item.route);
-				}
-			}
+		// this.routeTo = function (e){
+		// 	if (e.item.tile.route) {
+		// 		route(e.item.route);
+		// 	}
+		// }
     </script>
     <style>
 		.tile-icon object {
