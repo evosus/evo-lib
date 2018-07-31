@@ -51,3 +51,48 @@
 		.bg-taxes { background-color:#324A5E; }
     </style>
 </ui-tile>
+
+<!--
+    UI-TILE-LARGE
+-->
+<ui-tile-large>
+	<div class="pad-dot-5">
+		<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden;">
+			<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
+				<div class="f-row ai-center">
+					<div class="pad-dot-25"></div>
+					<h3>{ opts.tiles.name }</h3>
+				</div>
+				<ui-icon mdicon="mdi mdi-open-in-new" onclick="{ opts.tiles.routeTo }" />
+			</div>
+			<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
+				<object type="image/svg+xml" data={opts.tiles.icon} />
+			</div>
+		</div>
+	</div>
+
+    <script>
+		this.mixin(IO.default);
+		this.on('mount', () => {
+			var self = this;
+		});
+    </script>
+    <style>
+		.tile-icon object {
+			position: relative; 
+			max-width: 390px; 
+			width: 100%;
+			overflow: hidden;			
+			max-height: 160px;
+		}
+		.bg-pos { background-color:#96D0A5; }
+		.bg-customers { background-color:#84DBFF; }
+		.bg-integrations { background-color:#90DFAA; }
+		.bg-inventory { background-color:#324A5E; }
+		.bg-package { background-color:#324A5E; }
+		.bg-payment { background-color:#F4826A; }
+		.bg-transactions { background-color:#84DBFF; }
+		.bg-reports { background-color:#90DFAA; }
+		.bg-activity { background-color:#FFD05B; }
+    </style>
+</ui-tile-large>
