@@ -116,6 +116,10 @@ p { padding:1em 0 0 0; }
 	min-height:100%;
 	overflow-y:auto;
 }
+/* MDI */
+i.mdi {
+	display: flex;
+}
 /* UI-BOX */
 .ui-layout-box { display:block;padding:1em;margin:0em 0em 2em 0em;overflow:hidden; }
 /* UI-CELL */

@@ -1,0 +1,19 @@
+@keyframes fadeout{0%{fill-opacity:1}to{fill-opacity:.5}}
+@keyframes flicker{10%,30%,50%,70%,90%{-webkit-transform:translate3d(0,-1px,0);transform:translate3d(0,-1px,0);fill:red;fill-opacity:.7}20%,40%,60%,80%{-webkit-transform:translate3d(0,1px,0);transform:translate3d(0,1px,0);fill:orange;fill-opacity:1}}
+@keyframes moveUp{50%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}70%{fill-opacity:1}to{fill-opacity:0;-webkit-transform:translate3d(0,-150px,0);transform:translate3d(0,-150px,0)}}
+@keyframes moveUpCloud{0%{fill-opacity:0;-webkit-transform:translate3d(0,100px,0);transform:translate3d(0,100px,0)}20%,80%{fill-opacity:1}70%{fill-opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}to{fill-opacity:0}}
+@keyframes moveLeft{70%{transform:translateX(-2px)}}
+@keyframes moveRight{70%{transform:translateX(2px)}}
+@keyframes stretch{0%{transform:scaleX(0)}50%{transform:scaleX(1)}}
+@keyframes button{0%{fill-opacity:.5}50%{fill-opacity:1}}
+@keyframes screen{0%{fill-opacity:1}50%{fill-opacity:.5}to{fill-opacity:.8}}
+@keyframes flickerAlt{0%{fill-opacity:.3}50%{fill-opacity:1}to{fill-opacity:.9}}
+@keyframes stretchAlt{0%{transform:scaleX(0)}50%{transform:scaleX(1)}}
+@keyframes moveRightAlt{0%,to{fill-opacity:1}50%{fill-opacity:.9;-webkit-transform:translate3d(30px,0,0) skewX(2deg) rotate3d(0,0,1,-2deg);transform:translate3d(30px,0,0) skewX(2deg) rotate3d(0,0,1,-2deg);-webkit-transform-origin:center;transform-origin:center}}
+@keyframes flash{0%,to{fill-opacity:.5}50%{fill-opacity:1}}
+@keyframes moveOne{0%,to{-webkit-transform:translate3d(-2px,0,0);transform:translate3d(-2px,0,0)}50%{-webkit-transform:translate3d(2px,0,0);transform:translate3d(2px,0,0)}}
+@keyframes moveTwo{0%,to{-webkit-transform:translate3d(0,-2px,0);transform:translate3d(0,-2px,0)}50%{-webkit-transform:translate3d(0,2px,0);transform:translate3d(0,2px,0)}}
+@keyframes moveThree{0%,to{-webkit-transform:translate3d(2px,0,0);transform:translate3d(2px,0,0)}50%{-webkit-transform:translate3d(-2px,0,0);transform:translate3d(-2px,0,0)}}
+@keyframes flutter{0%{fill-opacity:.3}50%{fill-opacity:1}}
+@keyframes shake{10%,30%,50%,70%,90%{-webkit-transform:translate3d(-3px,0,0);transform:translate3d(-3px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(3px,0,0);transform:translate3d(3px,0,0)}}
+@keyframes fadeIn{0%{fill-opacity:.5}50%,to{fill-opacity:1}}

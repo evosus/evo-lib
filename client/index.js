@@ -6,6 +6,8 @@ import layout from 'client/system/css/ui-layout.css';
 import theme from 'client/system/css/ui-theme.css';
 import flexbox from 'client/system/css/ui-flexbox.css';
 import mdi from 'client/system/assets/fonts/ui-fonticon-mapping.css';
+import animations from 'client/system/css/ui-animations.css';
+
 var UI = new UserInterface();
 RC.addStore(UI); // UI State Manager
 Promise.all([
