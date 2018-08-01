@@ -45,7 +45,6 @@ h1,h2,h3,h4,h5,h6
 { font-weight:500; }
 hr { margin:1em 0;border:none;border-top:1px solid rgba(0,0,0,0.1);border-bottom:1px solid rgba(0,0,0,0.1); }
 p { padding:1em 0 0 0; }
-object { pointer-events:none; }
 /* CONTANIER STYLES */
 .read-only { pointer-events:none; }
 .all { height:100vh; width:100%; }
