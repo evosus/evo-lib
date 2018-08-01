@@ -54,28 +54,21 @@
     UI-TILE-LARGE
 -->
 <ui-tile-large>
-	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden;">
+	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden; cursor:pointer;">
 		<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
 			<div class="f-row ai-center">
 				<div class="pad-dot-25"></div>
 				<h3>{ opts.tiles.name }</h3>
 			</div>
-			<ui-icon mdicon="mdi mdi-open-in-new" onclick="{ routeTo }" />
 		</div>
 		<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
 		</div>
 	</div>
     <script>		
-		import route from 'riot-route';
 		this.mixin(IO.default);
 		this.on('mount', () => {			
 			var self = this;
-			self.routeTo = function (e){
-				if (e.item.tile.route) {
-					route(e.item.tile.route);
-				}
-			}
 		});		
     </script>
     <style>
