@@ -147,9 +147,6 @@
 .mdi-help:before {
   content: "\e024";
 }
-.mdi-filter-variant:before {
-  content: "\e025";
-}
 .mdi-file-pdf:before {
   content: "\e026";
 }
@@ -311,4 +308,28 @@
 }
 .mdi-calendar-today:before {
   content: "\e05b";
+}
+.mdi-arrow-down:before {
+  content: "\e025";
+}
+.mdi-arrow-down-thick:before {
+  content: "\e05c";
+}
+.mdi-chevron-down:before {
+  content: "\e05d";
+}
+.mdi-chevron-up:before {
+  content: "\e05e";
+}
+.mdi-filter-outline:before {
+  content: "\e05f";
+}
+.mdi-filter:before {
+  content: "\e060";
+}
+.mdi-arrow-up-thick:before {
+  content: "\e061";
+}
+.mdi-arrow-up:before {
+  content: "\e062";
 }
