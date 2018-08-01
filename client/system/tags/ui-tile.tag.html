@@ -54,7 +54,7 @@
     UI-TILE-LARGE
 -->
 <ui-tile-large>
-	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden;">
+	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden; cursor:pointer;">
 		<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
 			<div class="f-row ai-center">
 				<div class="pad-dot-25"></div>
@@ -72,15 +72,6 @@
 		});		
     </script>
     <style>
-		.tile {
-			border:4px solid white;
-			cursor:pointer;
-			transition:.2s ease-in-out all;
-		}
-		.tile:hover {
-			border:2px solid white;
-			box-shadow:0 10px 20px rgba(0,0,0,0.25);
-		}
 		.tile-icon object {
 			position: relative; 
 			max-width: 390px; 
