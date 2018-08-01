@@ -16,3 +16,4 @@
 @keyframes moveThree{0%,to{-webkit-transform:translate3d(2px,0,0);transform:translate3d(2px,0,0)}50%{-webkit-transform:translate3d(-2px,0,0);transform:translate3d(-2px,0,0)}}
 @keyframes flutter{0%{fill-opacity:.3}50%{fill-opacity:1}}
 @keyframes shake{10%,30%,50%,70%,90%{-webkit-transform:translate3d(-3px,0,0);transform:translate3d(-3px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(3px,0,0);transform:translate3d(3px,0,0)}}
+@keyframes fadeIn{0%{fill-opacity:.5}50%,to{fill-opacity:1}}
