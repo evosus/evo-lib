@@ -1,18 +1,16 @@
 <!--
     UI-TILE
 -->
-<ui-tile>
-    
-        <div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
-            <div class="tile-icon f-col ai-center jc-center">
-				<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
-            </div>
-            <div class="pad-dot-5 fg-white">
-                <h3>{ opts.tiles.name }</h3>
-                <div class="pad-dot-5"></div>
-            </div>    
-        </div>
-
+<ui-tile>    
+	<div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
+		<div class="tile-icon f-col ai-center jc-center">
+			<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
+		</div>
+		<div class="pad-dot-5 fg-white">
+			<h3>{ opts.tiles.name }</h3>
+			<div class="pad-dot-5"></div>
+		</div>    
+	</div>
     <script>
 		this.mixin(IO.default);
 		this.on('mount', () => {
@@ -56,21 +54,18 @@
     UI-TILE-LARGE
 -->
 <ui-tile-large>
-	<div class="pad-dot-5">
-		<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden;">
-			<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
-				<div class="f-row ai-center">
-					<div class="pad-dot-25"></div>
-					<h3>{ opts.tiles.name }</h3>
-				</div>
-				<ui-icon mdicon="mdi mdi-open-in-new" onclick="{ routeTo }" />
+	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden;">
+		<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
+			<div class="f-row ai-center">
+				<div class="pad-dot-25"></div>
+				<h3>{ opts.tiles.name }</h3>
 			</div>
-			<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
-				<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
-			</div>
+			<ui-icon mdicon="mdi mdi-open-in-new" onclick="{ routeTo }" />
+		</div>
+		<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
+			<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
 		</div>
 	</div>
-
     <script>		
 		import route from 'riot-route';
 		this.mixin(IO.default);
@@ -81,8 +76,7 @@
 					route(e.item.tile.route);
 				}
 			}
-		});
-		
+		});		
     </script>
     <style>
 		.tile-icon object {
