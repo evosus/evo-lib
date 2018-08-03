@@ -55,7 +55,7 @@
 -->
 <ui-tile-large>
 	<div class="rounded shadow-box { opts.tiles.css} {opts.tiles.bgcss } fg-white" style="overflow:hidden; cursor:pointer; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-		<div class="" style="display: flex; justify-content: space-between; padding: .5em;">
+		<div style="display: flex; justify-content: space-between; padding: .5em;">
 			<h2>{ opts.tiles.name }</h2>
 			<badge text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
 		</div>
@@ -64,8 +64,8 @@
 		</div>
 		<div style="min-height: 3.5em; background: rgba(0,0,0,.1); display:flex; align-items: center; flex-direction: row; justify-content: center;">
 			<div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
-				<button class="fg-black-dot-5 rounded" type="button">SEARCH</button>
-				<button class="fg-black-dot-5 rounded" type="button">ADD</button>
+				<ui-button label="SEARCH"/>
+				<ui-button label="ADD"/>
 			</div>
 		</div>
 	</div>
