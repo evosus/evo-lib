@@ -55,14 +55,20 @@
 -->
 <ui-tile-large>
 	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden; cursor:pointer; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-		<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
-			<div class="f-row ai-center">
-				<div class="pad-dot-25"></div>
-				<h3>{ opts.tiles.name }</h3>
-			</div>
-		</div>
 		<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
+		</div>
+		<div class="ui-white" style="height: 4.75em;">
+			<div style="display: flex; justify-content: space-between; padding: .5em;">
+				<h2>{ opts.tiles.name }</h2>
+				<span style="color: #fff; border-radius: .5em; background: orange; display: flex; padding: .2em; align-items: center;">
+					<span>40</span>
+				</span>
+			</div>
+			<div style="display: flex; justify-content: space-between;">
+				<button class="fg-black-dot-5 rounded" type="button">SEARCH</button>
+				<button class="fg-black-dot-5 rounded" type="button">ADD</button>
+			</div>
 		</div>
 	</div>
     <script>		
