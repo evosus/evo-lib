@@ -54,15 +54,15 @@
     UI-TILE-LARGE
 -->
 <ui-tile-large>
-	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden; cursor:pointer; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-		<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
+	<div class="rounded shadow-box { opts.tiles.css, opts.tiles.bgcss }" style="overflow:hidden; cursor:pointer; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+		<div class="" style="display: flex; justify-content: space-between; padding: .5em;">
+			<h2>{ opts.tiles.name }</h2>
+			<badge text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
+		</div>
+		<div class="tile-icon f-row ai-center jc-center">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
 		</div>
-		<div class="ui-white" style="height: 4.75em;">
-			<div style="display: flex; justify-content: space-between; padding: .5em;">
-				<h2>{ opts.tiles.name }</h2>
-				<badge text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
-			</div>
+		<div style="height: 4.75em;">
 			<div style="display: flex; justify-content: space-between;">
 				<button class="fg-black-dot-5 rounded" type="button">SEARCH</button>
 				<button class="fg-black-dot-5 rounded" type="button">ADD</button>
@@ -73,7 +73,6 @@
 		this.mixin(IO.default);
 		this.on('mount', () => {			
 			var self = this;
-			console.dir("This from tile: " + self);
 		});		
     </script>
     <style>
