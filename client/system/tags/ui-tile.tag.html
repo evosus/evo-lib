@@ -32,7 +32,6 @@
 			border:2px solid white;
 			box-shadow:0 10px 20px rgba(0,0,0,0.25);
 		}
-		object { pointer-events: none; }
         .bg-open-company { background-color:#FFD05B; }
 		.bg-manage-users { background-color:#324A5E; }
 		.bg-manage-products { background-color:#89D6F7; }
@@ -55,7 +54,7 @@
     UI-TILE-LARGE
 -->
 <ui-tile-large>
-	<div class="rounded shadow-box { opts.tiles.css} {opts.tiles.bgcss } fg-white" style="overflow:hidden; cursor:pointer; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+	<div class="rounded-top-only shadow-box { opts.tiles.css} {opts.tiles.bgcss } fg-white" style="overflow:hidden; cursor:pointer;">
 		<div style="display: flex; justify-content: space-between; padding: 1em;">
 			<h2>{ opts.tiles.name }</h2>
 			<badge text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
@@ -84,7 +83,6 @@
 			overflow: hidden;			
 			max-height: 160px;
 		}
-		object { pointer-events: none; }
 		.bg-pos { background-color:#96D0A5; }
 		.bg-customers { background-color:#84DBFF; }
 		.bg-integrations { background-color:#90DFAA; }
