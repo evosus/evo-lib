@@ -1,0 +1,21 @@
+<decal>
+	<div class="decal f-row ai-center jc-center { opts.css } { 'default':!opts.css, 'invert':!opts.css && opts.invert }">
+		<i if="{ opts.mdicon && !opts.flip }" class="pad-right { opts.mdicon }"></i>
+		<span if="{ opts.text }">{ opts.text }</span>
+		<i if="{ opts.mdicon && opts.flip }" class="pad-left { opts.mdicon }"></i>
+	</div>
+	<style>
+		i, span { font-size:.9em;font-weight:700!important; }
+		.decal { border-radius:.5em;padding:0em .5em; }
+		.default { background:rgba(0,0,0,0.2); }
+		.default i, .default span {
+			font-size:.9em!important;
+			font-weight:700!important;
+			color:rgba(0,0,0,0.75)!important;
+		}
+		.decal.invert { background:rgba(255,255,255,0.1)!important; }
+		.decal.invert > span { color:rgba(255,255,255,0.75)!important; }
+		.decal .pad-left { padding-left:.25em; }
+		.decal .pad-right { padding-right:.25em; }
+	</style>
+</decal>
