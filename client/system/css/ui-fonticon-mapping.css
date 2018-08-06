@@ -333,3 +333,9 @@
 .mdi-arrow-up:before {
   content: "\e062";
 }
+.mdi-worker:before {
+  content: "\e063";
+}
+.mdi-keyboard-return:before {
+  content: "\e064";
+}
