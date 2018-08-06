@@ -11,18 +11,13 @@ UI AVATAR
 		this.on('mount', () => {
             var self = this;
             self.hasImg = false;
-            //let pathLength = parent.opts.profileImgPath.length;
-            console.dir(self);
-            console.log(opts.imgpath);
-            console.log(self.opts.imgpath);
-            //console.dir(pathLength);
-            //console.dir(opts.imgpath);
-            // if(pathLength !== undefined && pathLength > 0){
-            //     self.hasImg = true;
-            //     self.update();
-            // } else {
-            //     self.hasImg = false;
-            // }
+            let pathLength = self.opts.imgpath.length;
+            if(pathLength !== undefined && pathLength > 0){
+                 self.hasImg = true;
+                 self.update();
+            } else {
+                 self.hasImg = false;
+            }
 		});
     </script>
 	<style>
