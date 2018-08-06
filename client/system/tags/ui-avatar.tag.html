@@ -1,9 +1,12 @@
 <!--
-UI AVATAR
+-UI AVATAR
+-USE: <ui-avatar imgpath="{ opts.profileImgPath }" class="fg-white" noaction="none" />
+-imgpath: Path used to grab the profile image.
+-noaction: Class available to disable hover styles if no click is available 
 !-->
 <ui-avatar>
     <ui-icon if="{ !hasImg }" mdicon="mdi mdi-account" class="fg-white" noaction="none"/>
-	<div if="{hasImg}" class="f-row ai-center jc-center { opts.css }">
+	<div if="{hasImg}" class="f-row ai-center jc-center">
 		<img class="ui-avatar { opts.noaction }" src="{ opts.imgpath }" />
     </div>
     <script>
