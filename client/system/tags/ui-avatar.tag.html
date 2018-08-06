@@ -2,7 +2,8 @@
 UI AVATAR
 !-->
 <ui-avatar>
-	<div class="f-row ai-center jc-center { opts.css }">
+    <ui-icon if="{ !hasImg }" mdicon="mdi mdi-account" class="fg-white" noaction="none"/>
+	<div if="{hasImg}" class="f-row ai-center jc-center { opts.css }">
 		<img class="ui-avatar { opts.noaction }" src="{ opts.imgpath }" />
     </div>
     <script>
