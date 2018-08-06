@@ -12,6 +12,9 @@ UI AVATAR
             var self = this;
             self.hasImg = false;
             let pathLength = self.opts.profileImgPath.length;
+            console.dir(self);
+            console.dir(pathLength);
+            console.dir(opts.imgpath);
             if(pathLength !== undefined && pathLength > 0){
                 self.hasImg = true;
                 self.update();
