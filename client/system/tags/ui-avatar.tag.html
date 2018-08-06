@@ -20,11 +20,15 @@ UI AVATAR
         this.on('mount', function() {
             if(opts.profileImgPath.length > 0) {
                 self.hasProfileImg = true;
+                debugger;
+                console.log("entered true");
             } else {
+                debugger;
+                console.log("entered false");
                 self.hasProfileImg = false;
             }
                     
-           // self.update();
+           self.update();
         });
     </script>
 	<style>
