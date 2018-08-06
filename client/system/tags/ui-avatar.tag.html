@@ -7,7 +7,7 @@ UI AVATAR
 		<img class="ui-avatar { opts.noaction }" src="{ opts.imgpath }" />
     </div>
     <script>
-        this.mixin(IO.default, CTRL);
+        this.mixin(IO.default);
 		this.on('mount', () => {
             var self = this;
             self.hasImg = false;
