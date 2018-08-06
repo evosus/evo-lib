@@ -1,7 +1,7 @@
 <!--
 UI AVATAR
 !-->
-<ui-avatar onload="{ setImgCheck }">
+<ui-avatar>
 	<div if="{ !opts.hasProfileImg }" class="ui-icon f-row ai-center jc-center { opts.css } { opts.noaction }">
 		<i class="{ opts.mdicon }"></i>
     </div>
@@ -12,11 +12,11 @@ UI AVATAR
         this.mixin(IO.default);
         var self = this;
         self.hasProfileImg = false;
-        self.setImgCheck = function(e) {
-            self.hasProfileImg ? self.hasProfileImg = false : self.hasProfileImg = true;
-            self.update();
-        }
-        this.on('mount', function() {            
+        // self.setImgCheck = function() {
+        //     self.hasProfileImg ? self.hasProfileImg = false : self.hasProfileImg = true;
+        //     self.update();
+        // }
+        this.on('mount', function() {        
             self.hasProfileImg = opts.profileImgPath || false;
             self.update();
         });
