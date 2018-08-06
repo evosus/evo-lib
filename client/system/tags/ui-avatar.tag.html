@@ -17,9 +17,14 @@ UI AVATAR
         //     self.hasProfileImg ? self.hasProfileImg = false : self.hasProfileImg = true;
         //     self.update();
         // }
-        this.on('mount', function() {        
-            self.hasProfileImg = opts.profileImgPath || false;
-            self.update();
+        this.on('mount', function() {
+            if(opts.profileImgPath.length > 0) {
+                self.hasProfileImg = true;
+            } else {
+                self.hasProfileImg = false;
+            }
+                    
+           // self.update();
         });
     </script>
 	<style>
