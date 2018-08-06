@@ -4,7 +4,7 @@ UI AVATAR
 <ui-avatar>
     <ui-icon if="{ !hasImg }" mdicon="mdi mdi-account" class="fg-white" noaction="none"/>
 	<div if="{hasImg}" class="f-row ai-center jc-center { opts.css }">
-		<img class="ui-avatar { opts.noaction }" src="{ parent.opts.imgpath }" />
+		<img class="ui-avatar { opts.noaction }" src="{ opts.imgpath }" />
     </div>
     <script>
         this.mixin(IO.default);
@@ -13,7 +13,8 @@ UI AVATAR
             self.hasImg = false;
             //let pathLength = parent.opts.profileImgPath.length;
             console.dir(self);
-            console.log(parent.opts.imgpath);
+            console.log(opts.imgpath);
+            console.log(self.opts.imgpath);
             //console.dir(pathLength);
             //console.dir(opts.imgpath);
             // if(pathLength !== undefined && pathLength > 0){
