@@ -1,11 +1,16 @@
-import IO from '../IO.js';
 <!--
 UI AVATAR
 !-->
 <ui-avatar>
 	<div class="f-row ai-center jc-center { opts.css }">
-		<img class="ui-avatar" src="{ opts.imgpath }" />
-	</div>
+		<img class="ui-avatar  { opts.noaction }" src="{ opts.imgpath }" />
+    </div>
+    <script>
+        this.mixin(IO.default);
+		this.on('mount', () => {
+			var self = this;
+		});
+    </script>
 	<style>
 		.ui-avatar {
 			width:2.5em;
