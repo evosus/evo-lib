@@ -6,9 +6,17 @@ UI AVATAR
 		<img class="ui-avatar { opts.noaction }" src="{ opts.imgpath }" />
     </div>
     <script>
-        this.mixin(IO.default);
+        this.mixin(IO.default, CTRL);
 		this.on('mount', () => {
-			var self = this;
+            var self = this;
+            self.hasImg = false;
+            let pathLength = self.opts.profileImgPath.length;
+            if(pathLength !== undefined && pathLength > 0){
+                self.hasImg = true;
+                self.update();
+            } else {
+                self.hasImg = false;
+            }
 		});
     </script>
 	<style>
