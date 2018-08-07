@@ -121,3 +121,7 @@
 .as-stretch {
   align-self: stretch;
 }
+.f-tile-lg { flex: 1 0 31em; }
+@media screen and (max-width: 1024px) {
+  .f-tile-lg {flex: 1 0 21em; }
+}

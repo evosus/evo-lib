@@ -109,7 +109,7 @@ p { padding:1em 0 0 0; }
 	min-height:100%;
 	overflow-y:auto;
 }
-.container-1024 { display:block;max-width:1024px;margin:0; }
+.container-1280 { display:block;max-width:1280px;margin:0; }
 .container-flex-1280 {
 	flex:1;
 	margin-left:0;
@@ -117,6 +117,15 @@ p { padding:1em 0 0 0; }
 	min-height:100%;
 	overflow-y:auto;
 }
+
+.container-flex-full {
+	flex:1;
+	margin-left:0;
+	margin-right:0;
+	min-height:100%;
+	overflow-y:auto;
+}
+
 /* MDI */
 i.mdi {
 	display: flex;
