@@ -339,3 +339,12 @@
 .mdi-keyboard-return:before {
   content: "\e064";
 }
+.mdi-sync:before {
+  content: "\e065";
+}
+.mdi-sync-alert:before {
+  content: "\e066";
+}
+.mdi-sync-off:before {
+  content: "\e067";
+}
