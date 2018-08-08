@@ -124,6 +124,8 @@
 .f-tile { flex: 1 0 28em; }
 .f-tile-lg { flex: 1 0 31em; }
 @media screen and (max-width: 1280px) {
-  .f-tile { flex: 1 0 16em; }
   .f-tile-lg {flex: 1 0 21em; }
+}
+@media screen and (max-width: 1024px) {
+  .f-tile { flex: 1 0 16em; }
 }
