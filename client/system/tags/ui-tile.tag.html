@@ -57,7 +57,7 @@
 	<div class="rounded-top-only shadow-box { opts.tiles.css} {opts.tiles.bgcss } fg-white" style="overflow:hidden; cursor:pointer;">
 		<div style="display: flex; justify-content: space-between; padding: 1em;">
 			<h2>{ opts.tiles.name }</h2>
-			<badge text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
+			<badge if="{ opts.tiles.badgeCount != null }" text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
 		</div>
 		<div class="tile-icon f-row ai-center jc-center">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
