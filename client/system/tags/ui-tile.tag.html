@@ -6,8 +6,8 @@
 		<div class="tile-icon">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
 		</div>
-		<div class="tile-description pad-dot-5 fg-white">
-			<h3>{ opts.tiles.name }</h3>
+		<div class="tile-description pad-1 fg-white">
+			<h2>{ opts.tiles.name }</h2>
 			<p>{ opts.tiles.textOptOne }</p>
 			<div class="pad-dot-5"></div>
 		</div> 
@@ -33,7 +33,6 @@
 				flex-direction: column;
 				display: flex;
 				height: 100%;
-				background: rgba(0,0,0,.1);
 			}
 			.tile-icon object {			
 				overflow: hidden;	
@@ -45,6 +44,7 @@
 				display: flex;
 				flex-direction: column;
 				width: 100%;
+				background: rgba(0,0,0,.1);
 			}
 		</style>
 </ui-tile>
