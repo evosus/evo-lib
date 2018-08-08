@@ -51,10 +51,53 @@
 </ui-tile>
 
 <!--
-    UI-TILE-LARGE
+	-UI-TILE-LARGE
+	-USE:
+		HTML->
+		<div class="f-tile-lg" each="{ tile in opts.tiles }">
+			<div class="pad-dot-5">
+				<ui-tile-large tiles="{ tile }" onclick="{ routeTo }" onmouseenter="{ tileHoverEnter }" onmouseleave="{ tileHoverLeave }" />
+			</div>
+		</div>
+		<style>
+			object { pointer-events: none; }
+		</style>		
+		JS->
+		this.opts.tiles = [
+			{ 
+				name: 'Point of Sale', 
+				css: 'fg-primary', 
+				route: '/pos/login', 
+				icon: 'system/assets/img/icons/104.svg', 
+				bgcss: 'bg-pos', 
+				id: 'svgobj01', 
+				svgId: 'ev_svg_104', 
+				badgeCount: this.stationCount, 
+				hasLogin: true, 
+				posLoginRoute: '/pos/login' 
+				hasSearch: true, 
+				searchRoute: '/pos/search', 
+				hasAdd: true, 
+				addRoute: '/pos/add' },
+		]
+	-DESCRIPTION: 
+		The tiles have the ability to play animations and utilize the opts.tiles data object to perform multiple tile
+		setup and display through the data options.
+		OPTIONS: 
+				-name: Title of the tile
+				-css: Any additional css you wish to apply to the tile
+				-route: Entire Tile click action
+				-icon: Any img or svg you want displayed on the tile
+				-bgcss: Any specific background color class you wish the tile to have
+				-id: This is the Object Element that contains the svg or img- REQUIRED				
+				-svgId: This is the id added to the SVG file - Required for animation
+				-badgeCount: Used to display and tie in a badge count 
+				-hasLogin: A click action used to route
+				-hasAdd: A click action used to route
+				-hasSearch: A click action used to route
 -->
 <ui-tile-large>
-	<div class="rounded-top-only shadow-box { opts.tiles.css} {opts.tiles.bgcss } fg-white" style="overflow:hidden; cursor:pointer;">
+	<div class="rounded-top-only shadow-box { opts.tiles.css} fg-white" style="overflow:hidden; cursor:pointer;">
 		<div style="display: flex; justify-content: space-between; padding: 1em;">
 			<h2>{ opts.tiles.name }</h2>
 			<badge if="{ opts.tiles.badgeCount != null }" text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
