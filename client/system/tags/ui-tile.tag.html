@@ -6,7 +6,7 @@
 		<div class="tile-icon">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
 		</div>
-		<div class="pad-dot-5 fg-white">
+		<div class="tile-description pad-dot-5 fg-white">
 			<h3>{ opts.tiles.name }</h3>
 			<div class="pad-dot-5"></div>
 		</div> 
@@ -27,12 +27,8 @@
 			});
 		</script>
 		<style>
-			.tile-icon { height:7em; }
-			.tile-icon object {			
-				overflow: hidden;	
-				width: 6em; 
-			}
 			.tile {
+				display: flex;
 				border:4px solid white;
 				cursor:pointer;
 				transition:.2s ease-in-out all;
@@ -40,6 +36,21 @@
 			.tile:hover {
 				border:2px solid white;
 				box-shadow:0 10px 20px rgba(0,0,0,0.25);
+			}
+			.tile-icon { 
+				flex-direction: column;
+				display: flex;
+				height: 100%;
+				background: rgba(0,0,0,.1);
+			}
+			.tile-icon object {			
+				overflow: hidden;	
+				width: 6em; 
+			}	
+			.tile-discription {				
+				display: flex;
+				flex-direction: column;
+				width: 100%;
 			}
 		</style>
 </ui-tile>
