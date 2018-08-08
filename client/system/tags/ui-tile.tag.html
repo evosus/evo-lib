@@ -8,18 +8,12 @@
 		</div>
 		<div class="tile-description pad-dot-5 fg-white">
 			<h3>{ opts.tiles.name }</h3>
+			<p>{ opts.tiles.textOptOne }</p>
+			<p>{ opts.tiles.textOptTwo }</p>
+			<p>{ opts.tiles.textOptThree }</p>
 			<div class="pad-dot-5"></div>
 		</div> 
 	</div>
-		<!-- <div class="tile rounded shadow-box f-col ai-center { opts.tiles.css }" style="overflow:hidden;">
-			<div class="tile-icon f-col ai-center jc-start">
-				<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
-			</div>
-			<div class="pad-dot-5 fg-white">
-				<h3>{ opts.tiles.name }</h3>
-				<div class="pad-dot-5"></div>
-			</div>    
-		</div> -->
 		<script>
 			this.mixin(IO.default);
 			this.on('mount', () => {
@@ -56,39 +50,6 @@
 			}
 		</style>
 </ui-tile>
-<!-- <ui-tile>    
-	<div class="tile rounded shadow-box f-col ai-center { opts.tiles.css }" style="overflow:hidden;">
-		<div class="tile-icon f-col ai-center jc-start">
-			<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
-		</div>
-		<div class="pad-dot-5 fg-white">
-			<h3>{ opts.tiles.name }</h3>
-			<div class="pad-dot-5"></div>
-		</div>    
-	</div>
-    <script>
-		this.mixin(IO.default);
-		this.on('mount', () => {
-			var self = this;
-		});
-    </script>
-    <style>
-        .tile-icon { height:7em; }
-		.tile-icon object {			
-			overflow: hidden;	
-			width: 6em; 
-		}
-		.tile {
-			border:4px solid white;
-			cursor:pointer;
-			transition:.2s ease-in-out all;
-		}
-		.tile:hover {
-			border:2px solid white;
-			box-shadow:0 10px 20px rgba(0,0,0,0.25);
-		}
-    </style>
-</ui-tile> -->
 
 <!--
 	-UI-TILE-LARGE
