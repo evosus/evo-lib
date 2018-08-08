@@ -460,3 +460,28 @@
 .ui-textarea.ui-blue-dk .label,
 .ui-textarea.ui-blue-dk i { color:indigo; }
 .ui-textarea.ui-blue-dk textarea { border: 2px solid indigo; }
+
+.ui-tile-bg-open-company { background-color:#FFD05B; }
+.ui-tile-bg-manage-users { background-color:#324A5E; }
+.ui-tile-bg-manage-products { background-color:#89D6F7; }
+.ui-tile-bg-integrations { background-color:#90DFAA; }
+.ui-tile-bg-billing-history { background-color:#84DBFF; }
+.ui-tile-bg-security { background-color:#324A5E; }
+.ui-tile-bg-audit-log { background-color:#F1543F; }
+.ui-tile-bg-pos-stations { background-color:#96D0A5; }
+.ui-tile-bg-messaging { background-color:#324A5E; }
+.ui-tile-bg-customized-lists { background-color:#89D6F7; }
+.ui-tile-bg-settings { background-color:#FFD05B; }
+.ui-tile-bg-training-videos { background-color:#90DFAA; }
+.ui-tile-bg-fast-track-setup { background-color:#FFD05B; }
+.ui-tile-bg-manage-inventory { background-color:#FD8469; }
+.ui-tile-bg-taxes { background-color:#324A5E; }
+.ui-tile-bg-pos { background-color:#96D0A5; }
+.ui-tile-bg-customers { background-color:#84DBFF; }
+.ui-tile-bg-integrations { background-color:#90DFAA; }
+.ui-tile-bg-inventory { background-color:#324A5E; }
+.ui-tile-bg-package { background-color:#324A5E; }
+.ui-tile-bg-payment { background-color:#F4826A; }
+.ui-tile-bg-transactions { background-color:#84DBFF; }
+.ui-tile-bg-reports { background-color:#90DFAA; }
+.ui-tile-bg-activity { background-color:#FFD05B; }
