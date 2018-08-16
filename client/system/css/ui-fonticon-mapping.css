@@ -375,6 +375,9 @@
 .mdi-lock-reset:before {
   content: "\e070";
 }
-.mdi-pause-octagon-outline:before {
+.mdi-toggle-switch-off:before {
   content: "\e071";
+}
+.mdi-toggle-switch:before {
+  content: "\e072";
 }
