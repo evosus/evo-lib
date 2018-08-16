@@ -348,3 +348,33 @@
 .mdi-sync-off:before {
   content: "\e067";
 }
+.mdi-cellphone-erase:before {
+  content: "\e068";
+}
+.mdi-cellphone-key:before {
+  content: "\e069";
+}
+.mdi-cached:before {
+  content: "\e06a";
+}
+.mdi-cellphone-lock:before {
+  content: "\e06b";
+}
+.mdi-dialpad:before {
+  content: "\e06c";
+}
+.mdi-download:before {
+  content: "\e06d";
+}
+.mdi-cloud-download:before {
+  content: "\e06e";
+}
+.mdi-cloud-upload:before {
+  content: "\e06f";
+}
+.mdi-lock-reset:before {
+  content: "\e070";
+}
+.mdi-pause-octagon-outline:before {
+  content: "\e071";
+}
