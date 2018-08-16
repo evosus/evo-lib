@@ -1,92 +1,173 @@
 <!--
-    UI-TILE
+	-UI-TILE
+	-USE EXAMPLE:
+		HTML->
+			<div class="f-tile" each="{ tile in opts.tiles }">
+				<div class="pad-dot-5"> 
+					<ui-tile tiles="{ tile }" onclick="{ routeTo }" onmouseenter="{ tileHoverEnter }" onmouseleave="{ tileHoverLeave }" />
+				</div>
+			</div>
+			<style>
+				object { pointer-events: none; }
+			</style>		
+		JS->
+		ctrl.opts.tiles = [
+			{ 
+				name: 'Open Company', 
+				css: 'ui-tile-bg-open-company',
+				route: '/company/dashboard', 
+				icon: 'system/assets/img/icons/16.svg',
+				id: 'svgobj01', 
+				svgId: 'ev_svg_16', 
+				textOptOne: 'Start making sales!' 
+			},
+		]
+	-DESCRIPTION: 
+		The tiles have the ability to play animations and utilize the opts.tiles data object to perform multiple tile
+		setup and display through the data options.
+		OPTIONS: 
+				-name: Title of the tile
+				-css: Any additional css you wish to apply to the tile
+				-route: Entire Tile click action
+				-icon: Any img or svg you want displayed on the tile
+				-id: This is the Object Element that contains the svg or img- Required for animation
+				-svgId: This is the id added to the SVG file - Required for animation
+				-textOptOne: This is content text that you would like to add to the tile
 -->
 <ui-tile>    
-	<div class="tile rounded shadow-box f-col ai-center { opts.tiles.bgcss }" style="overflow:hidden;">
-		<div class="tile-icon f-col ai-center jc-center">
+	<div class="tile rounded shadow-box { opts.tiles.css }">
+		<div class="tile-icon">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data="{ opts.tiles.icon }"/>
 		</div>
-		<div class="pad-dot-5 fg-white">
-			<h3>{ opts.tiles.name }</h3>
+		<div class="tile-description pad-1 fg-white">
+			<h2>{ opts.tiles.name }</h2>
+			<p>{ opts.tiles.textOptOne }</p>
 			<div class="pad-dot-5"></div>
-		</div>    
+		</div> 
 	</div>
-    <script>
+	<script>
 		this.mixin(IO.default);
 		this.on('mount', () => {
 			var self = this;
 		});
-    </script>
-    <style>
-        .tile-icon { height:7em; }
-		.tile-icon object {			
-			overflow: hidden;	
-			width: 6em; 
-		}
+	</script>
+	<style>
 		.tile {
+			display: flex;
 			border:4px solid white;
 			cursor:pointer;
 			transition:.2s ease-in-out all;
+			overflow:hidden;
 		}
 		.tile:hover {
 			border:2px solid white;
 			box-shadow:0 10px 20px rgba(0,0,0,0.25);
 		}
-        .bg-open-company { background-color:#FFD05B; }
-		.bg-manage-users { background-color:#324A5E; }
-		.bg-manage-products { background-color:#89D6F7; }
-		.bg-integrations { background-color:#90DFAA; }
-		.bg-billing-history { background-color:#84DBFF; }
-		.bg-security { background-color:#324A5E; }
-		.bg-audit-log { background-color:#F1543F; }
-		.bg-pos-stations { background-color:#96D0A5; }
-		.bg-messaging { background-color:#324A5E; }
-		.bg-customized-lists { background-color:#89D6F7; }
-		.bg-settings { background-color:#FFD05B; }
-		.bg-training-videos { background-color:#90DFAA; }
-		.bg-fast-track-setup { background-color:#FFD05B; }
-		.bg-manage-inventory { background-color:#FD8469; }
-		.bg-taxes { background-color:#324A5E; }
-    </style>
+		.tile-icon { 
+			flex-direction: column;
+			display: flex;
+			height: 100%;
+		}
+		.tile-icon object {			
+			overflow: hidden;	
+			width: 7em; 
+			height: 7em;
+			padding: 1em;
+		}	
+		.tile-description {				
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			background: rgba(0,0,0,.1);
+		}
+	</style>
 </ui-tile>
-
+	
 <!--
-    UI-TILE-LARGE
--->
-<ui-tile-large>
-	<div class="rounded shadow-box ui-white { opts.tiles.css }" style="overflow:hidden; cursor:pointer;">
-		<div class="pad-dot-5 f-row ai-center jc-between fg-white { opts.tiles.bgcss }">
-			<div class="f-row ai-center">
-				<div class="pad-dot-25"></div>
-				<h3>{ opts.tiles.name }</h3>
+	-UI-TILE-LARGE
+	-USE EXAMPLE:
+		HTML->
+		<div class="f-tile-lg" each="{ tile in opts.tiles }">
+			<div class="pad-dot-5">
+				<ui-tile-large tiles="{ tile }" onclick="{ routeTo }" onmouseenter="{ tileHoverEnter }" onmouseleave="{ tileHoverLeave }" />
 			</div>
 		</div>
-		<div class="tile-icon { opts.tiles.bgcss } f-row ai-center jc-center">
+		<style>
+			object { pointer-events: none; }
+		</style>		
+		JS->
+		this.opts.tiles = [
+			{ 
+				name: 'Point of Sale', 
+				css: 'fg-primary', 
+				route: '/pos/login', 
+				icon: 'system/assets/img/icons/104.svg', 
+				bgcss: 'bg-pos', 
+				id: 'svgobj01', 
+				svgId: 'ev_svg_104', 
+				badgeCount: this.stationCount, 
+				hasLogin: true, 
+				posLoginRoute: '/pos/login' 
+				hasSearch: true, 
+				searchRoute: '/pos/search', 
+				hasAdd: true, 
+				addRoute: '/pos/add' },
+		]
+	-DESCRIPTION: 
+		The tiles have the ability to play animations and utilize the opts.tiles data object to perform multiple tile
+		setup and display through the data options.
+		OPTIONS: 
+				-name: Title of the tile
+				-css: Any additional css you wish to apply to the tile
+				-route: Entire Tile click action
+				-icon: Any img or svg you want displayed on the tile
+				-id: This is the Object Element that contains the svg or img - Required for animation				
+				-svgId: This is the id added to the SVG file - Required for animation
+				-badgeCount: Used to display and tie in a badge count 
+				-hasLogin: A click action used to route
+				-hasAdd: A click action used to route
+				-hasSearch: A click action used to route
+-->
+<ui-tile-large>
+	<div class="tile-body rounded-top-only shadow-box { opts.tiles.css} fg-white">
+		<div class="f-row jc-between pad-1">
+			<h2>{ opts.tiles.name }</h2>
+			<badge if="{ opts.tiles.badgeCount != null }" text="{ opts.tiles.badgeCount }" css="ui-orange-dk"/>
+		</div>
+		<div class="tile-icon f-row ai-center jc-center">
 			<object id="{opts.tiles.id}" type="image/svg+xml" data={opts.tiles.icon} />
 		</div>
+		<div class="tile-icon-actions-wrapper f-row ai-center jc-center">
+			<div class="tile-icon-actions-row f-row jc-between pad-dot-5">
+				<ui-button if="{ opts.tiles.hasLogin }" label="LOGIN" css="fg-white" onclick="{ parent.posLoginClicked }"/>
+				<ui-button if="{ opts.tiles.hasSearch }" label="SEARCH" css="fg-white" onclick="{ parent.searchClicked }"/>
+				<ui-button if="{ opts.tiles.hasAdd }" label="ADD" css="fg-white" onclick="{ parent.addClicked }"/>
+			</div>
+		</div>
 	</div>
-    <script>		
+	<script>		
 		this.mixin(IO.default);
 		this.on('mount', () => {			
 			var self = this;
 		});		
-    </script>
-    <style>
+	</script>
+	<style>
+		.tile-body {
+			overflow:hidden;
+			cursor: pointer;
+		}
 		.tile-icon object {
 			position: relative; 
-			max-width: 390px; 
 			width: 100%;
 			overflow: hidden;			
-			max-height: 160px;
+			max-height: 190px;
 		}
-		.bg-pos { background-color:#96D0A5; }
-		.bg-customers { background-color:#84DBFF; }
-		.bg-integrations { background-color:#90DFAA; }
-		.bg-inventory { background-color:#324A5E; }
-		.bg-package { background-color:#324A5E; }
-		.bg-payment { background-color:#F4826A; }
-		.bg-transactions { background-color:#84DBFF; }
-		.bg-reports { background-color:#90DFAA; }
-		.bg-activity { background-color:#FFD05B; }
-    </style>
+		.tile-icon-actions-wrapper {
+			min-height: 3.5em; 
+			background: rgba(0,0,0,.1);
+		}
+		.tile-icon-actions-row {
+			width: 100%;
+		}
+	</style>
 </ui-tile-large>

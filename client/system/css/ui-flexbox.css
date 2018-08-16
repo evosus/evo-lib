@@ -1,3 +1,6 @@
+.f-display {
+  display: flex;
+}
 .f-one {
   -webkit-box-flex: 1;
           flex: 1;
@@ -117,4 +120,9 @@
 }
 .as-stretch {
   align-self: stretch;
+}
+.f-tile { flex: 1 0 28em; }
+.f-tile-lg { flex: 1 0 31em; }
+@media screen and (max-width: 1280px) {
+  .f-tile-lg {flex: 1 0 21em; }
 }

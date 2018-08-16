@@ -41,8 +41,7 @@ h3 { font-size: 1.17em; }
 h4 { font-size: 1.12em; }
 h5 { font-size: 0.83em; }
 h6 { font-size: 0.75em; }
-h1,h2,h3,h4,h5,h6
-{ font-weight:500; }
+h1,h2,h3,h4,h5,h6 { font-weight:500; }
 hr { margin:1em 0;border:none;border-top:1px solid rgba(0,0,0,0.1);border-bottom:1px solid rgba(0,0,0,0.1); }
 p { padding:1em 0 0 0; }
 /* CONTANIER STYLES */
@@ -58,6 +57,8 @@ p { padding:1em 0 0 0; }
 .scroll-horizontal { overflow-x:auto;overflow-y:hidden; }
 .scroll-vertical { overflow-x:hidden;overflow-y:auto; }
 .rounded { border-radius:.15em; }
+.rounded-top-only { border-radius: .15em .15em 0 0; }
+.rounded-bottom-only { border-radius: 0 0 .15em .15em; }
 .noshadow { box-shadow:none!important; }
 .noshadow:hover { box-shadow:none!important; }
 .bordered { border:1px solid rgba(0,0,0,0.15); }
@@ -71,6 +72,11 @@ p { padding:1em 0 0 0; }
 .pad-1 { padding:1em; }
 .pad-2 { padding:2em; }
 .pad-3 { padding:3em; }
+.pad-top-bottom-dot-5 { padding: .5em 0; }
+.pad-bottom-dot-25 { padding:0em 0em .25em 0em; }		
+.pad-top-dot-25 { padding-top: .25em; }
+.pad-right-dot-5 { padding-right: .5em; }
+.pad-left-dot-5 { padding-left: .5em; }
 /* RESPONSIVE PADDING */
 /* Dash between media query values */
 /* /.pad-1-2 = pad-1em@768px-2em@992px+ */
@@ -108,7 +114,7 @@ p { padding:1em 0 0 0; }
 	min-height:100%;
 	overflow-y:auto;
 }
-.container-1024 { display:block;max-width:1024px;margin:0; }
+.container-1280 { display:block;max-width:1280px;margin:0; }
 .container-flex-1280 {
 	flex:1;
 	margin-left:0;
@@ -116,6 +122,15 @@ p { padding:1em 0 0 0; }
 	min-height:100%;
 	overflow-y:auto;
 }
+
+.container-flex-full {
+	flex:1;
+	margin-left:0;
+	margin-right:0;
+	min-height:100%;
+	overflow-y:auto;
+}
+
 /* MDI */
 i.mdi {
 	display: flex;
