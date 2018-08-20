@@ -1,10 +1,11 @@
 <ui-modal>
 	<div if="{ opts.isOpen }" class="ui-modal f-col ai-center jc-center fill">
-		<div class="ui-white rounded modal-shadow">
+		<div class="rounded modal-shadow">
 			<div class="modal-contents">
 				<div id="modalMount">
-					<div class="ui-white pad-1 fg-grey-lt">
-						Loading...
+					<div class="ui-white f-row ai-center jc-center pad-2 fg-grey-lt">
+						<span>Loading...</span>
+						<ui-icon mdicon="mdi mdi-close" onclick="{ hideDetail }" />
 					</div>
 				</div>	
 			</div>	
@@ -35,5 +36,8 @@
 				riot.mount('#modalMount',this.opts.template,this.opts.templateOpts || {});	
 			}
 		});
+		this.hideDetail = () => {
+			IO.default.obs.trigger('CLOSE_MODAL');
+		}
 	</script>
 </ui-modal>
