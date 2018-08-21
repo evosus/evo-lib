@@ -81,7 +81,9 @@ var ctrl = {
 		IO.default.obs.on('DELETE_FLAG',() => {
 			ctrl.deleteFlag();
 		});
-
+		let USER = IO.default.getStateByKey('AUTH');
+		this.opts.profileImgPath = USER.PhotoURL;
+		debugger;
 		// SET STATE
 		this.setNavState();
 

@@ -6,6 +6,8 @@
 		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
 			<!-- <ui-icon mdicon="mdi mdi-account-circle" /> -->
 			<ui-avatar imgpath="{ opts.profileImgPath }" />
+			<ui-avatar imgpath="{ profileImgPath }" />
+			<ui-avatar imgpath="{ parent.opts.profileImgPath }" />
 			<div class="pad-dot-25"></div>
 			<div class="f-col f-one">
 				<span>{ opts.userName }</span>
@@ -46,10 +48,12 @@
 			var self = this;
 			debugger;
 			console.log(opts);
-			console.log(self);			
+			console.log(self);
+						
 			let USER = IO.default.getStateByKey('AUTH');
+			self.profileImgPath = USER.PhotoURL;			
 			parent.opts.profileImgPath = USER.PhotoURL;
-			//self.opts.profileImgPath = USER.PhotoURL;
+			self.opts.profileImgPath = USER.PhotoURL;
 			
 			debugger;
 		});
