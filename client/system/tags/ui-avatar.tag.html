@@ -11,14 +11,13 @@
     </div>
     <script>
         this.mixin(IO.default);
-		this.on('update', () => {
+		this.on('mount', () => {
             var self = this;
 			self.hasImg = false;
-			console.log("avatar update firing");
             let pathLength = self.opts.imgpath.length;
             if(pathLength !== undefined && pathLength > 0){
                  self.hasImg = true;
-				 //self.update();				 
+				 self.update();				 
             } else {
                  self.hasImg = false;
             }
