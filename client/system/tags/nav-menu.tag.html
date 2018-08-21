@@ -5,7 +5,7 @@
 		</div>
 		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
 			<!-- <ui-icon mdicon="mdi mdi-account-circle" /> -->
-
+			<ui-avatar if="{USER === true}" imgpath="{ profileImgPath }" />
 			<!-- <ui-avatar imgpath="{ opts.profileImgPath }" />
 			<ui-avatar imgpath="{ profileImgPath }" />
 			<ui-avatar imgpath="{ parent.opts.profileImgPath }" /> -->
@@ -52,7 +52,9 @@
 		this.on('update', () => {
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 			let USER = IO.default.getStateByKey('AUTH');
-			this.profileImgPath = USER.PhotoURL;
+			if(USER) {
+				this.profileImgPath = USER.PhotoURL;
+			}
 			console.dir(this);
 			console.log(opts);
 			console.log(this.profileImgPath);
