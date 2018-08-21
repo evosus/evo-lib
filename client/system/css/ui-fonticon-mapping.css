@@ -381,3 +381,6 @@
 .mdi-toggle-switch:before {
   content: "\e072";
 }
+.mdi-delete:before {
+  content: "\e073";
+}
