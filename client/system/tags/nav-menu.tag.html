@@ -43,22 +43,24 @@
 	<script>
 		this.mixin(IO.default);
 		this.currentRoute = '/';
-		this.profileImgPath = '';
+		this.opts.profileImgPath = '';
 		//let USER = IO.default.getStateByKey('AUTH');
 		//this.profileImgPath = USER.PhotoURL;	
 		this.link = (e) => {
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
-		this.on('update', () => {
-			this.currentRoute = '/' + window.location.hash.replace('#','');
+
+		this.on('mount', () =>{
 			let USER = IO.default.getStateByKey('AUTH');
 			if(USER !== false) {
 				//this.profileImgPath = USER.PhotoURL;				
 				this.opts.profileImgPath = USER.PhotoURL;
-				debugger;
+				this.update();
 			}
-			console.dir(this);
-			console.log(this.profileImgPath);
+			console.log('mounted');
+		});
+		this.on('update', () => {
+			this.currentRoute = '/' + window.location.hash.replace('#','');
 		});
 	</script>
 	<style>
