@@ -53,8 +53,7 @@
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 			let USER = IO.default.getStateByKey('AUTH');
 			if(USER !== false) {
-				this.profileImgPath = USER.PhotoURL;
-				this.update();
+				this.profileImgPath = USER.PhotoURL;				
 			}
 			console.dir(this);
 			console.log(this.profileImgPath);
