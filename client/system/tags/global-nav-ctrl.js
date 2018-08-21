@@ -7,6 +7,9 @@ var ctrl = {
 		this.on('mount', this.onMount());
 	},
 	onMount() {
+		let USER = IO.default.getStateByKey('AUTH');
+		//self.opts.profileImgPath = USER.PhotoURL;
+
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED && STORED['NAV']) {
 			Object.assign(ctrl.opts, STORED['NAV']);
@@ -20,7 +23,8 @@ var ctrl = {
 				isOpen: false,
 				items:[],
 				route: '',
-				userName:'Display name not set'
+				userName:'Display name not set',
+				profileImgPath: USER.PhotoURL
 			}
 			ctrl.opts.ui_banner = { isOpen: false };
 			ctrl.opts.ui_modal = { isOpen: false };
@@ -98,7 +102,6 @@ var ctrl = {
 	},
 	setNavState() {
 		IO.default.setState(this.opts.title,ctrl.opts);
-		debugger;
 	},
 	openBanner(cfg) {
 		ctrl.opts.ui_banner = {
