@@ -44,18 +44,15 @@
 		this.mixin(IO.default);
 		this.currentRoute = '/';
 		this.opts.profileImgPath = '';
-		//let USER = IO.default.getStateByKey('AUTH');
-		//this.profileImgPath = USER.PhotoURL;	
 		this.link = (e) => {
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
 		this.on('update', () => {
 			let USER = IO.default.getStateByKey('AUTH');
 			if(USER !== false) {
-				//this.profileImgPath = USER.PhotoURL;				
 				this.opts.profileImgPath = USER.PhotoURL;
 			}
-			console.log('mounted');
+			console.log('nav update firing');
 
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 		});
