@@ -98,6 +98,7 @@ var ctrl = {
 	},
 	setNavState() {
 		IO.default.setState(this.opts.title,ctrl.opts);
+		debugger;
 	},
 	openBanner(cfg) {
 		ctrl.opts.ui_banner = {
