@@ -8,7 +8,7 @@ var ctrl = {
 	},
 	onMount() {
 		let USER = IO.default.getStateByKey('AUTH');
-		//self.opts.profileImgPath = USER.PhotoURL;
+		ctrl.opts.nav_menu.profileImgPath = USER.PhotoURL;
 
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED && STORED['NAV']) {
@@ -26,6 +26,7 @@ var ctrl = {
 				userName:'Display name not set',
 				profileImgPath: USER.PhotoURL
 			}
+			debugger;
 			ctrl.opts.ui_banner = { isOpen: false };
 			ctrl.opts.ui_modal = { isOpen: false };
 			ctrl.opts.ui_spinner = { isOpen: false };
