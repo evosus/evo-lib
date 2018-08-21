@@ -26,10 +26,6 @@ var ctrl = {
 			ctrl.opts.ui_modal = { isOpen: false };
 			ctrl.opts.ui_spinner = { isOpen: false };
 			ctrl.opts.ui_toast = { isOpen: false };
-			debugger;
-			let USER = IO.default.getStateByKey('AUTH');
-			ctrl.opts.profileImgPath = USER.PhotoURL;
-			debugger;
 		}
 
 		const cfg = this.getState()['FLAG'];
