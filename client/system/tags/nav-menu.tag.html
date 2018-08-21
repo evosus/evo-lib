@@ -5,7 +5,7 @@
 		</div>
 		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
 			<!-- <ui-icon mdicon="mdi mdi-account-circle" /> -->
-			
+
 			<ui-avatar imgpath="{ opts.profileImgPath }" />
 			<ui-avatar imgpath="{ profileImgPath }" />
 			<ui-avatar imgpath="{ parent.opts.profileImgPath }" />
@@ -51,13 +51,13 @@
 		this.on('mount', () => {
 			let USER = IO.default.getStateByKey('AUTH');
 			this.profileImgPath = USER.PhotoURL;			
-			parent.opts.profileImgPath = USER.PhotoURL;
-			this.opts.profileImgPath = USER.PhotoURL;
+			// parent.opts.profileImgPath = USER.PhotoURL;
+			// this.opts.profileImgPath = USER.PhotoURL;
 			console.dir(this);
 			console.log(opts);
 			console.log(this.profileImgPath);
 			console.log(parent.opts);
-			console.log(this.opts.profileImgPath);
+			// console.log(this.opts.profileImgPath);
 			debugger;
 		});
 		this.on('update', () => {
