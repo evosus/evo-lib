@@ -9,7 +9,7 @@ var ctrl = {
 	onMount() {
 		let USER = IO.default.getStateByKey('AUTH');
 		ctrl.opts.nav_menu.profileImgPath = USER.PhotoURL;
-
+		debugger;
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED && STORED['NAV']) {
 			Object.assign(ctrl.opts, STORED['NAV']);
