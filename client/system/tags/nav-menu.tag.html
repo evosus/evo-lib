@@ -5,9 +5,11 @@
 		</div>
 		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
 			<!-- <ui-icon mdicon="mdi mdi-account-circle" /> -->
+			
 			<ui-avatar imgpath="{ opts.profileImgPath }" />
 			<ui-avatar imgpath="{ profileImgPath }" />
 			<ui-avatar imgpath="{ parent.opts.profileImgPath }" />
+
 			<div class="pad-dot-25"></div>
 			<div class="f-col f-one">
 				<span>{ opts.userName }</span>
@@ -41,20 +43,21 @@
 	<script>
 		this.mixin(IO.default);
 		this.currentRoute = '/';
+		//let USER = IO.default.getStateByKey('AUTH');
+		//this.profileImgPath = USER.PhotoURL;	
 		this.link = (e) => {
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
 		this.on('mount', () => {
-			var self = this;
-			debugger;
-			console.log(opts);
-			console.log(self);
-						
 			let USER = IO.default.getStateByKey('AUTH');
-			self.profileImgPath = USER.PhotoURL;			
+			this.profileImgPath = USER.PhotoURL;			
 			parent.opts.profileImgPath = USER.PhotoURL;
-			self.opts.profileImgPath = USER.PhotoURL;
-			
+			this.opts.profileImgPath = USER.PhotoURL;
+			console.dir(this);
+			console.log(opts);
+			console.log(this.profileImgPath);
+			console.log(parent.opts);
+			console.log(this.opts.profileImgPath);
 			debugger;
 		});
 		this.on('update', () => {
