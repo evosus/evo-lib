@@ -20,7 +20,8 @@ var ctrl = {
 				isOpen: false,
 				items:[],
 				route: '',
-				userName:'Display name not set'
+				userName:'Display name not set',
+				profileImgPath: ''
 			}
 			ctrl.opts.ui_banner = { isOpen: false };
 			ctrl.opts.ui_modal = { isOpen: false };
@@ -81,9 +82,6 @@ var ctrl = {
 		IO.default.obs.on('DELETE_FLAG',() => {
 			ctrl.deleteFlag();
 		});
-		let USER = IO.default.getStateByKey('AUTH');
-		this.opts.profileImgPath = USER.PhotoURL;
-		debugger;
 		// SET STATE
 		this.setNavState();
 
