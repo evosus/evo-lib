@@ -17,16 +17,11 @@
 		self.getSelected = function() {
 			let selectedOption = null;
 			if(opts.options && opts.selection) {
-				debugger;
 				opts.options.forEach(function(OBJ) {
-					debugger;
 					if(OBJ.label == opts.selection) {
-						debugger;
-						console.log(opts, OBJ);
 						selectedOption = OBJ;   
 					}
 				});
-				console.log(selectedOption);
 				return selectedOption;
 			}
 		};
