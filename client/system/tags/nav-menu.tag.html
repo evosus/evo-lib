@@ -49,17 +49,14 @@
 		this.link = (e) => {
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
-
-		this.on('mount', () =>{
+		this.on('update', () => {
 			let USER = IO.default.getStateByKey('AUTH');
 			if(USER !== false) {
 				//this.profileImgPath = USER.PhotoURL;				
 				this.opts.profileImgPath = USER.PhotoURL;
-				this.update();
 			}
 			console.log('mounted');
-		});
-		this.on('update', () => {
+
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 		});
 	</script>
