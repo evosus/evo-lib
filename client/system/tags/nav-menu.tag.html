@@ -4,7 +4,8 @@
 			<ui-icon mdicon="mdi mdi-close" onclick="{ parent.closeNavMenu }" />
 		</div>
 		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
-			<ui-icon mdicon="mdi mdi-account-circle" />
+			<!-- <ui-icon mdicon="mdi mdi-account-circle" /> -->
+			<ui-avatar imgpath="{ opts.profileImgPath }" />
 			<div class="pad-dot-25"></div>
 			<div class="f-col f-one">
 				<span>{ opts.userName }</span>
@@ -42,6 +43,8 @@
 			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 		}
 		this.on('update', () => {
+			let USER = IO.default.getStateByKey('AUTH');
+			this.opts.profileImgPath = USER.PhotoURL;
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 		});
 	</script>
