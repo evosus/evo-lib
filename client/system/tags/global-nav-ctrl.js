@@ -21,7 +21,6 @@ var ctrl = {
 				items:[],
 				route: '',
 				userName:'Display name not set',
-				profileImgPath: ''
 			}
 			ctrl.opts.ui_banner = { isOpen: false };
 			ctrl.opts.ui_modal = { isOpen: false };
