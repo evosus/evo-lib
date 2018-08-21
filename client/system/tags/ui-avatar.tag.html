@@ -13,7 +13,8 @@
         this.mixin(IO.default);
 		this.on('mount', () => {
             var self = this;
-            self.hasImg = false;
+			self.hasImg = false;
+			debugger;
             let pathLength = self.opts.imgpath.length;
             if(pathLength !== undefined && pathLength > 0){
                  self.hasImg = true;

@@ -54,6 +54,7 @@
 			let USER = IO.default.getStateByKey('AUTH');
 			if(USER !== false) {
 				this.profileImgPath = USER.PhotoURL;
+				this.update();
 			}
 			console.dir(this);
 			console.log(this.profileImgPath);
