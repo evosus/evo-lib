@@ -45,6 +45,7 @@
 		this.on('update', () => {
 			let USER = IO.default.getStateByKey('AUTH');
 			this.profileImgPath = USER.PhotoURL;
+			debugger;
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 		});
 	</script>
