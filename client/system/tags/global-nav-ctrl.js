@@ -10,7 +10,7 @@ var ctrl = {
 		const STORED = JSON.parse(localStorage.getItem('STATE'));
 		if(STORED && STORED['NAV']) {
 			Object.assign(ctrl.opts, STORED['NAV']);
-		} else {
+		} else {			
 			ctrl.opts.nav_menu = {
 				companyName:'',
 				css:'ui-background fg-primary',
@@ -48,6 +48,7 @@ var ctrl = {
 
 		IO.default.obs.on('SET_NAV_MENU',(cfg) => {
 			ctrl.setNavMenu(cfg);
+			IO.default.obs.trigger('UPDATE_AVATAR', cfg.profileImgPath);
 		});
 		IO.default.obs.on('NAV_MENU_LINK',(link) => {
 			ctrl.navMenuLink(link);

@@ -3,13 +3,8 @@
 		<div class="nav-menu-bar f-row ai-center jc-between { opts.cssHead }">
 			<ui-icon mdicon="mdi mdi-close" onclick="{ parent.closeNavMenu }" />
 		</div>
-		<div class="nav-menu-bar f-row ai-center shadow { opts.cssHead }">
-			<!-- <ui-icon mdicon="mdi mdi-account-circle" /> -->
-			<ui-avatar if="{USER !== false}" imgpath="{ opts.profileImgPath }" />
-			<!-- <ui-avatar imgpath="{ opts.profileImgPath }" />
-			<ui-avatar imgpath="{ profileImgPath }" />
-			<ui-avatar imgpath="{ parent.opts.profileImgPath }" /> -->
-
+		<div id="accountLink" class="nav-menu-bar f-row ai-center shadow { opts.cssHead }" onclick="{ link }">
+			<ui-avatar imgpath="{ opts.profileImgPath }"/>
 			<div class="pad-dot-25"></div>
 			<div class="f-col f-one">
 				<span>{ opts.userName }</span>
@@ -43,15 +38,14 @@
 	<script>
 		this.mixin(IO.default);
 		this.currentRoute = '/';
-		this.opts.profileImgPath = '';
 		this.link = (e) => {
-			IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
-		}
-		this.on('update', () => {
-			let USER = IO.default.getStateByKey('AUTH');
-			if(USER !== false) {
-				this.opts.profileImgPath = USER.PhotoURL;
+			if(e.currentTarget.id === "accountLink") {
+				IO.default.obs.trigger('NAV_MENU_LINK',"/myaccount");
+			} else {
+				IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
 			}
+		}
+		this.on('update', () => {	
 			this.currentRoute = '/' + window.location.hash.replace('#','');
 		});
 	</script>
@@ -73,5 +67,8 @@
 		.nav-link.active h4 { font-weight:500; }
 		.nav-link.inactive { cursor:pointer; }
 		.nav-link.inactive:hover { background:rgba(0,0,0,0.1); }
+		.ui-avatar { background: #fff; cursor: unset !important; }
+		.ui-avatar:hover { box-shadow: none !important; }
+		#accountLink { cursor: pointer; }
 	</style>
 </nav-menu>

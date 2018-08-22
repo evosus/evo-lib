@@ -14,14 +14,25 @@
 		this.on('mount', () => {
             var self = this;
 			self.hasImg = false;
-            let pathLength = self.opts.imgpath.length;
-            if(pathLength !== undefined && pathLength > 0){
-                 self.hasImg = true;
-				 self.update();				 
-            } else {
-                 self.hasImg = false;
-            }
+			if(self.opts.imgpath !== undefined){
+				self.hasImg = true;
+				self.update();
+			} else {
+				self.hasImg = false;
+			}
 		});
+		IO.default.obs.on('UPDATE_AVATAR',(newPath) => {
+			var self = this;
+			self.hasImg = false;
+			if(self.opts.imgpath !== undefined){
+				self.opts.imgpath = newPath;
+				self.hasImg = true;
+				self.update();
+			} else {
+				self.hasImg = false;
+			}			
+		});
+
     </script>
 	<style>
 		.ui-avatar {
@@ -37,4 +48,3 @@
 		}	
 	</style>
 </ui-avatar>
-
