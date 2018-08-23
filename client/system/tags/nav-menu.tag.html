@@ -1,22 +1,23 @@
 <nav-menu>
 	<div class="nav-menu { opts.css } { closed: !opts.isOpen }">
-		<div class="nav-menu-bar f-row ai-center jc-between { opts.cssHead }">
-			<ui-icon mdicon="mdi mdi-close" onclick="{ parent.closeNavMenu }" />
-		</div>
-		<div id="accountLink" class="nav-menu-bar f-row ai-center shadow { opts.cssHead }" onclick="{ link }">
-			<ui-avatar imgpath="{ opts.profileImgPath }"/>
-			<div class="pad-dot-25"></div>
-			<div class="f-col f-one">
-				<span>{ opts.userName }</span>
-				<span style="font-size:0.875em;" class="white-dot-5">{ opts.companyName }</span>
+		<div class="shadow { opts.cssHead }">
+			<div class="nav-menu-bar f-row ai-center jc-between">
+				<ui-icon mdicon="mdi mdi-close" onclick="{ parent.closeNavMenu }" />
+				<ui-icon id="navLogout" mdicon="mdi mdi-logout" onclick="{ link }" />
+			</div>
+			<div id="accountLink" class="nav-menu-bar f-row ai-center" onclick="{ link }">
+				<ui-avatar imgpath="{ opts.profileImgPath }"/>
+				<div class="pad-dot-25"></div>
+				<div class="f-col f-one">
+					<span>{ opts.userName }</span>
+					<span style="font-size:0.875em;" class="white-dot-5">{ opts.companyName }</span>
+				</div>
+				<ui-icon mdicon="mdi mdi-pencil" noaction="none" />
 			</div>
 		</div>
 		<div class="links { opts.cssLinks }">
-
 			<div class="pad-dot-5"></div>
-
 			<div each="{ opts.items }">
-
 				<div if="{ route != currentRoute }"
 					class="nav-link inactive f-row ai-center jc-start"
 					route="{ route }" onclick="{ link }">
@@ -30,9 +31,7 @@
 					<ui-icon mdicon="{ mdicon }" />
 					<h4>{ title }</h4>
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 	<script>
@@ -40,9 +39,11 @@
 		this.currentRoute = '/';
 		this.link = (e) => {
 			if(e.currentTarget.id === "accountLink") {
-				IO.default.obs.trigger('NAV_MENU_LINK',"/myaccount");
+				IO.default.obs.trigger('NAV_MENU_LINK', "/myaccount");
+			} else if(e.currentTarget.id === "navLogout") {
+				IO.default.obs.trigger('NAV_MENU_LINK', "/logout");
 			} else {
-				IO.default.obs.trigger('NAV_MENU_LINK',e.item.route);
+				IO.default.obs.trigger('NAV_MENU_LINK', e.item.route);
 			}
 		}
 		this.on('update', () => {	
@@ -66,9 +67,11 @@
 		.nav-link { padding:0em .5em;transition:.2s ease-in-out all; }
 		.nav-link.active h4 { font-weight:500; }
 		.nav-link.inactive { cursor:pointer; }
-		.nav-link.inactive:hover { background:rgba(0,0,0,0.1); }
-		.ui-avatar { background: #fff; cursor: unset !important; }
-		.ui-avatar:hover { box-shadow: none !important; }
+		.nav-link.inactive:hover,		
+		#accountLink:hover { background:rgba(0,0,0,0.1); }
 		#accountLink { cursor: pointer; }
+		.ui-avatar { background: #fff; }
+		.ui-avatar:hover, 		
+		.none:hover { box-shadow: none !important; }
 	</style>
 </nav-menu>
