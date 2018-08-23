@@ -44,7 +44,7 @@
 				IO.default.obs.trigger('NAV_MENU_LINK', "/logout");
 			} else {
 				IO.default.obs.trigger('NAV_MENU_LINK', e.item.route);
-			}
+			}	
 		}
 		this.on('update', () => {	
 			this.currentRoute = '/' + window.location.hash.replace('#','');

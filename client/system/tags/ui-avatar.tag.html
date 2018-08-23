@@ -10,29 +10,22 @@
 		<img class="ui-avatar { opts.noaction }" src="{ opts.imgpath }" />
     </div>
     <script>
-        this.mixin(IO.default);
+		this.mixin(IO.default);
 		this.on('mount', () => {
-            var self = this;
-			self.hasImg = false;
-			if(self.opts.imgpath !== undefined){
-				self.hasImg = true;
-				self.update();
-			} else {
-				self.hasImg = false;
-			}
-		});
-		IO.default.obs.on('UPDATE_AVATAR',(newPath) => {
-			var self = this;
-			self.hasImg = false;
-			if(self.opts.imgpath !== undefined){
-				self.opts.imgpath = newPath;
-				self.hasImg = true;
-				self.update();
-			} else {
-				self.hasImg = false;
+			this.hasImg = false;
+			if(this.opts.imgpath !== undefined) {
+				IO.default.obs.trigger('UPDATE_AVATAR', this.opts.imgpath);
 			}			
 		});
-
+		IO.default.obs.on('UPDATE_AVATAR',(img) => {				
+			if(img !== undefined){
+				this.opts.imgpath = img;
+				this.hasImg = true;
+				this.update();
+			} else {
+				this.hasImg = false;
+			}
+		});		
     </script>
 	<style>
 		.ui-avatar {
