@@ -11,6 +11,7 @@
     </div>
     <script>
 		this.mixin(IO.default);
+		this.init
 		this.on('mount', () => {
 			this.hasImg = false;
 			if(this.opts.imgpath !== undefined) {
@@ -25,7 +26,11 @@
 			} else {
 				this.hasImg = false;
 			}
-		});		
+		});	
+		this.on('unmount', this.onUnMount);	
+		this.onUnMount = () => {
+			IO.default.obs.off('UPDATE_AVATAR');			
+		}
     </script>
 	<style>
 		.ui-avatar {
