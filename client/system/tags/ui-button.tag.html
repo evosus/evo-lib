@@ -5,9 +5,13 @@ UI BUTTON
 <ui-button>
 	<button class="ui-button rounded { opts.css }">
 		<div class="f-row ai-center jc-center">
-			<i if="{ opts.mdicon && !opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
-			<span>{ opts.label }</span>
-			<i if="{ opts.mdicon && opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+			<span class="icon">
+				<i if="{ opts.mdicon && !opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+			</span>
+			<span class="label">{ opts.label }</span>
+			<span class="icon">
+				<i if="{ opts.mdicon && opts.flip }" class="{ opts.mdicon } f-col ai-center jc-center"></i>
+			</span>
 		</div>
 	</button>
 	<script>
@@ -25,10 +29,11 @@ UI BUTTON
 		}
 		.ui-button:hover { box-shadow:0 5px 10px rgba(0,0,0,0.25); }
 		.ui-button > div { height:2.5em; }
-		.ui-button > div > i { padding:0em .25em; }
-		.ui-button > div > span { padding:0em .25em;text-transform:uppercase;letter-spacing:1px; }
+		.ui-button > div > span.icon { padding:0em .25em; }
+		.ui-button > div > span > i { font-size:1.25em; }
+		.ui-button > div > span.label { padding:0em .25em;text-transform:uppercase;letter-spacing:1px; }
 		.ui-button.md { height:1.5em;font-weight:500; }
 		.ui-button.md > div { height:1.5em; }
-		.ui-button.md > div > span { padding:0em .25em;text-transform:uppercase;font-size:.875em; }
+		.ui-button.md > div > span.label { padding:0em .25em;text-transform:uppercase;font-size:.875em; }
 	</style>
 </ui-button>
