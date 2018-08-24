@@ -384,3 +384,6 @@
 .mdi-delete:before {
   content: "\e073";
 }
+.mdi-playlist-plus:before {
+  content: "\e074";
+}
