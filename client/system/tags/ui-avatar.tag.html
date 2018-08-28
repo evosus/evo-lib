@@ -25,7 +25,11 @@
 			} else {
 				this.hasImg = false;
 			}
-		});		
+		});	
+		this.on('unmount', this.onUnMount);	
+		this.onUnMount = () => {
+			IO.default.obs.off('UPDATE_AVATAR');			
+		}
     </script>
 	<style>
 		.ui-avatar {
