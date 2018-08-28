@@ -387,3 +387,6 @@
 .mdi-playlist-plus:before {
   content: "\e074";
 }
+.mdi-drag:before {
+  content: "\e075";
+}
